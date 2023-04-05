@@ -85,6 +85,8 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
 
         String listAnimal = null;
         int count = 0;
+        String animalQuantity = null;
+        String animalType = null;
 
         name.setText(familyBean.getName());
         address.setText(familyBean.getAddress());
@@ -100,12 +102,19 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
 
         while(iteratoranimal.hasNext()){
             Animal animal = iteratoranimal.next();
+            animalQuantity = String.valueOf(animal.getQuantity());
+            animalType = animal.getType();
 
             if(count==0){
-                listAnimal = animal.getQuantity() + " " + animal.getType();
+                listAnimal.concat(animalQuantity);
+                listAnimal.concat(" ");
+                listAnimal.concat(animalType);
                 count = 1;
             }else{
-                listAnimal = listAnimal + ", " + animal.getQuantity() + " " + animal.getType();
+                listAnimal.concat(", ");
+                listAnimal.concat(animalQuantity);
+                listAnimal.concat(" ");
+                listAnimal.concat(animalType);
             }
 
         }
@@ -118,13 +127,14 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
         String listFood = null;
 
         while(iteratorfood.hasNext()){
-            String food = iteratorfood.next();
+            String foodPref = iteratorfood.next();
 
             if(count==0){
-                listFood = food;
+                listFood = foodPref;
                 count = 1;
             }else{
-                listFood = listFood + ", " + food;
+                listFood.concat(", ");
+                listFood.concat(foodPref);
             }
         }
 
@@ -142,7 +152,8 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
                 listHobby = hobby;
                 count = 1;
             }else{
-                listHobby = listHobby + ", " + hobby;
+                listHobby.concat(", ");
+                listHobby.concat(hobby);
             }
         }
 

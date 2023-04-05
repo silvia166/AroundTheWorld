@@ -22,7 +22,8 @@ import java.util.ResourceBundle;
 public class BookingResidenceGraphicControllerJavaFX implements Initializable {
 
     Scene scene;
-    Stage stage, stage2;
+    Stage stage;
+    String stage2;
 
     @FXML
     ChoiceBox cityBox = new ChoiceBox();

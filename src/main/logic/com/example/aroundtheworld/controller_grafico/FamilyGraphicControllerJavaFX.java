@@ -11,7 +11,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class FamilyGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX {
-    Stage stage, stage1;
+    Stage stage;
+    Stage stage1;
     Scene scene;
 
     public void toFamilyProfile(ActionEvent event) throws IOException {

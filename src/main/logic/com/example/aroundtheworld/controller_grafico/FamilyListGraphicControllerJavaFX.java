@@ -36,14 +36,14 @@ public class FamilyListGraphicControllerJavaFX implements Initializable {
     private List<Family> families = new ArrayList<>();
 
     private List<Family> getData(){
-        List<Family> families = new ArrayList<>();
+        List<Family> familyList = new ArrayList<>();
         Family family;
 
         for (int i=0; i<20; i++){
-            family = new Family(1, 2,null,null,null, null, null, null, null, null, null, null, null);
-            families.add(family);
+            family = new Family(1, null,null,null,null, null, null);
+            familyList.add(family);
         }
-        return families;
+        return familyList;
     }
 
     public void backToForm(ActionEvent event) throws IOException {

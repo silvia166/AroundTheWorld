@@ -20,19 +20,34 @@ public class FamilyBean {
 
     private String email;
 
-    public FamilyBean(String name, String imgSrc, String city, String address, String house, List<Animal> animals, List<FamilyMember> members, List<String> food, List<String> hoobies, int id, String phone, String email) {
+    public FamilyBean(String name, String city, String address, String house, int id, String phone, String email) {
         this.name = name;
-        this.imgSrc = imgSrc;
         this.city = city;
         this.address = address;
         this.house = house;
-        this.animals = animals;
-        this.members = members;
-        this.food = food;
-        this.hoobies = hoobies;
         this.id = id;
         this.phone = phone;
         this.email = email;
+    }
+
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
+    }
+
+    public void setAnimals(List<Animal> animals) {
+        this.animals = animals;
+    }
+
+    public void setMembers(List<FamilyMember> members) {
+        this.members = members;
+    }
+
+    public void setFood(List<String> food) {
+        this.food = food;
+    }
+
+    public void setHoobies(List<String> hoobies) {
+        this.hoobies = hoobies;
     }
 
     public String getName() {

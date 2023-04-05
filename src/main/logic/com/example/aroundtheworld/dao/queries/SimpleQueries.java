@@ -6,6 +6,9 @@ import java.sql.Statement;
 
 public class SimpleQueries {
 
+    private SimpleQueries() {
+    }
+
     public static ResultSet checkUser(Statement stmt, String username, String password) throws SQLException {
         String sql = "SELECT role FROM user WHERE username = '" + username + "' AND password = '" + password + "' ";
         return stmt.executeQuery(sql);

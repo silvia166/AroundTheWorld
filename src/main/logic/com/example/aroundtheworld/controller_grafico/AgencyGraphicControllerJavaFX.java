@@ -13,10 +13,11 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class AgencyGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX {
-    Stage stage, stage1;
+    Stage stage;
+    Stage stage1;
     Scene scene;
 
-    public void toAddFamily(ActionEvent event) throws IOException {
+    public void toAddFamily() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("newFamilyForm.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         stage1 = new Stage();

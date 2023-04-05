@@ -7,13 +7,10 @@ import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Animal;
 import com.example.aroundtheworld.model.Family;
 import com.example.aroundtheworld.model.FamilyMember;
-import com.example.aroundtheworld.model.Student;
 
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +44,6 @@ public class FamilyDAO {
         List<Animal> animals = null;
         List<String> food = new ArrayList<>();
         List<String> hobbies = new ArrayList<>();
-        int noPref = 0;
 
         try{
             stmt = ConnectionDB.getConnection();
@@ -81,44 +77,16 @@ public class FamilyDAO {
                 familyMembers = FamilyMemberDAO.retrieveMembers(familyId);
                 animals = AnimalDAO.retrieveAnimal(familyId);
 
-                if (vegetarian == 1){
-                    food.add("Vegetarian");
-                    noPref = 1;
-                }
-                if (vegan == 1){
-                    food.add("Vegan");
-                    noPref = 1;
-                }
-                if (glutenFree == 1){
-                    food.add("Gluten Free");
-                    noPref = 1;
-                }
-                if(noPref == 0){
-                    food.add("No Preferences");
-                }
-                if (travels == 1){
-                    hobbies.add("Travels");
-                }
-                if (books == 1){
-                    hobbies.add("Books");
-                }
-                if (film == 1){
-                    hobbies.add("Film");
-                }
-                if (videoGames == 1){
-                    hobbies.add("Video Games");
-                }
-                if (nature == 1){
-                    hobbies.add("Nature");
-                }
-                if (cooking == 1){
-                    hobbies.add("Cooking");
-                }
-                if (sport == 1){
-                    hobbies.add("Sport");
-                }
+                food = checkFood(vegetarian, vegan, glutenFree);
+                hobbies = checkHobbies(travels, books, film, videoGames, nature, cooking, sport);
 
-                family = new Family(familyId,2,phoneNumber,name,photo,city,address,house,animals,familyMembers,food,hobbies, username);
+
+                family = new Family(familyId,phoneNumber,name,city,address,house, username);
+                family.setAnimals(animals);
+                family.setMembers(familyMembers);
+                family.setFood(food);
+                family.setHoobies(hobbies);
+                family.setImgSrc(photo);
 
             } while(resultSet.next());
 
@@ -132,5 +100,54 @@ public class FamilyDAO {
 
     }
 
+    private static List<String> checkHobbies(int travels, int books, int film, int videoGames, int nature, int cooking, int sport) {
+
+        List<String> hobbies = new ArrayList<>();
+
+        if (travels == 1){
+            hobbies.add("Travels");
+        }
+        if (books == 1){
+            hobbies.add("Books");
+        }
+        if (film == 1){
+            hobbies.add("Film");
+        }
+        if (videoGames == 1){
+            hobbies.add("Video Games");
+        }
+        if (nature == 1){
+            hobbies.add("Nature");
+        }
+        if (cooking == 1){
+            hobbies.add("Cooking");
+        }
+        if (sport == 1){
+            hobbies.add("Sport");
+        }
+        return hobbies;
+    }
+
+    private static List<String> checkFood(int vegetarian, int vegan, int glutenFree) {
+        int noPref = 0;
+        List<String> food = new ArrayList<>();
+
+        if (vegetarian == 1) {
+            food.add("Vegetarian");
+            noPref = 1;
+        }
+        if (vegan == 1) {
+            food.add("Vegan");
+            noPref = 1;
+        }
+        if (glutenFree == 1) {
+            food.add("Gluten Free");
+            noPref = 1;
+        }
+        if (noPref == 0) {
+            food.add("No Preferences");
+        }
+        return food;
+    }
 }
 

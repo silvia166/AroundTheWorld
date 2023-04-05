@@ -16,7 +16,7 @@ import java.util.Properties;
 
 public class ConnectionDB {
 
-    private ConnectionDB() {};
+    private ConnectionDB() {}
 
     private static Connection connection;
 

@@ -6,7 +6,7 @@ public abstract class GenericUser {
     private String phoneNumber;
     private String email;
 
-    public GenericUser(int id, int type, String phoneNumber, String email) {
+    protected GenericUser(int id, int type, String phoneNumber, String email) {
         this.id = id;
         this.type = type;
         this.phoneNumber = phoneNumber;

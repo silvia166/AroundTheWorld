@@ -4,7 +4,6 @@ import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.NotFoundException;
-import com.example.aroundtheworld.model.Animal;
 import com.example.aroundtheworld.model.City;
 import com.example.aroundtheworld.model.Residence;
 import com.example.aroundtheworld.model.School;
@@ -55,7 +54,11 @@ public class CityDAO {
                 residence = ResidenceDAO.retrieveResidence(name);
                 school = SchoolDAO.retrieveSchool(name);
 
-                city = new City(name,photo,language,act1,imgAct1,act2,imgAct2,act3,imgAct3,residence,school);
+                city = new City(name,language,act1,act2,act3,residence,school);
+                city.setCityImgSrc(photo);
+                city.setAct1ImgSrc(imgAct1);
+                city.setAct2ImgSrc(imgAct2);
+                city.setAct3ImgSrc(imgAct3);
 
             } while(resultSet.next());
 

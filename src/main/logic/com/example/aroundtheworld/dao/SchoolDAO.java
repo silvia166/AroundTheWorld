@@ -4,7 +4,6 @@ import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.NotFoundException;
-import com.example.aroundtheworld.model.Residence;
 import com.example.aroundtheworld.model.School;
 
 import java.sql.ResultSet;

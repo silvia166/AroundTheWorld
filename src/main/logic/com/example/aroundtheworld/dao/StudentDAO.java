@@ -1,6 +1,5 @@
 package com.example.aroundtheworld.dao;
 
-import com.example.aroundtheworld.bean.NewStudentBean;
 import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
@@ -45,7 +44,7 @@ public class StudentDAO {
                 String nationality = resultSet.getString(NATIONALITY);
                 Date birth = resultSet.getDate(BIRTH);
 
-                student = new Student(name, surname, nationality, birth, username, phoneNumber, studentId, 1);
+                student = new Student(name, surname, nationality, birth, username, phoneNumber, studentId);
 
             } while(resultSet.next());
 

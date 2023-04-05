@@ -14,16 +14,31 @@ public class Family extends GenericUser {
     private List<String> hoobies;
 
 
-    public Family(int id, int type, String phoneNumber, String name, String imgSrc, String city, String address, String house, List<Animal> animals, List<FamilyMember> members, List<String> food, List<String> hoobies, String email) {
-        super(id, type, phoneNumber, email);
+    public Family(int id, String phoneNumber, String name, String city, String address, String house, String email) {
+        super(id, 2, phoneNumber, email);
         this.name = name;
-        this.imgSrc = imgSrc;
         this.city = city;
         this.address = address;
         this.house = house;
+    }
+
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
+    }
+
+    public void setAnimals(List<Animal> animals) {
         this.animals = animals;
+    }
+
+    public void setMembers(List<FamilyMember> members) {
         this.members = members;
+    }
+
+    public void setFood(List<String> food) {
         this.food = food;
+    }
+
+    public void setHoobies(List<String> hoobies) {
         this.hoobies = hoobies;
     }
 

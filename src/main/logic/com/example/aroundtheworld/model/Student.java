@@ -8,9 +8,10 @@ public class Student extends GenericUser {
     private String nationality;
     private Date dateOfBirth;
 
-    public Student(String name, String surname, String nationality, Date dateOfBirth, String email, String phone, int id, int type) {
 
-        super(id, type, phone, email);
+    public Student(String name, String surname, String nationality, Date dateOfBirth, String email, String phone, int id) {
+
+        super(id, 1, phone, email);
         this.name = name;
         this.surname = surname;
         this.nationality = nationality;

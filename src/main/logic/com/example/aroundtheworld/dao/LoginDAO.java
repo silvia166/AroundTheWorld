@@ -33,6 +33,7 @@ public class LoginDAO {
                 case "student" -> {role = 1; break;}
                 case "family" -> {role = 2; break;}
                 case "agency" -> {role = 3; break;}
+                default -> throw new NotFoundException("No role found");
             }
 
             resultSet.close();

@@ -16,18 +16,30 @@ public class City {
 
     private School school;
 
-    public City(String name, String cityImgSrc, String language, String act1, String act1ImgSrc, String act2, String act2ImgSrc, String act3, String act3ImgSrc, Residence residence, School school) {
+    public City(String name, String language, String act1, String act2, String act3, Residence residence, School school) {
         this.name = name;
-        this.cityImgSrc = cityImgSrc;
         this.language = language;
         this.act1 = act1;
-        this.act1ImgSrc = act1ImgSrc;
         this.act2 = act2;
-        this.act2ImgSrc = act2ImgSrc;
         this.act3 = act3;
-        this.act3ImgSrc = act3ImgSrc;
         this.residence = residence;
         this.school = school;
+    }
+
+    public void setCityImgSrc(String cityImgSrc) {
+        this.cityImgSrc = cityImgSrc;
+    }
+
+    public void setAct1ImgSrc(String act1ImgSrc) {
+        this.act1ImgSrc = act1ImgSrc;
+    }
+
+    public void setAct2ImgSrc(String act2ImgSrc) {
+        this.act2ImgSrc = act2ImgSrc;
+    }
+
+    public void setAct3ImgSrc(String act3ImgSrc) {
+        this.act3ImgSrc = act3ImgSrc;
     }
 
     public String getName() {

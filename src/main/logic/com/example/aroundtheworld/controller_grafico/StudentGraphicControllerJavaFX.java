@@ -13,10 +13,11 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class StudentGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX {
-    Stage stage, stage1;
+    Stage stage;
+    Stage stage1;
     Scene scene;
 
-    public void toContactFamily(ActionEvent event) throws IOException {
+    public void toContactFamily() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("contactFamilyForm.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         stage1 = new Stage();
@@ -27,7 +28,7 @@ public class StudentGraphicControllerJavaFX extends LogoutGraphicControllerJavaF
         stage1.show();
     }
 
-    public void toBookingResidence(ActionEvent event) throws IOException {
+    public void toBookingResidence() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("residenceForm.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         stage1 = new Stage();

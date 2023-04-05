@@ -3,7 +3,6 @@ package com.example.aroundtheworld.bean;
 import com.example.aroundtheworld.exception.EmailFormatException;
 import com.example.aroundtheworld.exception.PhoneFormatException;
 
-import java.util.Date;
 import java.util.regex.Pattern;
 
 public class NewStudentBean {
@@ -27,7 +26,7 @@ public class NewStudentBean {
     }
 
     public void setPhoneNumber(String phoneNumber) throws PhoneFormatException {
-        if(isNumeric(phoneNumber) == false){
+        if(!isNumeric(phoneNumber)){
             throw new PhoneFormatException(phoneNumber);
         }
         this.phoneNumber = phoneNumber;
@@ -38,7 +37,7 @@ public class NewStudentBean {
             return false;
         }
         try {
-            double d = Double.parseDouble(strNum);
+            Double.parseDouble(strNum);
         } catch (NumberFormatException nfe) {
             return false;
         }

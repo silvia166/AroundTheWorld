@@ -2,7 +2,6 @@ package com.example.aroundtheworld.controller_applicativo;
 
 import com.example.aroundtheworld.bean.NewStudentBean;
 import com.example.aroundtheworld.dao.StudentDAO;
-import com.example.aroundtheworld.model.Student;
 
 public class CreateAccountController {
 

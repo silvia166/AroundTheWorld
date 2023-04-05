@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.HelloController">
+   <children>
+      <Pane layoutX="25.0" layoutY="56.0" prefHeight="74.0" prefWidth="1200.0" style="-fx-background-color: #C0F9DD;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text layoutX="115.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Around the world" wrappingWidth="401.06072902679443">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="115.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="travel agency" wrappingWidth="208.81515502929688">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="56.0" fitWidth="57.0" layoutX="42.0" layoutY="10.0">
+               <image>
+                  <Image url="@image/world.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <ScrollPane layoutX="224.0" layoutY="152.0" prefHeight="535.0" prefWidth="751.0">
+         <content>
+            <GridPane alignment="CENTER" prefHeight="533.0" prefWidth="736.0">
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      <Button layoutX="45.0" layoutY="667.0" mnemonicParsing="false" onAction="#toHomepageStudent" opacity="0.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 100;">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="45.0" layoutY="669.0">
+         <image>
+            <Image url="@image/arrow.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="370.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accepted Request" textAlignment="CENTER" wrappingWidth="456.6572775840759">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

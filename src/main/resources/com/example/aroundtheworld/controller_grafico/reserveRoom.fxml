@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.HelloController">
+   <children>
+      <Button layoutX="50.0" layoutY="658.0" mnemonicParsing="false" onAction="#toAddFamily" opacity="0.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 100;">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Pane layoutX="25.0" layoutY="56.0" prefHeight="74.0" prefWidth="1200.0" style="-fx-background-color: #C0F9DD;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text layoutX="115.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Around the world" wrappingWidth="243.901956467559">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="115.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="travel agency" wrappingWidth="208.81515502929688">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="56.0" fitWidth="57.0" layoutX="42.0" layoutY="10.0">
+               <image>
+                  <Image url="@image/world.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Text layoutX="360.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve a room" textAlignment="CENTER" wrappingWidth="456.6572775840759">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <TableView layoutX="672.0" layoutY="227.0" prefHeight="363.0" prefWidth="431.0">
+        <columns>
+          <TableColumn prefWidth="133.49029541015625" text="Room" />
+          <TableColumn prefWidth="146.00967407226562" text="Type" />
+            <TableColumn prefWidth="150.52432250976562" text="Priority" />
+        </columns>
+      </TableView>
+      <Text layoutX="727.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="London Residence - London" textAlignment="CENTER" wrappingWidth="305.4773351650873">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="770.0" layoutY="624.0" mnemonicParsing="false" onAction="#toAddFamily" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Reserve room">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="49.0" layoutY="660.0">
+         <image>
+            <Image url="@image/arrow.png" />
+         </image>
+      </ImageView>
+      <GridPane layoutX="133.0" layoutY="257.0" prefHeight="159.0" prefWidth="363.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="254.406005859375" minWidth="10.0" prefWidth="116.43232727050781" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="328.7109680175781" minWidth="10.0" prefWidth="292.6656494140625" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" textAlignment="CENTER" wrappingWidth="51.59109354019165">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" textAlignment="CENTER" wrappingWidth="56.36698770523071" GridPane.columnIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="From:" textAlignment="CENTER" wrappingWidth="45.85720682144165" GridPane.rowIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" 12-12-2023" textAlignment="CENTER" wrappingWidth="104.65947580337524" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="To:" textAlignment="CENTER" wrappingWidth="25.629740238189697" GridPane.rowIndex="2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" 25-12-2023" textAlignment="CENTER" wrappingWidth="109.53687143325806" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Room:" textAlignment="CENTER" wrappingWidth="52.10018014907837" GridPane.rowIndex="3">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type" textAlignment="CENTER" wrappingWidth="53.42474985122681" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </GridPane>
+      <Text layoutX="119.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booking information" textAlignment="CENTER" wrappingWidth="219.35934400558472">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

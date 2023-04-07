@@ -10,224 +10,235 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <ScrollPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.AddFamilyGraphicControllerJavaFX">
-   <content>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1101.0" prefWidth="900.0" style="-fx-border-color: #C0F9DD; -fx-border-width: 15;">
-         <children>
-            <Text layoutX="305.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fill the form - New Family" textAlignment="CENTER" wrappingWidth="297.9521179199219">
-               <font>
-                  <Font size="26.0" />
-               </font>
-            </Text>
-            <TextField layoutX="214.0" layoutY="102.0" prefHeight="26.0" prefWidth="228.0" />
-            <TextField layoutX="604.0" layoutY="160.0" prefHeight="26.0" prefWidth="228.0" />
-            <ChoiceBox fx:id="dogBox" layoutX="285.0" layoutY="220.0" prefHeight="26.0" prefWidth="48.0" />
-            <Label layoutX="214.0" layoutY="220.0" prefHeight="23.0" prefWidth="47.0" text="Dogs">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <ChoiceBox fx:id="catBox" layoutX="459.0" layoutY="220.0" prefHeight="26.0" prefWidth="48.0" />
-            <Label layoutX="388.0" layoutY="220.0" prefHeight="23.0" prefWidth="47.0" text="Cats">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="561.0" layoutY="220.0" prefHeight="23.0" prefWidth="62.0" text="Birds">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <CheckBox layoutX="214.0" layoutY="455.0" mnemonicParsing="false" text="Travels">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </CheckBox>
-            <CheckBox layoutX="384.0" layoutY="455.0" mnemonicParsing="false" text="Sport">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </CheckBox>
-            <CheckBox layoutX="551.0" layoutY="455.0" mnemonicParsing="false" text="Books">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </CheckBox>
-            <CheckBox layoutX="214.0" layoutY="507.0" mnemonicParsing="false" text="Film">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </CheckBox>
-            <CheckBox layoutX="551.0" layoutY="507.0" mnemonicParsing="false" text="Cooking">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </CheckBox>
-            <CheckBox layoutX="713.0" layoutY="455.0" mnemonicParsing="false" text="Nature">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </CheckBox>
-            <CheckBox layoutX="384.0" layoutY="507.0" mnemonicParsing="false" text="VideoGames">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </CheckBox>
-            <TextField fx:id="nameInput" layoutX="85.0" layoutY="679.0" prefWidth="228.0" style="-fx-backgroud-radius: 20;" />
-            <Button layoutX="125.0" layoutY="947.0" mnemonicParsing="false" onAction="#addMember" prefHeight="42.0" prefWidth="135.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Add Member">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Label layoutX="136.0" layoutY="647.0" text="Member Name">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="ageInput" layoutX="85.0" layoutY="772.0" prefHeight="26.0" prefWidth="228.0" style="-fx-backgroud-radius: 20;" />
-            <TextField fx:id="parenthoodInput" layoutX="85.0" layoutY="870.0" prefHeight="26.0" prefWidth="228.0" style="-fx-backgroud-radius: 20;" />
-            <TableView fx:id="tableViewMembers" layoutX="443.0" layoutY="634.0" prefHeight="274.0" prefWidth="375.0">
-               <columns>
-                  <TableColumn fx:id="nameColumn" prefWidth="122.4949951171875" text="Name" />
-                  <TableColumn fx:id="ageColumn" minWidth="0.92584228515625" prefWidth="125.99609375" text="Age" />
-                  <TableColumn fx:id="parenthoodColumn" prefWidth="127.00390625" text="Parenthood" />
-               </columns>
-            </TableView>
-            <Button layoutX="578.0" layoutY="947.0" mnemonicParsing="false" onAction="#removeMember" prefHeight="42.0" prefWidth="123.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Remove">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutX="700.0" layoutY="1017.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="132.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Add Family">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Label layoutX="142.0" layoutY="743.0" text="Member Age">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="114.0" layoutY="834.0" text="Member Parenthood">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="81.0" layoutY="565.0" prefHeight="38.0" prefWidth="164.0" text="Add members">
-               <font>
-                  <Font size="26.0" />
-               </font>
-            </Label>
-            <Label layoutX="444.0" layoutY="598.0" prefHeight="38.0" prefWidth="80.0" text="Members:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <ChoiceBox fx:id="otherBox" layoutX="622.0" layoutY="220.0" prefHeight="26.0" prefWidth="48.0" />
-            <Text layoutX="79.0" layoutY="344.0" strokeType="OUTSIDE" strokeWidth="0.0" text="House:" wrappingWidth="108.42716617219145">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text layoutX="497.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address:" wrappingWidth="86.47863590054203">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text layoutX="78.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Family Name:" wrappingWidth="108.42716617219139">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text layoutX="80.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Animals:" wrappingWidth="86.47863590054203">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text layoutX="78.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food Diet:" wrappingWidth="86.47863590054203">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text layoutX="82.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hobbies:" wrappingWidth="86.47863590054203">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <RadioButton layoutX="214.0" layoutY="324.0" mnemonicParsing="false" text="Single Room">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <toggleGroup>
-                  <ToggleGroup fx:id="house" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton layoutX="384.0" layoutY="324.0" mnemonicParsing="false" text="Shared Room" toggleGroup="$house">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton layoutX="214.0" layoutY="383.0" mnemonicParsing="false" text="Vegetarian">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <toggleGroup>
-                  <ToggleGroup fx:id="food" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton layoutX="384.0" layoutY="383.0" mnemonicParsing="false" text="Vegan" toggleGroup="$food">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton layoutX="714.0" layoutY="383.0" mnemonicParsing="false" text="No preferences" toggleGroup="$food">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <Text layoutX="78.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="86.47863590054203">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <ChoiceBox layoutX="214.0" layoutY="160.0" prefWidth="228.0" />
-            <Label layoutX="216.0" layoutY="270.0" prefHeight="23.0" prefWidth="62.0" text="Rodens">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <ChoiceBox fx:id="otherBox1" layoutX="285.0" layoutY="270.0" prefHeight="26.0" prefWidth="48.0" />
-            <Label layoutX="388.0" layoutY="270.0" prefHeight="23.0" prefWidth="62.0" text="Reptiles">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <ChoiceBox fx:id="otherBox11" layoutX="459.0" layoutY="270.0" prefHeight="26.0" prefWidth="48.0" />
-            <Label layoutX="561.0" layoutY="270.0" prefHeight="23.0" prefWidth="62.0" text="Others">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <ChoiceBox fx:id="otherBox2" layoutX="622.0" layoutY="270.0" prefHeight="26.0" prefWidth="48.0" />
-            <RadioButton layoutX="551.0" layoutY="383.0" mnemonicParsing="false" text="Gluten free">
-               <toggleGroup>
-                  <ToggleGroup fx:id="food1" />
-               </toggleGroup>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <Button layoutX="836.0" layoutY="31.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: #C0F9DD; -fx-border-color: black;" text="X">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
-   </content>
+   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1250.0" prefWidth="900.0" style="-fx-border-color: #C0F9DD; -fx-border-width: 15;">
+      <Text layoutX="305.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fill the form - New Family" textAlignment="CENTER" wrappingWidth="297.9521179199219">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <TextField fx:id="nameField" layoutX="215.0" layoutY="239.0" prefHeight="26.0" prefWidth="228.0" />
+      <TextField fx:id="addressField" layoutX="623.0" layoutY="297.0" prefHeight="26.0" prefWidth="228.0" />
+      <ChoiceBox fx:id="dogBox" layoutX="286.0" layoutY="357.0" prefHeight="26.0" prefWidth="48.0" />
+      <Label layoutX="215.0" layoutY="357.0" prefHeight="23.0" prefWidth="47.0" text="Dogs">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="catBox" layoutX="460.0" layoutY="357.0" prefHeight="26.0" prefWidth="48.0" />
+      <Label layoutX="389.0" layoutY="357.0" prefHeight="23.0" prefWidth="47.0" text="Cats">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="562.0" layoutY="357.0" prefHeight="23.0" prefWidth="62.0" text="Birds">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="travelsBox" layoutX="215.0" layoutY="592.0" mnemonicParsing="false" text="Travels">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="sportBox" layoutX="385.0" layoutY="592.0" mnemonicParsing="false" text="Sport">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="booksBox" layoutX="552.0" layoutY="592.0" mnemonicParsing="false" text="Books">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="filmBox" layoutX="215.0" layoutY="644.0" mnemonicParsing="false" text="Film">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="cookingBox" layoutX="552.0" layoutY="644.0" mnemonicParsing="false" text="Cooking">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="natureBox" layoutX="714.0" layoutY="592.0" mnemonicParsing="false" text="Nature">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="videogamesBox" layoutX="385.0" layoutY="644.0" mnemonicParsing="false" text="VideoGames">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </CheckBox>
+      <TextField fx:id="nameInput" layoutX="86.0" layoutY="816.0" prefWidth="228.0" style="-fx-backgroud-radius: 20;" />
+      <Button layoutX="126.0" layoutY="1084.0" mnemonicParsing="false" onAction="#addMember" prefHeight="42.0" prefWidth="135.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Add Member">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="137.0" layoutY="784.0" text="Member Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="ageInput" layoutX="86.0" layoutY="909.0" prefHeight="26.0" prefWidth="228.0" style="-fx-backgroud-radius: 20;" />
+      <TextField fx:id="parenthoodInput" layoutX="86.0" layoutY="1007.0" prefHeight="26.0" prefWidth="228.0" style="-fx-backgroud-radius: 20;" />
+      <TableView fx:id="tableViewMembers" layoutX="444.0" layoutY="771.0" prefHeight="274.0" prefWidth="375.0">
+         <columns>
+            <TableColumn fx:id="nameColumn" prefWidth="122.4949951171875" text="Name" />
+            <TableColumn fx:id="ageColumn" minWidth="0.92584228515625" prefWidth="125.99609375" text="Age" />
+            <TableColumn fx:id="parenthoodColumn" prefWidth="127.00390625" text="Parenthood" />
+         </columns>
+      </TableView>
+      <Button layoutX="579.0" layoutY="1084.0" mnemonicParsing="false" onAction="#removeMember" prefHeight="42.0" prefWidth="123.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Remove">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="701.0" layoutY="1154.0" mnemonicParsing="false" onAction="#addFamily" prefHeight="42.0" prefWidth="132.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Add Family">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="143.0" layoutY="880.0" text="Member Age">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="115.0" layoutY="971.0" text="Member Parenthood">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="82.0" layoutY="702.0" prefHeight="38.0" prefWidth="164.0" text="Add members">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="445.0" layoutY="735.0" prefHeight="38.0" prefWidth="80.0" text="Members:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="birdsBox" layoutX="623.0" layoutY="357.0" prefHeight="26.0" prefWidth="48.0" />
+      <Text layoutX="80.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="House:" wrappingWidth="108.42716617219145">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="488.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address:" wrappingWidth="86.47863590054203">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="79.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Family Name:" wrappingWidth="108.42716617219139">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="81.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Animals:" wrappingWidth="86.47863590054203">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="79.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food Diet:" wrappingWidth="86.47863590054203">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="83.0" layoutY="609.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hobbies:" wrappingWidth="86.47863590054203">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <RadioButton fx:id="singleRB" layoutX="215.0" layoutY="461.0" mnemonicParsing="false" text="Single Room">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="house" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="sharedRB" layoutX="385.0" layoutY="461.0" mnemonicParsing="false" text="Shared Room" toggleGroup="$house">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="vegetarianRB" layoutX="215.0" layoutY="520.0" mnemonicParsing="false" text="Vegetarian">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="food" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="veganRB" layoutX="385.0" layoutY="520.0" mnemonicParsing="false" text="Vegan" toggleGroup="$food">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="noPrefRB" layoutX="715.0" layoutY="520.0" mnemonicParsing="false" text="No preferences" toggleGroup="$food">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </RadioButton>
+      <Text layoutX="79.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City:" wrappingWidth="86.47863590054203">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="cityBox" layoutX="215.0" layoutY="297.0" prefWidth="228.0" />
+      <Label layoutX="217.0" layoutY="407.0" prefHeight="23.0" prefWidth="62.0" text="Rodens">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="rodensBox" layoutX="286.0" layoutY="407.0" prefHeight="26.0" prefWidth="48.0" />
+      <Label layoutX="389.0" layoutY="407.0" prefHeight="27.0" prefWidth="66.0" text="Reptiles">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="reptilesBox" layoutX="460.0" layoutY="407.0" prefHeight="26.0" prefWidth="48.0" />
+      <Label layoutX="562.0" layoutY="407.0" prefHeight="23.0" prefWidth="62.0" text="Others">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="otherBox" layoutX="623.0" layoutY="407.0" prefHeight="26.0" prefWidth="48.0" />
+      <RadioButton fx:id="glutenFreeRB" layoutX="552.0" layoutY="520.0" mnemonicParsing="false" text="Gluten free">
+         <toggleGroup>
+            <ToggleGroup fx:id="food1" />
+         </toggleGroup>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </RadioButton>
+      <Button layoutX="836.0" layoutY="31.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: #C0F9DD; -fx-border-color: black;" text="X">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="122.0" fitWidth="121.0" layoutX="401.0" layoutY="84.0">
+         <effect>
+            <DropShadow height="9.3" radius="4.735" width="11.64" />
+         </effect>
+         <Image url="@image/camera.png" />
+      </ImageView>
+      <Button fx:id="addPhotoBtn" layoutX="398.0" layoutY="81.0" mnemonicParsing="false" opacity="0.0" prefHeight="128.0" prefWidth="140.0" style="-fx-background-radius: 100;" />
+      <TextField fx:id="phoneField" layoutX="623.0" layoutY="239.0" prefHeight="26.0" prefWidth="228.0" />
+      <Text layoutX="488.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number:" wrappingWidth="135.19999999999993">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+   </AnchorPane>
 </ScrollPane>

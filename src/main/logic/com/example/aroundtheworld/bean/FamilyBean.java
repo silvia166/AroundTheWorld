@@ -1,5 +1,6 @@
 package com.example.aroundtheworld.bean;
 
+import com.example.aroundtheworld.exception.PhoneFormatException;
 import com.example.aroundtheworld.model.Animal;
 import com.example.aroundtheworld.model.FamilyMember;
 
@@ -28,6 +29,34 @@ public class FamilyBean {
         this.id = id;
         this.phone = phone;
         this.email = email;
+    }
+
+    public FamilyBean(String name, String city, String address, String house, String phone, String email) throws PhoneFormatException {
+        this.name = name;
+        this.city = city;
+        this.address = address;
+        this.house = house;
+        this.setPhoneNumber(phone);
+        this.email = email;
+    }
+
+    public void setPhoneNumber(String phoneNumber) throws PhoneFormatException {
+        if(!isNumeric(phoneNumber)){
+            throw new PhoneFormatException(phoneNumber);
+        }
+        this.phone = phoneNumber;
+    }
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
 
     public void setImgSrc(String imgSrc) {

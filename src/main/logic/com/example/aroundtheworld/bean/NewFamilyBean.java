@@ -3,10 +3,12 @@ package com.example.aroundtheworld.bean;
 import com.example.aroundtheworld.exception.PhoneFormatException;
 import com.example.aroundtheworld.model.Animal;
 import com.example.aroundtheworld.model.FamilyMember;
+import com.example.aroundtheworld.model.FamilyPreferences;
 
 import java.util.List;
 
-public class FamilyBean {
+public class NewFamilyBean {
+
     private String name;
     private String imgSrc;
     private String city;
@@ -14,29 +16,17 @@ public class FamilyBean {
     private String house;
     private List<Animal> animals;
     private List<FamilyMember> members;
-    private List<String> food;
-    private List<String> hoobies;
-    private int id;
     private String phone;
-
     private String email;
 
-    public FamilyBean(String name, String city, String address, String house, int id, String phone, String email) {
-        this.name = name;
-        this.city = city;
-        this.address = address;
-        this.house = house;
-        this.id = id;
-        this.phone = phone;
-        this.email = email;
-    }
+    private FamilyPreferences familyPreferences;
 
-    public FamilyBean(String name, String city, String address, String house, String phone, String email) {
+    public NewFamilyBean(String name, String city, String address, String house, String phone, String email) throws PhoneFormatException {
         this.name = name;
         this.city = city;
         this.address = address;
         this.house = house;
-        this.phone = phone;
+        this.setPhoneNumber(phone);
         this.email = email;
     }
 
@@ -52,12 +42,8 @@ public class FamilyBean {
         this.members = members;
     }
 
-    public void setFood(List<String> food) {
-        this.food = food;
-    }
-
-    public void setHoobies(List<String> hoobies) {
-        this.hoobies = hoobies;
+    public void setFamilyPrefernces(FamilyPreferences familyPreferences) {
+        this.familyPreferences = familyPreferences;
     }
 
     public String getName() {
@@ -88,18 +74,6 @@ public class FamilyBean {
         return members;
     }
 
-    public List<String> getFood() {
-        return food;
-    }
-
-    public List<String> getHoobies() {
-        return hoobies;
-    }
-
-    public int getId() {
-        return id;
-    }
-
     public String getPhone() {
         return phone;
     }
@@ -108,4 +82,26 @@ public class FamilyBean {
         return email;
     }
 
+    public FamilyPreferences getFamilyPrefernces() {
+        return familyPreferences;
+    }
+
+    public void setPhoneNumber(String phoneNumber) throws PhoneFormatException {
+        if(!isNumeric(phoneNumber)){
+            throw new PhoneFormatException(phoneNumber);
+        }
+        this.phone = phoneNumber;
+    }
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 }

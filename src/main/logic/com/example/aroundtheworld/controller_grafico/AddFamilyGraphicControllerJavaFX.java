@@ -1,33 +1,25 @@
 package com.example.aroundtheworld.controller_grafico;
 
-import com.example.aroundtheworld.bean.FamilyBean;
-import com.example.aroundtheworld.bean.NewStudentBean;
+import com.example.aroundtheworld.bean.NewFamilyBean;
 import com.example.aroundtheworld.controller_applicativo.AddFamilyController;
-import com.example.aroundtheworld.controller_applicativo.CreateAccountController;
-import com.example.aroundtheworld.exception.EmailFormatException;
 import com.example.aroundtheworld.exception.FormEmptyException;
 import com.example.aroundtheworld.exception.PhoneFormatException;
 import com.example.aroundtheworld.model.Animal;
 import com.example.aroundtheworld.model.FamilyMember;
+import com.example.aroundtheworld.model.FamilyPreferences;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 
 
 import java.io.IOException;
-import java.lang.reflect.Member;
-import java.net.URL;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
+
+import static java.lang.Integer.parseInt;
 
 public class AddFamilyGraphicControllerJavaFX {
 
@@ -157,7 +149,7 @@ public class AddFamilyGraphicControllerJavaFX {
 
     @FXML
     public void addMember(ActionEvent event) {
-        FamilyMember familyMember = new FamilyMember(nameInput.getText(),Integer.parseInt(ageInput.getText()),parenthoodInput.getText());
+        FamilyMember familyMember = new FamilyMember(nameInput.getText(), parseInt(ageInput.getText()),parenthoodInput.getText());
         ObservableList<FamilyMember> familyMembers = tableViewMembers.getItems();
         familyMembers.add(familyMember);
         tableViewMembers.setItems(familyMembers);
@@ -182,8 +174,7 @@ public class AddFamilyGraphicControllerJavaFX {
         String room;
 
         List<Animal> animals;
-        List<String> hobbies;
-        List<String> food;
+        FamilyPreferences preferences;
         List<FamilyMember> membersList;
 
         try{
@@ -201,27 +192,24 @@ public class AddFamilyGraphicControllerJavaFX {
                 throw new FormEmptyException("House");
 
             if(singleRB.isSelected() == true)
-                room = "Single Room";
+                room = "Single";
             else
-                room = "Shared Room";
+                room = "Shared";
 
             animals = getAnimalList();
-            hobbies = getHobbies();
-            food = getFoodPref();
+            preferences = getPreferences();
             membersList = getMembers();
 
-            String email = nameField.getText();
+            String email = nameField.getText().toLowerCase();
             email = email.concat("@gmail.com");
 
-            FamilyBean familyBean = new FamilyBean(nameField.getText(), (String) cityBox.getValue(), addressField.getText(), room, phoneField.getText(), email);
-            familyBean.setAnimals(animals);
-            familyBean.setHoobies(hobbies);
-            familyBean.setFood(food);
-            familyBean.setMembers(membersList);
-
+            NewFamilyBean newFamilyBean = new NewFamilyBean(nameField.getText(), (String) cityBox.getValue(), addressField.getText(), room, phoneField.getText(), email);
+            newFamilyBean.setAnimals(animals);
+            newFamilyBean.setMembers(membersList);
+            newFamilyBean.setFamilyPrefernces(preferences);
 
             AddFamilyController addFamilyController = new AddFamilyController();
-            addFamilyController.createFamily(familyBean);
+            addFamilyController.createFamily(newFamilyBean);
 
             ((Node)event.getSource()).getScene().getWindow().hide();
 
@@ -230,8 +218,61 @@ public class AddFamilyGraphicControllerJavaFX {
         }
     }
 
+    private FamilyPreferences getPreferences() {
+
+        int vegetarian = 0;
+        int vegan = 0;
+        int glutenFree = 0;
+        int travels = 0;
+        int sport = 0;
+        int books = 0;
+        int nature = 0;
+        int film = 0;
+        int videoGames = 0;
+        int cooking = 0;
+
+        if(travelsBox.isSelected()){
+            travels = 1;
+        }
+        if(sportBox.isSelected()){
+            sport = 1;
+        }
+        if(cookingBox.isSelected()){
+            cooking = 1;
+        }
+        if(videogamesBox.isSelected()){
+            videoGames = 1;
+        }
+        if(filmBox.isSelected()){
+            film = 1;
+        }
+        if(booksBox.isSelected()){
+            books = 1;
+        }
+        if(natureBox.isSelected()){
+            nature = 1;
+        }
+
+        if(vegetarianRB.isSelected()){
+            vegetarian = 1;
+        }
+        else if(veganRB.isSelected()){
+            vegan = 1;
+        }
+
+        if(glutenFreeRB.isSelected()){
+            glutenFree = 1;
+        }
+
+        FamilyPreferences familyPreferences = new FamilyPreferences();
+        familyPreferences.setFood(vegetarian, vegan, glutenFree);
+        familyPreferences.setHobbies(travels, sport, books, nature, film, videoGames, cooking);
+
+        return familyPreferences;
+    }
+
     public List<FamilyMember> getMembers() {
-        List<FamilyMember> members = null;
+        List<FamilyMember> members = new ArrayList<>();
         FamilyMember member;
 
         ObservableList<FamilyMember> familyMembers = tableViewMembers.getItems();
@@ -245,83 +286,35 @@ public class AddFamilyGraphicControllerJavaFX {
         return members;
     }
 
-    public List<String> getFoodPref() {
-        List<String> food = new ArrayList<>();
-
-        if(vegetarianRB.isSelected()){
-            food.add("Vegetarian");
-        }
-        else if(veganRB.isSelected()){
-            food.add("Vegan");
-        }
-
-        if(glutenFreeRB.isSelected()){
-            food.add("Gluten Free");
-        }
-
-        if(noPrefRB.isSelected()){
-            food.add("No Preferences");
-        }
-
-        return food;
-    }
-
-    public List<String> getHobbies() {
-        List<String> hobbies = new ArrayList<>();
-
-        if(travelsBox.isSelected()){
-            hobbies.add("Travels");
-        }
-        if(sportBox.isSelected()){
-            hobbies.add("Sport");
-        }
-        if(cookingBox.isSelected()){
-            hobbies.add("Cooking");
-        }
-        if(videogamesBox.isSelected()){
-            hobbies.add("Video Games");
-        }
-        if(filmBox.isSelected()){
-            hobbies.add("Film");
-        }
-        if(booksBox.isSelected()){
-            hobbies.add("Books");
-        }
-        if(natureBox.isSelected()){
-            hobbies.add("Nature");
-        }
-
-        return hobbies;
-    }
-
     public List<Animal> getAnimalList() {
-        List<Animal> animals = null;
+        List<Animal> animals = new ArrayList<>();
         Animal animal;
 
         if(dogBox.getValue() != null){
-            animal = new Animal("Dog", (int) dogBox.getValue());
+            animal = new Animal("Dog", parseInt(dogBox.getValue().toString()));
             animals.add(animal);
         }
         if(catBox.getValue() != null){
-            animal = new Animal("Cat", (int) catBox.getValue());
+            animal = new Animal("Cat", parseInt(catBox.getValue().toString()));
             animals.add(animal);
         }
         if(birdsBox.getValue() != null){
-            animal = new Animal("Bird", (int) birdsBox.getValue());
+            animal = new Animal("Bird", parseInt(birdsBox.getValue().toString()));
             animals.add(animal);
         }
         if(rodensBox.getValue() != null){
-            animal = new Animal("Roden", (int) rodensBox.getValue());
+            animal = new Animal("Roden", parseInt(rodensBox.getValue().toString()));
             animals.add(animal);
         }
         if(reptilesBox.getValue() != null){
-            animal = new Animal("Reptile", (int) reptilesBox.getValue());
+            animal = new Animal("Reptile", parseInt(reptilesBox.getValue().toString()));
             animals.add(animal);
         }
         if(otherBox.getValue() != null){
-            animal = new Animal("Other", (int) otherBox.getValue());
+            animal = new Animal("Other", parseInt(otherBox.getValue().toString()));
             animals.add(animal);
         }
+
 
         return animals;
     }

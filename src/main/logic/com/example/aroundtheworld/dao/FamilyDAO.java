@@ -1,12 +1,14 @@
 package com.example.aroundtheworld.dao;
 
 import com.example.aroundtheworld.connection.ConnectionDB;
+import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Animal;
 import com.example.aroundtheworld.model.Family;
 import com.example.aroundtheworld.model.FamilyMember;
+import com.example.aroundtheworld.model.FamilyPreferences;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -148,6 +150,50 @@ public class FamilyDAO {
             food.add("No Preferences");
         }
         return food;
+    }
+
+    public static void addFamily(String name, String phone, String city, String address, String house, FamilyPreferences familyPrefernces, String imgSrc, String email) {
+
+        Statement stmt;
+
+        try{
+            stmt = ConnectionDB.getConnection();
+
+            CRUDQueries.insertUser(stmt, email, "123", "family");
+            CRUDQueries.insertFamily(stmt, name, phone, city, address, familyPrefernces.getVegetarian(), familyPrefernces.getVegan(), familyPrefernces.getGlutenFree(), familyPrefernces.getTravels(), familyPrefernces.getBooks(), familyPrefernces.getSport(), familyPrefernces.getNature(), familyPrefernces.getCooking(), familyPrefernces.getFilm(), familyPrefernces.getVideoGames(), house, email, imgSrc);
+
+        } catch(SQLException | ConnectionDbException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static int retrieveFamilyID(String name) {
+
+        Statement stmt;
+        int id = 0;
+
+        try{
+            stmt = ConnectionDB.getConnection();
+
+            ResultSet resultSet = SimpleQueries.retrieveFamilyID(stmt, name);
+
+            if (!resultSet.first()){
+                throw new NotFoundException("No family found with name"+ name);
+            }
+
+            resultSet.first();
+
+            id = resultSet.getInt(1);
+
+            resultSet.close();
+
+
+        } catch(SQLException | ConnectionDbException | NotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return id;
     }
 }
 

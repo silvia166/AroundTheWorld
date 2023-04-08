@@ -48,4 +48,9 @@ public class SimpleQueries {
         String sql = "SELECT * FROM school WHERE city = '" + city + "'";
         return stmt.executeQuery(sql);
     }
+
+    public static ResultSet retrieveFamilyID(Statement stmt, String name) throws SQLException {
+        String sql = "SELECT idFamily FROM family WHERE name = '" + name + "'";
+        return stmt.executeQuery(sql);
+    }
 }

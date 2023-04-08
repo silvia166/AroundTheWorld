@@ -1,15 +1,18 @@
 package com.example.aroundtheworld.dao;
 
 import com.example.aroundtheworld.connection.ConnectionDB;
+import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Animal;
+import com.example.aroundtheworld.model.FamilyMember;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
@@ -51,5 +54,26 @@ public class AnimalDAO {
             }
             return animals;
         }
+
+    public static void addAnimal(List<Animal> animals, int id) {
+
+        Statement stmt;
+
+        try{
+            stmt = ConnectionDB.getConnection();
+
+            Iterator<Animal> iterator = animals.iterator();
+
+            while(iterator.hasNext()){
+
+                Animal animal = iterator.next();
+                CRUDQueries.insertAnimal(stmt, id, animal.getType(), animal.getQuantity());
+            }
+
+        } catch(SQLException | ConnectionDbException e) {
+            e.printStackTrace();
+        }
+
     }
+}
 

@@ -1,16 +1,20 @@
 package com.example.aroundtheworld.dao;
 
 import com.example.aroundtheworld.connection.ConnectionDB;
+import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.NotFoundException;
+import com.example.aroundtheworld.model.Animal;
 import com.example.aroundtheworld.model.FamilyMember;
 
+import java.lang.reflect.Member;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
@@ -58,5 +62,29 @@ public class FamilyMemberDAO {
             e.printStackTrace();
         }
         return familyMembers;
+    }
+
+    public static void addMember(List<FamilyMember> members, int id) {
+
+        Statement stmt;
+        String birth;
+        LocalDate currentDate = LocalDate.now();
+        int currentYear = currentDate.getYear();
+
+        try{
+            stmt = ConnectionDB.getConnection();
+
+            Iterator<FamilyMember> iterator = members.iterator();
+
+            while(iterator.hasNext()){
+                FamilyMember member = iterator.next();
+                birth = String.valueOf(currentYear - member.getAge());
+                CRUDQueries.insertMember(stmt, id, member.getName(), birth, member.getParenthood());
+            }
+
+        } catch(SQLException | ConnectionDbException e) {
+            e.printStackTrace();
+        }
+
     }
 }

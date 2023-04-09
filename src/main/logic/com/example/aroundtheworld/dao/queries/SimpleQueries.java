@@ -53,4 +53,9 @@ public class SimpleQueries {
         String sql = "SELECT idFamily FROM family WHERE name = '" + name + "'";
         return stmt.executeQuery(sql);
     }
+
+    public static ResultSet retrievePreferences(Statement stmt, int id) throws SQLException {
+        String sql = "SELECT house, vegetarian, vegan, travels, sport, books, film, nature, cooking, videogames FROM familyPreferences WHERE idFamily = '" + id + "'";
+        return stmt.executeQuery(sql);
+    }
 }

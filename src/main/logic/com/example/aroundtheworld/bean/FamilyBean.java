@@ -1,6 +1,5 @@
 package com.example.aroundtheworld.bean;
 
-import com.example.aroundtheworld.exception.PhoneFormatException;
 import com.example.aroundtheworld.model.Animal;
 import com.example.aroundtheworld.model.FamilyMember;
 

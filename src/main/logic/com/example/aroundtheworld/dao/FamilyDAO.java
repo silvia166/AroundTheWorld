@@ -22,18 +22,7 @@ public class FamilyDAO {
     private static final String NAME = "name";
     private static final String CITY = "city";
     private static final String ADDRESS = "address";
-    private static final String HOUSE = "house";
     private static final String PHONE = "phoneNumber";
-    private static final String VEGETARIAN = "vegetarian";
-    private static final String VEGAN = "vegan";
-    private static final String GLUTENFREE = "glutenFree";
-    private static final String TRAVELS = "travels";
-    private static final String SPORT = "sport";
-    private static final String BOOKS = "books";
-    private static final String NATURE = "nature";
-    private static final String FILM = "film";
-    private static final String VIDEOGAMES = "videoGames";
-    private static final String COOKING = "cooking";
     private static final String PHOTO = "photo";
 
     private FamilyDAO() {}
@@ -46,6 +35,7 @@ public class FamilyDAO {
         List<Animal> animals = null;
         List<String> food = new ArrayList<>();
         List<String> hobbies = new ArrayList<>();
+        FamilyPreferences preferences = null;
 
         try{
             stmt = ConnectionDB.getConnection();
@@ -63,27 +53,17 @@ public class FamilyDAO {
                 String name = resultSet.getString(NAME);
                 String city = resultSet.getString(CITY);
                 String address = resultSet.getString(ADDRESS);
-                String house = resultSet.getString(HOUSE);
-                int vegetarian = resultSet.getInt(VEGETARIAN);
-                int vegan = resultSet.getInt(VEGAN);
-                int glutenFree = resultSet.getInt(GLUTENFREE);
-                int travels = resultSet.getInt(TRAVELS);
-                int books = resultSet.getInt(BOOKS);
-                int film = resultSet.getInt(FILM);
-                int nature = resultSet.getInt(NATURE);
-                int videoGames = resultSet.getInt(VIDEOGAMES);
-                int cooking = resultSet.getInt(COOKING);
-                int sport = resultSet.getInt(SPORT);
                 String photo = resultSet.getString(PHOTO);
 
                 familyMembers = FamilyMemberDAO.retrieveMembers(familyId);
                 animals = AnimalDAO.retrieveAnimal(familyId);
+                preferences = FamilyPreferencesDAO.retrievePreferences(familyId);
 
-                food = checkFood(vegetarian, vegan, glutenFree);
-                hobbies = checkHobbies(travels, books, film, videoGames, nature, cooking, sport);
+                food = checkFood(preferences.getVegetarian(), preferences.getVegan());
+                hobbies = checkHobbies(preferences.getTravels(), preferences.getBooks(), preferences.getFilm(), preferences.getVideoGames(), preferences.getNature(), preferences.getCooking(), preferences.getSport());
 
 
-                family = new Family(familyId,phoneNumber,name,city,address,house, username);
+                family = new Family(familyId, phoneNumber, name, city, address, preferences.getHouse(), username);
                 family.setAnimals(animals);
                 family.setMembers(familyMembers);
                 family.setFood(food);
@@ -99,7 +79,6 @@ public class FamilyDAO {
         }
 
         return family;
-
     }
 
     private static List<String> checkHobbies(int travels, int books, int film, int videoGames, int nature, int cooking, int sport) {
@@ -130,7 +109,7 @@ public class FamilyDAO {
         return hobbies;
     }
 
-    private static List<String> checkFood(int vegetarian, int vegan, int glutenFree) {
+    private static List<String> checkFood(int vegetarian, int vegan) {
         int noPref = 0;
         List<String> food = new ArrayList<>();
 
@@ -138,21 +117,17 @@ public class FamilyDAO {
             food.add("Vegetarian");
             noPref = 1;
         }
-        if (vegan == 1) {
+        else if (vegan == 1) {
             food.add("Vegan");
             noPref = 1;
         }
-        if (glutenFree == 1) {
-            food.add("Gluten Free");
-            noPref = 1;
-        }
-        if (noPref == 0) {
+        else {
             food.add("No Preferences");
         }
         return food;
     }
 
-    public static void addFamily(String name, String phone, String city, String address, String house, FamilyPreferences familyPrefernces, String imgSrc, String email) {
+    public static void addFamily(String name, String phone, String city, String address, String imgSrc, String email) {
 
         Statement stmt;
 
@@ -160,7 +135,7 @@ public class FamilyDAO {
             stmt = ConnectionDB.getConnection();
 
             CRUDQueries.insertUser(stmt, email, "123", "family");
-            CRUDQueries.insertFamily(stmt, name, phone, city, address, familyPrefernces.getVegetarian(), familyPrefernces.getVegan(), familyPrefernces.getGlutenFree(), familyPrefernces.getTravels(), familyPrefernces.getBooks(), familyPrefernces.getSport(), familyPrefernces.getNature(), familyPrefernces.getCooking(), familyPrefernces.getFilm(), familyPrefernces.getVideoGames(), house, email, imgSrc);
+            CRUDQueries.insertFamily(stmt, name, phone, city, address, email, imgSrc);
 
         } catch(SQLException | ConnectionDbException e) {
             e.printStackTrace();
@@ -195,5 +170,6 @@ public class FamilyDAO {
 
         return id;
     }
+
 }
 

@@ -1,5 +1,7 @@
 package com.example.aroundtheworld.dao.queries;
 
+import com.example.aroundtheworld.model.FamilyPreferences;
+
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -18,11 +20,15 @@ public class CRUDQueries {
         stmt.executeUpdate(insertStatement);
     }
 
-    public static void insertFamily(Statement stmt, String name, String phone, String city, String address, int vegetarian, int vegan, int glutenFree, int travels, int books, int sport, int nature, int cooking, int film, int videoGames, String house, String email, String imgSrc) throws SQLException {
-        String insertStatement = String.format("INSERT INTO family (name, phoneNumber, city, address, house, vegetarian, vegan, glutenFree, travels, sport, books, nature, film, videogames, cooking, photo, email) VALUES ('%s', '%s', '%s', '%s', '%s', %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, '%s', '%s')", name, phone, city, address, house, vegetarian, vegan, glutenFree, travels, sport, books, nature, film, videoGames, cooking, imgSrc, email);
+    public static void insertFamily(Statement stmt, String name, String phone, String city, String address, String email, String imgSrc) throws SQLException {
+        String insertStatement = String.format("INSERT INTO family (name, phoneNumber, city, address, photo, email) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')", name, phone, city, address, imgSrc, email);
         stmt.executeUpdate(insertStatement);
     }
 
+    public static void insertPreferences(Statement stmt, int id, FamilyPreferences preferences) throws SQLException {
+        String insertStatement = String.format("INSERT INTO familyPreferences (idFamily, house, vegetarian, vegan, travels, sport, books, nature, film, videogames, cooking) VALUES (%d, '%s', %d, %d, %d, %d, %d, %d, %d, %d, %d)", id, preferences.getHouse(), preferences.getVegetarian(), preferences.getVegan(), preferences.getTravels(), preferences.getSport(), preferences.getBooks(), preferences.getNature(), preferences.getFilm(), preferences.getVideoGames(), preferences.getCooking());
+        stmt.executeUpdate(insertStatement);
+    }
     public static void insertAnimal(Statement stmt, int id, String type, int quantity) throws SQLException {
         String insertStatement = String.format("INSERT INTO familyAnimal (idFamily, type, quantity) VALUES (%d, '%s', %d)", id, type, quantity);
         stmt.executeUpdate(insertStatement);
@@ -32,4 +38,5 @@ public class CRUDQueries {
         String insertStatement = String.format("INSERT INTO familyMember (idFamily, name, birth, parenthood) VALUES (%d, '%s', '%s', '%s')", id, name, birth, parenthood);
         stmt.executeUpdate(insertStatement);
     }
+
 }

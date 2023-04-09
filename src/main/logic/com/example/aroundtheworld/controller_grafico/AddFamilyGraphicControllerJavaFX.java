@@ -54,12 +54,6 @@ public class AddFamilyGraphicControllerJavaFX {
     private ToggleGroup food;
 
     @FXML
-    private ToggleGroup food1;
-
-    @FXML
-    private RadioButton glutenFreeRB;
-
-    @FXML
     private ToggleGroup house;
 
     @FXML
@@ -171,8 +165,6 @@ public class AddFamilyGraphicControllerJavaFX {
     @FXML
     void addFamily(ActionEvent event) throws IOException, FormEmptyException, PhoneFormatException{
 
-        String room;
-
         List<Animal> animals;
         FamilyPreferences preferences;
         List<FamilyMember> membersList;
@@ -186,15 +178,11 @@ public class AddFamilyGraphicControllerJavaFX {
                 throw new FormEmptyException("Phone Number");
             if(addressField.getText() == null)
                 throw new FormEmptyException("Address");
-            if(!vegetarianRB.isSelected() && !veganRB.isSelected() && !glutenFreeRB.isSelected() && !noPrefRB.isSelected())
+            if(!vegetarianRB.isSelected() && !veganRB.isSelected() && !noPrefRB.isSelected())
                 throw new FormEmptyException("Food Diet Preferencese");
             if(!singleRB.isSelected() && !sharedRB.isSelected())
                 throw new FormEmptyException("House");
 
-            if(singleRB.isSelected() == true)
-                room = "Single";
-            else
-                room = "Shared";
 
             animals = getAnimalList();
             preferences = getPreferences();
@@ -203,7 +191,7 @@ public class AddFamilyGraphicControllerJavaFX {
             String email = nameField.getText().toLowerCase();
             email = email.concat("@gmail.com");
 
-            NewFamilyBean newFamilyBean = new NewFamilyBean(nameField.getText(), (String) cityBox.getValue(), addressField.getText(), room, phoneField.getText(), email);
+            NewFamilyBean newFamilyBean = new NewFamilyBean(nameField.getText(), (String) cityBox.getValue(), addressField.getText(), phoneField.getText(), email);
             newFamilyBean.setAnimals(animals);
             newFamilyBean.setMembers(membersList);
             newFamilyBean.setFamilyPrefernces(preferences);
@@ -220,9 +208,9 @@ public class AddFamilyGraphicControllerJavaFX {
 
     private FamilyPreferences getPreferences() {
 
+        String room;
         int vegetarian = 0;
         int vegan = 0;
-        int glutenFree = 0;
         int travels = 0;
         int sport = 0;
         int books = 0;
@@ -260,13 +248,15 @@ public class AddFamilyGraphicControllerJavaFX {
             vegan = 1;
         }
 
-        if(glutenFreeRB.isSelected()){
-            glutenFree = 1;
-        }
+        if(singleRB.isSelected())
+            room = "Single";
+        else
+            room = "Shared";
 
         FamilyPreferences familyPreferences = new FamilyPreferences();
-        familyPreferences.setFood(vegetarian, vegan, glutenFree);
+        familyPreferences.setFood(vegetarian, vegan);
         familyPreferences.setHobbies(travels, sport, books, nature, film, videoGames, cooking);
+        familyPreferences.setHouse(room);
 
         return familyPreferences;
     }

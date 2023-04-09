@@ -13,7 +13,6 @@ public class NewFamilyBean {
     private String imgSrc;
     private String city;
     private String address;
-    private String house;
     private List<Animal> animals;
     private List<FamilyMember> members;
     private String phone;
@@ -21,11 +20,10 @@ public class NewFamilyBean {
 
     private FamilyPreferences familyPreferences;
 
-    public NewFamilyBean(String name, String city, String address, String house, String phone, String email) throws PhoneFormatException {
+    public NewFamilyBean(String name, String city, String address, String phone, String email) throws PhoneFormatException {
         this.name = name;
         this.city = city;
         this.address = address;
-        this.house = house;
         this.setPhoneNumber(phone);
         this.email = email;
     }
@@ -60,10 +58,6 @@ public class NewFamilyBean {
 
     public String getAddress() {
         return address;
-    }
-
-    public String getHouse() {
-        return house;
     }
 
     public List<Animal> getAnimals() {

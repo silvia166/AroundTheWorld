@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -26,6 +27,18 @@ public class ContactFamilyGraphicControllerJavaFX implements Initializable{
 
     Stage stage;
     Scene scene;
+
+    @FXML
+    private ToggleGroup animals;
+
+    @FXML
+    private ToggleGroup food;
+
+    @FXML
+    private ToggleGroup house;
+
+    @FXML
+    private ToggleGroup siblings;
 
     @FXML
     ChoiceBox cityBox = new ChoiceBox();

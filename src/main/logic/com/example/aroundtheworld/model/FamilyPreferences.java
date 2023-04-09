@@ -4,7 +4,6 @@ public class FamilyPreferences {
 
     private int vegetarian;
     private int vegan;
-    private int glutenFree;
     private int travels;
     private int sport;
     private int books;
@@ -13,13 +12,11 @@ public class FamilyPreferences {
     private int videoGames;
     private int cooking;
 
-    public FamilyPreferences() {
-    }
+    private String house;
 
-    public void setFood(int vegetarian, int vegan, int glutenFree) {
+    public void setFood(int vegetarian, int vegan) {
         this.vegetarian = vegetarian;
         this.vegan = vegan;
-        this.glutenFree = glutenFree;
     }
 
     public void setHobbies(int travels, int sport, int books, int nature, int film, int videoGames, int cooking) {
@@ -32,16 +29,20 @@ public class FamilyPreferences {
         this.cooking = cooking;
     }
 
+    public String getHouse() {
+        return house;
+    }
+
+    public void setHouse(String house) {
+        this.house = house;
+    }
+
     public int getVegetarian() {
         return vegetarian;
     }
 
     public int getVegan() {
         return vegan;
-    }
-
-    public int getGlutenFree() {
-        return glutenFree;
     }
 
     public int getTravels() {

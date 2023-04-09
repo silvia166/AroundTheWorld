@@ -185,7 +185,7 @@
             <Font size="18.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="noPrefRB" layoutX="715.0" layoutY="520.0" mnemonicParsing="false" text="No preferences" toggleGroup="$food">
+      <RadioButton fx:id="noPrefRB" layoutX="552.0" layoutY="520.0" mnemonicParsing="false" text="No preferences" toggleGroup="$food">
          <font>
             <Font size="18.0" />
          </font>
@@ -214,14 +214,6 @@
          </font>
       </Label>
       <ChoiceBox fx:id="otherBox" layoutX="623.0" layoutY="407.0" prefHeight="26.0" prefWidth="48.0" />
-      <RadioButton fx:id="glutenFreeRB" layoutX="552.0" layoutY="520.0" mnemonicParsing="false" text="Gluten free">
-         <toggleGroup>
-            <ToggleGroup fx:id="food1" />
-         </toggleGroup>
-         <font>
-            <Font size="18.0" />
-         </font>
-      </RadioButton>
       <Button layoutX="836.0" layoutY="31.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: #C0F9DD; -fx-border-color: black;" text="X">
          <font>
             <Font name="System Bold" size="15.0" />

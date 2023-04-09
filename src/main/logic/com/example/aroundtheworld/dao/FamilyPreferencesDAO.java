@@ -5,15 +5,11 @@ import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.NotFoundException;
-import com.example.aroundtheworld.model.FamilyMember;
 import com.example.aroundtheworld.model.FamilyPreferences;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
@@ -58,7 +54,7 @@ public class FamilyPreferencesDAO {
                 int sport = resultSet.getInt(SPORT);
 
                 preferences = new FamilyPreferences();
-                preferences.setFood(vegetarian, books);
+                preferences.setFood(vegetarian, vegan);
                 preferences.setHobbies(travels, sport, books, nature, film, videoGames, cooking);
                 preferences.setHouse(house);
 
@@ -72,13 +68,13 @@ public class FamilyPreferencesDAO {
         return preferences;
     }
 
-    public static void addPreferences(FamilyPreferences familyPrefernces, int id) {
+    public static void addPreferences(FamilyPreferences familyPreferences, int id) {
         Statement stmt;
 
         try{
             stmt = ConnectionDB.getConnection();
 
-            CRUDQueries.insertPreferences(stmt, id, familyPrefernces);
+            CRUDQueries.insertPreferences(stmt, id, familyPreferences);
 
         } catch(SQLException | ConnectionDbException e) {
             e.printStackTrace();

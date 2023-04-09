@@ -110,16 +110,13 @@ public class FamilyDAO {
     }
 
     private static List<String> checkFood(int vegetarian, int vegan) {
-        int noPref = 0;
         List<String> food = new ArrayList<>();
 
         if (vegetarian == 1) {
             food.add("Vegetarian");
-            noPref = 1;
         }
         else if (vegan == 1) {
             food.add("Vegan");
-            noPref = 1;
         }
         else {
             food.add("No Preferences");

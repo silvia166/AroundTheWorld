@@ -13,7 +13,6 @@ public class Homepage extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Homepage.class.getResource("accessPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-
         stage.setScene(scene);
         stage.show();
     }

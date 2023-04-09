@@ -25,8 +25,6 @@ public class FamilyPreferencesDAO {
     private static final String VIDEOGAMES = "videoGames";
     private static final String COOKING = "cooking";
 
-    private FamilyPreferencesDAO(){};
-
     public static FamilyPreferences retrievePreferences(int familyId) {
         Statement stmt;
         FamilyPreferences preferences = null;

@@ -90,7 +90,6 @@
          </font>
       </Label>
       <TextField fx:id="ageInput" layoutX="86.0" layoutY="909.0" prefHeight="26.0" prefWidth="228.0" style="-fx-backgroud-radius: 20;" />
-      <TextField fx:id="parenthoodInput" layoutX="86.0" layoutY="1007.0" prefHeight="26.0" prefWidth="228.0" style="-fx-backgroud-radius: 20;" />
       <TableView fx:id="tableViewMembers" layoutX="444.0" layoutY="771.0" prefHeight="274.0" prefWidth="375.0">
          <columns>
             <TableColumn fx:id="nameColumn" prefWidth="122.4949951171875" text="Name" />
@@ -219,18 +218,19 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <ImageView fitHeight="122.0" fitWidth="121.0" layoutX="401.0" layoutY="84.0">
+      <ImageView fx:id="familyImg" fitHeight="122.0" fitWidth="121.0" layoutX="401.0" layoutY="84.0">
          <effect>
             <DropShadow height="9.3" radius="4.735" width="11.64" />
          </effect>
          <Image url="@image/camera.png" />
       </ImageView>
-      <Button fx:id="addPhotoBtn" layoutX="398.0" layoutY="81.0" mnemonicParsing="false" opacity="0.0" prefHeight="128.0" prefWidth="140.0" style="-fx-background-radius: 100;" />
       <TextField fx:id="phoneField" layoutX="623.0" layoutY="239.0" prefHeight="26.0" prefWidth="228.0" />
       <Text layoutX="488.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number:" wrappingWidth="135.19999999999993">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
+      <Button fx:id="addPhotoBtn" layoutX="397.0" layoutY="81.0" mnemonicParsing="false" onAction="#loadImage" opacity="0.0" prefHeight="128.0" prefWidth="140.0" style="-fx-background-radius: 100;" />
+      <ChoiceBox fx:id="parenthoodInput" layoutX="86.0" layoutY="999.0" prefHeight="26.0" prefWidth="228.0" />
    </AnchorPane>
 </ScrollPane>

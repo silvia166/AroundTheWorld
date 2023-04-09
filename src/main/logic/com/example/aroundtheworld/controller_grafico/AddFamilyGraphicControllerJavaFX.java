@@ -2,6 +2,7 @@ package com.example.aroundtheworld.controller_grafico;
 
 import com.example.aroundtheworld.bean.NewFamilyBean;
 import com.example.aroundtheworld.controller_applicativo.AddFamilyController;
+import com.example.aroundtheworld.engineering.ImageConverterSupport;
 import com.example.aroundtheworld.exception.FormEmptyException;
 import com.example.aroundtheworld.exception.PhoneFormatException;
 import com.example.aroundtheworld.model.Animal;
@@ -14,8 +15,13 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -46,6 +52,9 @@ public class AddFamilyGraphicControllerJavaFX {
 
     @FXML
     private ChoiceBox<?> dogBox;
+
+    @FXML
+    private ImageView familyImg;
 
     @FXML
     private CheckBox filmBox;
@@ -116,15 +125,19 @@ public class AddFamilyGraphicControllerJavaFX {
     @FXML
     private TextField ageInput;
 
+
     @FXML
-    private TextField parenthoodInput;
+    private ChoiceBox<?> parenthoodInput;
 
     @FXML
     ObservableList animalList = FXCollections.observableArrayList("1","2","3","4+");
 
     @FXML
+    ObservableList parenthoodList = FXCollections.observableArrayList("Father","Mother","Sister","Brother", "Grandmother", "Grandfather", "Uncle", "Aunt", "Cousin");
+    @FXML
     ObservableList cityList = FXCollections.observableArrayList("London","Rome","Paris","New York","Valencia");
 
+    private File file = null;
     public void initialize() {
 
         dogBox.setItems(animalList);
@@ -136,6 +149,8 @@ public class AddFamilyGraphicControllerJavaFX {
 
         cityBox.setItems(cityList);
 
+        parenthoodInput.setItems(parenthoodList);
+
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
         ageColumn.setCellValueFactory(new PropertyValueFactory<>("Age"));
         parenthoodColumn.setCellValueFactory(new PropertyValueFactory<>("Parenthood"));
@@ -143,13 +158,13 @@ public class AddFamilyGraphicControllerJavaFX {
 
     @FXML
     public void addMember(ActionEvent event) {
-        FamilyMember familyMember = new FamilyMember(nameInput.getText(), parseInt(ageInput.getText()),parenthoodInput.getText());
+        FamilyMember familyMember = new FamilyMember(nameInput.getText(), parseInt(ageInput.getText()), (String) parenthoodInput.getValue());
         ObservableList<FamilyMember> familyMembers = tableViewMembers.getItems();
         familyMembers.add(familyMember);
         tableViewMembers.setItems(familyMembers);
         nameInput.setText("");
         ageInput.setText("");
-        parenthoodInput.setText("");
+        parenthoodInput.getSelectionModel().clearSelection();
     }
 
     @FXML
@@ -187,6 +202,9 @@ public class AddFamilyGraphicControllerJavaFX {
             animals = getAnimalList();
             preferences = getPreferences();
             membersList = getMembers();
+            if(membersList == null){
+                throw new FormEmptyException("Members");
+            }
 
             String email = nameField.getText().toLowerCase();
             email = email.concat("@gmail.com");
@@ -195,6 +213,14 @@ public class AddFamilyGraphicControllerJavaFX {
             newFamilyBean.setAnimals(animals);
             newFamilyBean.setMembers(membersList);
             newFamilyBean.setFamilyPrefernces(preferences);
+
+            if(file != null) {
+                String nameImg = "familyImg/";
+                nameImg = nameImg.concat(file.getName());
+                newFamilyBean.setImgSrc(nameImg);
+            }else{
+                newFamilyBean.setImgSrc("image/big-family.png");
+            }
 
             AddFamilyController addFamilyController = new AddFamilyController();
             addFamilyController.createFamily(newFamilyBean);
@@ -307,5 +333,13 @@ public class AddFamilyGraphicControllerJavaFX {
 
 
         return animals;
+    }
+
+    public void loadImage(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        FileChooser fileChooser=new FileChooser();
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Imagine Files","*.png","*.jpg"));
+        file = fileChooser.showOpenDialog(stage).getAbsoluteFile();
+        familyImg.setImage(ImageConverterSupport.fromFileToImage(file));
     }
 }

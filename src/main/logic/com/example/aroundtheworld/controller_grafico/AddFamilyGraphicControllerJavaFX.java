@@ -300,11 +300,11 @@ public class AddFamilyGraphicControllerJavaFX {
             animals.add(animal);
         }
         if(catBox.getValue() != null){
-            animal = new Animal("Cat", checkNumberAnimal(dogBox.getValue().toString()));
+            animal = new Animal("Cat", checkNumberAnimal(catBox.getValue().toString()));
             animals.add(animal);
         }
         if(birdsBox.getValue() != null){
-            animal = new Animal("Bird", checkNumberAnimal(dogBox.getValue().toString()));
+            animal = new Animal("Bird", checkNumberAnimal(birdsBox.getValue().toString()));
             animals.add(animal);
         }
         if(rodensBox.getValue() != null){

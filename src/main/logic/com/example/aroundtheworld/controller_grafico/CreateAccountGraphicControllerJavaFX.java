@@ -74,10 +74,8 @@ public class CreateAccountGraphicControllerJavaFX extends LogoutGraphicControlle
             stage.setScene(scene);
             stage.show();
 
-        }catch(EmailFormatException | FormEmptyException | PhoneFormatException e ){
+        }catch(EmailFormatException | FormEmptyException | PhoneFormatException| ParseException e ){
             e.printStackTrace();
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
         }
     }
 }

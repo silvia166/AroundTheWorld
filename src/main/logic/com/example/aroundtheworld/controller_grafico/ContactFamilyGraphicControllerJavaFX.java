@@ -49,7 +49,7 @@ public class ContactFamilyGraphicControllerJavaFX implements Initializable{
     }
 
     public void contactFamily(ActionEvent event) throws IOException {
-
+        //not implemented yet
     }
 
 }

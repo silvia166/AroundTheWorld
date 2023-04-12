@@ -57,10 +57,6 @@ public class FamilyDAO {
                 animals = AnimalDAO.retrieveAnimal(familyId);
                 preferences = FamilyPreferencesDAO.retrievePreferences(familyId);
 
-              //  food = checkFood(preferences.getVegetarian(), preferences.getVegan());
-             //   hobbies = checkHobbies(preferences.getTravels(), preferences.getBooks(), preferences.getFilm(), preferences.getVideoGames(), preferences.getNature(), preferences.getCooking(), preferences.getSport());
-
-
                 family = new Family(familyId, phoneNumber, name, city, address, username);
                 family.setAnimals(animals);
                 family.setMembers(familyMembers);
@@ -76,49 +72,6 @@ public class FamilyDAO {
         }
 
         return family;
-    }
-
-    private static List<String> checkHobbies(int travels, int books, int film, int videoGames, int nature, int cooking, int sport) {
-
-        List<String> hobbies = new ArrayList<>();
-
-        if (travels == 1){
-            hobbies.add("Travels");
-        }
-        if (books == 1){
-            hobbies.add("Books");
-        }
-        if (film == 1){
-            hobbies.add("Film");
-        }
-        if (videoGames == 1){
-            hobbies.add("Video Games");
-        }
-        if (nature == 1){
-            hobbies.add("Nature");
-        }
-        if (cooking == 1){
-            hobbies.add("Cooking");
-        }
-        if (sport == 1){
-            hobbies.add("Sport");
-        }
-        return hobbies;
-    }
-
-    private static List<String> checkFood(int vegetarian, int vegan) {
-        List<String> food = new ArrayList<>();
-
-        if (vegetarian == 1) {
-            food.add("Vegetarian");
-        }
-        else if (vegan == 1) {
-            food.add("Vegan");
-        }
-        else {
-            food.add("No Preferences");
-        }
-        return food;
     }
 
     public static void addFamily(String name, String phone, String city, String address, String imgSrc, String email) {

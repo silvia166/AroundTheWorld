@@ -9,12 +9,9 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,12 +23,8 @@ import java.util.ResourceBundle;
 
 public class FamilyListGraphicControllerJavaFX implements Initializable {
     Stage stage;
-    Scene scene;
     @FXML
     private GridPane familyGrid;
-
-    @FXML
-    private ScrollPane familyScroll;
 
     private List<Family> families = new ArrayList<>();
 
@@ -40,7 +33,7 @@ public class FamilyListGraphicControllerJavaFX implements Initializable {
         Family family;
 
         for (int i=0; i<20; i++){
-            family = new Family(1, null,null,null,null, null, null);
+            family = new Family(1, null,null,null,null, null);
             familyList.add(family);
         }
         return familyList;
@@ -63,20 +56,20 @@ public class FamilyListGraphicControllerJavaFX implements Initializable {
 
         try {
 
-            for (int i = 0; i < families.size(); i++) {
+            for (Family family : families) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("familyItem.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 FamilyItemGraphicControllerJavaFX familyItemController = fxmlLoader.getController();
-                familyItemController.setData(families.get(i));
+                familyItemController.setData(family);
 
-                if (column == 3){
+                if (column == 3) {
                     column = 0;
                     row++;
                 }
 
-                familyGrid.add(anchorPane,column++,row);
+                familyGrid.add(anchorPane, column++, row);
 
                 familyGrid.setMinWidth(Region.USE_COMPUTED_SIZE);
                 familyGrid.setPrefWidth(Region.USE_COMPUTED_SIZE);
@@ -86,7 +79,7 @@ public class FamilyListGraphicControllerJavaFX implements Initializable {
                 familyGrid.setPrefHeight(Region.USE_COMPUTED_SIZE);
                 familyGrid.setMaxHeight(Region.USE_PREF_SIZE);
 
-                GridPane.setMargin(anchorPane,new Insets(10));
+                GridPane.setMargin(anchorPane, new Insets(10));
 
             }
         } catch (IOException e){

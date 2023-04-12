@@ -1,10 +1,10 @@
 package com.example.aroundtheworld.controller_grafico;
 
 import com.example.aroundtheworld.bean.FamilyBean;
-import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.model.Animal;
 import com.example.aroundtheworld.model.FamilyMember;
+import com.example.aroundtheworld.model.FamilyPreferences;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +21,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
 
 public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX{
@@ -82,35 +84,33 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
     public void initialize() {
 
         FamilyBean familyBean = Session.getCurrentSession().getFamilyBean();
+        FamilyPreferences pref = familyBean.getFamilyPreferences();
 
         String listAnimal = "";
         int count = 0;
-        String animalQuantity = null;
-        String animalType = null;
+        String animalQuantity;
+        String animalType;
 
         name.setText(familyBean.getName());
         address.setText(familyBean.getAddress());
-        house.setText(familyBean.getHouse());
+        house.setText(familyBean.getFamilyPreferences().getHouse());
         phone.setText(familyBean.getPhone());
 
         if (familyBean.getImgSrc() != null){
-            Image image = new Image(getClass().getResourceAsStream(familyBean.getImgSrc()));
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(familyBean.getImgSrc())));
             imgFamily.setImage(image);
         }
 
-        Iterator<Animal> iteratoranimal = familyBean.getAnimals().iterator();
-
-        while(iteratoranimal.hasNext()){
-            Animal animal = iteratoranimal.next();
+        for (Animal animal : familyBean.getAnimals()) {
             animalQuantity = String.valueOf(animal.getQuantity());
             animalType = animal.getType();
 
-            if(count==0){
+            if (count == 0) {
                 listAnimal = listAnimal.concat(animalQuantity);
                 listAnimal = listAnimal.concat(" ");
                 listAnimal = listAnimal.concat(animalType);
                 count = 1;
-            }else{
+            } else {
                 listAnimal = listAnimal.concat(", ");
                 listAnimal = listAnimal.concat(animalQuantity);
                 listAnimal = listAnimal.concat(" ");
@@ -121,7 +121,7 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
 
         animals.setText(listAnimal);
 
-        Iterator<String> iteratorfood = familyBean.getFood().iterator();
+        Iterator<String> iteratorfood = checkFood(pref.getVegetarian(), pref.getVegan()).iterator();
 
         count = 0;
         String listFood = null;
@@ -140,7 +140,7 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
 
         food.setText(listFood);
 
-        Iterator<String> iteratorhobby = familyBean.getHoobies().iterator();
+        Iterator<String> iteratorhobby = checkHobbies(pref.getTravels(),pref.getBooks(), pref.getFilm(), pref.getVideoGames(), pref.getNature(), pref.getCooking(), pref.getSport()).iterator();
 
         count = 0;
         String listHobby = null;
@@ -173,4 +173,49 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
         }
         tableViewMembers.setItems(familyMembers);
     }
+
+    private static List<String> checkHobbies(int travels, int books, int film, int videoGames, int nature, int cooking, int sport) {
+
+        List<String> hobbies = new ArrayList<>();
+
+        if (travels == 1){
+            hobbies.add("Travels");
+        }
+        if (books == 1){
+            hobbies.add("Books");
+        }
+        if (film == 1){
+            hobbies.add("Film");
+        }
+        if (videoGames == 1){
+            hobbies.add("Video Games");
+        }
+        if (nature == 1){
+            hobbies.add("Nature");
+        }
+        if (cooking == 1){
+            hobbies.add("Cooking");
+        }
+        if (sport == 1){
+            hobbies.add("Sport");
+        }
+        return hobbies;
+    }
+
+    private static List<String> checkFood(int vegetarian, int vegan) {
+        List<String> food = new ArrayList<>();
+
+        if (vegetarian == 1) {
+            food.add("Vegetarian");
+        }
+        else if (vegan == 1) {
+            food.add("Vegan");
+        }
+        else {
+            food.add("No Preferences");
+        }
+        return food;
+    }
+
+
 }

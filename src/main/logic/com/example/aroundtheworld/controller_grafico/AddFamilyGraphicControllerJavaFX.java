@@ -1,6 +1,6 @@
 package com.example.aroundtheworld.controller_grafico;
 
-import com.example.aroundtheworld.bean.NewFamilyBean;
+import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.controller_applicativo.AddFamilyController;
 import com.example.aroundtheworld.engineering.ImageConverterSupport;
 import com.example.aroundtheworld.exception.FormEmptyException;
@@ -15,7 +15,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -28,9 +27,6 @@ import java.util.*;
 import static java.lang.Integer.parseInt;
 
 public class AddFamilyGraphicControllerJavaFX {
-
-    @FXML
-    private Button addPhotoBtn;
 
     @FXML
     private TextField addressField;
@@ -58,12 +54,6 @@ public class AddFamilyGraphicControllerJavaFX {
 
     @FXML
     private CheckBox filmBox;
-
-    @FXML
-    private ToggleGroup food;
-
-    @FXML
-    private ToggleGroup house;
 
     @FXML
     private TextField nameField;
@@ -157,7 +147,7 @@ public class AddFamilyGraphicControllerJavaFX {
     }
 
     @FXML
-    public void addMember(ActionEvent event) {
+    public void addMember() {
         FamilyMember familyMember = new FamilyMember(nameInput.getText(), parseInt(ageInput.getText()), (String) parenthoodInput.getValue());
         ObservableList<FamilyMember> familyMembers = tableViewMembers.getItems();
         familyMembers.add(familyMember);
@@ -168,17 +158,17 @@ public class AddFamilyGraphicControllerJavaFX {
     }
 
     @FXML
-    public void removeMember(ActionEvent event){
+    public void removeMember(){
         int selectedID = tableViewMembers.getSelectionModel().getSelectedIndex();
         tableViewMembers.getItems().remove(selectedID);
     }
 
-    public void backButton(ActionEvent event) throws IOException {
+    public void backButton(ActionEvent event) {
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
 
     @FXML
-    void addFamily(ActionEvent event) throws IOException, FormEmptyException, PhoneFormatException{
+    void addFamily(ActionEvent event) {
 
         List<Animal> animals;
         FamilyPreferences preferences;
@@ -209,21 +199,21 @@ public class AddFamilyGraphicControllerJavaFX {
             String email = nameField.getText().toLowerCase();
             email = email.concat("@gmail.com");
 
-            NewFamilyBean newFamilyBean = new NewFamilyBean(nameField.getText(), (String) cityBox.getValue(), addressField.getText(), phoneField.getText(), email);
-            newFamilyBean.setAnimals(animals);
-            newFamilyBean.setMembers(membersList);
-            newFamilyBean.setFamilyPrefernces(preferences);
+            FamilyBean familyBean = new FamilyBean(nameField.getText(), (String) cityBox.getValue(), addressField.getText(), phoneField.getText(), email);
+            familyBean.setAnimals(animals);
+            familyBean.setMembers(membersList);
+            familyBean.setFamilyPreferences(preferences);
 
             if(file != null) {
                 String nameImg = "familyImg/";
                 nameImg = nameImg.concat(file.getName());
-                newFamilyBean.setImgSrc(nameImg);
+                familyBean.setImgSrc(nameImg);
             }else{
-                newFamilyBean.setImgSrc("image/big-family.png");
+                familyBean.setImgSrc("image/big-family.png");
             }
 
             AddFamilyController addFamilyController = new AddFamilyController();
-            addFamilyController.createFamily(newFamilyBean);
+            addFamilyController.createFamily(familyBean);
 
             ((Node)event.getSource()).getScene().getWindow().hide();
 
@@ -292,10 +282,9 @@ public class AddFamilyGraphicControllerJavaFX {
         FamilyMember member;
 
         ObservableList<FamilyMember> familyMembers = tableViewMembers.getItems();
-        Iterator<FamilyMember> iterator = familyMembers.iterator();
 
-        while(iterator.hasNext()){
-            member = iterator.next();
+        for (FamilyMember familyMember : familyMembers) {
+            member = familyMember;
             members.add(member);
         }
 
@@ -304,30 +293,69 @@ public class AddFamilyGraphicControllerJavaFX {
 
     public List<Animal> getAnimalList() {
         List<Animal> animals = new ArrayList<>();
+        int qt;
+        String value;
         Animal animal;
 
         if(dogBox.getValue() != null){
-            animal = new Animal("Dog", parseInt(dogBox.getValue().toString()));
+
+            value = dogBox.getValue().toString();
+            if(Objects.equals(value, "4+")){
+                qt = 4;
+            } else {
+                qt = parseInt(value);
+            }
+            animal = new Animal("Dog", qt);
             animals.add(animal);
         }
         if(catBox.getValue() != null){
-            animal = new Animal("Cat", parseInt(catBox.getValue().toString()));
+            value = catBox.getValue().toString();
+            if(Objects.equals(value, "4+")){
+                qt = 4;
+            } else {
+                qt = parseInt(value);
+            }
+            animal = new Animal("Cat", qt);
             animals.add(animal);
         }
         if(birdsBox.getValue() != null){
-            animal = new Animal("Bird", parseInt(birdsBox.getValue().toString()));
+            value = birdsBox.getValue().toString();
+            if(Objects.equals(value, "4+")){
+                qt = 4;
+            } else {
+                qt = parseInt(value);
+            }
+            animal = new Animal("Bird", qt);
             animals.add(animal);
         }
         if(rodensBox.getValue() != null){
-            animal = new Animal("Roden", parseInt(rodensBox.getValue().toString()));
+            value = rodensBox.getValue().toString();
+            if(Objects.equals(value, "4+")){
+                qt = 4;
+            } else {
+                qt = parseInt(value);
+            }
+            animal = new Animal("Roden",qt);
             animals.add(animal);
         }
         if(reptilesBox.getValue() != null){
-            animal = new Animal("Reptile", parseInt(reptilesBox.getValue().toString()));
+            value = reptilesBox.getValue().toString();
+            if(Objects.equals(value, "4+")){
+                qt = 4;
+            } else {
+                qt = parseInt(value);
+            }
+            animal = new Animal("Reptile", qt);
             animals.add(animal);
         }
         if(otherBox.getValue() != null){
-            animal = new Animal("Other", parseInt(otherBox.getValue().toString()));
+            value = otherBox.getValue().toString();
+            if(Objects.equals(value, "4+")){
+                qt = 4;
+            } else {
+                qt = parseInt(value);
+            }
+            animal = new Animal("Other", qt);
             animals.add(animal);
         }
 

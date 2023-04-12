@@ -7,25 +7,29 @@ public class Family extends GenericUser {
     private String imgSrc;
     private String city;
     private String address;
-    private String house;
     private List<Animal> animals;
     private List<FamilyMember> members;
-    private List<String> food;
-    private List<String> hoobies;
 
+    private FamilyPreferences preferences;
 
-    public Family(int id, String phoneNumber, String name, String city, String address, String house, String email) {
+    public Family(int id, String phoneNumber, String name, String city, String address, String email) {
         super(id, 2, phoneNumber, email);
         this.name = name;
         this.city = city;
         this.address = address;
-        this.house = house;
+    }
+
+    public FamilyPreferences getPreferences() {
+        return preferences;
+    }
+
+    public void setPreferences(FamilyPreferences preferences) {
+        this.preferences = preferences;
     }
 
     public void setImgSrc(String imgSrc) {
         this.imgSrc = imgSrc;
     }
-
     public void setAnimals(List<Animal> animals) {
         this.animals = animals;
     }
@@ -33,15 +37,6 @@ public class Family extends GenericUser {
     public void setMembers(List<FamilyMember> members) {
         this.members = members;
     }
-
-    public void setFood(List<String> food) {
-        this.food = food;
-    }
-
-    public void setHoobies(List<String> hoobies) {
-        this.hoobies = hoobies;
-    }
-
     public String getName() {
         return name;
     }
@@ -58,10 +53,6 @@ public class Family extends GenericUser {
         return address;
     }
 
-    public String getHouse() {
-        return house;
-    }
-
     public List<Animal> getAnimals() {
         return animals;
     }
@@ -70,12 +61,5 @@ public class Family extends GenericUser {
         return members;
     }
 
-    public List<String> getFood() {
-        return food;
-    }
-
-    public List<String> getHoobies() {
-        return hoobies;
-    }
 
 }

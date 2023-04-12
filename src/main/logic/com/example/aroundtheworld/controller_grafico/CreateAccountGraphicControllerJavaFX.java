@@ -1,6 +1,6 @@
 package com.example.aroundtheworld.controller_grafico;
 
-import com.example.aroundtheworld.bean.NewStudentBean;
+import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.controller_applicativo.CreateAccountController;
 import com.example.aroundtheworld.exception.EmailFormatException;
 import com.example.aroundtheworld.exception.FormEmptyException;
@@ -17,7 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Date;
+import java.text.ParseException;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
@@ -45,7 +45,7 @@ public class CreateAccountGraphicControllerJavaFX extends LogoutGraphicControlle
     private TextField surnameField;
 
     @FXML
-    void addStudent(ActionEvent event) throws IOException, EmailFormatException, FormEmptyException, PhoneFormatException {
+    void addStudent(ActionEvent event) throws IOException{
 
         try{
             if(nameField.getText() == null)
@@ -63,10 +63,10 @@ public class CreateAccountGraphicControllerJavaFX extends LogoutGraphicControlle
             if(birthField.getValue() == null)
                 throw new FormEmptyException("Date of birth");
 
-            NewStudentBean newStudentBean = new NewStudentBean(nameField.getText(), surnameField.getText(), nationalityField.getText(), birthField.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), emailField.getText(), phoneField.getText(), passwordField.getText());
+            StudentBean studentBean = new StudentBean(nameField.getText(), surnameField.getText(), nationalityField.getText(), birthField.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), emailField.getText(), phoneField.getText(), passwordField.getText());
 
             CreateAccountController createAccountController = new CreateAccountController();
-            createAccountController.createAccount(newStudentBean);
+            createAccountController.createAccount(studentBean);
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("accessPage.fxml")));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -76,6 +76,8 @@ public class CreateAccountGraphicControllerJavaFX extends LogoutGraphicControlle
 
         }catch(EmailFormatException | FormEmptyException | PhoneFormatException e ){
             e.printStackTrace();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         }
     }
 }

@@ -10,13 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,19 +23,7 @@ public class ContactFamilyGraphicControllerJavaFX implements Initializable{
     Scene scene;
 
     @FXML
-    private ToggleGroup animals;
-
-    @FXML
-    private ToggleGroup food;
-
-    @FXML
-    private ToggleGroup house;
-
-    @FXML
-    private ToggleGroup siblings;
-
-    @FXML
-    ChoiceBox cityBox = new ChoiceBox();
+    ChoiceBox cityBox;
 
     @FXML
     ObservableList cityList = FXCollections.observableArrayList("London","Rome","Paris","New York","Valencia");
@@ -51,7 +33,7 @@ public class ContactFamilyGraphicControllerJavaFX implements Initializable{
         cityBox.setItems(cityList);
     }
 
-    public void backButton(ActionEvent event) throws IOException {
+    public void backButton(ActionEvent event) {
         ((Node)event.getSource()).getScene().getWindow().hide();
 
     }
@@ -63,6 +45,10 @@ public class ContactFamilyGraphicControllerJavaFX implements Initializable{
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
+
+    }
+
+    public void contactFamily(ActionEvent event) throws IOException {
 
     }
 

@@ -11,6 +11,7 @@ import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Family;
 import com.example.aroundtheworld.model.Student;
 
+
 public class LoginController {
     public void checkUser(LoginBean loginBean) {
             int role = LoginDAO.checkUser(loginBean.getUsername(),loginBean.getPassword());
@@ -27,12 +28,12 @@ public class LoginController {
     public void familyLogin(LoginBean loginBean) throws NotFoundException {
         Family family = FamilyDAO.retrieveFamily(loginBean.getUsername());
 
-        FamilyBean familyBean = new FamilyBean(family.getName(), family.getCity(), family.getAddress(), family.getHouse(), family.getId(), family.getPhoneNumber(), family.getEmail());
-        familyBean.setFood(family.getFood());
-        familyBean.setHoobies(family.getHoobies());
+        FamilyBean familyBean = new FamilyBean(family.getName(), family.getCity(), family.getAddress(), family.getId(), family.getPhoneNumber(), family.getEmail());
+        familyBean.setFamilyPreferences(family.getPreferences());
         familyBean.setAnimals(family.getAnimals());
         familyBean.setMembers(family.getMembers());
         familyBean.setImgSrc(family.getImgSrc());
         Session.setSessionInstance(familyBean);
     }
+
 }

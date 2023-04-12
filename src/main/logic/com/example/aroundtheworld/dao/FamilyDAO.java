@@ -31,11 +31,9 @@ public class FamilyDAO {
     public static Family retrieveFamily(String username) throws NotFoundException {
         Statement stmt;
         Family family = null;
-        List<FamilyMember> familyMembers = null;
-        List<Animal> animals = null;
-        List<String> food = new ArrayList<>();
-        List<String> hobbies = new ArrayList<>();
-        FamilyPreferences preferences = null;
+        List<FamilyMember> familyMembers;
+        List<Animal> animals;
+        FamilyPreferences preferences;
 
         try{
             stmt = ConnectionDB.getConnection();
@@ -59,15 +57,14 @@ public class FamilyDAO {
                 animals = AnimalDAO.retrieveAnimal(familyId);
                 preferences = FamilyPreferencesDAO.retrievePreferences(familyId);
 
-                food = checkFood(preferences.getVegetarian(), preferences.getVegan());
-                hobbies = checkHobbies(preferences.getTravels(), preferences.getBooks(), preferences.getFilm(), preferences.getVideoGames(), preferences.getNature(), preferences.getCooking(), preferences.getSport());
+              //  food = checkFood(preferences.getVegetarian(), preferences.getVegan());
+             //   hobbies = checkHobbies(preferences.getTravels(), preferences.getBooks(), preferences.getFilm(), preferences.getVideoGames(), preferences.getNature(), preferences.getCooking(), preferences.getSport());
 
 
-                family = new Family(familyId, phoneNumber, name, city, address, preferences.getHouse(), username);
+                family = new Family(familyId, phoneNumber, name, city, address, username);
                 family.setAnimals(animals);
                 family.setMembers(familyMembers);
-                family.setFood(food);
-                family.setHoobies(hobbies);
+                family.setPreferences(preferences);
                 family.setImgSrc(photo);
 
             } while(resultSet.next());

@@ -293,8 +293,6 @@ public class AddFamilyGraphicControllerJavaFX {
 
     public List<Animal> getAnimalList() {
         List<Animal> animals = new ArrayList<>();
-        int qt;
-        String value;
         Animal animal;
 
         if(dogBox.getValue() != null){

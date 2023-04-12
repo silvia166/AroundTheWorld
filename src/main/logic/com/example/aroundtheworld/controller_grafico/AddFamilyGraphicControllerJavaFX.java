@@ -298,67 +298,29 @@ public class AddFamilyGraphicControllerJavaFX {
         Animal animal;
 
         if(dogBox.getValue() != null){
-
-            value = dogBox.getValue().toString();
-            if(Objects.equals(value, "4+")){
-                qt = 4;
-            } else {
-                qt = parseInt(value);
-            }
-            animal = new Animal("Dog", qt);
+            animal = new Animal("Dog", checkNumberAnimal(dogBox.getValue().toString()));
             animals.add(animal);
         }
         if(catBox.getValue() != null){
-            value = catBox.getValue().toString();
-            if(Objects.equals(value, "4+")){
-                qt = 4;
-            } else {
-                qt = parseInt(value);
-            }
-            animal = new Animal("Cat", qt);
+            animal = new Animal("Cat", checkNumberAnimal(dogBox.getValue().toString()));
             animals.add(animal);
         }
         if(birdsBox.getValue() != null){
-            value = birdsBox.getValue().toString();
-            if(Objects.equals(value, "4+")){
-                qt = 4;
-            } else {
-                qt = parseInt(value);
-            }
-            animal = new Animal("Bird", qt);
+            animal = new Animal("Bird", checkNumberAnimal(dogBox.getValue().toString()));
             animals.add(animal);
         }
         if(rodensBox.getValue() != null){
-            value = rodensBox.getValue().toString();
-            if(Objects.equals(value, "4+")){
-                qt = 4;
-            } else {
-                qt = parseInt(value);
-            }
-            animal = new Animal("Roden",qt);
+            animal = new Animal("Roden", checkNumberAnimal(rodensBox.getValue().toString()));
             animals.add(animal);
         }
         if(reptilesBox.getValue() != null){
-            value = reptilesBox.getValue().toString();
-            if(Objects.equals(value, "4+")){
-                qt = 4;
-            } else {
-                qt = parseInt(value);
-            }
-            animal = new Animal("Reptile", qt);
+            animal = new Animal("Reptile", checkNumberAnimal(reptilesBox.getValue().toString()));
             animals.add(animal);
         }
         if(otherBox.getValue() != null){
-            value = otherBox.getValue().toString();
-            if(Objects.equals(value, "4+")){
-                qt = 4;
-            } else {
-                qt = parseInt(value);
-            }
-            animal = new Animal("Other", qt);
+            animal = new Animal("Other", checkNumberAnimal(otherBox.getValue().toString()));
             animals.add(animal);
         }
-
 
         return animals;
     }
@@ -369,5 +331,15 @@ public class AddFamilyGraphicControllerJavaFX {
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Imagine Files","*.png","*.jpg"));
         file = fileChooser.showOpenDialog(stage).getAbsoluteFile();
         familyImg.setImage(ImageConverterSupport.fromFileToImage(file));
+    }
+
+    public int checkNumberAnimal(String number){
+        int quantity;
+        if(Objects.equals(number, "4+")){
+            quantity = 4;
+        } else {
+            quantity = parseInt(number);
+        }
+        return quantity;
     }
 }

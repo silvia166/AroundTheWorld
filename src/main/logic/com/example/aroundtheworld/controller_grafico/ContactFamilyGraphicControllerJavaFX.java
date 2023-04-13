@@ -120,7 +120,7 @@ public class ContactFamilyGraphicControllerJavaFX {
             stage.show();
 
         } catch (FormEmptyException | TravelDateException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 

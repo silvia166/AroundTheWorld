@@ -3,7 +3,6 @@ package com.example.aroundtheworld.dao.queries;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 
 public class SimpleQueries {
 

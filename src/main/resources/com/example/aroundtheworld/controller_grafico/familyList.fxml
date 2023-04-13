@@ -11,40 +11,41 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<ScrollPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.FamilyListGraphicControllerJavaFX">
-   <content>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="918.0" style="-fx-border-color: #c0f9dd; -fx-border-width: 15;">
+<ScrollPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.aroundtheworld.controller_grafico.FamilyListGraphicControllerJavaFX">
+   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0"
+               prefWidth="918.0" style="-fx-border-color: #c0f9dd; -fx-border-width: 15;">
+      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="42.0" layoutY="482.0">
+         <image>
+            <Image url="@image/arrow.png"/>
+         </image>
+      </ImageView>
+      <HBox layoutX="109.0" layoutY="86.0" prefHeight="430.0" prefWidth="702.0" AnchorPane.leftAnchor="100.0"
+            AnchorPane.rightAnchor="100.0">
          <children>
-            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="42.0" layoutY="482.0">
-               <image>
-                  <Image url="@image/arrow.png" />
-               </image>
-            </ImageView>
-            <HBox layoutX="109.0" layoutY="86.0" prefHeight="430.0" prefWidth="702.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0">
-               <children>
-                  <ScrollPane fx:id="familyScroll" prefHeight="430.0" prefWidth="702.0">
-                     <content>
-                        <GridPane fx:id="familyGrid" alignment="CENTER" prefHeight="10.0" prefWidth="30.0">
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                        </GridPane>
-                     </content>
-                  </ScrollPane>
-               </children>
-            </HBox>
-            <Text layoutX="234.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Compatible Families" textAlignment="CENTER" wrappingWidth="456.6572775840759" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="234.0">
-               <font>
-                  <Font size="26.0" />
-               </font>
-            </Text>
-            <Button layoutX="43.0" layoutY="480.0" mnemonicParsing="false" onAction="#backToForm" opacity="0.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 100;">
-               <font>
-                  <Font size="26.0" />
-               </font>
-            </Button>
+            <ScrollPane fx:id="familyScroll" prefHeight="430.0" prefWidth="702.0">
+               <content>
+                  <GridPane fx:id="familyGrid" alignment="CENTER" prefHeight="10.0" prefWidth="30.0">
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                     </rowConstraints>
+                  </GridPane>
+               </content>
+            </ScrollPane>
          </children>
-      </AnchorPane>
-   </content>
+      </HBox>
+      <Text layoutX="234.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Compatible Families"
+            textAlignment="CENTER" wrappingWidth="456.6572775840759" AnchorPane.leftAnchor="234.0"
+            AnchorPane.rightAnchor="234.0">
+         <font>
+            <Font size="26.0"/>
+         </font>
+      </Text>
+      <Button layoutX="43.0" layoutY="480.0" mnemonicParsing="false" onAction="#backToForm" opacity="0.0"
+              prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 100;">
+         <font>
+            <Font size="26.0"/>
+         </font>
+      </Button>
+   </AnchorPane>
 </ScrollPane>

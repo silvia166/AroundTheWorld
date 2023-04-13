@@ -3,6 +3,7 @@ package com.example.aroundtheworld.dao.queries;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 
 public class SimpleQueries {
 
@@ -56,6 +57,11 @@ public class SimpleQueries {
 
     public static ResultSet retrievePreferences(Statement stmt, int id) throws SQLException {
         String sql = "SELECT house, vegetarian, vegan, travels, sport, books, film, nature, cooking, videogames FROM familyPreferences WHERE idFamily = '" + id + "'";
+        return stmt.executeQuery(sql);
+    }
+
+    public static ResultSet retrieveFamilyIDByCity(Statement stmt, String city) throws SQLException {
+        String sql = "SELECT idFamily, name, phoneNumber, address, photo FROM family WHERE city = '" + city + "'";
         return stmt.executeQuery(sql);
     }
 }

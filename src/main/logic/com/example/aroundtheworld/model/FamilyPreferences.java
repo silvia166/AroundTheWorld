@@ -11,7 +11,6 @@ public class FamilyPreferences {
     private int film;
     private int videoGames;
     private int cooking;
-
     private String house;
 
     public void setFood(int vegetarian, int vegan) {

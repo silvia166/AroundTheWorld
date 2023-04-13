@@ -9,7 +9,6 @@ public class Family extends GenericUser {
     private String address;
     private List<Animal> animals;
     private List<FamilyMember> members;
-
     private FamilyPreferences preferences;
 
     public Family(int id, String phoneNumber, String name, String city, String address, String email) {
@@ -18,6 +17,15 @@ public class Family extends GenericUser {
         this.city = city;
         this.address = address;
     }
+
+    public Family(int id, String phoneNumber, String name, String city, String address) {
+        super(id, 2, phoneNumber, null);
+        this.name = name;
+        this.city = city;
+        this.address = address;
+    }
+
+
 
     public FamilyPreferences getPreferences() {
         return preferences;

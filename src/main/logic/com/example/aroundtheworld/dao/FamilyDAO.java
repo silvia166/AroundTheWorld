@@ -13,6 +13,8 @@ import com.example.aroundtheworld.model.FamilyPreferences;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FamilyDAO {
@@ -116,6 +118,59 @@ public class FamilyDAO {
 
         return id;
     }
+
+    public static List<Family> retrieveFamilies(String city) {
+
+        Statement stmt;
+        Family family;
+        List<FamilyMember> familyMembers;
+        List<Animal> animals;
+        FamilyPreferences preferences;
+        List<Family> familyList = new ArrayList<>();
+
+
+        try{
+            stmt = ConnectionDB.getConnection();
+
+            ResultSet resultSet = SimpleQueries.retrieveFamilyIDByCity(stmt, city);
+
+            if (!resultSet.first()){
+                throw new NotFoundException("No family found in the city"+ city);
+            }
+
+            resultSet.first();
+
+            do{
+                int familyId = resultSet.getInt(ID);
+                String phoneNumber = resultSet.getString(PHONE);
+                String name = resultSet.getString(NAME);
+                String address = resultSet.getString(ADDRESS);
+                String photo = resultSet.getString(PHOTO);
+
+                familyMembers = FamilyMemberDAO.retrieveMembers(familyId);
+                animals = AnimalDAO.retrieveAnimal(familyId);
+                preferences = FamilyPreferencesDAO.retrievePreferences(familyId);
+
+                family = new Family(familyId, phoneNumber, name, city, address);
+                family.setAnimals(animals);
+                family.setMembers(familyMembers);
+                family.setPreferences(preferences);
+                family.setImgSrc(photo);
+
+                familyList.add(family);
+
+            } while(resultSet.next());
+
+            resultSet.close();
+
+
+        } catch(SQLException | ConnectionDbException | NotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return familyList;
+    }
+
 
 }
 

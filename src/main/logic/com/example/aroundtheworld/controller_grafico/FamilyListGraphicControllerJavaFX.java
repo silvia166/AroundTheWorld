@@ -1,10 +1,9 @@
 package com.example.aroundtheworld.controller_grafico;
 
-import com.example.aroundtheworld.model.Family;
+import com.example.aroundtheworld.bean.CompatibleFamilyBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -15,29 +14,19 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.ResourceBundle;
 
-public class FamilyListGraphicControllerJavaFX implements Initializable {
+
+public class FamilyListGraphicControllerJavaFX {
+
     Stage stage;
     @FXML
-    private GridPane familyGrid;
+    private GridPane familyGrid = new GridPane();
+    @FXML
+    private List<CompatibleFamilyBean> families = new ArrayList<>();
 
-    private List<Family> families = new ArrayList<>();
-
-    private List<Family> getData(){
-        List<Family> familyList = new ArrayList<>();
-        Family family;
-
-        for (int i=0; i<20; i++){
-            family = new Family(1, null,null,null,null, null);
-            familyList.add(family);
-        }
-        return familyList;
-    }
 
     public void backToForm(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("contactFamilyForm.fxml")));
@@ -47,22 +36,20 @@ public class FamilyListGraphicControllerJavaFX implements Initializable {
         stage.show();
     }
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        families.addAll(getData());
+    public void setList(List<CompatibleFamilyBean> compatibleFamilyBeans, String city) {
+        families.addAll(compatibleFamilyBeans);
         int column = 0;
         int row = 1;
 
         try {
 
-            for (Family family : families) {
+            for (CompatibleFamilyBean family : families) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("familyItem.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 FamilyItemGraphicControllerJavaFX familyItemController = fxmlLoader.getController();
-                familyItemController.setData(family);
+                familyItemController.setData(family, city);
 
                 if (column == 3) {
                     column = 0;

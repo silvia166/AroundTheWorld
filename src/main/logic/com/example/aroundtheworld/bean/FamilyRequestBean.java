@@ -1,6 +1,6 @@
 package com.example.aroundtheworld.bean;
 
-import com.example.aroundtheworld.exception.TravelDateException;
+import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.model.FamilyPreferences;
 
 import java.time.LocalDate;
@@ -17,7 +17,7 @@ public class FamilyRequestBean {
     private int idFamily;
     private float compatibility;
 
-    public FamilyRequestBean(String city, LocalDate arrival, LocalDate departure, int siblings, int animals, int idStudent) throws TravelDateException {
+    public FamilyRequestBean(String city, LocalDate arrival, LocalDate departure, int siblings, int animals, int idStudent) throws MessageException {
         this.city = city;
         this.setTravelDays(arrival,departure);
         this.siblings = siblings;
@@ -25,13 +25,13 @@ public class FamilyRequestBean {
         this.idStudent = idStudent;
     }
 
-    private void setTravelDays(LocalDate arrival, LocalDate departure) throws TravelDateException {
+    private void setTravelDays(LocalDate arrival, LocalDate departure) throws MessageException {
         LocalDate currentDate = LocalDate.now();
         if(arrival.isBefore(currentDate.plusDays(7))){
-            throw new TravelDateException("Arrival must be at least \n 7 days from today!");
+            throw new MessageException("Arrival must be at least \n 7 days from today!");
         }
         if(departure.isBefore(arrival.plusDays(7))){
-            throw new TravelDateException("Departure must be at least \n 7 days from arrival!");
+            throw new MessageException("Departure must be at least \n 7 days from arrival!");
         }
         this.arrival = arrival;
         this.departure = departure;

@@ -4,6 +4,7 @@ import com.example.aroundtheworld.bean.CityBean;
 import com.example.aroundtheworld.bean.LoginBean;
 import com.example.aroundtheworld.controller_applicativo.CityController;
 import com.example.aroundtheworld.controller_applicativo.LoginController;
+import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.EmailFormatException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.exception.UserNotFoundException;
@@ -50,16 +51,13 @@ public class LoginGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX{
                 case 1 ->  {
                     loginController.studentLogin(loginBean);
                     root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageStudent.fxml")));
-                    break;
                 }
                 case 2 -> {
                     loginController.familyLogin(loginBean);
                     root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageFamily.fxml")));
-                    break;
                 }
                 case 3 -> {
                     root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageAgency.fxml")));
-                    break;
                 }
                 default -> throw new UserNotFoundException();
             }
@@ -68,8 +66,8 @@ public class LoginGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX{
             stage.setScene(scene);
             stage.show();
 
-        } catch (EmailFormatException | UserNotFoundException e) {
-            e.printStackTrace();
+        } catch (EmailFormatException | UserNotFoundException  e) {
+            ShowExceptionSupport.showException(e.getMessage());
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -77,14 +75,6 @@ public class LoginGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX{
 
     public void toCreateAccount(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("createAccount.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void toHomepageStudent(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("homepageStudent.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

@@ -6,7 +6,7 @@ import com.example.aroundtheworld.controller_applicativo.ContactFamilyController
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.FormEmptyException;
-import com.example.aroundtheworld.exception.TravelDateException;
+import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.model.FamilyPreferences;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,9 +19,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.List;
@@ -119,13 +117,16 @@ public class ContactFamilyGraphicControllerJavaFX {
             Scene scene = new Scene(fxmlLoader.load());
 
             FamilyListGraphicControllerJavaFX familyListGraphicControllerJavaFX = fxmlLoader.getController();
-            familyListGraphicControllerJavaFX.setList(families, familyRequestBean.getCity());
+            int count = familyListGraphicControllerJavaFX.setList(families, familyRequestBean.getCity());
 
             stage.setScene(scene);
             stage.show();
 
+            if(count==0){
+                throw new MessageException("No families with compatibility \n greater than 50%");
+            }
 
-        } catch (FormEmptyException | TravelDateException e) {
+        } catch (FormEmptyException | MessageException  e) {
             ShowExceptionSupport.showException(e.getMessage());
         }
     }

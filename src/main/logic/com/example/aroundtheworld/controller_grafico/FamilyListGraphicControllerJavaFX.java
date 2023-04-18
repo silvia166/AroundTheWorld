@@ -1,8 +1,6 @@
 package com.example.aroundtheworld.controller_grafico;
 
 import com.example.aroundtheworld.bean.CompatibleFamilyBean;
-import com.example.aroundtheworld.engineering.ShowExceptionSupport;
-import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,9 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,8 +38,8 @@ public class FamilyListGraphicControllerJavaFX {
         stage.show();
     }
 
-    public void setList(List<CompatibleFamilyBean> compatibleFamilyBeans, String city) throws IOException {
-        families.addAll(compatibleFamilyBeans);
+    public int setList(List<CompatibleFamilyBean> compatibleFamilyBeans, String city) throws IOException {
+        this.families = compatibleFamilyBeans;
         this.cityString = city;
         int column = 0;
         int row = 1;
@@ -60,6 +56,7 @@ public class FamilyListGraphicControllerJavaFX {
 
                 if(family.getCompatibility()>=50.0){
                     count++;
+                }
                     familyItemController.setData(family, city);
 
                     if (column == 3) {
@@ -78,73 +75,12 @@ public class FamilyListGraphicControllerJavaFX {
                     familyGrid.setMaxHeight(Region.USE_PREF_SIZE);
 
                     GridPane.setMargin(anchorPane, new Insets(10));
-                }
-            }
-
-            if(count==0){
-                Stage dialog = new Stage();
-                dialog.initModality(Modality.APPLICATION_MODAL);
-                dialog.initStyle(StageStyle.UNDECORATED);
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(Main.class.getResource("resultErrorBox.fxml"));
-                Scene scene = null;
-
-                try {
-                    scene = new Scene(fxmlLoader.load());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                dialog.setScene(scene);
-                dialog.centerOnScreen();
-                dialog.show();
-
             }
 
         } catch (IOException e){
             e.printStackTrace();
         }
-    }
 
-    public void viewAll(ActionEvent event) throws IOException{
-
-        ((Node)event.getSource()).getScene().getWindow().hide();
-
-        int column = 0;
-        int row = 1;
-
-        try {
-
-            for (CompatibleFamilyBean family : families) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("familyItem.fxml"));
-                AnchorPane anchorPane = fxmlLoader.load();
-
-                FamilyItemGraphicControllerJavaFX familyItemController = fxmlLoader.getController();
-
-                familyItemController.setData(family, cityString);
-
-                if (column == 3) {
-                    column = 0;
-                    row++;
-                }
-
-                familyGrid.add(anchorPane, column++, row);
-
-                familyGrid.setMinWidth(Region.USE_COMPUTED_SIZE);
-                familyGrid.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                familyGrid.setMaxWidth(Region.USE_PREF_SIZE);
-
-                familyGrid.setMinHeight(Region.USE_COMPUTED_SIZE);
-                familyGrid.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                familyGrid.setMaxHeight(Region.USE_PREF_SIZE);
-
-                GridPane.setMargin(anchorPane, new Insets(10));
-
-            }
-
-        } catch (IOException e){
-            e.printStackTrace();
-        }
+        return count;
     }
 }

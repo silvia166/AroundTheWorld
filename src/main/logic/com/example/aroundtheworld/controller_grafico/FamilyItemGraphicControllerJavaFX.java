@@ -26,6 +26,7 @@ public class FamilyItemGraphicControllerJavaFX {
                         img.setImage(image);
                 }
         }
+
 }
 
 

@@ -7,28 +7,22 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="200.0" prefWidth="350.0" style="-fx-border-width: 1; -fx-border-color: grey;"
-            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.aroundtheworld.controller_grafico.FamilyListGraphicControllerJavaFX">
+<AnchorPane prefHeight="200.0" prefWidth="350.0" style="-fx-border-width: 1; -fx-border-color: grey;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.FamilyListGraphicControllerJavaFX">
    <effect>
       <InnerShadow>
          <color>
-            <Color red="0.7529411911964417" green="0.9764705896377563" blue="0.8666666746139526"/>
+            <Color red="0.7529411911964417" green="0.9764705896377563" blue="0.8666666746139526" />
          </color>
       </InnerShadow>
    </effect>
-   <Button fx:id="ErrorBtn" layoutX="131.0" layoutY="131.0" mnemonicParsing="false" onAction="#viewAll"
-           prefHeight="35.0" prefWidth="87.0" style="-fx-background-radius: 20; -fx-background-color: #C0F9DD;"
-           text="View All">
+   <Button fx:id="ErrorBtn" layoutX="131.0" layoutY="131.0" mnemonicParsing="false" onAction="#viewAll" prefHeight="35.0" prefWidth="87.0" style="-fx-background-radius: 20; -fx-background-color: #C0F9DD;" text="View All">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Button>
-   <Text layoutX="32.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0"
-         text="No families with compatibility greater than 50%" textAlignment="CENTER"
-         wrappingWidth="287.27484130859375">
+   <Text layoutX="32.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No families with compatibility greater than 50%" textAlignment="CENTER" wrappingWidth="287.27484130859375">
       <font>
-         <Font size="18.0"/>
+         <Font size="18.0" />
       </font>
    </Text>
 </AnchorPane>

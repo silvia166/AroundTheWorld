@@ -40,7 +40,6 @@ public class StudentProfileGraphicControllerJavaFX extends LogoutGraphicControll
     @FXML
     private Label surname;
 
-    Stage stage;
     Scene scene;
 
     public void initialize() {
@@ -60,7 +59,7 @@ public class StudentProfileGraphicControllerJavaFX extends LogoutGraphicControll
 
     }
 
-    public void toHomepageStudent(ActionEvent event) throws IOException {
+    public void toHomepageStudent() throws IOException {
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageStudent.fxml")));
         scene = new Scene(root);
@@ -68,7 +67,7 @@ public class StudentProfileGraphicControllerJavaFX extends LogoutGraphicControll
         stage.show();
     }
 
-    public void toRequestStudent(ActionEvent event) throws IOException {
+    public void toRequestStudent() throws IOException {
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("requestStudent.fxml")));
         scene = new Scene(root);
@@ -76,7 +75,7 @@ public class StudentProfileGraphicControllerJavaFX extends LogoutGraphicControll
         stage.show();
     }
 
-    public void toTravelStudent(ActionEvent event) throws IOException {
+    public void toTravelStudent() throws IOException {
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("travelStudent.fxml")));
         scene = new Scene(root);

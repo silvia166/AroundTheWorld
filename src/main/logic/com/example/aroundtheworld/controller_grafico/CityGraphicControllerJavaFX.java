@@ -67,9 +67,6 @@ public class CityGraphicControllerJavaFX{
     @FXML
     private Label residenceName;
 
-    @FXML
-    private Button weatherButton;
-
     private CityBean city;
 
     public void setData(CityBean city) {
@@ -99,7 +96,7 @@ public class CityGraphicControllerJavaFX{
         act3Img.setImage(image);
     }
 
-    public void backToAccess(ActionEvent event) throws IOException {
+    public void backToAccess() throws IOException {
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("accessPage.fxml")));
         Scene scene = new Scene(root);

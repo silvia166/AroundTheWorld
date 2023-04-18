@@ -11,7 +11,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class ShowExceptionSupport {
-    public ShowExceptionSupport() {
+    private ShowExceptionSupport() {
         //Costruttore privato perché ho tutti i metodi statici
     }
 

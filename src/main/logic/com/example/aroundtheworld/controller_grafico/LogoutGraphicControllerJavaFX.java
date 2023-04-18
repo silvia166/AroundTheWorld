@@ -12,8 +12,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class LogoutGraphicControllerJavaFX {
-
-    public void backToAccess(ActionEvent event) throws IOException {
+    public void backToAccess() throws IOException {
         Session.closeSession();
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("accessPage.fxml")));

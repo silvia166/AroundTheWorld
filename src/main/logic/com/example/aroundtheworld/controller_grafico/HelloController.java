@@ -15,7 +15,6 @@ import java.util.Objects;
 public class HelloController {
 
     Stage stage;
-    Stage stage1;
     Scene scene;
 
     public void backToAccess(ActionEvent event) throws IOException {

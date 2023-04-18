@@ -8,9 +8,6 @@ import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.EmailFormatException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.exception.UserNotFoundException;
-import com.example.aroundtheworld.model.City;
-import com.example.aroundtheworld.model.Residence;
-import com.example.aroundtheworld.model.School;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,12 +15,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -38,14 +31,14 @@ public class LoginGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX{
     @FXML
     PasswordField passwordField;
 
-    public void loginAction(ActionEvent event) throws IOException, EmailFormatException, UserNotFoundException, NotFoundException {
+    public void loginAction() throws IOException, NotFoundException {
 
         try {
             LoginBean loginBean = new LoginBean(usernameField.getText(),passwordField.getText());
             LoginController loginController = new LoginController();
             loginController.checkUser(loginBean);
             Parent root;
-            Stage stage = Main.getStage();
+            Stage dialog = Main.getStage();
 
             switch(loginBean.getRole()){
                 case 1 ->  {
@@ -63,8 +56,8 @@ public class LoginGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX{
             }
 
             scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            dialog.setScene(scene);
+            dialog.show();
 
         } catch (EmailFormatException | UserNotFoundException  e) {
             ShowExceptionSupport.showException(e.getMessage());

@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX{
-    Stage stage;
     Scene scene;
     @FXML
     private Label address;
@@ -65,7 +64,7 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
     @FXML
     private Label phone;
 
-    public void toRequestFamily(ActionEvent event) throws IOException {
+    public void toRequestFamily() throws IOException {
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("requestFamily.fxml")));
         scene = new Scene(root);
@@ -73,7 +72,7 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
         stage.show();
     }
 
-    public void toHomepageFamily(ActionEvent event) throws IOException {
+    public void toHomepageFamily() throws IOException {
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageFamily.fxml")));
         scene = new Scene(root);

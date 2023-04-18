@@ -28,10 +28,10 @@ public class FamilyRequestBean {
     private void setTravelDays(LocalDate arrival, LocalDate departure) throws TravelDateException {
         LocalDate currentDate = LocalDate.now();
         if(arrival.isBefore(currentDate.plusDays(7))){
-            throw new TravelDateException("Arrival");
+            throw new TravelDateException("Arrival must be at least \n 7 days from today!");
         }
         if(departure.isBefore(arrival.plusDays(7))){
-            throw new TravelDateException("Departure");
+            throw new TravelDateException("Departure must be at least \n 7 days from arrival!");
         }
         this.arrival = arrival;
         this.departure = departure;

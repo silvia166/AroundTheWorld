@@ -100,8 +100,8 @@ public class CityGraphicControllerJavaFX{
     }
 
     public void backToAccess(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("accessPage.fxml")));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = Main.getStage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("accessPage.fxml")));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

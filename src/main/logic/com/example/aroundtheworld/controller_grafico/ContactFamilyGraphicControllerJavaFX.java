@@ -4,6 +4,7 @@ import com.example.aroundtheworld.bean.CompatibleFamilyBean;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.controller_applicativo.ContactFamilyController;
 import com.example.aroundtheworld.engineering.Session;
+import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.FormEmptyException;
 import com.example.aroundtheworld.exception.TravelDateException;
 import com.example.aroundtheworld.model.FamilyPreferences;
@@ -18,7 +19,10 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -111,6 +115,7 @@ public class ContactFamilyGraphicControllerJavaFX {
             Stage stage =  (Stage) ((Node) event.getSource()).getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("familyList.fxml"));
+
             Scene scene = new Scene(fxmlLoader.load());
 
             FamilyListGraphicControllerJavaFX familyListGraphicControllerJavaFX = fxmlLoader.getController();
@@ -119,64 +124,64 @@ public class ContactFamilyGraphicControllerJavaFX {
             stage.setScene(scene);
             stage.show();
 
+
         } catch (FormEmptyException | TravelDateException e) {
-            e.printStackTrace();
+            ShowExceptionSupport.showException(e.getMessage());
         }
     }
 
-        private FamilyPreferences getRequestPreferences() {
+    private FamilyPreferences getRequestPreferences() {
 
-            String room;
-            int vegetarian = 0;
-            int vegan = 0;
-            int travels = 0;
-            int sport = 0;
-            int books = 0;
-            int nature = 0;
-            int film = 0;
-            int videoGames = 0;
-            int cooking = 0;
+        String room;
+        int vegetarian = 0;
+        int vegan = 0;
+        int travels = 0;
+        int sport = 0;
+        int books = 0;
+        int nature = 0;
+        int film = 0;
+        int videoGames = 0;
+        int cooking = 0;
 
-            if (travelsC.isSelected()) {
-                travels = 1;
-            }
-            if (sportC.isSelected()) {
-                sport = 1;
-            }
-            if (cookingC.isSelected()) {
-                cooking = 1;
-            }
-            if (videogamesC.isSelected()) {
-                videoGames = 1;
-            }
-            if (filmC.isSelected()) {
-                film = 1;
-            }
-            if (booksC.isSelected()) {
-                books = 1;
-            }
-            if (natureC.isSelected()) {
-                nature = 1;
-            }
-
-            if (vegetarianRB.isSelected()) {
-                vegetarian = 1;
-            } else if (veganRB.isSelected()) {
-                vegan = 1;
-            }
-
-            if (singleH.isSelected())
-                room = "Single";
-            else
-                room = "Shared";
-
-            FamilyPreferences familyPreferences = new FamilyPreferences();
-            familyPreferences.setFood(vegetarian, vegan);
-            familyPreferences.setHobbies(travels, sport, books, nature, film, videoGames, cooking);
-            familyPreferences.setHouse(room);
-
-            return familyPreferences;
-
+        if (travelsC.isSelected()) {
+            travels = 1;
+        }
+        if (sportC.isSelected()) {
+            sport = 1;
+        }
+        if (cookingC.isSelected()) {
+            cooking = 1;
+        }
+        if (videogamesC.isSelected()) {
+            videoGames = 1;
+        }
+        if (filmC.isSelected()) {
+            film = 1;
+        }
+        if (booksC.isSelected()) {
+            books = 1;
+        }
+        if (natureC.isSelected()) {
+            nature = 1;
         }
 
+        if (vegetarianRB.isSelected()) {
+            vegetarian = 1;
+        } else if (veganRB.isSelected()) {
+            vegan = 1;
+        }
+
+        if (singleH.isSelected())
+            room = "Single";
+        else
+            room = "Shared";
+
+        FamilyPreferences familyPreferences = new FamilyPreferences();
+        familyPreferences.setFood(vegetarian, vegan);
+        familyPreferences.setHobbies(travels, sport, books, nature, film, videoGames, cooking);
+        familyPreferences.setHouse(room);
+
+        return familyPreferences;
+
+    }
 }

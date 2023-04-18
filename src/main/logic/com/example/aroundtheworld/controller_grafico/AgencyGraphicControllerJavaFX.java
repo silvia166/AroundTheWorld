@@ -29,16 +29,16 @@ public class AgencyGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX
     }
 
     public void toRequestAgency(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("requestAgency.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = Main.getStage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("requestAgency.fxml")));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
     public void toHomepageAgency(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("homepageAgency.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = Main.getStage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageAgency.fxml")));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

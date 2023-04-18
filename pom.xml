@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.aroundtheworld/com.example.aroundtheworld.controller_grafico.Homepage
+                            <mainClass>com.example.aroundtheworld/com.example.aroundtheworld.controller_grafico.Main
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

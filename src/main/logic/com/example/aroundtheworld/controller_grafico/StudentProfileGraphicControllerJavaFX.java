@@ -61,24 +61,24 @@ public class StudentProfileGraphicControllerJavaFX extends LogoutGraphicControll
     }
 
     public void toHomepageStudent(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("homepageStudent.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = Main.getStage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageStudent.fxml")));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
     public void toRequestStudent(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("requestStudent.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = Main.getStage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("requestStudent.fxml")));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
     public void toTravelStudent(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("travelStudent.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = Main.getStage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("travelStudent.fxml")));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

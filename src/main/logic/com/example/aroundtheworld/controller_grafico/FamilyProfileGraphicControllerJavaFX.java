@@ -66,16 +66,16 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
     private Label phone;
 
     public void toRequestFamily(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("requestFamily.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = Main.getStage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("requestFamily.fxml")));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
     public void toHomepageFamily(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("homepageFamily.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = Main.getStage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageFamily.fxml")));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

@@ -68,8 +68,8 @@ public class CreateAccountGraphicControllerJavaFX extends LogoutGraphicControlle
             CreateAccountController createAccountController = new CreateAccountController();
             createAccountController.createAccount(studentBean);
 
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("accessPage.fxml")));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Stage stage = Main.getStage();
+            Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("accessPage.fxml")));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

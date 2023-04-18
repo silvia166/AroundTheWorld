@@ -15,7 +15,7 @@ public class AgencyGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX
 
     public void toAddFamily() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("newFamilyForm.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
+        Parent root1 = fxmlLoader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initStyle(StageStyle.UNDECORATED);

@@ -8,7 +8,6 @@ import com.example.aroundtheworld.model.FamilyPreferences;
 import java.util.List;
 
 public class FamilyBean {
-
     private final String name;
     private String imgSrc;
     private final String city;

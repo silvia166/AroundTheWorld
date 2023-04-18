@@ -1,12 +1,10 @@
 package com.example.aroundtheworld.controller_grafico;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.*;
 
 import java.io.IOException;

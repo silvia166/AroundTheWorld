@@ -1,6 +1,5 @@
 package com.example.aroundtheworld.controller_grafico;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

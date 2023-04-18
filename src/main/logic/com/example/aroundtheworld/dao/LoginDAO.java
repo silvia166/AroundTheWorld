@@ -30,9 +30,9 @@ public class LoginDAO {
 
             String nameRole = resultSet.getString(1);
             switch (nameRole){
-                case "student" -> {role = 1; break;}
-                case "family" -> {role = 2; break;}
-                case "agency" -> {role = 3; break;}
+                case "student"-> role = 1;
+                case "family" -> role = 2;
+                case "agency" -> role = 3;
                 default -> throw new NotFoundException("No role found");
             }
 

@@ -49,9 +49,7 @@ public class LoginGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX{
                     loginController.familyLogin(loginBean);
                     root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageFamily.fxml")));
                 }
-                case 3 -> {
-                    root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageAgency.fxml")));
-                }
+                case 3 -> root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageAgency.fxml")));
                 default -> throw new UserNotFoundException();
             }
 

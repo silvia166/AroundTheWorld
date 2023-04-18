@@ -16,7 +16,6 @@ import java.sql.SQLException;
 
 public class ImageConverterSupport {
 
-        //Costruttore privato
         private ImageConverterSupport() {
             //Costruttore privato perché ho tutti i metodi statici
         }

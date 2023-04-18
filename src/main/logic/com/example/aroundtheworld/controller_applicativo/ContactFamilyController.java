@@ -22,7 +22,7 @@ public class ContactFamilyController {
         }
         for (FamilyMember member : family.getMembers()) {
             if ((member.getParenthood().equals("Sister") || member.getParenthood().equals("Brother") || member.getParenthood().equals("Cousin")) && siblings == 0) {
-                    siblings = 1;
+                siblings = 1;
             }
         }
         if (siblings == familyRequestBean.getSiblings()){

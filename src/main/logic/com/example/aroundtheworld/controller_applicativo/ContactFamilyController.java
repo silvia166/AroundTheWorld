@@ -1,8 +1,11 @@
 package com.example.aroundtheworld.controller_applicativo;
 
 import com.example.aroundtheworld.bean.CompatibleFamilyBean;
+import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.dao.FamilyDAO;
+import com.example.aroundtheworld.engineering.Session;
+import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Family;
 import com.example.aroundtheworld.model.FamilyMember;
 import com.example.aroundtheworld.model.FamilyPreferences;
@@ -80,5 +83,18 @@ public class ContactFamilyController {
             compatibleFamilies.add(compatibleFamilyBean);
         }
         return compatibleFamilies;
+    }
+
+    public FamilyBean getFamilyProfile(CompatibleFamilyBean compatibleFamilyBean) throws NotFoundException {
+        Family family = FamilyDAO.retrieveFamily(compatibleFamilyBean.getEmail());
+
+        FamilyBean familyBean = new FamilyBean(family.getName(), family.getCity(), family.getAddress(), family.getId(), family.getPhoneNumber(), family.getEmail());
+        familyBean.setFamilyPreferences(family.getPreferences());
+        familyBean.setAnimals(family.getAnimals());
+        familyBean.setMembers(family.getMembers());
+        familyBean.setImgSrc(family.getImgSrc());
+
+        return familyBean;
+
     }
 }

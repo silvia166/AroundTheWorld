@@ -43,12 +43,12 @@
                </font></Label>
          </children>
       </HBox>
-      <Button layoutX="103.0" layoutY="199.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="90.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="Send Request">
+      <Button fx:id="sendRequestBtn" layoutX="103.0" layoutY="199.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="20.0" prefWidth="90.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="Send Request">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="7.0" layoutY="199.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="90.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="View Profile">
+      <Button fx:id="viewProfileBtn" layoutX="7.0" layoutY="199.0" mnemonicParsing="false" onAction="#viewProfile" prefHeight="20.0" prefWidth="90.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="View Profile">
          <font>
             <Font size="10.0" />
          </font>

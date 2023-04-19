@@ -1,12 +1,15 @@
 package com.example.aroundtheworld.controller_grafico;
 
 import com.example.aroundtheworld.bean.CompatibleFamilyBean;
+import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.controller_applicativo.ContactFamilyController;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.FormEmptyException;
 import com.example.aroundtheworld.exception.MessageException;
+import com.example.aroundtheworld.model.Animal;
+import com.example.aroundtheworld.model.FamilyMember;
 import com.example.aroundtheworld.model.FamilyPreferences;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,10 +22,14 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
 public class ContactFamilyGraphicControllerJavaFX {
     @FXML
@@ -183,6 +190,6 @@ public class ContactFamilyGraphicControllerJavaFX {
         familyPreferences.setHouse(room);
 
         return familyPreferences;
-
     }
+
 }

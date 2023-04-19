@@ -214,5 +214,4 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
         return food;
     }
 
-
 }

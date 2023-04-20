@@ -8,15 +8,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class FamilyGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX {
+public class FamilyGUIController extends LogoutGUIControllerJavaFX {
 
     public void toFamilyProfile() throws IOException {
         Stage stage = Main.getStage();
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(Main.class.getResource("profileFamily.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        FamilyProfileGraphicControllerJavaFX familyProfileGraphicControllerJavaFX = fxmlLoader.getController();
-        familyProfileGraphicControllerJavaFX.initializeProfile();
+        FamilyProfileGUIController familyProfileGUIController = fxmlLoader.getController();
+        familyProfileGUIController.initializeProfile();
         stage.setScene(scene);
         stage.show();
     }

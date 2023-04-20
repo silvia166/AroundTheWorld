@@ -3,7 +3,7 @@ package com.example.aroundtheworld.controller_applicativo;
 import com.example.aroundtheworld.bean.CompatibleFamilyBean;
 import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
-import com.example.aroundtheworld.controller_grafico.FamilyListGraphicControllerJavaFX;
+import com.example.aroundtheworld.controller_grafico.FamilyListGUIController;
 import com.example.aroundtheworld.dao.FamilyDAO;
 import com.example.aroundtheworld.dao.FamilyRequestDAO;
 import com.example.aroundtheworld.exception.MessageException;
@@ -123,7 +123,7 @@ public class ContactFamilyController {
         familyRequest.setFamilyPreferences(familyRequestBean.getFamilyPreferencesBean());
         FamilyRequestDAO.newRequest(familyRequest);
 
-        FamilyListGraphicControllerJavaFX familyListGraphicControllerJavaFX = new FamilyListGraphicControllerJavaFX();
-        familyListGraphicControllerJavaFX.savedRequest();
+        FamilyListGUIController familyListGUIController = new FamilyListGUIController();
+        familyListGUIController.savedRequest();
     }
 }

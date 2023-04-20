@@ -10,7 +10,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.Objects;
 
-public class StudentGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX {
+public class StudentGUIControllerJavaFX extends LogoutGUIControllerJavaFX {
     Stage dialog;
     Scene scene;
 

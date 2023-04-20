@@ -22,10 +22,9 @@ import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.List;
 
-public class ContactFamilyGraphicControllerJavaFX {
+public class ContactFamilyGUIController {
     @FXML
     private RadioButton animalN;
     @FXML
@@ -118,8 +117,8 @@ public class ContactFamilyGraphicControllerJavaFX {
 
             Scene scene = new Scene(fxmlLoader.load());
 
-            FamilyListGraphicControllerJavaFX familyListGraphicControllerJavaFX = fxmlLoader.getController();
-            int count = familyListGraphicControllerJavaFX.setList(families, familyRequestBean);
+            FamilyListGUIController familyListGUIController = fxmlLoader.getController();
+            int count = familyListGUIController.setList(families, familyRequestBean);
 
             stage.setScene(scene);
             stage.show();

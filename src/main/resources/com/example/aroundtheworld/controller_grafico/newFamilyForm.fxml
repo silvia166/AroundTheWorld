@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.AddFamilyGraphicControllerJavaFX">
+<ScrollPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.AddFamilyGUIController">
    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1250.0" prefWidth="900.0" style="-fx-border-color: #C0F9DD; -fx-border-width: 15;">
       <Text layoutX="305.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fill the form - New Family" textAlignment="CENTER" wrappingWidth="297.9521179199219">
          <font>

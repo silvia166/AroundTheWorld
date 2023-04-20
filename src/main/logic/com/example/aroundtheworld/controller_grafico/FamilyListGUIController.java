@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class FamilyListGraphicControllerJavaFX {
+public class FamilyListGUIController {
     @FXML
     private GridPane familyGrid = new GridPane();
     @FXML
@@ -52,7 +52,7 @@ public class FamilyListGraphicControllerJavaFX {
                 fxmlLoader.setLocation(getClass().getResource("familyItem.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
-                FamilyItemGraphicControllerJavaFX familyItemController = fxmlLoader.getController();
+                FamilyItemGUIController familyItemController = fxmlLoader.getController();
 
                 if(family.getCompatibility()>=50.0){
                     count++;

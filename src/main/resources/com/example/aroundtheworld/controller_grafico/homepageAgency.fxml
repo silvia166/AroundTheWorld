@@ -9,72 +9,72 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.AgencyGraphicControllerJavaFX">
-   <children>
-      <Pane layoutX="25.0" layoutY="56.0" prefHeight="74.0" prefWidth="1200.0" style="-fx-background-color: #C0F9DD;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Text layoutX="115.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Around the world" wrappingWidth="467.0036315917969">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
-            <Text layoutX="115.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="travel agency" wrappingWidth="208.81515502929688">
-               <font>
-                  <Font size="26.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="56.0" fitWidth="57.0" layoutX="42.0" layoutY="10.0">
-               <image>
-                  <Image url="@image/world.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0f9dd" height="675.0" layoutY="74.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="370.0" />
-      <Button alignment="CENTER_RIGHT" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="369.0" style="-fx-background-color: #90e4bb; -fx-border-width: 1; -fx-border-color: white;" text="HOMEPAGE" textAlignment="CENTER">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0"
+            prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.aroundtheworld.controller_grafico.AgencyGUIController">
+   <Pane layoutX="25.0" layoutY="56.0" prefHeight="74.0" prefWidth="1200.0" style="-fx-background-color: #C0F9DD;"
+         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Text layoutX="115.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Around the world"
+            wrappingWidth="467.0036315917969">
          <font>
-            <Font size="26.0" />
-         </font>
-      </Button>
-      <Button alignment="CENTER_RIGHT" layoutY="280.0" mnemonicParsing="false" onAction="#toRequestAgency" prefHeight="75.0" prefWidth="370.0" style="-fx-background-color: #c0f9dd; -fx-border-width: 1; -fx-border-color: white;" text="REQUESTS  ">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Button>
-      <Button layoutX="13.0" layoutY="669.0" mnemonicParsing="false" onAction="#backToAccess" prefHeight="66.0" prefWidth="91.0" style="-fx-background-color: #C0F9DD; -fx-border-color: white; -fx-border-width: 0; -fx-border-radius: 20;">
-         <font>
-            <Font name="Cambria" size="20.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="42.0" fitWidth="45.0" layoutX="37.0" layoutY="682.0">
-         <image>
-            <Image url="@image/exit.png" />
-         </image>
-      </ImageView>
-      <Button layoutX="775.0" layoutY="360.0" mnemonicParsing="false" onAction="#toAddFamily" prefHeight="50.0" prefWidth="295.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Add family">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Button>
-      <Text layoutX="565.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome!" textAlignment="CENTER" wrappingWidth="467.0036315917969">
-         <font>
-            <Font size="30.0" />
+            <Font size="30.0"/>
          </font>
       </Text>
-      <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="450.0" layoutY="273.0">
-         <image>
-            <Image url="@image/big-family.png" />
-         </image>
+      <Text layoutX="115.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="travel agency"
+            wrappingWidth="208.81515502929688">
+         <font>
+            <Font size="26.0"/>
+         </font>
+      </Text>
+      <ImageView fitHeight="56.0" fitWidth="57.0" layoutX="42.0" layoutY="10.0">
+         <Image url="@image/world.png"/>
       </ImageView>
-      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="107.0" layoutY="219.0">
-         <image>
-            <Image url="@image/home.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="107.0" layoutY="293.0">
-         <image>
-            <Image url="@image/chat.png" />
-         </image>
-      </ImageView>
-   </children>
+   </Pane>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0f9dd" height="675.0" layoutY="74.0" stroke="BLACK"
+              strokeType="INSIDE" strokeWidth="0.0" width="370.0"/>
+   <Button alignment="CENTER_RIGHT" layoutY="205.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="369.0"
+           style="-fx-background-color: #90e4bb; -fx-border-width: 1; -fx-border-color: white;" text="HOMEPAGE"
+           textAlignment="CENTER">
+      <font>
+         <Font size="26.0"/>
+      </font>
+   </Button>
+   <Button alignment="CENTER_RIGHT" layoutY="280.0" mnemonicParsing="false" onAction="#toRequestAgency"
+           prefHeight="75.0" prefWidth="370.0"
+           style="-fx-background-color: #c0f9dd; -fx-border-width: 1; -fx-border-color: white;" text="REQUESTS  ">
+      <font>
+         <Font size="26.0"/>
+      </font>
+   </Button>
+   <Button layoutX="13.0" layoutY="669.0" mnemonicParsing="false" onAction="#backToAccess" prefHeight="66.0"
+           prefWidth="91.0"
+           style="-fx-background-color: #C0F9DD; -fx-border-color: white; -fx-border-width: 0; -fx-border-radius: 20;">
+      <font>
+         <Font name="Cambria" size="20.0"/>
+      </font>
+   </Button>
+   <ImageView fitHeight="42.0" fitWidth="45.0" layoutX="37.0" layoutY="682.0">
+      <Image url="@image/exit.png"/>
+   </ImageView>
+   <Button layoutX="775.0" layoutY="360.0" mnemonicParsing="false" onAction="#toAddFamily" prefHeight="50.0"
+           prefWidth="295.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Add family">
+      <font>
+         <Font size="26.0"/>
+      </font>
+   </Button>
+   <Text layoutX="565.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome!" textAlignment="CENTER"
+         wrappingWidth="467.0036315917969">
+      <font>
+         <Font size="30.0"/>
+      </font>
+   </Text>
+   <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="450.0" layoutY="273.0">
+      <Image url="@image/big-family.png"/>
+   </ImageView>
+   <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="107.0" layoutY="219.0">
+      <Image url="@image/home.png"/>
+   </ImageView>
+   <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="107.0" layoutY="293.0">
+      <Image url="@image/chat.png"/>
+   </ImageView>
 </AnchorPane>

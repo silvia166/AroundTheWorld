@@ -26,7 +26,7 @@ import java.util.*;
 
 import static java.lang.Integer.parseInt;
 
-public class AddFamilyGraphicControllerJavaFX {
+public class AddFamilyGUIController {
 
     @FXML
     private TextField addressField;

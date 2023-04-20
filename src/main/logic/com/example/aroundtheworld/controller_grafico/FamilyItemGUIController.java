@@ -17,7 +17,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class FamilyItemGraphicControllerJavaFX {
+public class FamilyItemGUIController {
 
         @FXML
         private Label compatibility;
@@ -50,8 +50,8 @@ public class FamilyItemGraphicControllerJavaFX {
 
                 Scene scene = new Scene(fxmlLoader.load());
 
-                FamilyProfileGraphicControllerJavaFX familyProfileGraphicControllerJavaFX = fxmlLoader.getController();
-                familyProfileGraphicControllerJavaFX.initializeSelectedProfile(familyBean, this.family.getCompatibility());
+                FamilyProfileGUIController familyProfileGUIController = fxmlLoader.getController();
+                familyProfileGUIController.initializeSelectedProfile(familyBean, this.family.getCompatibility());
 
                 stage.setScene(scene);
                 stage.centerOnScreen();

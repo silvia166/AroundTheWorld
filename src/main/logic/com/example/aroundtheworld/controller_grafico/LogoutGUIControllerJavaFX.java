@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class LogoutGraphicControllerJavaFX {
+public class LogoutGUIControllerJavaFX {
     public void backToAccess() throws IOException {
         Session.closeSession();
         Stage stage = Main.getStage();

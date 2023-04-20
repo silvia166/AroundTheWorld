@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class LoginGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX{
+public class LoginGUIControllerJavaFX extends LogoutGUIControllerJavaFX {
 
     private Stage stage;
     private Scene scene;
@@ -82,8 +82,8 @@ public class LoginGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX{
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(fxmlLoader.load()));
 
-        CityGraphicControllerJavaFX cityGraphicControllerJavaFX = fxmlLoader.getController();
-        cityGraphicControllerJavaFX.setData(cityBean);
+        CityGUIController cityGUIController = fxmlLoader.getController();
+        cityGUIController.setData(cityBean);
 
         stage.show();
     }

@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 
-public class StudentProfileGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX  {
+public class StudentProfileGUIController extends LogoutGUIControllerJavaFX {
     @FXML
     private Label birth;
 
@@ -42,17 +42,17 @@ public class StudentProfileGraphicControllerJavaFX extends LogoutGraphicControll
     }
 
     public void toHomepageStudent() throws IOException {
-        StudentGraphicControllerJavaFX studentGraphicControllerJavaFX = new StudentGraphicControllerJavaFX();
+        StudentGUIControllerJavaFX studentGraphicControllerJavaFX = new StudentGUIControllerJavaFX();
         studentGraphicControllerJavaFX.toHomepageStudent();
     }
 
     public void toRequestStudent() throws IOException {
-        StudentGraphicControllerJavaFX studentGraphicControllerJavaFX = new StudentGraphicControllerJavaFX();
+        StudentGUIControllerJavaFX studentGraphicControllerJavaFX = new StudentGUIControllerJavaFX();
         studentGraphicControllerJavaFX.toRequestStudent();
     }
 
     public void toTravelStudent() throws IOException {
-        StudentGraphicControllerJavaFX studentGraphicControllerJavaFX = new StudentGraphicControllerJavaFX();
+        StudentGUIControllerJavaFX studentGraphicControllerJavaFX = new StudentGUIControllerJavaFX();
         studentGraphicControllerJavaFX.toTravelStudent();
     }
 }

@@ -23,7 +23,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
-public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX{
+public class FamilyProfileGUIController extends LogoutGUIControllerJavaFX {
     Scene scene;
     @FXML
     private Label address;
@@ -65,13 +65,13 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
     private Label phone;
 
     public void toRequestFamily() throws IOException {
-        FamilyGraphicControllerJavaFX familyGraphicControllerJavaFX = new FamilyGraphicControllerJavaFX();
-        familyGraphicControllerJavaFX.toRequestFamily();
+        FamilyGUIController familyGUIController = new FamilyGUIController();
+        familyGUIController.toRequestFamily();
     }
 
     public void toHomepageFamily() throws IOException {
-        FamilyGraphicControllerJavaFX familyGraphicControllerJavaFX = new FamilyGraphicControllerJavaFX();
-        familyGraphicControllerJavaFX.toHomepageFamily();
+        FamilyGUIController familyGUIController = new FamilyGUIController();
+        familyGUIController.toHomepageFamily();
     }
     public void initializeProfile() {
 

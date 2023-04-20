@@ -10,7 +10,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.Objects;
 
-public class AgencyGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX {
+public class AgencyGUIController extends LogoutGUIControllerJavaFX {
     Scene scene;
 
     public void toAddFamily() throws IOException {

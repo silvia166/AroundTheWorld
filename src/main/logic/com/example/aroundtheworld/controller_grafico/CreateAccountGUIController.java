@@ -7,7 +7,6 @@ import com.example.aroundtheworld.exception.EmailFormatException;
 import com.example.aroundtheworld.exception.FormEmptyException;
 import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.PhoneFormatException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,10 +17,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.Objects;
 
-public class CreateAccountGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX {
+public class CreateAccountGUIController extends LogoutGUIControllerJavaFX {
 
     @FXML
     private DatePicker birthField;

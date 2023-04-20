@@ -11,126 +11,147 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.LoginGraphicControllerJavaFX">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0f9dd" height="675.0" layoutY="74.0" stroke="#c0f9dd" strokeType="INSIDE" strokeWidth="0.0" width="370.0" />
-      <Pane layoutX="25.0" layoutY="56.0" prefHeight="74.0" prefWidth="1200.0" style="-fx-background-color: #C0F9DD;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Text layoutX="115.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Around the world" wrappingWidth="238.87473851474442">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
-            <Text layoutX="115.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="travel agency" wrappingWidth="208.81515502929688">
-               <font>
-                  <Font size="26.0" />
-               </font>
-            </Text>
-         </children>
-      </Pane>
-      <Text layoutX="639.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose and discover a city">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0"
+            prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.aroundtheworld.controller_grafico.LoginGUIControllerJavaFX">
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0f9dd" height="675.0" layoutY="74.0" stroke="#c0f9dd"
+              strokeType="INSIDE" strokeWidth="0.0" width="370.0"/>
+   <Pane layoutX="25.0" layoutY="56.0" prefHeight="74.0" prefWidth="1200.0" style="-fx-background-color: #C0F9DD;"
+         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Text layoutX="115.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Around the world"
+            wrappingWidth="238.87473851474442">
          <font>
-            <Font size="26.0" />
+            <Font size="30.0"/>
          </font>
       </Text>
-      <Button fx:id="btnLondon" layoutX="428.0" layoutY="629.0" mnemonicParsing="false" onAction="#toCity" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="London">
+      <Text layoutX="115.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="travel agency"
+            wrappingWidth="208.81515502929688">
          <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnRome" layoutX="578.0" layoutY="630.0" mnemonicParsing="false" onAction="#toCity" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Rome">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button layoutX="732.0" layoutY="629.0" mnemonicParsing="false" onAction="#toCity" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="New York">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button layoutX="880.0" layoutY="629.0" mnemonicParsing="false" onAction="#toCity" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Paris">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button layoutX="1032.0" layoutY="627.0" mnemonicParsing="false" onAction="#toCity" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Valencia">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Text layoutX="476.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start a new adventure with us and study a language" textAlignment="CENTER" wrappingWidth="626.5196304321289">
-         <font>
-            <Font size="26.0" />
+            <Font size="26.0"/>
          </font>
       </Text>
-      <TextField fx:id="usernameField" layoutX="75.0" layoutY="174.0" prefHeight="40.0" prefWidth="220.0" promptText="Username" style="-fx-background-radius: 20;">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
-      <Button fx:id="loginButton" layoutX="75.0" layoutY="294.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #C0F9DD; -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 20;" text="Login">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button layoutX="75.0" layoutY="629.0" mnemonicParsing="false" onAction="#toCreateAccount" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #C0F9DD; -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 20;" text="Create your account">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button layoutX="75.0" layoutY="390.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #C0F9DD; -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 20;" text="Login with Google">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Text layoutX="169.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Text>
-      <Text layoutX="151.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log in">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Text>
-      <Text layoutX="11.0" layoutY="602.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not a member yet?" textAlignment="CENTER" wrappingWidth="350.25272369384766">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Text>
-      <Text layoutX="474.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Want to take a study holiday?" textAlignment="CENTER" wrappingWidth="626.5196304321289">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="56.0" fitWidth="61.0" layoutX="982.0" layoutY="101.0">
-         <image>
-            <Image url="@world2.png" />
-         </image>
-      </ImageView>
-      <PasswordField fx:id="passwordField" layoutX="75.0" layoutY="230.0" prefHeight="40.0" prefWidth="220.0" promptText="Password" style="-fx-background-radius: 20;">
-         <font>
-            <Font size="14.0" />
-         </font></PasswordField>
-      <ImageView fitHeight="239.0" fitWidth="743.0" layoutX="416.0" layoutY="353.0">
-         <image>
-            <Image url="@image/fotocitta.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="57.0" fitWidth="57.0" layoutX="42.0" layoutY="10.0">
-         <image>
-            <Image url="@image/world.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="56.0" fitWidth="61.0" layoutX="982.0" layoutY="101.0">
-         <image>
-            <Image url="@image/world2.png" />
-         </image>
-      </ImageView>
-      <Button layoutX="75.0" layoutY="450.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #C0F9DD; -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 20;" text="Login with Facebook">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-   </children>
+   </Pane>
+   <Text layoutX="639.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose and discover a city">
+      <font>
+         <Font size="26.0"/>
+      </font>
+   </Text>
+   <Button fx:id="btnLondon" layoutX="428.0" layoutY="629.0" mnemonicParsing="false" onAction="#toCity"
+           prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;"
+           text="London">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </Button>
+   <Button fx:id="btnRome" layoutX="578.0" layoutY="630.0" mnemonicParsing="false" onAction="#toCity" prefHeight="30.0"
+           prefWidth="115.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Rome">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </Button>
+   <Button layoutX="732.0" layoutY="629.0" mnemonicParsing="false" onAction="#toCity" prefHeight="30.0"
+           prefWidth="115.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="New York">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </Button>
+   <Button layoutX="880.0" layoutY="629.0" mnemonicParsing="false" onAction="#toCity" prefHeight="30.0"
+           prefWidth="115.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Paris">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </Button>
+   <Button layoutX="1032.0" layoutY="627.0" mnemonicParsing="false" onAction="#toCity" prefHeight="30.0"
+           prefWidth="115.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Valencia">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </Button>
+   <Text layoutX="476.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0"
+         text="Start a new adventure with us and study a language" textAlignment="CENTER"
+         wrappingWidth="626.5196304321289">
+      <font>
+         <Font size="26.0"/>
+      </font>
+   </Text>
+   <TextField fx:id="usernameField" layoutX="75.0" layoutY="174.0" prefHeight="40.0" prefWidth="220.0"
+              promptText="Username" style="-fx-background-radius: 20;">
+      <font>
+         <Font size="14.0"/>
+      </font>
+   </TextField>
+   <Button fx:id="loginButton" layoutX="75.0" layoutY="294.0" mnemonicParsing="false" onAction="#loginAction"
+           prefHeight="40.0" prefWidth="220.0"
+           style="-fx-background-color: #C0F9DD; -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 20;"
+           text="Login">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </Button>
+   <Button layoutX="75.0" layoutY="629.0" mnemonicParsing="false" onAction="#toCreateAccount" prefHeight="40.0"
+           prefWidth="220.0"
+           style="-fx-background-color: #C0F9DD; -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 20;"
+           text="Create your account">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </Button>
+   <Button layoutX="75.0" layoutY="390.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="40.0"
+           prefWidth="220.0"
+           style="-fx-background-color: #C0F9DD; -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 20;"
+           text="Login with Google">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </Button>
+   <Text layoutX="169.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or">
+      <font>
+         <Font size="26.0"/>
+      </font>
+   </Text>
+   <Text layoutX="151.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log in">
+      <font>
+         <Font size="26.0"/>
+      </font>
+   </Text>
+   <Text layoutX="11.0" layoutY="602.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not a member yet?"
+         textAlignment="CENTER" wrappingWidth="350.25272369384766">
+      <font>
+         <Font size="26.0"/>
+      </font>
+   </Text>
+   <Text layoutX="474.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Want to take a study holiday?"
+         textAlignment="CENTER" wrappingWidth="626.5196304321289">
+      <font>
+         <Font size="26.0"/>
+      </font>
+   </Text>
+   <ImageView fitHeight="56.0" fitWidth="61.0" layoutX="982.0" layoutY="101.0">
+      <image>
+         <Image url="@image/world2.png"/>
+      </image>
+   </ImageView>
+   <PasswordField fx:id="passwordField" layoutX="75.0" layoutY="230.0" prefHeight="40.0" prefWidth="220.0"
+                  promptText="Password" style="-fx-background-radius: 20;">
+      <font>
+         <Font size="14.0"/>
+      </font>
+   </PasswordField>
+   <ImageView fitHeight="239.0" fitWidth="743.0" layoutX="416.0" layoutY="353.0">
+      <Image url="@image/fotocitta.png"/>
+   </ImageView>
+   <ImageView fitHeight="57.0" fitWidth="57.0" layoutX="42.0" layoutY="10.0">
+      <Image url="@image/world.png"/>
+   </ImageView>
+   <ImageView fitHeight="56.0" fitWidth="61.0" layoutX="982.0" layoutY="101.0">
+      <Image url="@image/world2.png"/>
+   </ImageView>
+   <Button layoutX="75.0" layoutY="450.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="40.0"
+           prefWidth="220.0"
+           style="-fx-background-color: #C0F9DD; -fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 20;"
+           text="Login with Facebook">
+      <font>
+         <Font size="20.0"/>
+      </font>
+   </Button>
 </AnchorPane>

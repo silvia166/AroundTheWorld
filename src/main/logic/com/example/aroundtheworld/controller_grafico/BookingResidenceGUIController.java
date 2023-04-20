@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class BookingResidenceGraphicControllerJavaFX implements Initializable {
+public class BookingResidenceGUIController implements Initializable {
 
     Scene scene;
     Stage stage;
@@ -45,7 +45,7 @@ public class BookingResidenceGraphicControllerJavaFX implements Initializable {
     }
 
 
-    public void toQuote(ActionEvent event) throws IOException {
+    public void toQuote() {
         quote1.setVisible(true);
         quote2.setVisible(true);
     }
@@ -57,7 +57,7 @@ public class BookingResidenceGraphicControllerJavaFX implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    public void backButton(ActionEvent event) throws IOException {
+    public void backButton(ActionEvent event) {
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
 

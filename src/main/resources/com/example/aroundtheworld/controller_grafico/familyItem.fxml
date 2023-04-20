@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-radius: 30;" styleClass="shadow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.FamilyItemGraphicControllerJavaFX">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-radius: 30;" styleClass="shadow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.FamilyItemGUIController">
    <children>
       <HBox layoutY="8.0" prefHeight="19.0" prefWidth="200.0">
          <children>
@@ -18,18 +18,17 @@
                </font></Label>
          </children>
       </HBox>
-      <ImageView fx:id="img" fitHeight="64.0" fitWidth="66.0" layoutX="68.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image/big-family.png" />
-         </image>
+      <ImageView fx:id="img" fitHeight="64.0" fitWidth="66.0" layoutX="68.0" layoutY="37.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@image/big-family.png"/>
       </ImageView>
       <HBox layoutY="112.0" prefHeight="19.0" prefWidth="200.0">
-         <children>
-            <Label fx:id="familyCity" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="243.0" text="London" textAlignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-         </children>
+         <Label fx:id="familyCity" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="243.0"
+                text="London" textAlignment="CENTER">
+            <font>
+               <Font size="14.0"/>
+            </font>
+         </Label>
       </HBox>
       <HBox layoutY="142.0" prefHeight="19.0" prefWidth="200.0">
          <children>

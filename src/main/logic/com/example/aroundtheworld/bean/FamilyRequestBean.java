@@ -1,9 +1,7 @@
 package com.example.aroundtheworld.bean;
 
-import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.model.FamilyPreferences;
 
-import java.text.ParseException;
 
 public class FamilyRequestBean {
 

@@ -2,10 +2,7 @@ package com.example.aroundtheworld.bean;
 
 import com.example.aroundtheworld.exception.EmailFormatException;
 import com.example.aroundtheworld.exception.PhoneFormatException;
-
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.regex.Pattern;
 
 public class StudentBean {

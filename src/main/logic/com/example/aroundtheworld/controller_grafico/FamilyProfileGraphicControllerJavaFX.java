@@ -113,10 +113,13 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
                 listAnimal = listAnimal.concat(" ");
                 listAnimal = listAnimal.concat(animalType);
             }
-
         }
 
-        animals.setText(listAnimal);
+        if (familyBean.getAnimals().isEmpty()){
+            animals.setText("No animals");
+        } else {
+            animals.setText(listAnimal);
+        }
 
         Iterator<String> iteratorfood = checkFood(pref.getVegetarian(), pref.getVegan()).iterator();
 

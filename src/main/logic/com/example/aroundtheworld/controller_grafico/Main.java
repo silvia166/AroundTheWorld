@@ -10,6 +10,7 @@ import java.io.IOException;
 public class Main extends Application {
 
     private static Stage stage;
+    private static Stage secondaryStage;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -31,5 +32,13 @@ public class Main extends Application {
 
     public static void setStage(Stage stage) {
         Main.stage = stage;
+    }
+
+    public static Stage getSecondaryStage() {
+        return secondaryStage;
+    }
+
+    public static void setSecondaryStage(Stage secondaryStage) {
+        Main.secondaryStage = secondaryStage;
     }
 }

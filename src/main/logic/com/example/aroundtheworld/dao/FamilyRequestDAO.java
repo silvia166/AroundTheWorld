@@ -1,6 +1,5 @@
 package com.example.aroundtheworld.dao;
 
-import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.exception.ConnectionDbException;
@@ -25,6 +24,5 @@ public class FamilyRequestDAO {
         } catch(SQLException | ConnectionDbException e) {
             e.printStackTrace();
         }
-
     }
 }

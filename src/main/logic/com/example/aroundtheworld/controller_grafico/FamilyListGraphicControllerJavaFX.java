@@ -150,7 +150,7 @@ public class FamilyListGraphicControllerJavaFX {
         address.setText(familyBean.getAddress());
         house.setText(familyBean.getFamilyPreferences().getHouse());
         phone.setText(familyBean.getPhone());
-        compatibilityL.setText(String.valueOf(compatibility));
+        compatibilityL.setText(compatibility +"%");
 
         if (familyBean.getImgSrc() != null){
             Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(familyBean.getImgSrc())));
@@ -175,7 +175,11 @@ public class FamilyListGraphicControllerJavaFX {
 
         }
 
-        animals.setText(listAnimal);
+        if (familyBean.getAnimals().isEmpty()){
+            animals.setText("No animals");
+        } else {
+            animals.setText(listAnimal);
+        }
 
         Iterator<String> iteratorfood = checkFood(pref.getVegetarian(), pref.getVegan()).iterator();
 
@@ -291,10 +295,12 @@ public class FamilyListGraphicControllerJavaFX {
 
     @FXML
     void backStudHomepage(ActionEvent event) throws IOException {
+        ((Node)event.getSource()).getScene().getWindow().hide();
+        Main.getSecondaryStage().hide();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("homepageStudent.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Main.getStage().setScene(scene);
-        ((Node)event.getSource()).getScene().getWindow().hide();
+        Main.getStage().show();
     }
 
     @FXML

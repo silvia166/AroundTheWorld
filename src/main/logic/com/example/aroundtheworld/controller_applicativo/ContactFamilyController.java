@@ -3,11 +3,10 @@ package com.example.aroundtheworld.controller_applicativo;
 import com.example.aroundtheworld.bean.CompatibleFamilyBean;
 import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
-import com.example.aroundtheworld.controller_grafico.ContactFamilyGraphicControllerJavaFX;
 import com.example.aroundtheworld.controller_grafico.FamilyListGraphicControllerJavaFX;
 import com.example.aroundtheworld.dao.FamilyDAO;
 import com.example.aroundtheworld.dao.FamilyRequestDAO;
-import com.example.aroundtheworld.engineering.Session;
+import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Family;
 import com.example.aroundtheworld.model.FamilyMember;
@@ -15,6 +14,7 @@ import com.example.aroundtheworld.model.FamilyPreferences;
 import com.example.aroundtheworld.model.FamilyRequest;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,10 +77,11 @@ public class ContactFamilyController {
         return checked;
     }
 
-    public List<CompatibleFamilyBean> getCompatibleFamilies(FamilyRequestBean familyRequestBean) {
+    public List<CompatibleFamilyBean> getCompatibleFamilies(FamilyRequestBean familyRequestBean) throws MessageException {
         float compatibility;
         List<CompatibleFamilyBean> compatibleFamilies = new ArrayList<>();
         CompatibleFamilyBean compatibleFamilyBean;
+        checkRequestDate(familyRequestBean.getArrival(), familyRequestBean.getDeparture());
         List<Family> familyList = FamilyDAO.retrieveFamilies(familyRequestBean.getCity());
         for (Family family: familyList){
             compatibility = calculateCompatibility(familyRequestBean,family);
@@ -88,6 +89,19 @@ public class ContactFamilyController {
             compatibleFamilies.add(compatibleFamilyBean);
         }
         return compatibleFamilies;
+    }
+
+    private void checkRequestDate(String arrival, String departure) throws MessageException {
+        LocalDate dateA = LocalDate.parse(arrival);
+        LocalDate dateD = LocalDate.parse(departure);
+        LocalDate currentDate = LocalDate.now();
+
+        if(dateA.isBefore(currentDate.plusDays(7))){
+            throw new MessageException("Arrival must be at least \n 7 days from today!");
+        }
+        if(dateD.isBefore(dateA.plusDays(7))){
+            throw new MessageException("Departure must be at least \n 7 days from arrival!");
+        }
     }
 
     public FamilyBean getFamilyProfile(CompatibleFamilyBean compatibleFamilyBean) throws NotFoundException {

@@ -29,24 +29,18 @@ public class FamilyItemGraphicControllerJavaFX {
         private Label familyName;
         @FXML
         private ImageView img;
-
-        @FXML
-        private Button sendRequestBtn;
-        @FXML
-        private Button viewProfileBtn;
-
         private CompatibleFamilyBean family;
-
         private FamilyRequestBean familyRequest;
         @FXML
-        void sendRequest(ActionEvent event) throws IOException {
+        void sendRequest() throws IOException {
+                familyRequest.setCompatibility(family.getCompatibility());
                 familyRequest.setIdFamily(family.getId());
                 ContactFamilyController contactFamilyController = new ContactFamilyController();
                 contactFamilyController.saveRequest(familyRequest);
 
         }
         @FXML
-        void viewProfile(ActionEvent event) throws NotFoundException, IOException {
+        void viewProfile() throws NotFoundException, IOException {
                 ContactFamilyController contactFamilyController = new ContactFamilyController();
                 FamilyBean familyBean = contactFamilyController.getFamilyProfile(family);
 

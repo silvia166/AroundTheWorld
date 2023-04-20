@@ -2,13 +2,14 @@ package com.example.aroundtheworld.controller_grafico;
 
 import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.controller_applicativo.CreateAccountController;
+import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.EmailFormatException;
 import com.example.aroundtheworld.exception.FormEmptyException;
+import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.PhoneFormatException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
@@ -16,11 +17,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.swing.text.DateFormatter;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class CreateAccountGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX {
@@ -47,7 +45,7 @@ public class CreateAccountGraphicControllerJavaFX extends LogoutGraphicControlle
     private TextField surnameField;
 
     @FXML
-    void addStudent(ActionEvent event) throws IOException{
+    void addStudent() throws IOException{
 
         try{
             if(nameField.getText() == null)
@@ -79,6 +77,8 @@ public class CreateAccountGraphicControllerJavaFX extends LogoutGraphicControlle
 
         }catch(EmailFormatException | FormEmptyException | PhoneFormatException| ParseException e ){
             e.printStackTrace();
+        } catch (MessageException e) {
+            ShowExceptionSupport.showException(e.getMessage());
         }
     }
 }

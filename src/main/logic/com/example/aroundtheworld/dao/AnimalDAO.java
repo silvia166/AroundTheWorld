@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static java.lang.Integer.parseInt;
-
 public class AnimalDAO {
 
     private static final String TYPE = "type";
@@ -25,7 +23,7 @@ public class AnimalDAO {
     public static List<Animal> retrieveAnimal(int familyId) throws NotFoundException{
             Statement stmt;
             List<Animal> animals = new ArrayList<>();
-            Animal animal = null;
+            Animal animal;
 
             try{
                 stmt = ConnectionDB.getConnection();
@@ -33,7 +31,7 @@ public class AnimalDAO {
                 ResultSet resultSet = SimpleQueries.retrieveAnimal(stmt, familyId);
 
                 if(!resultSet.first()) {
-                    throw new NotFoundException("No animal found in family with id: " + familyId);
+                    return animals;
                 }
 
                 resultSet.first();

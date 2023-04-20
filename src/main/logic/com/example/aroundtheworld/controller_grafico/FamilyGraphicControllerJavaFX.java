@@ -13,8 +13,11 @@ public class FamilyGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX
 
     public void toFamilyProfile() throws IOException {
         Stage stage = Main.getStage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("profileFamily.fxml")));
-        scene = new Scene(root);
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(Main.class.getResource("profileFamily.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        FamilyProfileGraphicControllerJavaFX familyProfileGraphicControllerJavaFX = fxmlLoader.getController();
+        familyProfileGraphicControllerJavaFX.initializeProfile();
         stage.setScene(scene);
         stage.show();
     }

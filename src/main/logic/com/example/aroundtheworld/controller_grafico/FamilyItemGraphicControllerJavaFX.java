@@ -52,8 +52,8 @@ public class FamilyItemGraphicControllerJavaFX {
 
                 Scene scene = new Scene(fxmlLoader.load());
 
-                FamilyListGraphicControllerJavaFX familyListGraphicControllerJavaFX = fxmlLoader.getController();
-                familyListGraphicControllerJavaFX.setSelectedProfile(familyBean, this.family.getCompatibility());
+                FamilyProfileGraphicControllerJavaFX familyProfileGraphicControllerJavaFX = fxmlLoader.getController();
+                familyProfileGraphicControllerJavaFX.initializeSelectedProfile(familyBean, this.family.getCompatibility());
 
                 stage.setScene(scene);
                 stage.centerOnScreen();

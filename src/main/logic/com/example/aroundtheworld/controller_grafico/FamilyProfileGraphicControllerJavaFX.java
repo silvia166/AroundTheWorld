@@ -6,8 +6,10 @@ import com.example.aroundtheworld.model.Animal;
 import com.example.aroundtheworld.model.FamilyMember;
 import com.example.aroundtheworld.model.FamilyPreferences;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -45,6 +47,9 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
     private Label house;
 
     @FXML
+    private Label compatibilityL;
+
+    @FXML
     private ImageView imgFamily;
 
     @FXML
@@ -63,30 +68,18 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
     private Label phone;
 
     public void toRequestFamily() throws IOException {
-        Stage stage = Main.getStage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("requestFamily.fxml")));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        FamilyGraphicControllerJavaFX familyGraphicControllerJavaFX = new FamilyGraphicControllerJavaFX();
+        familyGraphicControllerJavaFX.toRequestFamily();
     }
 
     public void toHomepageFamily() throws IOException {
-        Stage stage = Main.getStage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageFamily.fxml")));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        FamilyGraphicControllerJavaFX familyGraphicControllerJavaFX = new FamilyGraphicControllerJavaFX();
+        familyGraphicControllerJavaFX.toHomepageFamily();
     }
-
-    public void initialize() {
+    public void initializeProfile() {
 
         FamilyBean familyBean = Session.getCurrentSession().getFamilyBean();
         FamilyPreferences pref = familyBean.getFamilyPreferences();
-
-        String listAnimal = "";
-        int count = 0;
-        String animalQuantity;
-        String animalType;
 
         name.setText(familyBean.getName());
         address.setText(familyBean.getAddress());
@@ -97,8 +90,67 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
             Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(familyBean.getImgSrc())));
             imgFamily.setImage(image);
         }
+        String listAnimal = checkAnimals(familyBean.getAnimals());
+        animals.setText(listAnimal);
+        String listFood = checkFood(pref.getVegetarian(), pref.getVegan());
+        food.setText(listFood);
+        String listHobby = checkHobbies(pref.getTravels(),pref.getBooks(), pref.getFilm(), pref.getVideoGames(), pref.getNature(), pref.getCooking(), pref.getSport());
+        hobbies.setText(listHobby);
+        setTableViewMembers(familyBean.getMembers());
+    }
 
-        for (Animal animal : familyBean.getAnimals()) {
+    public void initializeSelectedProfile(FamilyBean familyBean, float compatibility) {
+
+        FamilyPreferences pref = familyBean.getFamilyPreferences();
+
+        name.setText(familyBean.getName());
+        address.setText(familyBean.getAddress());
+        compatibilityL.setText(compatibility +"%");
+        house.setText(familyBean.getFamilyPreferences().getHouse());
+        phone.setText(familyBean.getPhone());
+
+        String listAnimal = checkAnimals(familyBean.getAnimals());
+        animals.setText(listAnimal);
+        String listFood = checkFood(pref.getVegetarian(), pref.getVegan());
+        food.setText(listFood);
+        String listHobby = checkHobbies(pref.getTravels(),pref.getBooks(), pref.getFilm(), pref.getVideoGames(), pref.getNature(), pref.getCooking(), pref.getSport());
+        hobbies.setText(listHobby);
+        setTableViewMembers(familyBean.getMembers());
+
+        if (familyBean.getImgSrc() != null){
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(familyBean.getImgSrc())));
+            imgFamily.setImage(image);
+        }
+    }
+
+    private void setTableViewMembers(List<FamilyMember> members) {
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        ageColumn.setCellValueFactory(new PropertyValueFactory<>("Age"));
+        parenthoodColumn.setCellValueFactory(new PropertyValueFactory<>("Parenthood"));
+
+        Iterator<FamilyMember> iteratormember = members.iterator();
+
+        ObservableList<FamilyMember> familyMembers = tableViewMembers.getItems();
+
+        while(iteratormember.hasNext()){
+            FamilyMember member = iteratormember.next();
+            familyMembers.add(member);
+        }
+        tableViewMembers.setItems(familyMembers);
+    }
+
+    public void backToFamilyList(ActionEvent event) {
+        ((Node)event.getSource()).getScene().getWindow().hide();
+    }
+
+    private String checkAnimals(List<Animal> animals) {
+
+        String listAnimal = "";
+        String animalQuantity;
+        String animalType;
+        int count = 0;
+
+        for (Animal animal : animals) {
             animalQuantity = String.valueOf(animal.getQuantity());
             animalType = animal.getType();
 
@@ -115,66 +167,13 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
             }
         }
 
-        if (familyBean.getAnimals().isEmpty()){
+        if (animals.isEmpty()) {
             listAnimal = listAnimal.concat("No animals");
         }
-
-        animals.setText(listAnimal);
-
-        Iterator<String> iteratorfood = checkFood(pref.getVegetarian(), pref.getVegan()).iterator();
-
-        count = 0;
-        String listFood = null;
-
-        while(iteratorfood.hasNext()){
-            String foodPref = iteratorfood.next();
-
-            if(count==0){
-                listFood = foodPref;
-                count = 1;
-            }else{
-                listFood = listFood.concat(", ");
-                listFood = listFood.concat(foodPref);
-            }
-        }
-
-        food.setText(listFood);
-
-        Iterator<String> iteratorhobby = checkHobbies(pref.getTravels(),pref.getBooks(), pref.getFilm(), pref.getVideoGames(), pref.getNature(), pref.getCooking(), pref.getSport()).iterator();
-
-        count = 0;
-        String listHobby = null;
-
-        while(iteratorhobby.hasNext()){
-            String hobby = iteratorhobby.next();
-
-            if(count==0){
-                listHobby = hobby;
-                count = 1;
-            }else{
-                listHobby = listHobby.concat(", ");
-                listHobby = listHobby.concat(hobby);
-            }
-        }
-
-        hobbies.setText(listHobby);
-
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        ageColumn.setCellValueFactory(new PropertyValueFactory<>("Age"));
-        parenthoodColumn.setCellValueFactory(new PropertyValueFactory<>("Parenthood"));
-
-        Iterator<FamilyMember> iteratormember = familyBean.getMembers().iterator();
-
-        ObservableList<FamilyMember> familyMembers = tableViewMembers.getItems();
-
-        while(iteratormember.hasNext()){
-            FamilyMember member = iteratormember.next();
-            familyMembers.add(member);
-        }
-        tableViewMembers.setItems(familyMembers);
+        return listAnimal;
     }
 
-    private static List<String> checkHobbies(int travels, int books, int film, int videoGames, int nature, int cooking, int sport) {
+    private static String checkHobbies(int travels, int books, int film, int videoGames, int nature, int cooking, int sport) {
 
         List<String> hobbies = new ArrayList<>();
 
@@ -199,10 +198,27 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
         if (sport == 1){
             hobbies.add("Sport");
         }
-        return hobbies;
+
+        int count = 0;
+        String listHobby = null;
+
+        Iterator<String> iteratorhobby = hobbies.iterator();
+
+        while(iteratorhobby.hasNext()){
+            String hobby = iteratorhobby.next();
+
+            if(count==0){
+                listHobby = hobby;
+                count = 1;
+            }else{
+                listHobby = listHobby.concat(", ");
+                listHobby = listHobby.concat(hobby);
+            }
+        }
+        return listHobby;
     }
 
-    private static List<String> checkFood(int vegetarian, int vegan) {
+    private static String checkFood(int vegetarian, int vegan) {
         List<String> food = new ArrayList<>();
 
         if (vegetarian == 1) {
@@ -214,7 +230,25 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
         else {
             food.add("No Preferences");
         }
-        return food;
+
+        Iterator<String> iteratorfood = food.iterator();
+
+        int count = 0;
+        String listFood = null;
+
+        while(iteratorfood.hasNext()){
+            String foodPref = iteratorfood.next();
+
+            if(count==0){
+                listFood = foodPref;
+                count = 1;
+            }else{
+                listFood = listFood.concat(", ");
+                listFood = listFood.concat(foodPref);
+            }
+        }
+
+        return listFood;
     }
 
 }

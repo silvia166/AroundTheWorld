@@ -130,8 +130,6 @@ public class ContactFamilyGraphicControllerJavaFX {
 
         } catch (FormEmptyException | MessageException  e) {
             ShowExceptionSupport.showException(e.getMessage());
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
         }
     }
 

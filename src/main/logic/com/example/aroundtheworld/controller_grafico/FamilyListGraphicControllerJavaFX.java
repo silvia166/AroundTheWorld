@@ -176,10 +176,10 @@ public class FamilyListGraphicControllerJavaFX {
         }
 
         if (familyBean.getAnimals().isEmpty()){
-            animals.setText("No animals");
-        } else {
-            animals.setText(listAnimal);
+            listAnimal = listAnimal.concat("No animals");
         }
+
+        animals.setText(listAnimal);
 
         Iterator<String> iteratorfood = checkFood(pref.getVegetarian(), pref.getVegan()).iterator();
 

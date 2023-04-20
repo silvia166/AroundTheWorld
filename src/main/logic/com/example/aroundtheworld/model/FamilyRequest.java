@@ -1,10 +1,5 @@
 package com.example.aroundtheworld.model;
 
-import com.example.aroundtheworld.exception.MessageException;
-
-import java.time.LocalDate;
-import java.util.Date;
-
 public class FamilyRequest {
 
     private String city;
@@ -18,7 +13,7 @@ public class FamilyRequest {
     private float compatibility;
     private int rate;
 
-    public FamilyRequest(String city, String arrival, String departure, int siblings, int animals, int idStudent, int idFamily, float compatibility) {
+    public FamilyRequest(String city, String arrival, String departure, int siblings, int animals, int idStudent, int idFamily) {
         this.city = city;
         this.arrival = arrival;
         this.departure = departure;
@@ -26,6 +21,9 @@ public class FamilyRequest {
         this.animals = animals;
         this.idStudent = idStudent;
         this.idFamily = idFamily;
+    }
+
+    public void setCompatibility(float compatibility) {
         this.compatibility = compatibility;
     }
 

@@ -20,7 +20,7 @@ public class AnimalDAO {
     private static final String QT = "quantity";
 
     private AnimalDAO(){}
-    public static List<Animal> retrieveAnimal(int familyId) throws NotFoundException{
+    public static List<Animal> retrieveAnimal(int familyId) {
             Statement stmt;
             List<Animal> animals = new ArrayList<>();
             Animal animal;

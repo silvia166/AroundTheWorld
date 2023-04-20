@@ -10,7 +10,7 @@ public class CreateAccountController {
 
     public void createAccount(StudentBean studentBean) throws MessageException {
         checkBirth(studentBean.getBirth());
-        StudentDAO.addStudent(studentBean.getName(), studentBean.getSurname(), studentBean.getBirth().toString(), studentBean.getNationality(), studentBean.getPhoneNumber(), studentBean.getEmail(), studentBean.getPassword());
+        StudentDAO.addStudent(studentBean.getName(), studentBean.getSurname(), studentBean.getBirth(), studentBean.getNationality(), studentBean.getPhoneNumber(), studentBean.getEmail(), studentBean.getPassword());
     }
 
     private void checkBirth(String birth) throws MessageException {

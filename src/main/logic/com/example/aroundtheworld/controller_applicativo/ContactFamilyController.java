@@ -118,7 +118,8 @@ public class ContactFamilyController {
 
     public void saveRequest(FamilyRequestBean familyRequestBean) throws IOException {
         FamilyRequest familyRequest;
-        familyRequest = new FamilyRequest(familyRequestBean.getCity(), familyRequestBean.getArrival(), familyRequestBean.getDeparture(), familyRequestBean.getSiblings(), familyRequestBean.getAnimals(), familyRequestBean.getIdStudent(), familyRequestBean.getIdFamily(), familyRequestBean.getCompatibility());
+        familyRequest = new FamilyRequest(familyRequestBean.getCity(), familyRequestBean.getArrival(), familyRequestBean.getDeparture(), familyRequestBean.getSiblings(), familyRequestBean.getAnimals(), familyRequestBean.getIdStudent(), familyRequestBean.getIdFamily());
+        familyRequest.setCompatibility(familyRequestBean.getCompatibility());
         familyRequest.setFamilyPreferences(familyRequestBean.getFamilyPreferences());
         FamilyRequestDAO.newRequest(familyRequest);
 

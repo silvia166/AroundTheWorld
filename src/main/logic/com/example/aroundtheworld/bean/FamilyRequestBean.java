@@ -4,10 +4,6 @@ import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.model.FamilyPreferences;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class FamilyRequestBean {
 
@@ -21,7 +17,7 @@ public class FamilyRequestBean {
     private int idFamily;
     private float compatibility;
 
-    public FamilyRequestBean(String city, String arrival, String departure, int siblings, int animals, int idStudent) throws MessageException, ParseException {
+    public FamilyRequestBean(String city, String arrival, String departure, int siblings, int animals, int idStudent){
         this.city = city;
         this.arrival = arrival;
         this.departure = departure;

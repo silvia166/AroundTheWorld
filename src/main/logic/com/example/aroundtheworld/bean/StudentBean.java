@@ -2,7 +2,6 @@ package com.example.aroundtheworld.bean;
 
 import com.example.aroundtheworld.exception.EmailFormatException;
 import com.example.aroundtheworld.exception.PhoneFormatException;
-import java.text.ParseException;
 import java.util.regex.Pattern;
 
 public class StudentBean {
@@ -26,7 +25,7 @@ public class StudentBean {
         this.id = id;
     }
 
-    public StudentBean(String name, String surname, String nationality, String birth, String email, String phoneNumber, String password) throws EmailFormatException, PhoneFormatException, ParseException {
+    public StudentBean(String name, String surname, String nationality, String birth, String email, String phoneNumber, String password) throws EmailFormatException, PhoneFormatException {
         this.name = name;
         this.surname = surname;
         this.nationality = nationality;

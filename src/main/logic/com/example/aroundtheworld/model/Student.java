@@ -1,7 +1,5 @@
 package com.example.aroundtheworld.model;
 
-import java.sql.Date;
-
 public class Student extends GenericUser {
     private String name;
     private String surname;

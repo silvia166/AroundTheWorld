@@ -13,13 +13,13 @@ public class StudentBean {
     private String name;
     private String surname;
     private String nationality;
-    private Date birth;
+    private String birth;
     private String email;
     private String phoneNumber;
     private int id;
     private String password;
 
-    public StudentBean(String name, String surname, String nationality, Date birth, String email, String phoneNumber, int id) {
+    public StudentBean(String name, String surname, String nationality, String birth, String email, String phoneNumber, int id) {
         this.name = name;
         this.surname = surname;
         this.nationality = nationality;
@@ -33,13 +33,11 @@ public class StudentBean {
         this.name = name;
         this.surname = surname;
         this.nationality = nationality;
-        this.setBirth(birth);
+        this.birth = birth;
         this.setEmail(email);
         this.setPhoneNumber(phoneNumber);
         this.password = password;
     }
-
-
 
     public String getName() {
         return name;
@@ -61,13 +59,8 @@ public class StudentBean {
         this.nationality = nationality;
     }
 
-    public Date getBirth() {
+    public String getBirth() {
         return birth;
-    }
-
-    public void setBirth(String birth) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        this.birth = dateFormat.parse(birth);
     }
 
     public String getEmail() {

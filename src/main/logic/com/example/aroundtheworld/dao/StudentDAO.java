@@ -42,7 +42,7 @@ public class StudentDAO {
                 String name = resultSet.getString(NAME);
                 String surname = resultSet.getString(SURNAME);
                 String nationality = resultSet.getString(NATIONALITY);
-                Date birth = resultSet.getDate(BIRTH);
+                String birth = String.valueOf(resultSet.getDate(BIRTH));
 
                 student = new Student(name, surname, nationality, birth, username, phoneNumber, studentId);
 

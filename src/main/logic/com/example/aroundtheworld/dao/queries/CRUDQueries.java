@@ -1,6 +1,7 @@
 package com.example.aroundtheworld.dao.queries;
 
 import com.example.aroundtheworld.model.FamilyPreferences;
+import com.example.aroundtheworld.model.FamilyRequest;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -39,4 +40,8 @@ public class CRUDQueries {
         stmt.executeUpdate(insertStatement);
     }
 
+    public static void insertRequest(Statement stmt, FamilyRequest familyRequest) throws SQLException {
+        String insertStatement = String.format("INSERT INTO familyRequest (arrival, departure, city, house, status, siblings, animals, vegetarian, vegan, travels, books, sport, nature, film, videogames, cooking, idStudent, idFamily, rate, compatibility) VALUES ('%s', '%s', '%s', '%s', %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %f)", familyRequest.getArrival(), familyRequest.getDeparture(), familyRequest.getCity(), familyRequest.getFamilyPreferences().getHouse(), 0, familyRequest.getSiblings(), familyRequest.getAnimals(), familyRequest.getFamilyPreferences().getVegetarian(), familyRequest.getFamilyPreferences().getVegan(), familyRequest.getFamilyPreferences().getTravels(), familyRequest.getFamilyPreferences().getBooks(), familyRequest.getFamilyPreferences().getSport(), familyRequest.getFamilyPreferences().getNature(), familyRequest.getFamilyPreferences().getFilm(), familyRequest.getFamilyPreferences().getVideoGames(), familyRequest.getFamilyPreferences().getCooking(), familyRequest.getIdStudent(), familyRequest.getIdFamily(), null, familyRequest.getCompatibility());
+        stmt.executeUpdate(insertStatement);
+    }
 }

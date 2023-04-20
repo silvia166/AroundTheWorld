@@ -3,13 +3,18 @@ package com.example.aroundtheworld.controller_applicativo;
 import com.example.aroundtheworld.bean.CompatibleFamilyBean;
 import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
+import com.example.aroundtheworld.controller_grafico.ContactFamilyGraphicControllerJavaFX;
+import com.example.aroundtheworld.controller_grafico.FamilyListGraphicControllerJavaFX;
 import com.example.aroundtheworld.dao.FamilyDAO;
+import com.example.aroundtheworld.dao.FamilyRequestDAO;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Family;
 import com.example.aroundtheworld.model.FamilyMember;
 import com.example.aroundtheworld.model.FamilyPreferences;
+import com.example.aroundtheworld.model.FamilyRequest;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,6 +100,15 @@ public class ContactFamilyController {
         familyBean.setImgSrc(family.getImgSrc());
 
         return familyBean;
+    }
 
+    public void saveRequest(FamilyRequestBean familyRequestBean) throws IOException {
+        FamilyRequest familyRequest;
+        familyRequest = new FamilyRequest(familyRequestBean.getCity(), familyRequestBean.getArrival(), familyRequestBean.getDeparture(), familyRequestBean.getSiblings(), familyRequestBean.getAnimals(), familyRequestBean.getIdStudent(), familyRequestBean.getIdFamily(), familyRequestBean.getCompatibility());
+        familyRequest.setFamilyPreferences(familyRequestBean.getFamilyPreferences());
+        FamilyRequestDAO.newRequest(familyRequest);
+
+        FamilyListGraphicControllerJavaFX familyListGraphicControllerJavaFX = new FamilyListGraphicControllerJavaFX();
+        familyListGraphicControllerJavaFX.savedRequest();
     }
 }

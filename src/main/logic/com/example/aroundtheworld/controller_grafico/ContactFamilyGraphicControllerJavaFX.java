@@ -24,9 +24,14 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
@@ -110,8 +115,16 @@ public class ContactFamilyGraphicControllerJavaFX {
                 animals = 1;
             }
 
+            LocalDate currentDate = LocalDate.now();
+            if(arrivalBox.getValue().isBefore(currentDate.plusDays(7))){
+                throw new MessageException("Arrival must be at least \n 7 days from today!");
+            }
+            if(departureBox.getValue().isBefore(arrivalBox.getValue().plusDays(7))){
+                throw new MessageException("Departure must be at least \n 7 days from arrival!");
+            }
+
             FamilyPreferences preferences = getRequestPreferences();
-            FamilyRequestBean familyRequestBean = new FamilyRequestBean(cityBox.getValue().toString(),arrivalBox.getValue(),departureBox.getValue(),siblings,animals,idStudent);
+            FamilyRequestBean familyRequestBean = new FamilyRequestBean(cityBox.getValue().toString(),arrivalBox.getValue().toString(),departureBox.getValue().toString(),siblings,animals,idStudent);
             familyRequestBean.setFamilyPreferences(preferences);
 
             ContactFamilyController contactFamilyController = new ContactFamilyController();
@@ -124,7 +137,7 @@ public class ContactFamilyGraphicControllerJavaFX {
             Scene scene = new Scene(fxmlLoader.load());
 
             FamilyListGraphicControllerJavaFX familyListGraphicControllerJavaFX = fxmlLoader.getController();
-            int count = familyListGraphicControllerJavaFX.setList(families, familyRequestBean.getCity());
+            int count = familyListGraphicControllerJavaFX.setList(families, familyRequestBean);
 
             stage.setScene(scene);
             stage.show();
@@ -135,6 +148,8 @@ public class ContactFamilyGraphicControllerJavaFX {
 
         } catch (FormEmptyException | MessageException  e) {
             ShowExceptionSupport.showException(e.getMessage());
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -191,5 +206,6 @@ public class ContactFamilyGraphicControllerJavaFX {
 
         return familyPreferences;
     }
+
 
 }

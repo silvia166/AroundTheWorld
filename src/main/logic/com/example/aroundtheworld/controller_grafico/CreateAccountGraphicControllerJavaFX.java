@@ -16,8 +16,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.text.DateFormatter;
 import java.io.IOException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
@@ -63,7 +65,8 @@ public class CreateAccountGraphicControllerJavaFX extends LogoutGraphicControlle
             if(birthField.getValue() == null)
                 throw new FormEmptyException("Date of birth");
 
-            StudentBean studentBean = new StudentBean(nameField.getText(), surnameField.getText(), nationalityField.getText(), birthField.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), emailField.getText(), phoneField.getText(), passwordField.getText());
+
+            StudentBean studentBean = new StudentBean(nameField.getText(), surnameField.getText(), nationalityField.getText(), birthField.getValue().toString(), emailField.getText(), phoneField.getText(), passwordField.getText());
 
             CreateAccountController createAccountController = new CreateAccountController();
             createAccountController.createAccount(studentBean);

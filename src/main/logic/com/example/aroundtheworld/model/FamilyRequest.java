@@ -1,15 +1,11 @@
-package com.example.aroundtheworld.bean;
+package com.example.aroundtheworld.model;
 
 import com.example.aroundtheworld.exception.MessageException;
-import com.example.aroundtheworld.model.FamilyPreferences;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-public class FamilyRequestBean {
+public class FamilyRequest {
 
     private String city;
     private String arrival;
@@ -20,27 +16,29 @@ public class FamilyRequestBean {
     private int idStudent;
     private int idFamily;
     private float compatibility;
+    private int rate;
 
-    public FamilyRequestBean(String city, String arrival, String departure, int siblings, int animals, int idStudent) throws MessageException, ParseException {
+    public FamilyRequest(String city, String arrival, String departure, int siblings, int animals, int idStudent, int idFamily, float compatibility) {
         this.city = city;
         this.arrival = arrival;
         this.departure = departure;
         this.siblings = siblings;
         this.animals = animals;
         this.idStudent = idStudent;
+        this.idFamily = idFamily;
+        this.compatibility = compatibility;
     }
 
+    public int getRate() {
+        return rate;
+    }
 
-    public void setCompatibility(float compatibility) {
-        this.compatibility = compatibility;
+    public void setRate(int rate) {
+        this.rate = rate;
     }
 
     public void setFamilyPreferences(FamilyPreferences familyPreferences) {
         this.familyPreferences = familyPreferences;
-    }
-
-    public void setIdFamily(int idFamily) {
-        this.idFamily = idFamily;
     }
 
     public String getCity() {

@@ -2,6 +2,7 @@ package com.example.aroundtheworld.controller_grafico;
 
 import com.example.aroundtheworld.bean.CompatibleFamilyBean;
 import com.example.aroundtheworld.bean.FamilyBean;
+import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.model.Animal;
 import com.example.aroundtheworld.model.FamilyMember;
 import com.example.aroundtheworld.model.FamilyPreferences;
@@ -22,7 +23,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -88,9 +91,9 @@ public class FamilyListGraphicControllerJavaFX {
         stage.show();
     }
 
-    public int setList(List<CompatibleFamilyBean> compatibleFamilyBeans, String city) throws IOException {
+    public int setList(List<CompatibleFamilyBean> compatibleFamilyBeans, FamilyRequestBean familyRequestBean) throws IOException {
         this.families = compatibleFamilyBeans;
-        this.cityString = city;
+        this.cityString = familyRequestBean.getCity();
         int column = 0;
         int row = 1;
         int count = 0;
@@ -107,7 +110,7 @@ public class FamilyListGraphicControllerJavaFX {
                 if(family.getCompatibility()>=50.0){
                     count++;
                 }
-                    familyItemController.setData(family, city);
+                    familyItemController.setData(family, familyRequestBean);
 
                     if (column == 3) {
                         column = 0;
@@ -274,4 +277,28 @@ public class FamilyListGraphicControllerJavaFX {
         return food;
     }
 
+    public void savedRequest() throws IOException {
+        Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initStyle(StageStyle.UNDECORATED);
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(Main.class.getResource("savedRequest.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        dialog.setScene(scene);
+        dialog.centerOnScreen();
+        dialog.show();
+    }
+
+    @FXML
+    void backStudHomepage(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("homepageStudent.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Main.getStage().setScene(scene);
+        ((Node)event.getSource()).getScene().getWindow().hide();
+    }
+
+    @FXML
+    void close(ActionEvent event) {
+        ((Node)event.getSource()).getScene().getWindow().hide();
+    }
 }

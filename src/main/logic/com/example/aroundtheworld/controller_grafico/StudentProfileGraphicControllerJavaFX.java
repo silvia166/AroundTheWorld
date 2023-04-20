@@ -41,11 +41,7 @@ public class StudentProfileGraphicControllerJavaFX extends LogoutGraphicControll
         StudentBean studentBean = Session.getCurrentSession().getStudentBean();
         name.setText(studentBean.getName());
         surname.setText(studentBean.getSurname());
-
-        String pattern = "dd/MM/yyyy";
-        DateFormat df = new SimpleDateFormat(pattern);
-        String date = df.format(studentBean.getBirth());
-        birth.setText(date);
+        birth.setText(studentBean.getBirth());
 
         nationality.setText(studentBean.getNationality());
         phone.setPromptText(studentBean.getPhoneNumber());

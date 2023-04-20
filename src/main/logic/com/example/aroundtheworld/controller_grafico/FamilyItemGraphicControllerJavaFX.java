@@ -2,6 +2,7 @@ package com.example.aroundtheworld.controller_grafico;
 
 import com.example.aroundtheworld.bean.CompatibleFamilyBean;
 import com.example.aroundtheworld.bean.FamilyBean;
+import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.controller_applicativo.ContactFamilyController;
 import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.event.ActionEvent;
@@ -35,8 +36,13 @@ public class FamilyItemGraphicControllerJavaFX {
         private Button viewProfileBtn;
 
         private CompatibleFamilyBean family;
+
+        private FamilyRequestBean familyRequest;
         @FXML
-        void sendRequest(ActionEvent event) {
+        void sendRequest(ActionEvent event) throws IOException {
+                familyRequest.setIdFamily(family.getId());
+                ContactFamilyController contactFamilyController = new ContactFamilyController();
+                contactFamilyController.saveRequest(familyRequest);
 
         }
         @FXML
@@ -60,12 +66,13 @@ public class FamilyItemGraphicControllerJavaFX {
                 stage.show();
         }
 
-        public void setData(CompatibleFamilyBean compatibleFamilyBean, String city) {
+        public void setData(CompatibleFamilyBean compatibleFamilyBean, FamilyRequestBean familyRequestBean) {
 
                 this.family = compatibleFamilyBean;
+                this.familyRequest = familyRequestBean;
 
                 familyName.setText(compatibleFamilyBean.getName()+"  family");
-                familyCity.setText(city);
+                familyCity.setText(familyRequestBean.getCity());
                 compatibility.setText(""+compatibleFamilyBean.getCompatibility()+"%");
                 if(compatibleFamilyBean.getImgSrc() != null){
                         Image image = new Image(getClass().getResourceAsStream(compatibleFamilyBean.getImgSrc()));

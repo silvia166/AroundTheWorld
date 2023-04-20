@@ -6,10 +6,10 @@ public class Student extends GenericUser {
     private String name;
     private String surname;
     private String nationality;
-    private Date dateOfBirth;
+    private String dateOfBirth;
 
 
-    public Student(String name, String surname, String nationality, Date dateOfBirth, String email, String phone, int id) {
+    public Student(String name, String surname, String nationality, String dateOfBirth, String email, String phone, int id) {
 
         super(id, 1, phone, email);
         this.name = name;
@@ -28,7 +28,7 @@ public class Student extends GenericUser {
     public String getNationality() {
         return nationality;
     }
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 

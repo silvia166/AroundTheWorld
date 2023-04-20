@@ -8,9 +8,7 @@ import com.example.aroundtheworld.model.FamilyPreferences;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -18,7 +16,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -79,46 +76,46 @@ public class FamilyProfileGraphicControllerJavaFX extends LogoutGraphicControlle
     public void initializeProfile() {
 
         FamilyBean familyBean = Session.getCurrentSession().getFamilyBean();
-        FamilyPreferences pref = familyBean.getFamilyPreferences();
+        FamilyPreferences pref = familyBean.getFamilyPreferencesBean();
 
-        name.setText(familyBean.getName());
-        address.setText(familyBean.getAddress());
-        house.setText(familyBean.getFamilyPreferences().getHouse());
-        phone.setText(familyBean.getPhone());
+        name.setText(familyBean.getNameBean());
+        address.setText(familyBean.getAddressBean());
+        house.setText(familyBean.getFamilyPreferencesBean().getHouse());
+        phone.setText(familyBean.getPhoneBean());
 
-        if (familyBean.getImgSrc() != null){
-            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(familyBean.getImgSrc())));
+        if (familyBean.getImgSrcBean() != null){
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(familyBean.getImgSrcBean())));
             imgFamily.setImage(image);
         }
-        String listAnimal = checkAnimals(familyBean.getAnimals());
+        String listAnimal = checkAnimals(familyBean.getAnimalsBean());
         animals.setText(listAnimal);
         String listFood = checkFood(pref.getVegetarian(), pref.getVegan());
         food.setText(listFood);
         String listHobby = checkHobbies(pref.getTravels(),pref.getBooks(), pref.getFilm(), pref.getVideoGames(), pref.getNature(), pref.getCooking(), pref.getSport());
         hobbies.setText(listHobby);
-        setTableViewMembers(familyBean.getMembers());
+        setTableViewMembers(familyBean.getMembersBean());
     }
 
     public void initializeSelectedProfile(FamilyBean familyBean, float compatibility) {
 
-        FamilyPreferences pref = familyBean.getFamilyPreferences();
+        FamilyPreferences pref = familyBean.getFamilyPreferencesBean();
 
-        name.setText(familyBean.getName());
-        address.setText(familyBean.getAddress());
+        name.setText(familyBean.getNameBean());
+        address.setText(familyBean.getAddressBean());
         compatibilityL.setText(compatibility +"%");
-        house.setText(familyBean.getFamilyPreferences().getHouse());
-        phone.setText(familyBean.getPhone());
+        house.setText(familyBean.getFamilyPreferencesBean().getHouse());
+        phone.setText(familyBean.getPhoneBean());
 
-        String listAnimal = checkAnimals(familyBean.getAnimals());
+        String listAnimal = checkAnimals(familyBean.getAnimalsBean());
         animals.setText(listAnimal);
         String listFood = checkFood(pref.getVegetarian(), pref.getVegan());
         food.setText(listFood);
         String listHobby = checkHobbies(pref.getTravels(),pref.getBooks(), pref.getFilm(), pref.getVideoGames(), pref.getNature(), pref.getCooking(), pref.getSport());
         hobbies.setText(listHobby);
-        setTableViewMembers(familyBean.getMembers());
+        setTableViewMembers(familyBean.getMembersBean());
 
-        if (familyBean.getImgSrc() != null){
-            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(familyBean.getImgSrc())));
+        if (familyBean.getImgSrcBean() != null){
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(familyBean.getImgSrcBean())));
             imgFamily.setImage(image);
         }
     }

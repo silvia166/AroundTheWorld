@@ -3,17 +3,11 @@ package com.example.aroundtheworld.controller_grafico;
 import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.engineering.Session;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Objects;
+
 
 public class StudentProfileGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX  {
     @FXML
@@ -37,7 +31,6 @@ public class StudentProfileGraphicControllerJavaFX extends LogoutGraphicControll
     Scene scene;
 
     public void initialize() {
-
         StudentBean studentBean = Session.getCurrentSession().getStudentBean();
         name.setText(studentBean.getName());
         surname.setText(studentBean.getSurname());
@@ -46,32 +39,20 @@ public class StudentProfileGraphicControllerJavaFX extends LogoutGraphicControll
         nationality.setText(studentBean.getNationality());
         phone.setPromptText(studentBean.getPhoneNumber());
         email.setPromptText(studentBean.getEmail());
-
     }
 
     public void toHomepageStudent() throws IOException {
-        Stage stage = Main.getStage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageStudent.fxml")));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        StudentGraphicControllerJavaFX studentGraphicControllerJavaFX = new StudentGraphicControllerJavaFX();
+        studentGraphicControllerJavaFX.toHomepageStudent();
     }
 
     public void toRequestStudent() throws IOException {
-        Stage stage = Main.getStage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("requestStudent.fxml")));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        StudentGraphicControllerJavaFX studentGraphicControllerJavaFX = new StudentGraphicControllerJavaFX();
+        studentGraphicControllerJavaFX.toRequestStudent();
     }
 
     public void toTravelStudent() throws IOException {
-        Stage stage = Main.getStage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("travelStudent.fxml")));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        StudentGraphicControllerJavaFX studentGraphicControllerJavaFX = new StudentGraphicControllerJavaFX();
+        studentGraphicControllerJavaFX.toTravelStudent();
     }
-
-
 }

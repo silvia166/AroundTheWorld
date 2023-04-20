@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class FamilyGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX {
-    Scene scene;
 
     public void toFamilyProfile() throws IOException {
         Stage stage = Main.getStage();
@@ -21,11 +20,10 @@ public class FamilyGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX
         stage.setScene(scene);
         stage.show();
     }
-
     public void toRequestFamily() throws IOException {
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("requestFamily.fxml")));
-        scene = new Scene(root);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
@@ -33,7 +31,7 @@ public class FamilyGraphicControllerJavaFX extends LogoutGraphicControllerJavaFX
     public void toHomepageFamily() throws IOException {
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageFamily.fxml")));
-        scene = new Scene(root);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

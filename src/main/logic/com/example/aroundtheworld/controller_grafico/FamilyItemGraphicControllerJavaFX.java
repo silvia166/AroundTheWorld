@@ -5,11 +5,9 @@ import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.controller_applicativo.ContactFamilyController;
 import com.example.aroundtheworld.exception.NotFoundException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -66,7 +64,7 @@ public class FamilyItemGraphicControllerJavaFX {
                 this.familyRequest = familyRequestBean;
 
                 familyName.setText(compatibleFamilyBean.getName()+"  family");
-                familyCity.setText(familyRequestBean.getCity());
+                familyCity.setText(familyRequestBean.getCityBean());
                 compatibility.setText(""+compatibleFamilyBean.getCompatibility()+"%");
                 if(compatibleFamilyBean.getImgSrc() != null){
                         Image image = new Image(getClass().getResourceAsStream(compatibleFamilyBean.getImgSrc()));

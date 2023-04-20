@@ -138,35 +138,13 @@ public class ContactFamilyGraphicControllerJavaFX {
         String room;
         int vegetarian = 0;
         int vegan = 0;
-        int travels = 0;
-        int sport = 0;
-        int books = 0;
-        int nature = 0;
-        int film = 0;
-        int videoGames = 0;
-        int cooking = 0;
-
-        if (travelsC.isSelected()) {
-            travels = 1;
-        }
-        if (sportC.isSelected()) {
-            sport = 1;
-        }
-        if (cookingC.isSelected()) {
-            cooking = 1;
-        }
-        if (videogamesC.isSelected()) {
-            videoGames = 1;
-        }
-        if (filmC.isSelected()) {
-            film = 1;
-        }
-        if (booksC.isSelected()) {
-            books = 1;
-        }
-        if (natureC.isSelected()) {
-            nature = 1;
-        }
+        int travels = checkSelectionCB(travelsC);
+        int sport = checkSelectionCB(sportC);
+        int books = checkSelectionCB(booksC);
+        int nature = checkSelectionCB(natureC);
+        int film = checkSelectionCB(filmC);
+        int videoGames = checkSelectionCB(videogamesC);
+        int cooking = checkSelectionCB(cookingC);
 
         if (vegetarianRB.isSelected()) {
             vegetarian = 1;
@@ -185,6 +163,13 @@ public class ContactFamilyGraphicControllerJavaFX {
         familyPreferences.setHouse(room);
 
         return familyPreferences;
+    }
+
+    private int checkSelectionCB(CheckBox box) {
+        if(box.isSelected()){
+            return 1;
+        }
+        return 0;
     }
 
 

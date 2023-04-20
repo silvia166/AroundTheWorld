@@ -58,39 +58,39 @@ public class FamilyBean {
         this.familyPreferences = familyPreferences;
     }
 
-    public String getName() {
+    public String getNameBean() {
         return name;
     }
 
-    public String getImgSrc() {
+    public String getImgSrcBean() {
         return imgSrc;
     }
 
-    public String getCity() {
+    public String getCityBean() {
         return city;
     }
 
-    public String getAddress() {
+    public String getAddressBean() {
         return address;
     }
 
-    public List<Animal> getAnimals() {
+    public List<Animal> getAnimalsBean() {
         return animals;
     }
 
-    public List<FamilyMember> getMembers() {
+    public List<FamilyMember> getMembersBean() {
         return members;
     }
 
-    public String getPhone() {
+    public String getPhoneBean() {
         return phone;
     }
 
-    public String getEmail() {
+    public String getEmailBean() {
         return email;
     }
 
-    public FamilyPreferences getFamilyPreferences() {
+    public FamilyPreferences getFamilyPreferencesBean() {
         return familyPreferences;
     }
 

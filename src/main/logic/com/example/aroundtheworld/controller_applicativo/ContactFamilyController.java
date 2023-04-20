@@ -23,9 +23,9 @@ public class ContactFamilyController {
     public float calculateCompatibility(FamilyRequestBean familyRequestBean, Family family){
         double compatibility;
         int siblings = 0;
-        int checked = checkPreferences(familyRequestBean.getFamilyPreferences(), family.getPreferences());
+        int checked = checkPreferences(familyRequestBean.getFamilyPreferencesBean(), family.getPreferences());
 
-        if(family.getAnimals().isEmpty() && familyRequestBean.getAnimals() == 0){
+        if(family.getAnimals().isEmpty() && familyRequestBean.getAnimalsBean() == 0){
             checked++;
         }
         for (FamilyMember member : family.getMembers()) {
@@ -33,7 +33,7 @@ public class ContactFamilyController {
                 siblings = 1;
             }
         }
-        if (siblings == familyRequestBean.getSiblings()){
+        if (siblings == familyRequestBean.getSiblingsBean()){
             checked++;
         }
         compatibility = (double) checked/12 *100;
@@ -81,8 +81,8 @@ public class ContactFamilyController {
         float compatibility;
         List<CompatibleFamilyBean> compatibleFamilies = new ArrayList<>();
         CompatibleFamilyBean compatibleFamilyBean;
-        checkRequestDate(familyRequestBean.getArrival(), familyRequestBean.getDeparture());
-        List<Family> familyList = FamilyDAO.retrieveFamilies(familyRequestBean.getCity());
+        checkRequestDate(familyRequestBean.getArrivalBean(), familyRequestBean.getDepartureBean());
+        List<Family> familyList = FamilyDAO.retrieveFamilies(familyRequestBean.getCityBean());
         for (Family family: familyList){
             compatibility = calculateCompatibility(familyRequestBean,family);
             compatibleFamilyBean = new CompatibleFamilyBean(family.getId(),family.getName(), family.getImgSrc(), compatibility);
@@ -118,9 +118,9 @@ public class ContactFamilyController {
 
     public void saveRequest(FamilyRequestBean familyRequestBean) throws IOException {
         FamilyRequest familyRequest;
-        familyRequest = new FamilyRequest(familyRequestBean.getCity(), familyRequestBean.getArrival(), familyRequestBean.getDeparture(), familyRequestBean.getSiblings(), familyRequestBean.getAnimals(), familyRequestBean.getIdStudent(), familyRequestBean.getIdFamily());
-        familyRequest.setCompatibility(familyRequestBean.getCompatibility());
-        familyRequest.setFamilyPreferences(familyRequestBean.getFamilyPreferences());
+        familyRequest = new FamilyRequest(familyRequestBean.getCityBean(), familyRequestBean.getArrivalBean(), familyRequestBean.getDepartureBean(), familyRequestBean.getSiblingsBean(), familyRequestBean.getAnimalsBean(), familyRequestBean.getIdStudentBean(), familyRequestBean.getIdFamilyBean());
+        familyRequest.setCompatibility(familyRequestBean.getCompatibilityBean());
+        familyRequest.setFamilyPreferences(familyRequestBean.getFamilyPreferencesBean());
         FamilyRequestDAO.newRequest(familyRequest);
 
         FamilyListGraphicControllerJavaFX familyListGraphicControllerJavaFX = new FamilyListGraphicControllerJavaFX();

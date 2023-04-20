@@ -9,12 +9,10 @@ import com.example.aroundtheworld.dao.FamilyPreferencesDAO;
 public class AddFamilyController {
 
     public void createFamily(FamilyBean familyBean) {
-
-        FamilyDAO.addFamily(familyBean.getName(), familyBean.getPhone(), familyBean.getCity(), familyBean.getAddress(), familyBean.getImgSrc(), familyBean.getEmail());
-        int id = FamilyDAO.retrieveFamilyID(familyBean.getName());
-        AnimalDAO.addAnimal(familyBean.getAnimals(), id);
-        FamilyMemberDAO.addMember(familyBean.getMembers(), id);
-        FamilyPreferencesDAO.addPreferences(familyBean.getFamilyPreferences(), id);
-
+        FamilyDAO.addFamily(familyBean.getNameBean(), familyBean.getPhoneBean(), familyBean.getCityBean(), familyBean.getAddressBean(), familyBean.getImgSrcBean(), familyBean.getEmailBean());
+        int id = FamilyDAO.retrieveFamilyID(familyBean.getNameBean());
+        AnimalDAO.addAnimal(familyBean.getAnimalsBean(), id);
+        FamilyMemberDAO.addMember(familyBean.getMembersBean(), id);
+        FamilyPreferencesDAO.addPreferences(familyBean.getFamilyPreferencesBean(), id);
     }
 }

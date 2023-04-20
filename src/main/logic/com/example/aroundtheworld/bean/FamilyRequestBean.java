@@ -37,39 +37,39 @@ public class FamilyRequestBean {
         this.idFamily = idFamily;
     }
 
-    public String getCity() {
+    public String getCityBean() {
         return city;
     }
 
-    public String getArrival() {
+    public String getArrivalBean() {
         return arrival;
     }
 
-    public String getDeparture() {
+    public String getDepartureBean() {
         return departure;
     }
 
-    public int getSiblings() {
+    public int getSiblingsBean() {
         return siblings;
     }
 
-    public int getAnimals() {
+    public int getAnimalsBean() {
         return animals;
     }
 
-    public FamilyPreferences getFamilyPreferences() {
+    public FamilyPreferences getFamilyPreferencesBean() {
         return familyPreferences;
     }
 
-    public int getIdStudent() {
+    public int getIdStudentBean() {
         return idStudent;
     }
 
-    public int getIdFamily() {
+    public int getIdFamilyBean() {
         return idFamily;
     }
 
-    public float getCompatibility() {
+    public float getCompatibilityBean() {
         return compatibility;
     }
 }

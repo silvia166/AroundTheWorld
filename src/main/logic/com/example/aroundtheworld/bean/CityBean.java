@@ -20,11 +20,11 @@ public class CityBean {
         this.name = name;
     }
 
-    public String getName() {
+    public String getNameBean() {
         return name;
     }
 
-    public String getCityImgSrc() {
+    public String getCityImgSrcBean() {
         return cityImgSrc;
     }
 
@@ -32,7 +32,7 @@ public class CityBean {
         this.cityImgSrc = cityImgSrc;
     }
 
-    public String getLanguage() {
+    public String getLanguageBean() {
         return language;
     }
 
@@ -40,7 +40,7 @@ public class CityBean {
         this.language = language;
     }
 
-    public String getAct1() {
+    public String getAct1Bean() {
         return act1;
     }
 
@@ -48,7 +48,7 @@ public class CityBean {
         this.act1 = act1;
     }
 
-    public String getAct1ImgSrc() {
+    public String getAct1ImgSrcBean() {
         return act1ImgSrc;
     }
 
@@ -56,7 +56,7 @@ public class CityBean {
         this.act1ImgSrc = act1ImgSrc;
     }
 
-    public String getAct2() {
+    public String getAct2Bean() {
         return act2;
     }
 
@@ -64,7 +64,7 @@ public class CityBean {
         this.act2 = act2;
     }
 
-    public String getAct2ImgSrc() {
+    public String getAct2ImgSrcBean() {
         return act2ImgSrc;
     }
 
@@ -72,7 +72,7 @@ public class CityBean {
         this.act2ImgSrc = act2ImgSrc;
     }
 
-    public String getAct3() {
+    public String getAct3Bean() {
         return act3;
     }
 
@@ -80,7 +80,7 @@ public class CityBean {
         this.act3 = act3;
     }
 
-    public String getAct3ImgSrc() {
+    public String getAct3ImgSrcBean() {
         return act3ImgSrc;
     }
 
@@ -88,7 +88,7 @@ public class CityBean {
         this.act3ImgSrc = act3ImgSrc;
     }
 
-    public Residence getResidence() {
+    public Residence getResidenceBean() {
         return residence;
     }
 
@@ -96,7 +96,7 @@ public class CityBean {
         this.residence = residence;
     }
 
-    public School getSchool() {
+    public School getSchoolBean() {
         return school;
     }
 

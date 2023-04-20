@@ -25,8 +25,6 @@ public class Family extends GenericUser {
         this.address = address;
     }
 
-
-
     public FamilyPreferences getPreferences() {
         return preferences;
     }

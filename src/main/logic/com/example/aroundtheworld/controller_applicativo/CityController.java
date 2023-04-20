@@ -8,7 +8,7 @@ import com.example.aroundtheworld.model.City;
 public class CityController {
 
     public void setCity(CityBean cityBean) throws NotFoundException {
-        City city = CityDAO.retrieveCity(cityBean.getName());
+        City city = CityDAO.retrieveCity(cityBean.getNameBean());
         cityBean.setLanguage(city.getLanguage());
         cityBean.setCityImgSrc(city.getCityImgSrc());
         cityBean.setAct1(city.getAct1());

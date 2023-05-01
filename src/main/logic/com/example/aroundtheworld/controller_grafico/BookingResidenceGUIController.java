@@ -23,32 +23,18 @@ public class BookingResidenceGUIController implements Initializable {
 
     Scene scene;
     Stage stage;
-    String stage2;
 
     @FXML
     ChoiceBox cityBox = new ChoiceBox();
-
-    @FXML
-    Rectangle quote1 = new Rectangle();
-
-    @FXML
-    Label quote2 = new Label();
 
     @FXML
     ObservableList cityList = FXCollections.observableArrayList("London","Rome","Paris","New York","Valencia");
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle){
-        quote1.setVisible(false);
-        quote2.setVisible(false);
         cityBox.setItems(cityList);
     }
 
-
-    public void toQuote() {
-        quote1.setVisible(true);
-        quote2.setVisible(true);
-    }
 
     public void toModifyPreferences(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("residenceForm.fxml")));

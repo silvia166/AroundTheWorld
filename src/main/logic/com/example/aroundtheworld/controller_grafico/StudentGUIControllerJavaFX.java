@@ -37,6 +37,19 @@ public class StudentGUIControllerJavaFX extends LogoutGUIControllerJavaFX {
         dialog.show();
     }
 
+    public void toQuote() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("quoteForm.fxml"));
+        Parent root1 = fxmlLoader.load();
+        dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initStyle(StageStyle.UNDECORATED);
+        dialog.setScene(new Scene(root1));
+        dialog.centerOnScreen();
+        dialog.show();
+    }
+
+
+
     public void toBookingFamily() throws IOException {
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("bookFamily.fxml")));

@@ -18,7 +18,6 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class FamilyItemGUIController {
-
         @FXML
         private Label compatibility;
         @FXML
@@ -35,7 +34,6 @@ public class FamilyItemGUIController {
                 familyRequest.setIdFamily(family.getId());
                 ContactFamilyController contactFamilyController = new ContactFamilyController();
                 contactFamilyController.saveRequest(familyRequest);
-
         }
         @FXML
         void viewProfile() throws NotFoundException, IOException {

@@ -74,7 +74,7 @@ public class StudentBean {
         this.phoneNumber = phoneNumber;
     }
 
-    public static boolean isNumeric(String strNum) {
+    private static boolean isNumeric(String strNum) {
         if (strNum == null) {
             return false;
         }

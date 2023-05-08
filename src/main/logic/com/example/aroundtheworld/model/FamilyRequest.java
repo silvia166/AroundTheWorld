@@ -2,6 +2,7 @@ package com.example.aroundtheworld.model;
 
 public class FamilyRequest {
 
+    private int id;
     private String city;
     private String arrival;
     private String departure;
@@ -12,6 +13,7 @@ public class FamilyRequest {
     private int idFamily;
     private float compatibility;
     private int rate;
+    private int status;
 
     public FamilyRequest(String city, String arrival, String departure, int siblings, int animals, int idStudent, int idFamily) {
         this.city = city;
@@ -73,5 +75,20 @@ public class FamilyRequest {
 
     public float getCompatibility() {
         return compatibility;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

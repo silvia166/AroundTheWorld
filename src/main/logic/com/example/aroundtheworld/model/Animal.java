@@ -1,7 +1,6 @@
 package com.example.aroundtheworld.model;
 
 public class Animal {
-
     private String type;
     private int quantity;
 

@@ -71,4 +71,35 @@ public class StudentDAO {
         }
 
     }
+
+    public static String getNameById(int idStudent) {
+        Statement stmt;
+        String studentName = null;
+
+        try{
+            stmt = ConnectionDB.getConnection();
+
+            ResultSet resultSet = SimpleQueries.retrieveStudentNameById(stmt, idStudent);
+
+            if(!resultSet.first()){
+                throw new NotFoundException("No student found with id: " + idStudent);
+            }
+
+            resultSet.first();
+            do {
+                String name = resultSet.getString(NAME);
+                String surname = resultSet.getString(SURNAME);
+                studentName = name;
+                studentName.concat(" ");
+                studentName.concat(surname);
+
+            } while(resultSet.next());
+
+            resultSet.close();
+
+        } catch(SQLException | ConnectionDbException | NotFoundException e) {
+            e.printStackTrace();
+        }
+        return studentName;
+    }
 }

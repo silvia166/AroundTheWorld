@@ -10,5 +10,7 @@ module com.example.aroundtheworld {
     opens com.example.aroundtheworld.model to javafx.fxml;
     exports com.example.aroundtheworld.exception;
     opens com.example.aroundtheworld.exception to javafx.fxml;
+    exports com.example.aroundtheworld.bean;
+    opens com.example.aroundtheworld.bean to javafx.fxml;
 
 }

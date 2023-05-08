@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.FamilyGUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.FamilyRequestGUIController">
    <children>
       <Pane layoutX="25.0" layoutY="56.0" prefHeight="74.0" prefWidth="1200.0" style="-fx-background-color: #C0F9DD;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -76,16 +76,16 @@
             <Image url="@image/user.png" />
          </image>
       </ImageView>
-      <VBox alignment="CENTER_LEFT" layoutX="385.0" layoutY="100.0" prefHeight="642.0" prefWidth="800.0" spacing="40.0">
+      <VBox alignment="CENTER_LEFT" layoutX="385.0" layoutY="87.0" prefHeight="642.0" prefWidth="800.0" spacing="40.0">
          <children>
             <Label text="Pending Requests">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" prefHeight="170.0" styleClass="transparent" vbarPolicy="NEVER" VBox.vgrow="NEVER">
+            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" prefHeight="200.0" prefWidth="760.0" styleClass="transparent" vbarPolicy="NEVER" VBox.vgrow="NEVER">
                <content>
-                  <HBox fx:id="sentReqList" />
+                  <HBox fx:id="sentReqList" alignment="CENTER" fillHeight="false" spacing="15.0" />
                </content>
                <VBox.margin>
                   <Insets left="20.0" />
@@ -99,9 +99,9 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="480.0" minHeight="-Infinity" prefHeight="170.0" prefWidth="760.0" styleClass="transparent" vbarPolicy="NEVER" VBox.vgrow="NEVER">
+            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="480.0" minHeight="-Infinity" prefHeight="200.0" prefWidth="897.0" styleClass="transparent" vbarPolicy="NEVER" VBox.vgrow="NEVER">
                <content>
-                  <HBox fx:id="confirmedReqList" />
+                  <HBox fx:id="confirmedReqList" alignment="CENTER" fillHeight="false" spacing="15.0" />
                </content>
                <VBox.margin>
                   <Insets left="20.0" />

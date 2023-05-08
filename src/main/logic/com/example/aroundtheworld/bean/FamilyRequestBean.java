@@ -1,8 +1,4 @@
 package com.example.aroundtheworld.bean;
-
-import com.example.aroundtheworld.model.FamilyPreferences;
-
-
 public class FamilyRequestBean {
 
     private String city;
@@ -10,10 +6,25 @@ public class FamilyRequestBean {
     private String departure;
     private int siblings;
     private int animals;
-    private FamilyPreferences familyPreferences;
     private int idStudent;
+
+    private String studentName;
     private int idFamily;
     private float compatibility;
+
+    private int status;
+
+    //preferences
+    private int vegetarian;
+    private int vegan;
+    private int travels;
+    private int sport;
+    private int books;
+    private int nature;
+    private int film;
+    private int videoGames;
+    private int cooking;
+    private String house;
 
     public FamilyRequestBean(String city, String arrival, String departure, int siblings, int animals, int idStudent){
         this.city = city;
@@ -24,13 +35,15 @@ public class FamilyRequestBean {
         this.idStudent = idStudent;
     }
 
+    public String getStudentName() {
+        return studentName;
+    }
+    public void setStudentName(String name) {
+        this.studentName = name;
+    }
 
     public void setCompatibility(float compatibility) {
         this.compatibility = compatibility;
-    }
-
-    public void setFamilyPreferences(FamilyPreferences familyPreferences) {
-        this.familyPreferences = familyPreferences;
     }
 
     public void setIdFamily(int idFamily) {
@@ -57,10 +70,6 @@ public class FamilyRequestBean {
         return animals;
     }
 
-    public FamilyPreferences getFamilyPreferencesBean() {
-        return familyPreferences;
-    }
-
     public int getIdStudentBean() {
         return idStudent;
     }
@@ -71,5 +80,72 @@ public class FamilyRequestBean {
 
     public float getCompatibilityBean() {
         return compatibility;
+    }
+
+    public void setFood(int vegetarian, int vegan) {
+        this.vegetarian = vegetarian;
+        this.vegan = vegan;
+    }
+
+    public void setHobbies(int travels, int sport, int books, int nature, int film, int videoGames, int cooking) {
+        this.travels = travels;
+        this.sport = sport;
+        this.books = books;
+        this.nature = nature;
+        this.film = film;
+        this.videoGames = videoGames;
+        this.cooking = cooking;
+    }
+
+    public String getHouse() {
+        return house;
+    }
+
+    public void setHouse(String house) {
+        this.house = house;
+    }
+
+    public int getVegetarian() {
+        return vegetarian;
+    }
+
+    public int getVegan() {
+        return vegan;
+    }
+
+    public int getTravels() {
+        return travels;
+    }
+
+    public int getSport() {
+        return sport;
+    }
+
+    public int getBooks() {
+        return books;
+    }
+
+    public int getNature() {
+        return nature;
+    }
+
+    public int getFilm() {
+        return film;
+    }
+
+    public int getVideoGames() {
+        return videoGames;
+    }
+
+    public int getCooking() {
+        return cooking;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

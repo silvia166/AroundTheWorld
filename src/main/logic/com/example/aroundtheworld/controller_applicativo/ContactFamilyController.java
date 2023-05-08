@@ -1,17 +1,13 @@
 package com.example.aroundtheworld.controller_applicativo;
 
-import com.example.aroundtheworld.bean.CompatibleFamilyBean;
-import com.example.aroundtheworld.bean.FamilyBean;
-import com.example.aroundtheworld.bean.FamilyRequestBean;
+import com.example.aroundtheworld.bean.*;
 import com.example.aroundtheworld.controller_grafico.FamilyListGUIController;
 import com.example.aroundtheworld.dao.FamilyDAO;
 import com.example.aroundtheworld.dao.FamilyRequestDAO;
+import com.example.aroundtheworld.dao.StudentDAO;
 import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.NotFoundException;
-import com.example.aroundtheworld.model.Family;
-import com.example.aroundtheworld.model.FamilyMember;
-import com.example.aroundtheworld.model.FamilyPreferences;
-import com.example.aroundtheworld.model.FamilyRequest;
+import com.example.aroundtheworld.model.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -23,7 +19,13 @@ public class ContactFamilyController {
     public float calculateCompatibility(FamilyRequestBean familyRequestBean, Family family){
         double compatibility;
         int siblings = 0;
-        int checked = checkPreferences(familyRequestBean.getFamilyPreferencesBean(), family.getPreferences());
+
+        FamilyPreferences preferences = new FamilyPreferences();
+        preferences.setHouse(familyRequestBean.getHouse());
+        preferences.setFood(familyRequestBean.getVegetarian(), familyRequestBean.getVegan());
+        preferences.setHobbies(familyRequestBean.getTravels(), familyRequestBean.getSport(), familyRequestBean.getBooks(), familyRequestBean.getNature(), familyRequestBean.getFilm(), familyRequestBean.getVideoGames(), familyRequestBean.getCooking());
+
+        int checked = checkPreferences(preferences, family.getPreferences());
 
         if(family.getAnimals().isEmpty() && familyRequestBean.getAnimalsBean() == 0){
             checked++;
@@ -108,9 +110,20 @@ public class ContactFamilyController {
         Family family = FamilyDAO.retrieveFamily(compatibleFamilyBean.getEmail());
 
         FamilyBean familyBean = new FamilyBean(family.getName(), family.getCity(), family.getAddress(), family.getId(), family.getPhoneNumber(), family.getEmail());
-        familyBean.setFamilyPreferences(family.getPreferences());
-        familyBean.setAnimals(family.getAnimals());
-        familyBean.setMembers(family.getMembers());
+        familyBean.setHouse(family.getPreferences().getHouse());
+        familyBean.setFood(family.getPreferences().getVegetarian(), family.getPreferences().getVegan());
+        familyBean.setHobbies(family.getPreferences().getTravels(), family.getPreferences().getSport(), family.getPreferences().getBooks(), family.getPreferences().getNature(), family.getPreferences().getFilm(), family.getPreferences().getVideoGames(), family.getPreferences().getCooking());
+
+        for(Animal animal: family.getAnimals()){
+            AnimalBean animalBean = new AnimalBean(animal.getType(), animal.getQuantity());
+            familyBean.addAnimal(animalBean);
+        }
+
+        for(FamilyMember member: family.getMembers()){
+            FamilyMemberBean memberBean = new FamilyMemberBean(member.getName(), member.getAge(), member.getParenthood());
+            familyBean.addMember(memberBean);
+        }
+
         familyBean.setImgSrc(family.getImgSrc());
 
         return familyBean;
@@ -120,10 +133,36 @@ public class ContactFamilyController {
         FamilyRequest familyRequest;
         familyRequest = new FamilyRequest(familyRequestBean.getCityBean(), familyRequestBean.getArrivalBean(), familyRequestBean.getDepartureBean(), familyRequestBean.getSiblingsBean(), familyRequestBean.getAnimalsBean(), familyRequestBean.getIdStudentBean(), familyRequestBean.getIdFamilyBean());
         familyRequest.setCompatibility(familyRequestBean.getCompatibilityBean());
-        familyRequest.setFamilyPreferences(familyRequestBean.getFamilyPreferencesBean());
+
+        FamilyPreferences preferences = new FamilyPreferences();
+        preferences.setHouse(familyRequestBean.getHouse());
+        preferences.setFood(familyRequestBean.getVegetarian(), familyRequestBean.getVegan());
+        preferences.setHobbies(familyRequestBean.getTravels(), familyRequestBean.getSport(), familyRequestBean.getBooks(), familyRequestBean.getNature(), familyRequestBean.getFilm(), familyRequestBean.getVideoGames(), familyRequestBean.getCooking());
+        familyRequest.setFamilyPreferences(preferences);
+
         FamilyRequestDAO.newRequest(familyRequest);
 
         FamilyListGUIController familyListGUIController = new FamilyListGUIController();
         familyListGUIController.savedRequest();
+    }
+
+    public List<FamilyRequestBean> getFamilyRequests(FamilyBean familyBean) throws NotFoundException {
+        List<FamilyRequestBean> familyRequestsBeans = new ArrayList<>();
+        List<FamilyRequest> requests = FamilyRequestDAO.getRequests(familyBean.getId());
+        String studentName;
+
+        for(FamilyRequest request: requests){
+            studentName = StudentDAO.getNameById(request.getIdStudent());
+            FamilyRequestBean familyRequestBean = new FamilyRequestBean(request.getCity(), request.getArrival(), request.getDeparture(), request.getSiblings(), request.getAnimals(), request.getIdStudent());
+            familyRequestBean.setFood(request.getFamilyPreferences().getVegetarian(), request.getFamilyPreferences().getVegan());
+            familyRequestBean.setHouse(request.getFamilyPreferences().getHouse());
+            familyRequestBean.setHobbies(request.getFamilyPreferences().getTravels(), request.getFamilyPreferences().getSport(), request.getFamilyPreferences().getBooks(), request.getFamilyPreferences().getNature(), request.getFamilyPreferences().getFilm(), request.getFamilyPreferences().getVideoGames(), request.getFamilyPreferences().getCooking());
+            familyRequestBean.setCompatibility(request.getCompatibility());
+            familyRequestBean.setIdFamily(familyBean.getId());
+            familyRequestBean.setStatus(request.getStatus());
+            familyRequestBean.setStudentName(studentName);
+            familyRequestsBeans.add(familyRequestBean);
+        }
+        return familyRequestsBeans;
     }
 }

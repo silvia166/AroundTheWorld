@@ -1,12 +1,12 @@
 package com.example.aroundtheworld.controller_grafico;
 
+import com.example.aroundtheworld.bean.AnimalBean;
 import com.example.aroundtheworld.bean.FamilyBean;
+import com.example.aroundtheworld.bean.FamilyMemberBean;
 import com.example.aroundtheworld.controller_applicativo.AddFamilyController;
 import com.example.aroundtheworld.engineering.ImageConverterSupport;
 import com.example.aroundtheworld.exception.FormEmptyException;
 import com.example.aroundtheworld.exception.PhoneFormatException;
-import com.example.aroundtheworld.model.Animal;
-import com.example.aroundtheworld.model.FamilyMember;
 import com.example.aroundtheworld.model.FamilyPreferences;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -98,16 +98,16 @@ public class AddFamilyGUIController {
     private CheckBox videogamesBox;
 
     @FXML
-    private TableView<FamilyMember> tableViewMembers;
+    private TableView<FamilyMemberBean> tableViewMembers;
 
     @FXML
-    private TableColumn<FamilyMember, String> nameColumn;
+    private TableColumn<FamilyMemberBean, String> nameColumn;
 
     @FXML
-    private TableColumn<FamilyMember, Integer> ageColumn;
+    private TableColumn<FamilyMemberBean, Integer> ageColumn;
 
     @FXML
-    private TableColumn<FamilyMember, String> parenthoodColumn;
+    private TableColumn<FamilyMemberBean, String> parenthoodColumn;
 
     @FXML
     private TextField nameInput;
@@ -148,8 +148,8 @@ public class AddFamilyGUIController {
 
     @FXML
     public void addMember() {
-        FamilyMember familyMember = new FamilyMember(nameInput.getText(), parseInt(ageInput.getText()), (String) parenthoodInput.getValue());
-        ObservableList<FamilyMember> familyMembers = tableViewMembers.getItems();
+        FamilyMemberBean familyMember = new FamilyMemberBean(nameInput.getText(), parseInt(ageInput.getText()), (String) parenthoodInput.getValue());
+        ObservableList<FamilyMemberBean> familyMembers = tableViewMembers.getItems();
         familyMembers.add(familyMember);
         tableViewMembers.setItems(familyMembers);
         nameInput.setText("");
@@ -170,9 +170,8 @@ public class AddFamilyGUIController {
     @FXML
     void addFamily(ActionEvent event) {
 
-        List<Animal> animals;
-        FamilyPreferences preferences;
-        List<FamilyMember> membersList;
+        List<AnimalBean> animals;
+        List<FamilyMemberBean> membersList;
 
         try{
             if(nameField.getText() == null)
@@ -190,7 +189,6 @@ public class AddFamilyGUIController {
 
 
             animals = getAnimalList();
-            preferences = getPreferences();
             membersList = getMembers();
             if(membersList == null){
                 throw new FormEmptyException("Members");
@@ -202,7 +200,7 @@ public class AddFamilyGUIController {
             FamilyBean familyBean = new FamilyBean(nameField.getText(), (String) cityBox.getValue(), addressField.getText(), phoneField.getText(), email);
             familyBean.setAnimals(animals);
             familyBean.setMembers(membersList);
-            familyBean.setFamilyPreferences(preferences);
+            getPreferences(familyBean);
 
             if(file != null) {
                 String nameImg = "familyImg/";
@@ -222,7 +220,7 @@ public class AddFamilyGUIController {
         }
     }
 
-    private FamilyPreferences getPreferences() {
+    private void getPreferences(FamilyBean familyBean) {
 
         String room;
         int vegetarian = 0;
@@ -269,54 +267,51 @@ public class AddFamilyGUIController {
         else
             room = "Shared";
 
-        FamilyPreferences familyPreferences = new FamilyPreferences();
-        familyPreferences.setFood(vegetarian, vegan);
-        familyPreferences.setHobbies(travels, sport, books, nature, film, videoGames, cooking);
-        familyPreferences.setHouse(room);
+        familyBean.setFood(vegetarian, vegan);
+        familyBean.setHobbies(travels, sport, books, nature, film, videoGames, cooking);
+        familyBean.setHouse(room);
 
-        return familyPreferences;
     }
 
-    public List<FamilyMember> getMembers() {
-        List<FamilyMember> members = new ArrayList<>();
-        FamilyMember member;
+    public List<FamilyMemberBean> getMembers() {
+        List<FamilyMemberBean> members = new ArrayList<>();
+        FamilyMemberBean member;
 
-        ObservableList<FamilyMember> familyMembers = tableViewMembers.getItems();
+        ObservableList<FamilyMemberBean> familyMembers = tableViewMembers.getItems();
 
-        for (FamilyMember familyMember : familyMembers) {
+        for (FamilyMemberBean familyMember : familyMembers) {
             member = familyMember;
             members.add(member);
         }
-
         return members;
     }
 
-    public List<Animal> getAnimalList() {
-        List<Animal> animals = new ArrayList<>();
-        Animal animal;
+    public List<AnimalBean> getAnimalList() {
+        List<AnimalBean> animals = new ArrayList<>();
+        AnimalBean animal;
 
         if(dogBox.getValue() != null){
-            animal = new Animal("Dog", checkNumberAnimal(dogBox.getValue().toString()));
+            animal = new AnimalBean("Dog", checkNumberAnimal(dogBox.getValue().toString()));
             animals.add(animal);
         }
         if(catBox.getValue() != null){
-            animal = new Animal("Cat", checkNumberAnimal(catBox.getValue().toString()));
+            animal = new AnimalBean("Cat", checkNumberAnimal(catBox.getValue().toString()));
             animals.add(animal);
         }
         if(birdsBox.getValue() != null){
-            animal = new Animal("Bird", checkNumberAnimal(birdsBox.getValue().toString()));
+            animal = new AnimalBean("Bird", checkNumberAnimal(birdsBox.getValue().toString()));
             animals.add(animal);
         }
         if(rodensBox.getValue() != null){
-            animal = new Animal("Roden", checkNumberAnimal(rodensBox.getValue().toString()));
+            animal = new AnimalBean("Roden", checkNumberAnimal(rodensBox.getValue().toString()));
             animals.add(animal);
         }
         if(reptilesBox.getValue() != null){
-            animal = new Animal("Reptile", checkNumberAnimal(reptilesBox.getValue().toString()));
+            animal = new AnimalBean("Reptile", checkNumberAnimal(reptilesBox.getValue().toString()));
             animals.add(animal);
         }
         if(otherBox.getValue() != null){
-            animal = new Animal("Other", checkNumberAnimal(otherBox.getValue().toString()));
+            animal = new AnimalBean("Other", checkNumberAnimal(otherBox.getValue().toString()));
             animals.add(animal);
         }
 

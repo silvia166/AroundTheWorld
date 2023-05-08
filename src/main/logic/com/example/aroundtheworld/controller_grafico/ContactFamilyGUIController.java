@@ -105,7 +105,9 @@ public class ContactFamilyGUIController {
 
             FamilyPreferences preferences = getRequestPreferences();
             FamilyRequestBean familyRequestBean = new FamilyRequestBean(cityBox.getValue().toString(),arrivalBox.getValue().toString(),departureBox.getValue().toString(),siblings,animals,idStudent);
-            familyRequestBean.setFamilyPreferences(preferences);
+            familyRequestBean.setHouse(preferences.getHouse());
+            familyRequestBean.setFood(preferences.getVegetarian(), preferences.getVegan());
+            familyRequestBean.setHobbies(preferences.getTravels(), preferences.getSport(), preferences.getBooks(), preferences.getNature(), preferences.getFilm(), preferences.getVideoGames(), preferences.getCooking());
 
             ContactFamilyController contactFamilyController = new ContactFamilyController();
             List<CompatibleFamilyBean> families = contactFamilyController.getCompatibleFamilies(familyRequestBean);

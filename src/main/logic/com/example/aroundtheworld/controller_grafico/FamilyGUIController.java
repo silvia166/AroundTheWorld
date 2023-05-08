@@ -1,5 +1,6 @@
 package com.example.aroundtheworld.controller_grafico;
 
+import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,10 +21,11 @@ public class FamilyGUIController extends LogoutGUIControllerJavaFX {
         stage.setScene(scene);
         stage.show();
     }
-    public void toRequestFamily() throws IOException {
+    public void toRequestFamily() throws IOException, NotFoundException {
         Stage stage = Main.getStage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("requestFamily.fxml")));
-        Scene scene = new Scene(root);
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(Main.class.getResource("requestFamily.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.show();
     }

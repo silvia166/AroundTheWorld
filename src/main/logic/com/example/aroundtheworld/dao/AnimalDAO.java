@@ -51,20 +51,12 @@ public class AnimalDAO {
             return animals;
         }
 
-    public static void addAnimal(List<Animal> animals, int id) {
-
+    public static void addAnimal(String type, int quantity, int id) {
         Statement stmt;
 
         try{
             stmt = ConnectionDB.getConnection();
-
-            Iterator<Animal> iterator = animals.iterator();
-
-            while(iterator.hasNext()){
-
-                Animal animal = iterator.next();
-                CRUDQueries.insertAnimal(stmt, id, animal.getType(), animal.getQuantity());
-            }
+            CRUDQueries.insertAnimal(stmt, id, type, quantity);
 
         } catch(SQLException | ConnectionDbException e) {
             e.printStackTrace();

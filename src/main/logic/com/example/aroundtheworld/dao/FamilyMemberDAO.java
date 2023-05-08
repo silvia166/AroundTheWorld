@@ -63,7 +63,7 @@ public class FamilyMemberDAO {
         return familyMembers;
     }
 
-    public static void addMember(List<FamilyMember> members, int id) {
+    public static void addMember(String name, int age, String parenthood, int id) {
 
         Statement stmt;
         String birth;
@@ -73,13 +73,8 @@ public class FamilyMemberDAO {
         try{
             stmt = ConnectionDB.getConnection();
 
-            Iterator<FamilyMember> iterator = members.iterator();
-
-            while(iterator.hasNext()){
-                FamilyMember member = iterator.next();
-                birth = String.valueOf(currentYear - member.getAge());
-                CRUDQueries.insertMember(stmt, id, member.getName(), birth, member.getParenthood());
-            }
+            birth = String.valueOf(currentYear - age);
+            CRUDQueries.insertMember(stmt, id, name, birth, parenthood);
 
         } catch(SQLException | ConnectionDbException e) {
             e.printStackTrace();

@@ -10,6 +10,7 @@ public class Session {
     private StudentBean studentBean;
     private FamilyBean familyBean;
 
+
     private Session(Object ob) {
 
         if(ob instanceof StudentBean){

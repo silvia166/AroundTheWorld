@@ -1,14 +1,14 @@
 package com.example.aroundtheworld.controller_applicativo;
 
-import com.example.aroundtheworld.bean.FamilyBean;
-import com.example.aroundtheworld.bean.LoginBean;
-import com.example.aroundtheworld.bean.StudentBean;
+import com.example.aroundtheworld.bean.*;
 import com.example.aroundtheworld.dao.FamilyDAO;
 import com.example.aroundtheworld.dao.LoginDAO;
 import com.example.aroundtheworld.dao.StudentDAO;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.exception.NotFoundException;
+import com.example.aroundtheworld.model.Animal;
 import com.example.aroundtheworld.model.Family;
+import com.example.aroundtheworld.model.FamilyMember;
 import com.example.aroundtheworld.model.Student;
 
 
@@ -29,9 +29,20 @@ public class LoginController {
         Family family = FamilyDAO.retrieveFamily(loginBean.getUsername());
 
         FamilyBean familyBean = new FamilyBean(family.getName(), family.getCity(), family.getAddress(), family.getId(), family.getPhoneNumber(), family.getEmail());
-        familyBean.setFamilyPreferences(family.getPreferences());
-        familyBean.setAnimals(family.getAnimals());
-        familyBean.setMembers(family.getMembers());
+        familyBean.setHouse(family.getPreferences().getHouse());
+        familyBean.setFood(family.getPreferences().getVegetarian(), family.getPreferences().getVegan());
+        familyBean.setHobbies(family.getPreferences().getTravels(), family.getPreferences().getSport(), family.getPreferences().getBooks(), family.getPreferences().getNature(), family.getPreferences().getFilm(), family.getPreferences().getVideoGames(), family.getPreferences().getCooking());
+
+        for(Animal animal: family.getAnimals()){
+            AnimalBean animalBean = new AnimalBean(animal.getType(), animal.getQuantity());
+            familyBean.addAnimal(animalBean);
+        }
+
+        for(FamilyMember member: family.getMembers()){
+            FamilyMemberBean memberBean = new FamilyMemberBean(member.getName(), member.getAge(), member.getParenthood());
+            familyBean.addMember(memberBean);
+        }
+
         familyBean.setImgSrc(family.getImgSrc());
         Session.setSessionInstance(familyBean);
     }

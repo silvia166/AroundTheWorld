@@ -1,10 +1,10 @@
 package com.example.aroundtheworld.controller_grafico;
 
+import com.example.aroundtheworld.bean.AnimalBean;
 import com.example.aroundtheworld.bean.FamilyBean;
+import com.example.aroundtheworld.bean.FamilyMemberBean;
 import com.example.aroundtheworld.engineering.Session;
-import com.example.aroundtheworld.model.Animal;
-import com.example.aroundtheworld.model.FamilyMember;
-import com.example.aroundtheworld.model.FamilyPreferences;
+import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,21 +50,21 @@ public class FamilyProfileGUIController extends LogoutGUIControllerJavaFX {
     private ImageView imgFamily;
 
     @FXML
-    private TableView<FamilyMember> tableViewMembers;
+    private TableView<FamilyMemberBean> tableViewMembers;
 
     @FXML
-    private TableColumn<FamilyMember, String> nameColumn;
+    private TableColumn<FamilyMemberBean, String> nameColumn;
 
     @FXML
-    private TableColumn<FamilyMember, Integer> ageColumn;
+    private TableColumn<FamilyMemberBean, Integer> ageColumn;
 
     @FXML
-    private TableColumn<FamilyMember, String> parenthoodColumn;
+    private TableColumn<FamilyMemberBean, String> parenthoodColumn;
 
     @FXML
     private Label phone;
 
-    public void toRequestFamily() throws IOException {
+    public void toRequestFamily() throws IOException, NotFoundException {
         FamilyGUIController familyGUIController = new FamilyGUIController();
         familyGUIController.toRequestFamily();
     }
@@ -76,11 +76,10 @@ public class FamilyProfileGUIController extends LogoutGUIControllerJavaFX {
     public void initializeProfile() {
 
         FamilyBean familyBean = Session.getCurrentSession().getFamilyBean();
-        FamilyPreferences pref = familyBean.getFamilyPreferencesBean();
 
         name.setText(familyBean.getNameBean());
         address.setText(familyBean.getAddressBean());
-        house.setText(familyBean.getFamilyPreferencesBean().getHouse());
+        house.setText(familyBean.getHouse());
         phone.setText(familyBean.getPhoneBean());
 
         if (familyBean.getImgSrcBean() != null){
@@ -89,28 +88,26 @@ public class FamilyProfileGUIController extends LogoutGUIControllerJavaFX {
         }
         String listAnimal = checkAnimals(familyBean.getAnimalsBean());
         animals.setText(listAnimal);
-        String listFood = checkFood(pref.getVegetarian(), pref.getVegan());
+        String listFood = checkFood(familyBean.getVegetarian(), familyBean.getVegan());
         food.setText(listFood);
-        String listHobby = checkHobbies(pref.getTravels(),pref.getBooks(), pref.getFilm(), pref.getVideoGames(), pref.getNature(), pref.getCooking(), pref.getSport());
+        String listHobby = checkHobbies(familyBean.getTravels(),familyBean.getBooks(), familyBean.getFilm(), familyBean.getVideoGames(), familyBean.getNature(), familyBean.getCooking(), familyBean.getSport());
         hobbies.setText(listHobby);
         setTableViewMembers(familyBean.getMembersBean());
     }
 
     public void initializeSelectedProfile(FamilyBean familyBean, float compatibility) {
 
-        FamilyPreferences pref = familyBean.getFamilyPreferencesBean();
-
         name.setText(familyBean.getNameBean());
         address.setText(familyBean.getAddressBean());
         compatibilityL.setText(compatibility +"%");
-        house.setText(familyBean.getFamilyPreferencesBean().getHouse());
+        house.setText(familyBean.getHouse());
         phone.setText(familyBean.getPhoneBean());
 
         String listAnimal = checkAnimals(familyBean.getAnimalsBean());
         animals.setText(listAnimal);
-        String listFood = checkFood(pref.getVegetarian(), pref.getVegan());
+        String listFood = checkFood(familyBean.getVegetarian(), familyBean.getVegan());
         food.setText(listFood);
-        String listHobby = checkHobbies(pref.getTravels(),pref.getBooks(), pref.getFilm(), pref.getVideoGames(), pref.getNature(), pref.getCooking(), pref.getSport());
+        String listHobby = checkHobbies(familyBean.getTravels(),familyBean.getBooks(), familyBean.getFilm(), familyBean.getVideoGames(), familyBean.getNature(), familyBean.getCooking(), familyBean.getSport());
         hobbies.setText(listHobby);
         setTableViewMembers(familyBean.getMembersBean());
 
@@ -120,17 +117,17 @@ public class FamilyProfileGUIController extends LogoutGUIControllerJavaFX {
         }
     }
 
-    private void setTableViewMembers(List<FamilyMember> members) {
+    private void setTableViewMembers(List<FamilyMemberBean> members) {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
         ageColumn.setCellValueFactory(new PropertyValueFactory<>("Age"));
         parenthoodColumn.setCellValueFactory(new PropertyValueFactory<>("Parenthood"));
 
-        Iterator<FamilyMember> iteratormember = members.iterator();
+        Iterator<FamilyMemberBean> iteratormember = members.iterator();
 
-        ObservableList<FamilyMember> familyMembers = tableViewMembers.getItems();
+        ObservableList<FamilyMemberBean> familyMembers = tableViewMembers.getItems();
 
         while(iteratormember.hasNext()){
-            FamilyMember member = iteratormember.next();
+            FamilyMemberBean member = iteratormember.next();
             familyMembers.add(member);
         }
         tableViewMembers.setItems(familyMembers);
@@ -140,14 +137,14 @@ public class FamilyProfileGUIController extends LogoutGUIControllerJavaFX {
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
 
-    private String checkAnimals(List<Animal> animals) {
+    private String checkAnimals(List<AnimalBean> animals) {
 
         String listAnimal = "";
         String animalQuantity;
         String animalType;
         int count = 0;
 
-        for (Animal animal : animals) {
+        for (AnimalBean animal : animals) {
             animalQuantity = String.valueOf(animal.getQuantity());
             animalType = animal.getType();
 

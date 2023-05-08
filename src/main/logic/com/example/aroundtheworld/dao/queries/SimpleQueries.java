@@ -63,4 +63,14 @@ public class SimpleQueries {
         String sql = "SELECT idFamily, name, phoneNumber, address, photo FROM family WHERE city = '" + city + "'";
         return stmt.executeQuery(sql);
     }
+
+    public static ResultSet retrieveFamilyRequests(Statement stmt, int id) throws SQLException {
+        String sql = "SELECT * FROM familyRequest WHERE idFamily = '" + id + "' AND (status = '" + 0 + "' OR status = '" + 1 + "')";
+        return stmt.executeQuery(sql);
+    }
+
+    public static ResultSet retrieveStudentNameById(Statement stmt, int id) throws SQLException {
+        String sql = "SELECT name, surname FROM student WHERE idStudent = '" + id + "'";
+        return stmt.executeQuery(sql);
+    }
 }

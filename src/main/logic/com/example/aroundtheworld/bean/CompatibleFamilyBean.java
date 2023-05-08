@@ -1,7 +1,5 @@
 package com.example.aroundtheworld.bean;
 
-import java.util.List;
-
 public class CompatibleFamilyBean {
 
     private int idFamily;

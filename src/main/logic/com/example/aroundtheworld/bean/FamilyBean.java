@@ -1,10 +1,6 @@
 package com.example.aroundtheworld.bean;
 
 import com.example.aroundtheworld.exception.PhoneFormatException;
-import com.example.aroundtheworld.model.Animal;
-import com.example.aroundtheworld.model.FamilyMember;
-import com.example.aroundtheworld.model.FamilyPreferences;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -7,13 +7,11 @@ import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.FamilyMember;
 
-import java.lang.reflect.Member;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
@@ -28,8 +26,8 @@ public class FamilyMemberDAO {
     public static List<FamilyMember> retrieveMembers(int familyId) throws NotFoundException {
         Statement stmt;
         List<FamilyMember> familyMembers = new ArrayList<>();
-        FamilyMember familyMember = null;
-        int age = 0;
+        FamilyMember familyMember;
+        int age;
 
         LocalDate currentDate = LocalDate.now();
         int currentYear = currentDate.getYear();

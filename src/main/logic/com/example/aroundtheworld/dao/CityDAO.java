@@ -28,8 +28,8 @@ public class CityDAO {
 
         Statement stmt;
         City city = null;
-        Residence residence = null;
-        School school = null;
+        Residence residence;
+        School school;
 
         try{
             stmt = ConnectionDB.getConnection();

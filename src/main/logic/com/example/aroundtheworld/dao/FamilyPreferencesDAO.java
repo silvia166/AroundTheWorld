@@ -11,8 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static java.lang.Integer.parseInt;
-
 public class FamilyPreferencesDAO {
     private static final String HOUSE = "house";
     private static final String VEGETARIAN = "vegetarian";

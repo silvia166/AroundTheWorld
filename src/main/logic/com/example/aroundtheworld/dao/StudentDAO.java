@@ -90,8 +90,8 @@ public class StudentDAO {
                 String name = resultSet.getString(NAME);
                 String surname = resultSet.getString(SURNAME);
                 studentName = name;
-                studentName.concat(" ");
-                studentName.concat(surname);
+                studentName = studentName.concat(" ");
+                studentName = studentName.concat(surname);
 
             } while(resultSet.next());
 

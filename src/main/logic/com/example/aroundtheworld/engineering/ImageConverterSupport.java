@@ -8,18 +8,13 @@ import javafx.scene.image.WritableImage;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Blob;
-import java.sql.SQLException;
 
 public class ImageConverterSupport {
 
         private ImageConverterSupport() {
             //Costruttore privato perché ho tutti i metodi statici
         }
-
         public static Image fromFileToImage(File file) throws IOException {
             BufferedImage bfImage;
             bfImage = ImageIO.read(file);
@@ -37,23 +32,6 @@ public class ImageConverterSupport {
             return new ImageView(writableImage).getImage();
         }
 
-        public static File fromBlobToFile(Blob blob, String name) {
-            InputStream inputStream;
-            String filePath = "x/" + name + ".png";
-            File file = new File(filePath);
-            try {
-                inputStream = blob.getBinaryStream();
-                FileOutputStream outputStream = new FileOutputStream(file);
-                int read;
-                byte[] bytes = new byte[4096];
-                while ((read = inputStream.read(bytes)) != -1) {
-                    outputStream.write(bytes, 0, read);
-                }
-            } catch (SQLException | IOException e) {
-                e.printStackTrace();
-            }
-            return file;
-        }
 
 
 }

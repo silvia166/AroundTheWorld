@@ -10,9 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class LoginDAO {
-
     private LoginDAO() {}
-
     public static int checkUser(String username, String password) {
         Statement stmt;
         int role = 0;

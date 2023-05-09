@@ -1,3 +1,11 @@
 .shadow{
     -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
 }
+
+.shadowGreen{
+    -fx-effect: dropShadow(three-pass-box, rgb(81, 241, 155), 10.0 , 0.0 , 0.0 ,5.0);
+}
+
+.shadowPending{
+    -fx-effect: dropShadow(three-pass-box, rgb(255, 178, 123), 10.0 , 0.0 , 0.0 ,5.0);
+}

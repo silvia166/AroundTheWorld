@@ -7,34 +7,27 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="344.0" prefWidth="539.0" style="-fx-border-width: 1; -fx-border-color: grey;"
-            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.aroundtheworld.controller_grafico.FamilyListGUIController">
+<AnchorPane prefHeight="210.0" prefWidth="150.0" style="-fx-border-width: 1; -fx-border-color: grey;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.FamilyListGUIController">
    <effect>
       <InnerShadow>
          <color>
-            <Color red="0.7529411911964417" green="0.9764705896377563" blue="0.8666666746139526"/>
+            <Color red="0.7529411911964417" green="0.9764705896377563" blue="0.8666666746139526" />
          </color>
       </InnerShadow>
    </effect>
-   <Label fx:id="messageTxt" alignment="CENTER" contentDisplay="CENTER" layoutX="94.0" layoutY="60.0" prefHeight="97.0"
-          prefWidth="350.0" text="Your request has been successfully saved!" textAlignment="CENTER">
+   <Label fx:id="messageTxt" alignment="CENTER" contentDisplay="CENTER" layoutX="-2.0" layoutY="54.0" prefHeight="37.0" prefWidth="344.0" text="Your request has been successfully saved!" textAlignment="CENTER">
       <font>
-         <Font size="18.0"/>
+         <Font size="15.0" />
       </font>
    </Label>
-   <Button fx:id="ContinueBtn" layoutX="81.0" layoutY="230.0" mnemonicParsing="false" onAction="#close"
-           prefHeight="46.0" prefWidth="163.0" style="-fx-background-radius: 20; -fx-background-color: #C0F9DD;"
-           text="Continue">
+   <Button fx:id="ContinueBtn" layoutX="13.0" layoutY="133.0" mnemonicParsing="false" onAction="#close" prefHeight="37.0" prefWidth="140.0" style="-fx-background-radius: 20; -fx-background-color: #C0F9DD;" text="Continue">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Button>
-   <Button fx:id="backHomeBtn" layoutX="301.0" layoutY="230.0" mnemonicParsing="false" onAction="#backStudHomepage"
-           prefHeight="46.0" prefWidth="163.0" style="-fx-background-radius: 20; -fx-background-color: #C0F9DD;"
-           text="Back to Homepage">
+   <Button fx:id="backHomeBtn" alignment="CENTER" layoutX="187.0" layoutY="133.0" mnemonicParsing="false" onAction="#backStudHomepage" prefHeight="37.0" prefWidth="140.0" style="-fx-background-radius: 20; -fx-background-color: #C0F9DD;" text="Back to Homepage">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Button>
 </AnchorPane>

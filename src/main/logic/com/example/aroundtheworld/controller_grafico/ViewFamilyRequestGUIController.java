@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.text.Text;
 
+import java.time.Year;
+
 public class ViewFamilyRequestGUIController {
 
     @FXML
@@ -74,7 +76,8 @@ public class ViewFamilyRequestGUIController {
         nameText.setText(studentBean.getName());
         surnameText.setText(studentBean.getSurname());
         emailLabel.setText(studentBean.getEmail());
-        ageLabel.setText(studentBean.getBirth());
+        String age = getAgeFromDate(studentBean.getBirth());
+        ageLabel.setText(age);
         phoneLabel.setText(studentBean.getPhoneNumber());
         nationalityLabel.setText(studentBean.getNationality());
         cityLabel.setText(familyRequestBean.getCityBean());
@@ -97,6 +100,13 @@ public class ViewFamilyRequestGUIController {
         filmLabel.setText(getChoice(familyRequestBean.getFilm()));
         videogamesLabel.setText(getChoice(familyRequestBean.getVideoGames()));
         cookingLabel.setText(getChoice(familyRequestBean.getCooking()));
+    }
+
+    private String getAgeFromDate(String birth) {
+        int currYear = Year.now().getValue();
+        int birthYear = Integer.parseInt(String.format("%."+ 4 +"s", birth));
+        int age = currYear - birthYear;
+        return String.valueOf(age);
     }
 
     private String getChoice(int choice) {

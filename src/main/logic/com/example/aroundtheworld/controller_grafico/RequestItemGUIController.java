@@ -1,6 +1,5 @@
 package com.example.aroundtheworld.controller_grafico;
 
-import com.example.aroundtheworld.bean.CompatibleFamilyBean;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.controller_applicativo.ContactFamilyController;
@@ -9,16 +8,13 @@ import com.example.aroundtheworld.engineering.observer.Observer;
 import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -69,6 +65,7 @@ public class RequestItemGUIController implements Observer {
         if (familyRequestBean.getStatus() == 1){
             reqPane.getChildren().removeAll(acceptBtn,rejectBtn,viewReqBtn);
             notBookedLabel.setVisible(true);
+            reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(81, 241, 155), 10.0 , 0.0 , 0.0 ,5.0);");
         }
     }
 
@@ -123,6 +120,7 @@ public class RequestItemGUIController implements Observer {
         if (((FamilyRequestBean)object1).getStatus() == 1) {
             reqPane.getChildren().removeAll(acceptBtn,rejectBtn,viewReqBtn);
             notBookedLabel.setVisible(true);
+            reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(81, 241, 155), 10.0 , 0.0 , 0.0 ,5.0);");
         }
     }
 }

@@ -70,13 +70,9 @@ public class FamilyRequestGUIController implements Observer {
         }
     }
 
-    @Override
-    public void update(Object object) {
-        //ignore
-    }
 
     @Override
-    public void update2(Object object1, Object object2) {
+    public void update(Object object1, Object object2) {
         if (sentReqList.getChildren().contains((Pane)object2))
             sentReqList.getChildren().remove((Pane)object2);
 

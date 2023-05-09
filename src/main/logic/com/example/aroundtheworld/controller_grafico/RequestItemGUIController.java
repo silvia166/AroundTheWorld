@@ -111,12 +111,7 @@ public class RequestItemGUIController implements Observer {
     }
 
     @Override
-    public void update(Object object) {
-        //ignore
-    }
-
-    @Override
-    public void update2(Object object1, Object object2) {
+    public void update(Object object1, Object object2) {
         if (((FamilyRequestBean)object1).getStatus() == 1) {
             reqPane.getChildren().removeAll(acceptBtn,rejectBtn,viewReqBtn);
             notBookedLabel.setVisible(true);

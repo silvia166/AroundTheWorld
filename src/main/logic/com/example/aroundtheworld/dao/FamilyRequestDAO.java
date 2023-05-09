@@ -56,7 +56,7 @@ public class FamilyRequestDAO {
         }
     }
 
-    public static List<FamilyRequest> getRequests(int id) throws NotFoundException{
+    public static List<FamilyRequest> retrieveRequests(int id) throws NotFoundException{
         Statement stmt;
         List<FamilyRequest> familyRequestsList = new ArrayList<>();
         FamilyRequest familyRequest;

@@ -148,7 +148,7 @@ public class ContactFamilyController {
 
     public List<FamilyRequestBean> getFamilyRequests(FamilyBean familyBean) throws NotFoundException {
         List<FamilyRequestBean> familyRequestsBeans = new ArrayList<>();
-        List<FamilyRequest> requests = FamilyRequestDAO.getRequests(familyBean.getId());
+        List<FamilyRequest> requests = FamilyRequestDAO.retrieveRequests(familyBean.getId());
         String studentName;
 
         for(FamilyRequest request: requests){

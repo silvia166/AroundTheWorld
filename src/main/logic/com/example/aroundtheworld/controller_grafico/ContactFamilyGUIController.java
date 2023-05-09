@@ -120,7 +120,7 @@ public class ContactFamilyGUIController {
             Scene scene = new Scene(fxmlLoader.load());
 
             FamilyListGUIController familyListGUIController = fxmlLoader.getController();
-            int count = familyListGUIController.setList(families, familyRequestBean);
+            int count = familyListGUIController.displayCompatibleFamilies(families, familyRequestBean);
 
             stage.setScene(scene);
             stage.show();

@@ -38,7 +38,7 @@ public class FamilyListGUIController {
         stage.show();
     }
 
-    public int setList(List<CompatibleFamilyBean> compatibleFamilyBeans, FamilyRequestBean familyRequestBean) throws IOException {
+    public int displayCompatibleFamilies(List<CompatibleFamilyBean> compatibleFamilyBeans, FamilyRequestBean familyRequestBean) throws IOException {
         this.families = compatibleFamilyBeans;
         this.cityString = familyRequestBean.getCityBean();
         int column = 0;
@@ -96,8 +96,7 @@ public class FamilyListGUIController {
         dialog.show();
     }
 
-    @FXML
-    void backStudHomepage(ActionEvent event) throws IOException {
+    public void backStudHomepage(ActionEvent event) throws IOException {
         ((Node)event.getSource()).getScene().getWindow().hide();
         Main.getSecondaryStage().hide();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("homepageStudent.fxml"));
@@ -106,8 +105,7 @@ public class FamilyListGUIController {
         Main.getStage().show();
     }
 
-    @FXML
-    void close(ActionEvent event) {
+    public void close(ActionEvent event) {
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
 }

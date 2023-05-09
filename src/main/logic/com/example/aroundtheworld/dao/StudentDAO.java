@@ -1,5 +1,6 @@
 package com.example.aroundtheworld.dao;
 
+import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
@@ -21,14 +22,19 @@ public class StudentDAO {
 
     private StudentDAO(){}
 
-    public static Student retrieveStudent(String username) throws NotFoundException{
+    public static Student retrieveStudent(String username, int id) throws NotFoundException{
         Statement stmt;
         Student student = null;
 
         try{
             stmt = ConnectionDB.getConnection();
+            ResultSet resultSet = null;
 
-            ResultSet resultSet = SimpleQueries.retrieveStudent(stmt, username);
+            if(id == 0){
+                resultSet = SimpleQueries.retrieveStudent(stmt, username);
+            } else if(username == null){
+                resultSet = SimpleQueries.retrieveStudentById(stmt, id);
+            }
 
             if(!resultSet.first()){
                 throw new NotFoundException("No student found with username: " + username);
@@ -53,7 +59,6 @@ public class StudentDAO {
             e.printStackTrace();
         }
         return student;
-
     }
 
 
@@ -102,4 +107,5 @@ public class StudentDAO {
         }
         return studentName;
     }
+
 }

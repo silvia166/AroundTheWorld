@@ -44,4 +44,14 @@ public class CRUDQueries {
         String insertStatement = String.format("INSERT INTO familyRequest (arrival, departure, city, house, status, siblings, animals, vegetarian, vegan, travels, books, sport, nature, film, videogames, cooking, idStudent, idFamily, compatibility) VALUES ('%s', '%s', '%s', '%s', %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, '%s')", familyRequest.getArrival(), familyRequest.getDeparture(), familyRequest.getCity(), familyRequest.getFamilyPreferences().getHouse(), 0, familyRequest.getSiblings(), familyRequest.getAnimals(), familyRequest.getFamilyPreferences().getVegetarian(), familyRequest.getFamilyPreferences().getVegan(), familyRequest.getFamilyPreferences().getTravels(), familyRequest.getFamilyPreferences().getBooks(), familyRequest.getFamilyPreferences().getSport(), familyRequest.getFamilyPreferences().getNature(), familyRequest.getFamilyPreferences().getFilm(), familyRequest.getFamilyPreferences().getVideoGames(), familyRequest.getFamilyPreferences().getCooking(), familyRequest.getIdStudent(), familyRequest.getIdFamily(), familyRequest.getCompatibility());
         stmt.executeUpdate(insertStatement);
     }
+
+    public static void updateStatusRequest(Statement stmt, int status, int id) throws SQLException {
+        String insertStatement = String.format("UPDATE familyRequest SET status = %d WHERE idRequest = %d", status,id);
+        stmt.executeUpdate(insertStatement);
+    }
+
+    public static void deleteRequest(Statement stmt, int id) throws SQLException{
+        String insertStatement = String.format("DELETE FROM familyRequest WHERE idRequest = %d", id);
+        stmt.executeUpdate(insertStatement);
+    }
 }

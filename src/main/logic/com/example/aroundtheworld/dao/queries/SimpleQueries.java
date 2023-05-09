@@ -71,4 +71,9 @@ public class SimpleQueries {
         String sql = "SELECT name, surname FROM student WHERE idStudent = '" + id + "'";
         return stmt.executeQuery(sql);
     }
+
+    public static ResultSet retrieveStudentById(Statement stmt, int id) throws SQLException{
+        String sql = "SELECT * FROM student WHERE idStudent = '" + id + "'";
+        return stmt.executeQuery(sql);
+    }
 }

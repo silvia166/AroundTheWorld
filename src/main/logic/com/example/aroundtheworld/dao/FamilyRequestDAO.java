@@ -117,4 +117,21 @@ public class FamilyRequestDAO {
 
         return familyRequestsList;
     }
+
+    public static void updateStatus(int status, int id) {
+        Statement stmt;
+
+        try {
+            stmt = ConnectionDB.getConnection();
+
+            if(status == 1) {
+                CRUDQueries.updateStatusRequest(stmt, status, id);
+            }else if(status == 2){
+                CRUDQueries.deleteRequest(stmt, id);
+            }
+
+        } catch (SQLException | ConnectionDbException e) {
+            e.printStackTrace();
+        }
+    }
 }

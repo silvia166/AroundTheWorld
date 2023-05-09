@@ -1,6 +1,16 @@
 package com.example.aroundtheworld.bean;
-public class FamilyRequestBean {
 
+import com.example.aroundtheworld.engineering.observer.Observer;
+import com.example.aroundtheworld.engineering.observer.Subject;
+import com.example.aroundtheworld.model.Family;
+import com.example.aroundtheworld.model.FamilyRequest;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FamilyRequestBean extends Subject {
+
+    private int id;
     private String city;
     private String arrival;
     private String departure;
@@ -33,6 +43,14 @@ public class FamilyRequestBean {
         this.siblings = siblings;
         this.animals = animals;
         this.idStudent = idStudent;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getStudentName() {

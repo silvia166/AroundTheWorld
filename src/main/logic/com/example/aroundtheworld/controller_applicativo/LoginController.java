@@ -19,7 +19,7 @@ public class LoginController {
     }
 
     public void studentLogin(LoginBean loginBean) throws NotFoundException {
-        Student student = StudentDAO.retrieveStudent(loginBean.getUsername());
+        Student student = StudentDAO.retrieveStudent(loginBean.getUsername(),0);
 
         StudentBean studentBean = new StudentBean(student.getName(), student.getSurname(), student.getNationality(), student.getDateOfBirth(), student.getEmail(), student.getPhoneNumber(), student.getId());
         Session.setSessionInstance(studentBean);

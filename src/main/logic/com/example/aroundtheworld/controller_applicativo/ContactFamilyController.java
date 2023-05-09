@@ -157,6 +157,7 @@ public class ContactFamilyController {
             familyRequestBean.setFood(request.getFamilyPreferences().getVegetarian(), request.getFamilyPreferences().getVegan());
             familyRequestBean.setHouse(request.getFamilyPreferences().getHouse());
             familyRequestBean.setHobbies(request.getFamilyPreferences().getTravels(), request.getFamilyPreferences().getSport(), request.getFamilyPreferences().getBooks(), request.getFamilyPreferences().getNature(), request.getFamilyPreferences().getFilm(), request.getFamilyPreferences().getVideoGames(), request.getFamilyPreferences().getCooking());
+            familyRequestBean.setId(request.getId());
             familyRequestBean.setCompatibility(request.getCompatibility());
             familyRequestBean.setIdFamily(familyBean.getId());
             familyRequestBean.setStatus(request.getStatus());
@@ -164,5 +165,25 @@ public class ContactFamilyController {
             familyRequestsBeans.add(familyRequestBean);
         }
         return familyRequestsBeans;
+    }
+
+    public void acceptRequest(FamilyRequestBean request, Object object) throws NotFoundException{
+        request.setStatus(1);
+        request.notifyObservers(request, object);
+        FamilyRequestDAO.updateStatus(1, request.getId());
+    }
+
+    public void rejectRequest(FamilyRequestBean familyRequest, Object object) throws NotFoundException{
+        familyRequest.setStatus(2);
+        familyRequest.notifyObservers(familyRequest, object);
+        FamilyRequestDAO.updateStatus(2, familyRequest.getId());
+    }
+
+    public StudentBean viewRequest(FamilyRequestBean familyRequest) throws NotFoundException {
+
+        Student student = StudentDAO.retrieveStudent(null, familyRequest.getIdStudentBean());
+        StudentBean studentBean = new StudentBean(student.getName(), student.getSurname(), student.getNationality(), student.getDateOfBirth(), student.getEmail(), student.getPhoneNumber(), student.getId());
+
+        return studentBean;
     }
 }

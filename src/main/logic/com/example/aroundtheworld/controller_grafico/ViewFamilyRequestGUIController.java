@@ -10,64 +10,44 @@ import javafx.scene.text.Text;
 import java.time.Year;
 
 public class ViewFamilyRequestGUIController {
-
     @FXML
     private Text ageLabel;
-
     @FXML
     private Text animalLabel;
-
     @FXML
     private Text arrivalText;
-
     @FXML
     private Text bookLabel;
-
     @FXML
     private Text cityLabel;
-
     @FXML
     private Text cookingLabel;
-
     @FXML
     private Text departureText;
-
     @FXML
     private Text emailLabel;
-
     @FXML
     private Text filmLabel;
-
     @FXML
     private Text foodLabel;
-
     @FXML
     private Text nameText;
-
     @FXML
     private Text nationalityLabel;
-
     @FXML
     private Text natureLabel;
-
     @FXML
     private Text phoneLabel;
-
     @FXML
     private Text roomLabel;
-
     @FXML
     private Text siblingLabel;
-
     @FXML
     private Text sportLabel;
-
     @FXML
     private Text travelLabel;
-
     @FXML
     private Text videogamesLabel;
-
     @FXML
     private Text surnameText;
 

@@ -1,5 +1,16 @@
 package com.example.aroundtheworld.controller_grafico;
 
+import com.example.aroundtheworld.bean.CompatibleFamilyBean;
+import com.example.aroundtheworld.bean.FamilyRequestBean;
+import com.example.aroundtheworld.bean.ResidenceRequestBean;
+import com.example.aroundtheworld.controller_applicativo.BookingResidenceController;
+import com.example.aroundtheworld.controller_applicativo.ContactFamilyController;
+import com.example.aroundtheworld.engineering.Session;
+import com.example.aroundtheworld.engineering.ShowExceptionSupport;
+import com.example.aroundtheworld.exception.FormEmptyException;
+import com.example.aroundtheworld.exception.MessageException;
+import com.example.aroundtheworld.exception.NotFoundException;
+import com.example.aroundtheworld.model.FamilyPreferences;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,12 +21,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -26,6 +40,14 @@ public class BookingResidenceGUIController implements Initializable {
 
     @FXML
     ChoiceBox cityBox = new ChoiceBox();
+    @FXML
+    private DatePicker arrivalBox;
+    @FXML
+    private DatePicker departureBox;
+    @FXML
+    private RadioButton doubleR;
+    @FXML
+    private RadioButton singleR;
 
     @FXML
     ObservableList cityList = FXCollections.observableArrayList("London","Rome","Paris","New York","Valencia");
@@ -47,4 +69,36 @@ public class BookingResidenceGUIController implements Initializable {
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
 
+    public void sendResidenceRequest() throws IOException {
+        int idStudent = Session.getCurrentSession().getStudentBean().getId();
+        String room;
+
+        try {
+            if (cityBox.getValue() == null)
+                throw new FormEmptyException("City");
+            if (arrivalBox.getValue() == null)
+                throw new FormEmptyException("Arrival");
+            if (departureBox.getValue() == null)
+                throw new FormEmptyException("Departure");
+            if (!singleR.isSelected() && !doubleR.isSelected())
+                throw new FormEmptyException("House");
+
+            if (singleR.isSelected())
+                room = "single";
+            else
+                room = "double";
+
+            ResidenceRequestBean residenceRequestBean = new ResidenceRequestBean(cityBox.getValue().toString(), arrivalBox.getValue().toString(), departureBox.getValue().toString(), room, idStudent);
+
+            BookingResidenceController bookingResidenceController = new BookingResidenceController();
+            bookingResidenceController.sendRequest(residenceRequestBean);
+
+            ShowExceptionSupport.showException("Your request has been successfully saved!");
+
+        } catch (FormEmptyException | MessageException e) {
+            ShowExceptionSupport.showException(e.getMessage());
+        } catch (NotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

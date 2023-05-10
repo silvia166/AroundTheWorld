@@ -50,5 +50,33 @@ public class ResidenceDAO {
         }
         return residence;
     }
+
+    public static int getIdResidence(String city) throws NotFoundException{
+        Statement stmt;
+        int idResidence = 0;
+
+
+        try{
+            stmt = ConnectionDB.getConnection();
+
+            ResultSet resultSet = SimpleQueries.retrieveIdResidence(stmt, city);
+
+            if(!resultSet.first()) {
+                throw new NotFoundException("No residence found in city with name: " + city);
+            }
+
+            resultSet.first();
+            do{
+                idResidence = resultSet.getInt(ID);
+
+            } while(resultSet.next());
+
+            resultSet.close();
+
+        } catch(SQLException | ConnectionDbException e){
+            e.printStackTrace();
+        }
+        return idResidence;
+    }
 }
 

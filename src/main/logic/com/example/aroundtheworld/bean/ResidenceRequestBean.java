@@ -1,0 +1,53 @@
+package com.example.aroundtheworld.bean;
+
+public class ResidenceRequestBean {
+    private int id;
+    private String city;
+    private String arrival;
+    private String departure;
+    private String room;
+    private int idStudent;
+    private int idResidence;
+
+    public ResidenceRequestBean(String city, String arrival, String departure, String room, int idStudent) {
+        this.city = city;
+        this.arrival = arrival;
+        this.departure = departure;
+        this.room = room;
+        this.idStudent = idStudent;
+    }
+
+    public int getIdStudent() {
+        return idStudent;
+    }
+
+    public int getIdResidence() {
+        return idResidence;
+    }
+
+    public void setIdResidence(int idResidence) {
+        this.idResidence = idResidence;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getArrival() {
+        return arrival;
+    }
+
+    public String getDeparture() {
+        return departure;
+    }
+
+    public String getRoom() { return room; }
+}

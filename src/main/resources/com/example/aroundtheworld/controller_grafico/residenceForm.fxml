@@ -22,8 +22,8 @@
             <Font size="26.0" />
          </font>
       </Text>
-      <DatePicker layoutX="215.0" layoutY="296.0" prefHeight="26.0" prefWidth="183.0" />
-      <DatePicker layoutX="215.0" layoutY="241.0" prefHeight="26.0" prefWidth="183.0" />
+      <DatePicker fx:id="departureBox" layoutX="215.0" layoutY="296.0" prefHeight="26.0" prefWidth="183.0" />
+      <DatePicker fx:id="arrivalBox" layoutX="215.0" layoutY="241.0" prefHeight="26.0" prefWidth="183.0" />
       <Text layoutX="80.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room:" wrappingWidth="86.47863590054203">
          <font>
             <Font size="18.0" />
@@ -44,7 +44,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <RadioButton layoutX="215.0" layoutY="360.0" mnemonicParsing="false" text="Single Room">
+      <RadioButton fx:id="singleR" layoutX="215.0" layoutY="360.0" mnemonicParsing="false" text="Single Room">
          <font>
             <Font size="18.0" />
          </font>
@@ -52,12 +52,12 @@
             <ToggleGroup fx:id="room" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="383.0" layoutY="360.0" mnemonicParsing="false" text="Double Room" toggleGroup="$room">
+      <RadioButton fx:id="doubleR" layoutX="383.0" layoutY="360.0" mnemonicParsing="false" text="Double Room" toggleGroup="$room">
          <font>
             <Font size="18.0" />
          </font>
       </RadioButton>
-      <Button layoutX="81.0" layoutY="442.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="154.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Send request">
+      <Button layoutX="81.0" layoutY="442.0" mnemonicParsing="false" onAction="#sendResidenceRequest" prefHeight="42.0" prefWidth="154.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Send request">
          <font>
             <Font size="18.0" />
          </font>

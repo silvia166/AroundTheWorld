@@ -2,6 +2,7 @@ package com.example.aroundtheworld.dao.queries;
 
 import com.example.aroundtheworld.model.FamilyPreferences;
 import com.example.aroundtheworld.model.FamilyRequest;
+import com.example.aroundtheworld.model.ResidenceRequest;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -52,6 +53,11 @@ public class CRUDQueries {
 
     public static void deleteRequest(Statement stmt, int id) throws SQLException{
         String insertStatement = String.format("DELETE FROM familyRequest WHERE idRequest = %d", id);
+        stmt.executeUpdate(insertStatement);
+    }
+
+    public static void insertResidenceRequest(Statement stmt, ResidenceRequest residenceRequest) throws SQLException {
+        String insertStatement = String.format("INSERT INTO residenceRequest (arrival, departure, idResidence, room, status, idStudent) VALUES ('%s', '%s', %d, '%s', %d, %d)", residenceRequest.getArrival(), residenceRequest.getDeparture(), residenceRequest.getIdResidence(), residenceRequest.getRoom(), 0, residenceRequest.getIdStudent());
         stmt.executeUpdate(insertStatement);
     }
 }

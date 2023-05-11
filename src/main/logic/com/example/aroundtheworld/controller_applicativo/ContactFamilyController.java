@@ -167,10 +167,10 @@ public class ContactFamilyController {
         return familyRequestsBeans;
     }
 
-    public void acceptRequest(FamilyRequestBean request, Object object) throws NotFoundException{
-        request.setStatus(1);
-        request.notifyObservers(request, object);
-        FamilyRequestDAO.updateStatus(1, request.getId());
+    public void acceptRequest(FamilyRequestBean familyRequest, Object object) throws NotFoundException{
+        familyRequest.setStatus(1);
+        familyRequest.notifyObservers(familyRequest, object);
+        FamilyRequestDAO.updateStatus(1, familyRequest.getId());
     }
 
     public void rejectRequest(FamilyRequestBean familyRequest, Object object) throws NotFoundException{

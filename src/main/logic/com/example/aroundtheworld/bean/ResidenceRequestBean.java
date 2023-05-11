@@ -2,7 +2,7 @@ package com.example.aroundtheworld.bean;
 
 import com.example.aroundtheworld.engineering.observer.Subject;
 
-public class ResidenceRequestBean {
+public class ResidenceRequestBean extends Subject {
     private int id;
     private String city;
     private String arrival;
@@ -66,4 +66,8 @@ public class ResidenceRequestBean {
     }
 
     public String getRoom() { return room; }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 }

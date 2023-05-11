@@ -9,6 +9,7 @@ import com.example.aroundtheworld.engineering.observer.Observer;
 import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -117,10 +118,23 @@ public class RequestItemGUIController implements Observer {
 
     @Override
     public void update(Object object1, Object object2) {
-        if (((FamilyRequestBean)object1).getStatus() == 1) {
-            reqPane.getChildren().removeAll(acceptBtn,rejectBtn,viewReqBtn);
-            notBookedLabel.setVisible(true);
-            reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(81, 241, 155), 10.0 , 0.0 , 0.0 ,5.0);");
+
+        if (object1 instanceof FamilyRequestBean) {
+            if (((FamilyRequestBean) object1).getStatus() == 1) {
+                reqPane.getChildren().removeAll(acceptBtn, rejectBtn, viewReqBtn);
+                notBookedLabel.setVisible(true);
+                reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(81, 241, 155), 10.0 , 0.0 , 0.0 ,5.0);");
+            }
+
+        } else if (object1 instanceof ResidenceRequestBean){
+
+            if (((ResidenceRequestBean) object1).getStatus() == 1){
+                reqPane.getChildren().remove(manageButton);
+                reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(255,178,123), 10.0 , 0.0 , 0.0 ,5.0);");
+            } else if (((ResidenceRequestBean) object1).getStatus() == 2){
+                reqPane.getChildren().remove(manageButton);
+                reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(81,241,155), 10.0 , 0.0 , 0.0 ,5.0);");
+            }
         }
     }
 
@@ -133,19 +147,30 @@ public class RequestItemGUIController implements Observer {
         arrivalLabel.setText(requestBean.getArrival());
         departureLabel.setText(requestBean.getDeparture());
 
-        if (residenceRequest.getStatus() == 1){
+        if (requestBean.getStatus() == 1){
             reqPane.getChildren().remove(manageButton);
             reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(255, 178, 123), 10.0 , 0.0 , 0.0 ,5.0);");
-        } else if (residenceRequest.getStatus() == 2){
+        } else if (requestBean.getStatus() == 2){
             reqPane.getChildren().remove(manageButton);
             reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(81, 241, 155), 10.0 , 0.0 , 0.0 ,5.0);");
         }
     }
 
-    public void manageRequest(){
-        //
-    }
+    public void manageRequest() throws IOException {
 
+        this.residenceRequest.register(this);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("reserveRoom2.fxml"));
+        Parent root = fxmlLoader.load();
+        Stage stage = new Stage();
+        ReserveRoomGUIController reserveRoomGUIController = fxmlLoader.getController();
+        reserveRoomGUIController.reserveRoom(this.residenceRequest);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(new Scene(root));
+        stage.centerOnScreen();
+        stage.show();
+    }
 
 }
 

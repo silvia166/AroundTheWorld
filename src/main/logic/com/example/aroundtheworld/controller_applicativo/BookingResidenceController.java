@@ -13,7 +13,7 @@ public class BookingResidenceController {
     public void sendRequest(ResidenceRequestBean residenceRequestBean) throws NotFoundException, MessageException {
         checkRequestDate(residenceRequestBean.getArrival(),residenceRequestBean.getDeparture());
         int idResidence = ResidenceDAO.getIdResidence(residenceRequestBean.getCity());
-        ResidenceRequest residenceRequest = new ResidenceRequest(residenceRequestBean.getCity(), residenceRequestBean.getArrival(), residenceRequestBean.getDeparture(), residenceRequestBean.getRoom(), residenceRequestBean.getIdStudent());
+        ResidenceRequest residenceRequest = new ResidenceRequest(residenceRequestBean.getCity(), residenceRequestBean.getArrival(), residenceRequestBean.getDeparture(), residenceRequestBean.getRoom(), residenceRequestBean.getIdStudent(), 0);
         residenceRequest.setIdResidence(idResidence);
         ResidenceRequestDAO.newRequest(residenceRequest);
     }

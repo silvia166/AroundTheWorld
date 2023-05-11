@@ -5,8 +5,6 @@ import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.NotFoundException;
-import com.example.aroundtheworld.model.FamilyPreferences;
-import com.example.aroundtheworld.model.FamilyRequest;
 import com.example.aroundtheworld.model.ResidenceRequest;
 
 import java.sql.ResultSet;
@@ -23,7 +21,6 @@ public class ResidenceRequestDAO {
     private static final String IDRES = "idResidence";
     private static final String ARRIVAL = "arrival";
     private static final String DEPARTURE = "departure";
-    private static final String RATE = "rate";
     private static final String ROOMNUMBER = "roomNumber";
     private static final String ROOM = "room";
     private static final String STATUS = "status";
@@ -69,12 +66,9 @@ public class ResidenceRequestDAO {
                 int status = resultSet.getInt(STATUS);
                 int idResidence = resultSet.getInt(IDRES);
                 int roomNum = resultSet.getInt(ROOMNUMBER);
-                int rate = resultSet.getInt(RATE);
                 String city = ResidenceDAO.retrieveResidencebyId(idResidence);
 
-                residenceRequest = new ResidenceRequest(city, arrival.toString(), departure.toString(), room, studentId);
-
-                residenceRequest.setStatus(status);
+                residenceRequest = new ResidenceRequest(city, arrival.toString(), departure.toString(), room, studentId, status);
                 residenceRequest.setIdResidence(idResidence);
                 residenceRequest.setId(requestId);
 
@@ -89,5 +83,15 @@ public class ResidenceRequestDAO {
         }
 
         return residenceRequestList;
+    }
+
+    public static void updateRoom(int number, int id, int status) {
+        Statement stmt;
+        try {
+            stmt = ConnectionDB.getConnection();
+            CRUDQueries.updateResidenceRequest(stmt, status, id, number);
+        } catch (SQLException | ConnectionDbException e) {
+            e.printStackTrace();
+        }
     }
 }

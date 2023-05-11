@@ -60,4 +60,9 @@ public class CRUDQueries {
         String insertStatement = String.format("INSERT INTO residenceRequest (arrival, departure, idResidence, room, status, idStudent) VALUES ('%s', '%s', %d, '%s', %d, %d)", residenceRequest.getArrival(), residenceRequest.getDeparture(), residenceRequest.getIdResidence(), residenceRequest.getRoom(), 0, residenceRequest.getIdStudent());
         stmt.executeUpdate(insertStatement);
     }
+
+    public static void updateResidenceRequest(Statement stmt, int status, int id, int number) throws SQLException {
+        String insertStatement = String.format("UPDATE residenceRequest SET status = %d AND roomNumber = %d WHERE idRequest = %d", status, number, id);
+        stmt.executeUpdate(insertStatement);
+    }
 }

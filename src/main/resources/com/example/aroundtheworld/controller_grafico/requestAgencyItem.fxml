@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="reqPane" prefHeight="170.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="shadow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.RequestItemGUIController">
+<AnchorPane fx:id="reqPane" prefHeight="145.0" prefWidth="223.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="shadow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.RequestItemGUIController">
    <children>
       <VBox fx:id="vBox" alignment="CENTER" spacing="7.0" styleClass="request-box">
          <padding>
@@ -27,9 +27,9 @@
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="manageButton" layoutX="72.0" layoutY="131.0" mnemonicParsing="false" onAction="#manageRequest" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="Manage Request" />
-      <Label fx:id="cityLabel" layoutX="114.0" layoutY="47.0" text="City" />
-      <HBox alignment="CENTER" layoutY="11.0" prefWidth="250.0" spacing="5.0">
+      <Button fx:id="manageButton" layoutX="59.0" layoutY="105.0" mnemonicParsing="false" onAction="#manageRequest" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="Manage Request" />
+      <Label fx:id="cityLabel" alignment="CENTER" layoutY="46.0" prefHeight="17.0" prefWidth="228.0" text="City" textAlignment="CENTER" />
+      <HBox alignment="CENTER" layoutY="15.0" prefHeight="19.0" prefWidth="228.0" spacing="5.0">
          <children>
             <VBox alignment="CENTER" prefHeight="16.0" prefWidth="0.0" />
             <Label fx:id="nameLabel" alignment="CENTER" text="Name">
@@ -40,7 +40,7 @@
             <VBox alignment="CENTER" layoutX="90.0" layoutY="10.0" />
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutY="80.0" prefWidth="250.0" spacing="20.0">
+      <HBox alignment="CENTER" layoutY="74.0" prefHeight="19.0" prefWidth="228.0" spacing="20.0">
          <children>
             <VBox alignment="CENTER" prefHeight="16.0" prefWidth="0.0" />
             <Label fx:id="arrivalLabel" contentDisplay="CENTER" text=" 12-12-2023" />

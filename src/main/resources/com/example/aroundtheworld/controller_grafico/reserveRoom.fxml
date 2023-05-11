@@ -13,13 +13,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.ReserveRoomGUIController">
    <children>
-      <Button layoutX="50.0" layoutY="658.0" mnemonicParsing="false" onAction="#toAddFamily" opacity="0.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 100;">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Button>
       <Pane layoutX="25.0" layoutY="56.0" prefHeight="74.0" prefWidth="1200.0" style="-fx-background-color: #C0F9DD;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Text layoutX="115.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Around the world" wrappingWidth="243.901956467559">
@@ -44,19 +39,18 @@
             <Font size="26.0" />
          </font>
       </Text>
-      <TableView layoutX="672.0" layoutY="227.0" prefHeight="363.0" prefWidth="431.0">
+      <TableView fx:id="roomsTableView" layoutX="731.0" layoutY="223.0" prefHeight="363.0" prefWidth="322.0">
         <columns>
-          <TableColumn prefWidth="133.49029541015625" text="Room" />
-          <TableColumn prefWidth="146.00967407226562" text="Type" />
-            <TableColumn prefWidth="150.52432250976562" text="Priority" />
+          <TableColumn fx:id="roomColumn" prefWidth="157.16290283203125" text="Room" />
+          <TableColumn fx:id="typeColumn" prefWidth="162.83709716796875" text="Type" />
         </columns>
       </TableView>
-      <Text layoutX="727.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="London Residence - London" textAlignment="CENTER" wrappingWidth="305.4773351650873">
+      <Text fx:id="resNameLabel" layoutX="731.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="London Residence - London" textAlignment="CENTER" wrappingWidth="305.4773351650873">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Button layoutX="770.0" layoutY="624.0" mnemonicParsing="false" onAction="#toAddFamily" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Reserve room">
+      <Button layoutX="766.0" layoutY="624.0" mnemonicParsing="false" onAction="#selectRoom" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Reserve room">
          <font>
             <Font size="26.0" />
          </font>
@@ -83,7 +77,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" textAlignment="CENTER" wrappingWidth="56.36698770523071" GridPane.columnIndex="1">
+            <Text fx:id="studNameLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="266.7738175392151" GridPane.columnIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
@@ -93,7 +87,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" 12-12-2023" textAlignment="CENTER" wrappingWidth="104.65947580337524" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Text fx:id="arrivalLabel" strokeType="OUTSIDE" strokeWidth="0.0" text=" 12-12-2023" wrappingWidth="273.515371799469" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
@@ -103,7 +97,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" 25-12-2023" textAlignment="CENTER" wrappingWidth="109.53687143325806" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Text fx:id="departureLabel" strokeType="OUTSIDE" strokeWidth="0.0" text=" 25-12-2023" wrappingWidth="269.5521607398987" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="18.0" />
                </font>
@@ -113,7 +107,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type" textAlignment="CENTER" wrappingWidth="53.42474985122681" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Text fx:id="roomLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" wrappingWidth="267.3678345680237" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="18.0" />
                </font>
@@ -125,5 +119,10 @@
             <Font size="24.0" />
          </font>
       </Text>
+      <Button layoutX="50.0" layoutY="658.0" mnemonicParsing="false" onAction="#backButton" opacity="0.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 100;">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

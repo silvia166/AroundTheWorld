@@ -33,7 +33,6 @@ public abstract class Subject {
         observersList.remove(observer);
     }
 
-
     public void notifyObservers(Object object1, Object object2) {
         for (Observer observer : observersList) {
             observer.update(object1, object2);

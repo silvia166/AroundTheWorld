@@ -91,4 +91,9 @@ public class SimpleQueries {
         String sql = "SELECT city FROM residence WHERE idResidence = '" + idResidence + "'";
         return stmt.executeQuery(sql);
     }
+
+    public static ResultSet retrieveRooms(Statement stmt, int id, String arrival, String departure) throws SQLException{
+        String sql = "SELECT number, type FROM room WHERE idResidence = '" + id + "' AND (number, idResidence) not in (SELECT roomNumber, idResidence FROM residenceRequest WHERE (arrival > '" + arrival + "' AND arrival < '" + departure + "') OR (departure > '"+arrival+"' AND departure < '"+ departure + "') OR (arrival < '" + arrival + "' AND departure > '" + departure + "') OR (arrival > '"+ arrival +"' AND departure < '" + departure +"'))";
+        return stmt.executeQuery(sql);
+    }
 }

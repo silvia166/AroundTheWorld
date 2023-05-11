@@ -1,13 +1,14 @@
 package com.example.aroundtheworld.controller_applicativo;
 
-import com.example.aroundtheworld.bean.FamilyRequestBean;
+
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
-import com.example.aroundtheworld.dao.FamilyRequestDAO;
+import com.example.aroundtheworld.bean.RoomBean;
 import com.example.aroundtheworld.dao.ResidenceRequestDAO;
+import com.example.aroundtheworld.dao.RoomDAO;
 import com.example.aroundtheworld.dao.StudentDAO;
 import com.example.aroundtheworld.exception.NotFoundException;
-import com.example.aroundtheworld.model.FamilyRequest;
 import com.example.aroundtheworld.model.ResidenceRequest;
+import com.example.aroundtheworld.model.Room;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,4 +29,22 @@ public class ReserveRoomController {
         }
         return residenceRequestBeans;
     }
+
+    public List<RoomBean> getAvailableRooms(ResidenceRequestBean residenceRequest) {
+        List<RoomBean> roomBeans = new ArrayList<>();
+        List<Room> rooms = RoomDAO.retrieveAvailableRooms(residenceRequest.getIdResidence(),residenceRequest.getArrival(),residenceRequest.getDeparture());
+
+        for(Room room: rooms){
+            RoomBean roomBean = new RoomBean(room.getNumber(), room.getIdResidence() ,room.getType());
+            roomBeans.add(roomBean);
+        }
+        return roomBeans;
+    }
+
+    public void reserveRoom(RoomBean selectedRoom, ResidenceRequestBean requestBean, int status) {
+        requestBean.setStatus(status);
+
+        ResidenceRequestDAO.updateRoom(selectedRoom.getNumber(), requestBean.getId(), status);
+    }
+
 }

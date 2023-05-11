@@ -10,20 +10,17 @@ public class ResidenceRequest {
     private int idResidence;
     private int status;
 
-    public ResidenceRequest(String city, String arrival, String departure, String room, int idStudent) {
+    public ResidenceRequest(String city, String arrival, String departure, String room, int idStudent, int status) {
         this.city = city;
         this.arrival = arrival;
         this.departure = departure;
         this.room = room;
         this.idStudent = idStudent;
+        this.status = status;
     }
 
     public int getStatus() {
         return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
     }
 
     public int getIdStudent() {

@@ -1,9 +1,7 @@
 package com.example.aroundtheworld.controller_grafico;
 
-import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
-import com.example.aroundtheworld.controller_applicativo.ContactFamilyController;
 import com.example.aroundtheworld.controller_applicativo.ReserveRoomController;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.engineering.observer.Observer;
@@ -20,8 +18,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-public class AgencyRequestGUIController {
-
+public class AgencyRequestGUIController implements Observer {
     @FXML
     private HBox confirmedReqList;
     @FXML
@@ -52,6 +49,7 @@ public class AgencyRequestGUIController {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("requestAgencyItem.fxml"));
             Pane requestBox = fxmlLoader.load();
+            requestBean.register(this);
 
             RequestItemGUIController requestItemGUIController = fxmlLoader.getController();
             requestItemGUIController.setPane(requestBox);
@@ -61,10 +59,21 @@ public class AgencyRequestGUIController {
                 pendingReqList.getChildren().add(requestBox);
             } else if (requestBean.getStatus() == 1){
                 modifiedReqList.getChildren().add(requestBox);
-            } else if(requestBean.getStatus() == 1){
+            } else if(requestBean.getStatus() == 2){
                 confirmedReqList.getChildren().add(requestBox);
             }
         }
     }
 
+    @Override
+    public void update(Object object1, Object object2) {
+        if (pendingReqList.getChildren().contains((Pane)object2))
+            pendingReqList.getChildren().remove((Pane)object2);
+
+        if (((ResidenceRequestBean)object1).getStatus() == 1) {
+            modifiedReqList.getChildren().add((Pane)object2);
+        } else if (((ResidenceRequestBean)object1).getStatus() == 2) {
+            confirmedReqList.getChildren().add((Pane)object2);
+        }
+    }
 }

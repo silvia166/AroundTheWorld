@@ -164,7 +164,7 @@ public class RequestItemGUIController implements Observer {
         Parent root = fxmlLoader.load();
         Stage stage = new Stage();
         ReserveRoomGUIController reserveRoomGUIController = fxmlLoader.getController();
-        reserveRoomGUIController.reserveRoom(this.residenceRequest);
+        reserveRoomGUIController.reserveRoom(this.residenceRequest, this.pane);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(root));

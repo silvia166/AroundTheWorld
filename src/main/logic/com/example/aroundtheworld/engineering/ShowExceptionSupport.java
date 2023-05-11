@@ -1,6 +1,6 @@
 package com.example.aroundtheworld.engineering;
 
-import com.example.aroundtheworld.controller_grafico.ErrorBoxGUIController;
+import com.example.aroundtheworld.controller_grafico.MessageBoxGUIController;
 import com.example.aroundtheworld.controller_grafico.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -30,7 +30,7 @@ public class ShowExceptionSupport {
             e.printStackTrace();
         }
 
-        ErrorBoxGUIController errorBox = fxmlLoader.getController();
+        MessageBoxGUIController errorBox = fxmlLoader.getController();
         errorBox.setMessage(message);
         dialog.setScene(scene);
         dialog.centerOnScreen();

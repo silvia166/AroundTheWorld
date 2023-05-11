@@ -69,7 +69,7 @@ public class BookingResidenceGUIController implements Initializable {
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
 
-    public void sendResidenceRequest() throws IOException {
+    public void sendResidenceRequest(ActionEvent event) throws IOException {
         int idStudent = Session.getCurrentSession().getStudentBean().getId();
         String room;
 
@@ -92,6 +92,8 @@ public class BookingResidenceGUIController implements Initializable {
 
             BookingResidenceController bookingResidenceController = new BookingResidenceController();
             bookingResidenceController.sendRequest(residenceRequestBean);
+
+            ((Node)event.getSource()).getScene().getWindow().hide();
 
             ShowExceptionSupport.showException("Your request has been successfully saved!");
 

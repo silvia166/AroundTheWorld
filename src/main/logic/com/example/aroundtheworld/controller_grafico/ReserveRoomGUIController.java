@@ -15,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -43,10 +44,12 @@ public class ReserveRoomGUIController {
     private TableColumn<RoomBean, String> typeColumn;
 
     private ResidenceRequestBean requestBean;
+    private Pane pane;
 
-    public void reserveRoom(ResidenceRequestBean residenceRequest) {
+    public void reserveRoom(ResidenceRequestBean residenceRequest, Object object) {
 
         this.requestBean = residenceRequest;
+        this.pane = (Pane) object;
 
         studNameLabel.setText(residenceRequest.getStudentName());
         arrivalLabel.setText(residenceRequest.getArrival());
@@ -89,14 +92,16 @@ public class ReserveRoomGUIController {
         }
     }
 
-    public void selectRoom(){
+    public void selectRoom(ActionEvent event){
         ReserveRoomController reserveRoomController = new ReserveRoomController();
         RoomBean selectedRoom = roomsTableView.getSelectionModel().getSelectedItem();
         if(roomBtn.getText().equals("Reserve room")){
-            reserveRoomController.reserveRoom(selectedRoom, requestBean, 1);
+            reserveRoomController.reserveRoom(selectedRoom, requestBean, 2, this.pane);
         } else {
-            reserveRoomController.reserveRoom(selectedRoom, requestBean, 2);
+            reserveRoomController.reserveRoom(selectedRoom, requestBean, 1, this.pane);
         }
+
+        ((Node)event.getSource()).getScene().getWindow().hide();
     }
 
     public void backButton(ActionEvent event) throws IOException {

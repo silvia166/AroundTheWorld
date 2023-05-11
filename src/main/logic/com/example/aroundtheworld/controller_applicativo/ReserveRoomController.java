@@ -41,9 +41,9 @@ public class ReserveRoomController {
         return roomBeans;
     }
 
-    public void reserveRoom(RoomBean selectedRoom, ResidenceRequestBean requestBean, int status) {
+    public void reserveRoom(RoomBean selectedRoom, ResidenceRequestBean requestBean, int status, Object object) {
         requestBean.setStatus(status);
-
+        requestBean.notifyObservers(requestBean, object);
         ResidenceRequestDAO.updateRoom(selectedRoom.getNumber(), requestBean.getId(), status);
     }
 

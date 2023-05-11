@@ -81,4 +81,14 @@ public class SimpleQueries {
         String sql = "SELECT idResidence FROM residence WHERE city = '" + city + "'";
         return stmt.executeQuery(sql);
     }
+
+    public static ResultSet retrieveResidenceRequests(Statement stmt) throws SQLException {
+        String sql = "SELECT * FROM residenceRequest WHERE CURRENT_DATE() <= departure";
+        return stmt.executeQuery(sql);
+    }
+
+    public static ResultSet retrieveResidencebyId(Statement stmt, int idResidence) throws SQLException{
+        String sql = "SELECT city FROM residence WHERE idResidence = '" + idResidence + "'";
+        return stmt.executeQuery(sql);
+    }
 }

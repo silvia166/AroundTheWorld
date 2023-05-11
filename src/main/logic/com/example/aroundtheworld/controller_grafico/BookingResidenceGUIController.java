@@ -88,7 +88,7 @@ public class BookingResidenceGUIController implements Initializable {
             else
                 room = "double";
 
-            ResidenceRequestBean residenceRequestBean = new ResidenceRequestBean(cityBox.getValue().toString(), arrivalBox.getValue().toString(), departureBox.getValue().toString(), room, idStudent);
+            ResidenceRequestBean residenceRequestBean = new ResidenceRequestBean(cityBox.getValue().toString(), arrivalBox.getValue().toString(), departureBox.getValue().toString(), room, idStudent,0);
 
             BookingResidenceController bookingResidenceController = new BookingResidenceController();
             bookingResidenceController.sendRequest(residenceRequestBean);

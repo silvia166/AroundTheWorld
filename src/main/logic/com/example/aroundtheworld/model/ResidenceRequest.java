@@ -8,6 +8,7 @@ public class ResidenceRequest {
     private String room;
     private int idStudent;
     private int idResidence;
+    private int status;
 
     public ResidenceRequest(String city, String arrival, String departure, String room, int idStudent) {
         this.city = city;
@@ -15,6 +16,14 @@ public class ResidenceRequest {
         this.departure = departure;
         this.room = room;
         this.idStudent = idStudent;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public int getIdStudent() {

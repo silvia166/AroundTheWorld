@@ -1,5 +1,7 @@
 package com.example.aroundtheworld.bean;
 
+import com.example.aroundtheworld.engineering.observer.Subject;
+
 public class ResidenceRequestBean {
     private int id;
     private String city;
@@ -8,13 +10,27 @@ public class ResidenceRequestBean {
     private String room;
     private int idStudent;
     private int idResidence;
+    private int status;
+    private String studentName;
 
-    public ResidenceRequestBean(String city, String arrival, String departure, String room, int idStudent) {
+    public ResidenceRequestBean(String city, String arrival, String departure, String room, int idStudent, int status) {
         this.city = city;
         this.arrival = arrival;
         this.departure = departure;
         this.room = room;
         this.idStudent = idStudent;
+        this.status = status;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
     public int getIdStudent() {

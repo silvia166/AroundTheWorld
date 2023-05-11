@@ -16,6 +16,7 @@ public class ResidenceDAO {
     private static final String NAME = "name";
     private static final String ADDRESS = "address";
     private static final String DISTANCE = "distanceSchool";
+    private static final String CITY = "city";
 
     private ResidenceDAO(){}
     public static Residence retrieveResidence(String city) throws NotFoundException {
@@ -77,6 +78,35 @@ public class ResidenceDAO {
             e.printStackTrace();
         }
         return idResidence;
+    }
+
+    public static String retrieveResidencebyId(int idResidence) throws NotFoundException {
+
+        Statement stmt;
+        String city = null;
+
+
+        try{
+            stmt = ConnectionDB.getConnection();
+
+            ResultSet resultSet = SimpleQueries.retrieveResidencebyId(stmt, idResidence);
+
+            if(!resultSet.first()) {
+                throw new NotFoundException("No residence found with id: " + idResidence);
+            }
+
+            resultSet.first();
+            do{
+                city = resultSet.getString(CITY);
+
+            } while(resultSet.next());
+
+            resultSet.close();
+
+        } catch(SQLException | ConnectionDbException e){
+            e.printStackTrace();
+        }
+        return city;
     }
 }
 

@@ -1,6 +1,7 @@
 package com.example.aroundtheworld.controller_grafico;
 
 import com.example.aroundtheworld.bean.FamilyRequestBean;
+import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.controller_applicativo.ContactFamilyController;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
@@ -35,6 +36,8 @@ public class RequestItemGUIController implements Observer {
     @FXML
     private Label nameLabel;
     @FXML
+    private Label cityLabel;
+    @FXML
     private Button rejectBtn;
     @FXML
     private Label notBookedLabel;
@@ -42,12 +45,14 @@ public class RequestItemGUIController implements Observer {
     private VBox vBox;
     @FXML
     private Button viewReqBtn;
-
     @FXML
-   private AnchorPane reqPane;
+    private Button manageButton;
+    @FXML
+    private AnchorPane reqPane;
 
     private FamilyRequestBean familyRequest;
     private Pane pane;
+    private ResidenceRequestBean residenceRequest;
 
 
     public void setPane(Pane pane) {
@@ -118,5 +123,29 @@ public class RequestItemGUIController implements Observer {
             reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(81, 241, 155), 10.0 , 0.0 , 0.0 ,5.0);");
         }
     }
+
+    public void setResidenceRequest(ResidenceRequestBean requestBean) {
+
+        this.residenceRequest = requestBean;
+
+        nameLabel.setText(requestBean.getStudentName());
+        cityLabel.setText(requestBean.getCity());
+        arrivalLabel.setText(requestBean.getArrival());
+        departureLabel.setText(requestBean.getDeparture());
+
+        if (residenceRequest.getStatus() == 1){
+            reqPane.getChildren().remove(manageButton);
+            reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(255, 178, 123), 10.0 , 0.0 , 0.0 ,5.0);");
+        } else if (residenceRequest.getStatus() == 2){
+            reqPane.getChildren().remove(manageButton);
+            reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(81, 241, 155), 10.0 , 0.0 , 0.0 ,5.0);");
+        }
+    }
+
+    public void manageRequest(){
+        //
+    }
+
+
 }
 

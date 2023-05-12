@@ -94,4 +94,50 @@ public class ResidenceRequestDAO {
             e.printStackTrace();
         }
     }
+
+    public static List<ResidenceRequest> retrieveModifiedRequests(int id) throws NotFoundException{
+        Statement stmt;
+        List<ResidenceRequest> residenceRequestList = new ArrayList<>();
+        ResidenceRequest residenceRequest;
+
+        try {
+            stmt = ConnectionDB.getConnection();
+
+            ResultSet resultSet = SimpleQueries.retrieveModifiedRequests(stmt, id);
+
+            if (!resultSet.first()) {
+                throw new NotFoundException("No request found for the student with id:" + id);
+            }
+
+            resultSet.first();
+            do {
+                int requestId = resultSet.getInt(ID);
+                int studentId = resultSet.getInt(IDSTUD);
+                Date arrival = resultSet.getDate(ARRIVAL);
+                Date departure = resultSet.getDate(DEPARTURE);
+                String room = resultSet.getString(ROOM);
+                int status = resultSet.getInt(STATUS);
+                int idResidence = resultSet.getInt(IDRES);
+                int roomNum = resultSet.getInt(ROOMNUMBER);
+                String city = ResidenceDAO.retrieveResidencebyId(idResidence);
+
+                residenceRequest = new ResidenceRequest(city, arrival.toString(), departure.toString(), room, studentId, status);
+                residenceRequest.setIdResidence(idResidence);
+                residenceRequest.setId(requestId);
+
+                residenceRequestList.add(residenceRequest);
+
+            } while (resultSet.next());
+
+            resultSet.close();
+
+        } catch (SQLException | ConnectionDbException e) {
+            e.printStackTrace();
+        }
+
+        return residenceRequestList;
+    }
+
+    public static void updateRequest(int id, int status) {
+    }
 }

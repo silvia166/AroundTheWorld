@@ -55,11 +55,6 @@
          <Font size="26.0" />
       </font>
    </Button>
-   <Button layoutX="805.0" layoutY="241.0" mnemonicParsing="false" onAction="#toBookingFamily" prefHeight="50.0" prefWidth="295.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Host Family">
-      <font>
-         <Font size="26.0" />
-      </font>
-   </Button>
    <Text layoutX="555.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome!" textAlignment="CENTER" wrappingWidth="467.0036315917969">
       <font>
          <Font size="30.0" />
@@ -79,12 +74,12 @@
    <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="445.0" layoutY="430.0">
       <Image url="@image/big-family.png" />
    </ImageView>
-   <Text layoutX="850.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book your travel " textAlignment="CENTER" wrappingWidth="211.21797729019954">
+   <Text layoutX="846.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book your travel " textAlignment="CENTER" wrappingWidth="211.21797729019954">
       <font>
          <Font size="26.0" />
       </font>
    </Text>
-   <Button layoutX="804.0" layoutY="311.0" mnemonicParsing="false" onAction="#toBookingResidence" prefHeight="50.0" prefWidth="295.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Residence">
+   <Button layoutX="804.0" layoutY="285.0" mnemonicParsing="false" onAction="#toBookingResidence" prefHeight="50.0" prefWidth="295.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Residence">
       <font>
          <Font size="26.0" />
       </font>
@@ -97,9 +92,4 @@
    <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="107.0" layoutY="447.0">
       <Image url="@image/user.png" />
    </ImageView>
-   <Button layoutX="804.0" layoutY="381.0" mnemonicParsing="false" onAction="#toQuote" prefHeight="50.0" prefWidth="295.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Request Quote">
-      <font>
-         <Font size="26.0" />
-      </font>
-   </Button>
 </AnchorPane>

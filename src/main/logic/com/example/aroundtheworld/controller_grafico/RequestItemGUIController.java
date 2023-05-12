@@ -4,6 +4,7 @@ import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.controller_applicativo.ContactFamilyController;
+import com.example.aroundtheworld.controller_applicativo.ReserveRoomController;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.engineering.observer.Observer;
 import com.example.aroundtheworld.exception.NotFoundException;
@@ -48,6 +49,12 @@ public class RequestItemGUIController implements Observer {
     private Button viewReqBtn;
     @FXML
     private Button manageButton;
+    @FXML
+    private Label modifyLabel;
+    @FXML
+    private Button acceptBtn1;
+    @FXML
+    private Button rejectBtn1;
     @FXML
     private AnchorPane reqPane;
 
@@ -172,5 +179,34 @@ public class RequestItemGUIController implements Observer {
         stage.show();
     }
 
+    public void setModifiedRequest(ResidenceRequestBean requestBean) {
+        this.residenceRequest = requestBean;
+
+        String room;
+        if(requestBean.getRoom().equals("single")){
+            room = "Double";
+        }else {
+            room = "Single";
+        }
+
+        nameLabel.setText(requestBean.getCity());
+        modifyLabel.setText("Modification:");
+        compatibilityLabel.setText(room + " Room");
+        arrivalLabel.setText(requestBean.getArrival());
+        departureLabel.setText(requestBean.getDeparture());
+
+        reqPane.getChildren().removeAll(viewReqBtn, rejectBtn, acceptBtn);
+        acceptBtn1.setVisible(true);
+        rejectBtn1.setVisible(true);
+    }
+
+    public void acceptModifiedRequest() throws IOException{
+        ReserveRoomController reserveRoomController = new ReserveRoomController();
+        reserveRoomController.updateStatus(this.residenceRequest, 2, this.pane);
+    }
+
+    public void rejectModifiedRequest(){
+
+    }
 }
 

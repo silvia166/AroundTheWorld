@@ -9,6 +9,7 @@ import com.example.aroundtheworld.dao.StudentDAO;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.ResidenceRequest;
 import com.example.aroundtheworld.model.Room;
+import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,4 +48,21 @@ public class ReserveRoomController {
         ResidenceRequestDAO.updateRoom(selectedRoom.getNumber(), requestBean.getId(), status);
     }
 
+    public List<ResidenceRequestBean> getModifiedRequest(int id) throws NotFoundException {
+        List<ResidenceRequestBean> residenceRequestBeans = new ArrayList<>();
+        List<ResidenceRequest> requests = ResidenceRequestDAO.retrieveModifiedRequests(id);
+
+        for(ResidenceRequest request: requests){
+            ResidenceRequestBean residenceRequestBean = new ResidenceRequestBean(request.getCity(), request.getArrival(), request.getDeparture(), request.getRoom(), request.getIdStudent(), request.getStatus());
+            residenceRequestBean.setId(request.getId());
+            residenceRequestBeans.add(residenceRequestBean);
+        }
+        return residenceRequestBeans;
+    }
+
+    public void updateStatus(ResidenceRequestBean requestBean, int status, Object object) {
+        requestBean.setStatus(status);
+        requestBean.notifyObservers(requestBean, object);
+        ResidenceRequestDAO.updateRequest(requestBean.getId(), status);
+    }
 }

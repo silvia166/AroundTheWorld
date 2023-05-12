@@ -27,7 +27,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="acceptBtn" layoutX="173.0" layoutY="130.0" mnemonicParsing="false" onAction="#acceptRequest" prefHeight="26.0" prefWidth="65.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="Accept" />
+      <Button fx:id="acceptBtn" layoutX="173.0" layoutY="131.0" mnemonicParsing="false" onAction="#acceptRequest" prefHeight="26.0" prefWidth="65.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="Accept" />
       <HBox alignment="CENTER" layoutY="11.0" prefWidth="250.0" spacing="5.0" stylesheets="@style.css">
          <children>
             <VBox alignment="CENTER" prefHeight="16.0" prefWidth="0.0" />
@@ -52,26 +52,28 @@
             <VBox alignment="CENTER" layoutX="90.0" layoutY="10.0" />
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="1.0" layoutY="53.0" prefHeight="19.0" prefWidth="232.0" spacing="20.0">
+      <HBox alignment="CENTER" layoutX="1.0" layoutY="53.0" prefHeight="22.0" prefWidth="249.0">
          <children>
             <VBox alignment="CENTER" prefHeight="16.0" prefWidth="0.0" />
-            <Label contentDisplay="CENTER" text="Compatibility:" />
+            <Label fx:id="modifyLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="129.0" text="Compatibility:" textAlignment="CENTER" />
             <Label fx:id="userName11" alignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
             <VBox alignment="CENTER" layoutX="90.0" layoutY="10.0" />
-            <Label fx:id="compatibilityLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="65.0" text="50% " textAlignment="CENTER" />
+            <Label fx:id="compatibilityLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="118.0" text="50% " textAlignment="CENTER" />
          </children>
       </HBox>
       <Button fx:id="rejectBtn" layoutX="16.0" layoutY="131.0" mnemonicParsing="false" onAction="#rejectRequest" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="Reject" />
-      <Button fx:id="viewReqBtn" layoutX="94.0" layoutY="130.0" mnemonicParsing="false" onAction="#viewRequest" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="View" />
+      <Button fx:id="viewReqBtn" layoutX="94.0" layoutY="131.0" mnemonicParsing="false" onAction="#viewRequest" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="View" />
       <Label fx:id="notBookedLabel" alignment="CENTER" layoutX="77.0" layoutY="130.0" text="Not booked yet" visible="false">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
+      <Button fx:id="rejectBtn1" layoutX="42.0" layoutY="131.0" mnemonicParsing="false" onAction="#rejectModifiedRequest" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="Reject" visible="false" />
+      <Button fx:id="acceptBtn1" layoutX="150.0" layoutY="131.0" mnemonicParsing="false" onAction="#acceptModifiedRequest" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="Accept" visible="false" />
    </children>
    <opaqueInsets>
       <Insets right="10.0" />

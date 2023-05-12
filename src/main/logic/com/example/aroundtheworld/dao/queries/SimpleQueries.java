@@ -98,5 +98,8 @@ public class SimpleQueries {
     }
 
 
-
+    public static ResultSet retrieveModifiedRequests(Statement stmt, int id) throws SQLException{
+        String sql = "SELECT * FROM residenceRequest WHERE CURRENT_DATE() <= departure AND status = 1 AND idStudent = '"+ id + "'";
+        return stmt.executeQuery(sql);
+    }
 }

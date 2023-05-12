@@ -93,7 +93,10 @@ public class SimpleQueries {
     }
 
     public static ResultSet retrieveRooms(Statement stmt, int id, String arrival, String departure) throws SQLException{
-        String sql = "SELECT number, type FROM room WHERE idResidence = '" + id + "' AND (number, idResidence) not in (SELECT roomNumber, idResidence FROM residenceRequest WHERE (arrival > '" + arrival + "' AND arrival < '" + departure + "') OR (departure > '"+arrival+"' AND departure < '"+ departure + "') OR (arrival < '" + arrival + "' AND departure > '" + departure + "') OR (arrival > '"+ arrival +"' AND departure < '" + departure +"'))";
+        String sql = "SELECT number, type FROM room WHERE type = 'single' AND idResidence = '" + id + "' AND (number, idResidence) not in (SELECT roomNumber, idResidence FROM residenceRequest WHERE ((arrival > '" + arrival + "' AND arrival < '" + departure + "') OR (departure > '"+arrival+"' AND departure < '"+ departure + "') OR (arrival < '" + arrival + "' AND departure > '" + departure + "') OR (arrival > '"+ arrival +"' AND departure < '" + departure +"'))) UNION SELECT number, type FROM room WHERE type = 'double' AND idResidence = '" + id + "' AND (number, idResidence) not in ( SELECT DISTINCT number, room.idResidence FROM residencerequest AS r2 JOIN residencerequest AS r1  JOIN room ON r1.idResidence = r2.idResidence AND r1.roomNumber =r2.roomNumber AND r1.roomNumber = room.number AND r1.idResidence = room.idResidence WHERE type = 'double' AND r1.idStudent != r2.idStudent AND ((r1.arrival > r2.arrival AND r1.arrival < r2.departure) OR (r1.departure > r2.arrival AND r1.departure < r2.departure) OR (r1.arrival < r2.arrival AND r1.departure > r2.departure) OR (r1.arrival > r2.arrival AND r1.departure < r2.departure)) AND ((r1.arrival > '" + arrival + "' AND r1.arrival < '" + departure + "') OR (r1.departure > '" + arrival + "' AND r1.departure < '" + departure + "') OR (r1.arrival < '" + arrival + "' AND r1.departure > '" + departure + "') OR (r1.arrival > '" + arrival + "' AND r1.departure < '" + departure + "')))";
         return stmt.executeQuery(sql);
     }
+
+
+
 }

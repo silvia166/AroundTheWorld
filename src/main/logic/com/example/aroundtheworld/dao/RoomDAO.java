@@ -1,6 +1,7 @@
 package com.example.aroundtheworld.dao;
 
 import com.example.aroundtheworld.connection.ConnectionDB;
+import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.ConnectionDbException;
@@ -22,7 +23,7 @@ public class RoomDAO {
 
     private RoomDAO(){}
 
-    public static List<Room> retrieveAvailableRooms(int idResidence, String arrival, String departure) throws IOException {
+    public static List<Room> retrieveAvailableRooms(int idResidence, String arrival, String departure) throws IOException, NoAvailableRoomsException {
         Statement stmt;
         Room room;
         List<Room> roomList = new ArrayList<>();
@@ -48,10 +49,6 @@ public class RoomDAO {
             } while (resultSet.next());
 
             resultSet.close();
-
-
-        } catch (NoAvailableRoomsException e) {
-            ShowExceptionSupport.showException(e.getMessage());
         } catch (SQLException | ConnectionDbException e) {
             e.printStackTrace();
         }

@@ -6,6 +6,7 @@ import com.example.aroundtheworld.bean.RoomBean;
 import com.example.aroundtheworld.dao.ResidenceRequestDAO;
 import com.example.aroundtheworld.dao.RoomDAO;
 import com.example.aroundtheworld.dao.StudentDAO;
+import com.example.aroundtheworld.exception.NoAvailableRoomsException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.ResidenceRequest;
 import com.example.aroundtheworld.model.Room;
@@ -31,7 +32,7 @@ public class ReserveRoomController {
         return residenceRequestBeans;
     }
 
-    public List<RoomBean> getAvailableRooms(ResidenceRequestBean residenceRequest) throws IOException {
+    public List<RoomBean> getAvailableRooms(ResidenceRequestBean residenceRequest) throws IOException, NoAvailableRoomsException {
         List<RoomBean> roomBeans = new ArrayList<>();
         List<Room> rooms = RoomDAO.retrieveAvailableRooms(residenceRequest.getIdResidence(),residenceRequest.getArrival(),residenceRequest.getDeparture());
 
@@ -48,9 +49,9 @@ public class ReserveRoomController {
         ResidenceRequestDAO.updateRoom(selectedRoom.getNumber(), requestBean.getId(), status);
     }
 
-    public List<ResidenceRequestBean> getModifiedRequest(int id) throws IOException {
+    public List<ResidenceRequestBean> getStudentResidenceRequest(int id) throws IOException {
         List<ResidenceRequestBean> residenceRequestBeans = new ArrayList<>();
-        List<ResidenceRequest> requests = ResidenceRequestDAO.retrieveModifiedRequests(id);
+        List<ResidenceRequest> requests = ResidenceRequestDAO.retrieveStudentResidenceRequest(id);
 
         for(ResidenceRequest request: requests){
             ResidenceRequestBean residenceRequestBean = new ResidenceRequestBean(request.getCity(), request.getArrival(), request.getDeparture(), request.getRoom(), request.getIdStudent(), request.getStatus());

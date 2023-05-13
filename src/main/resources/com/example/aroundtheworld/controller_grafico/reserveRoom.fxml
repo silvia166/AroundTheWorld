@@ -8,121 +8,101 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.ReserveRoomGUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="918.0" style="-fx-border-color: #c0f9dd; -fx-border-width: 15;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.ReserveRoomGUIController">
    <children>
-      <Pane layoutX="25.0" layoutY="56.0" prefHeight="74.0" prefWidth="1200.0" style="-fx-background-color: #C0F9DD;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Text layoutX="115.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Around the world" wrappingWidth="243.901956467559">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
-            <Text layoutX="115.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="travel agency" wrappingWidth="208.81515502929688">
-               <font>
-                  <Font size="26.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="56.0" fitWidth="57.0" layoutX="42.0" layoutY="10.0">
-               <image>
-                  <Image url="@image/world.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Text layoutX="360.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve a room" textAlignment="CENTER" wrappingWidth="456.6572775840759">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Text>
-      <TableView fx:id="roomsTableView" layoutX="731.0" layoutY="223.0" prefHeight="363.0" prefWidth="322.0">
-        <columns>
-          <TableColumn fx:id="roomColumn" prefWidth="157.16290283203125" text="Room" />
-          <TableColumn fx:id="typeColumn" prefWidth="162.83709716796875" text="Type" />
-        </columns>
-      </TableView>
-      <Text fx:id="resNameLabel" layoutX="731.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="London Residence - London" textAlignment="CENTER" wrappingWidth="305.4773351650873">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Button layoutX="766.0" layoutY="624.0" mnemonicParsing="false" onAction="#selectRoom" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Reserve room">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="49.0" layoutY="660.0">
+      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="42.0" layoutY="482.0">
          <image>
             <Image url="@image/arrow.png" />
          </image>
       </ImageView>
-      <GridPane layoutX="133.0" layoutY="257.0" prefHeight="159.0" prefWidth="363.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="254.406005859375" minWidth="10.0" prefWidth="116.43232727050781" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="328.7109680175781" minWidth="10.0" prefWidth="292.6656494140625" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" textAlignment="CENTER" wrappingWidth="51.59109354019165">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="studNameLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="266.7738175392151" GridPane.columnIndex="1">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="From:" textAlignment="CENTER" wrappingWidth="45.85720682144165" GridPane.rowIndex="1">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="arrivalLabel" strokeType="OUTSIDE" strokeWidth="0.0" text=" 12-12-2023" wrappingWidth="273.515371799469" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="To:" textAlignment="CENTER" wrappingWidth="25.629740238189697" GridPane.rowIndex="2">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="departureLabel" strokeType="OUTSIDE" strokeWidth="0.0" text=" 25-12-2023" wrappingWidth="269.5521607398987" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Room:" textAlignment="CENTER" wrappingWidth="52.10018014907837" GridPane.rowIndex="3">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="roomLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" wrappingWidth="267.3678345680237" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-         </children>
-      </GridPane>
-      <Text layoutX="119.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booking information" textAlignment="CENTER" wrappingWidth="219.35934400558472">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Button layoutX="50.0" layoutY="658.0" mnemonicParsing="false" onAction="#backButton" opacity="0.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 100;">
+      <Button layoutX="43.0" layoutY="480.0" mnemonicParsing="false" onAction="#backButton" opacity="0.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 100;">
          <font>
             <Font size="26.0" />
          </font>
       </Button>
+      <Text layoutX="-1.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve a room" textAlignment="CENTER" wrappingWidth="919.472047328949">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TableView fx:id="roomsTableView" layoutX="499.0" layoutY="156.0" onMouseClicked="#getSelectedRoom" prefHeight="263.0" prefWidth="323.0">
+         <columns>
+            <TableColumn fx:id="roomColumn" prefWidth="157.16290283203125" text="Room" />
+            <TableColumn fx:id="typeColumn" prefWidth="162.83709716796875" text="Type" />
+         </columns>
+      </TableView>
+      <Text fx:id="resNameLabel" layoutX="505.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="London Residence - London" textAlignment="CENTER" wrappingWidth="305.4773351650873">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Button fx:id="roomBtn" layoutX="546.0" layoutY="457.0" mnemonicParsing="false" onAction="#selectRoom" prefHeight="41.0" prefWidth="224.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Reserve room">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Text layoutX="101.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booking information" wrappingWidth="219.35934400558472">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <GridPane layoutX="102.0" layoutY="157.0" prefHeight="120.0" prefWidth="316.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.79571533203125" minWidth="10.0" prefWidth="102.83444213867188" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.16555786132812" minWidth="10.0" prefWidth="213.16555786132812" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" textAlignment="CENTER" wrappingWidth="51.59109354019165">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="studNameLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" wrappingWidth="266.7738175392151" GridPane.columnIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="From:" textAlignment="CENTER" wrappingWidth="45.85720682144165" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="To:" textAlignment="CENTER" wrappingWidth="25.629740238189697" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Room:" textAlignment="CENTER" wrappingWidth="52.10018014907837" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="arrivalLabel" strokeType="OUTSIDE" strokeWidth="0.0" text=" 12-12-2023" wrappingWidth="273.515371799469" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="departureLabel" strokeType="OUTSIDE" strokeWidth="0.0" text=" 25-12-2023" wrappingWidth="269.5521607398987" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="roomLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" wrappingWidth="267.3678345680237" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

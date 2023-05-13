@@ -3,10 +3,8 @@ package com.example.aroundtheworld.dao;
 import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
-import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
-import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.ResidenceRequest;
 
@@ -61,29 +59,27 @@ public class ResidenceRequestDAO {
 
             ResultSet resultSet = SimpleQueries.retrieveResidenceRequests(stmt);
 
-            if (!resultSet.first()) {
-                throw new NotFoundException("No request found for the agency");
+            if (resultSet.first()) {
+                resultSet.first();
+                do {
+                    int requestId = resultSet.getInt(ID);
+                    int studentId = resultSet.getInt(IDSTUD);
+                    Date arrival = resultSet.getDate(ARRIVAL);
+                    Date departure = resultSet.getDate(DEPARTURE);
+                    String room = resultSet.getString(ROOM);
+                    int status = resultSet.getInt(STATUS);
+                    int idResidence = resultSet.getInt(IDRES);
+                    int roomNum = resultSet.getInt(ROOMNUMBER);
+                    String city = ResidenceDAO.retrieveResidencebyId(idResidence);
+
+                    residenceRequest = new ResidenceRequest(city, arrival.toString(), departure.toString(), room, studentId, status);
+                    residenceRequest.setIdResidence(idResidence);
+                    residenceRequest.setId(requestId);
+
+                    residenceRequestList.add(residenceRequest);
+
+                } while (resultSet.next());
             }
-
-            resultSet.first();
-            do {
-                int requestId = resultSet.getInt(ID);
-                int studentId = resultSet.getInt(IDSTUD);
-                Date arrival = resultSet.getDate(ARRIVAL);
-                Date departure = resultSet.getDate(DEPARTURE);
-                String room = resultSet.getString(ROOM);
-                int status = resultSet.getInt(STATUS);
-                int idResidence = resultSet.getInt(IDRES);
-                int roomNum = resultSet.getInt(ROOMNUMBER);
-                String city = ResidenceDAO.retrieveResidencebyId(idResidence);
-
-                residenceRequest = new ResidenceRequest(city, arrival.toString(), departure.toString(), room, studentId, status);
-                residenceRequest.setIdResidence(idResidence);
-                residenceRequest.setId(requestId);
-
-                residenceRequestList.add(residenceRequest);
-
-            } while (resultSet.next());
 
             resultSet.close();
 
@@ -104,44 +100,41 @@ public class ResidenceRequestDAO {
         }
     }
 
-    public static List<ResidenceRequest> retrieveModifiedRequests(int id) throws IOException {
+    public static List<ResidenceRequest> retrieveStudentResidenceRequest(int id) throws IOException {
         Statement stmt;
         List<ResidenceRequest> residenceRequestList = new ArrayList<>();
         ResidenceRequest residenceRequest;
 
         try {
+
             stmt = ConnectionDB.getConnection();
 
-            ResultSet resultSet = SimpleQueries.retrieveModifiedRequests(stmt, id);
+            ResultSet resultSet = SimpleQueries.retrieveStudentResidenceRequests(stmt, id);
 
-            if (!resultSet.first()) {
-                throw new MessageException("You have no requests");
+            if(resultSet.first()) {
+                resultSet.first();
+                do {
+                    int requestId = resultSet.getInt(ID);
+                    int studentId = resultSet.getInt(IDSTUD);
+                    Date arrival = resultSet.getDate(ARRIVAL);
+                    Date departure = resultSet.getDate(DEPARTURE);
+                    String room = resultSet.getString(ROOM);
+                    int status = resultSet.getInt(STATUS);
+                    int idResidence = resultSet.getInt(IDRES);
+                    int roomNum = resultSet.getInt(ROOMNUMBER);
+                    String city = ResidenceDAO.retrieveResidencebyId(idResidence);
+
+                    residenceRequest = new ResidenceRequest(city, arrival.toString(), departure.toString(), room, studentId, status);
+                    residenceRequest.setIdResidence(idResidence);
+                    residenceRequest.setId(requestId);
+
+                    residenceRequestList.add(residenceRequest);
+
+                } while (resultSet.next());
             }
-
-            resultSet.first();
-            do {
-                int requestId = resultSet.getInt(ID);
-                int studentId = resultSet.getInt(IDSTUD);
-                Date arrival = resultSet.getDate(ARRIVAL);
-                Date departure = resultSet.getDate(DEPARTURE);
-                String room = resultSet.getString(ROOM);
-                int status = resultSet.getInt(STATUS);
-                int idResidence = resultSet.getInt(IDRES);
-                int roomNum = resultSet.getInt(ROOMNUMBER);
-                String city = ResidenceDAO.retrieveResidencebyId(idResidence);
-
-                residenceRequest = new ResidenceRequest(city, arrival.toString(), departure.toString(), room, studentId, status);
-                residenceRequest.setIdResidence(idResidence);
-                residenceRequest.setId(requestId);
-
-                residenceRequestList.add(residenceRequest);
-
-            } while (resultSet.next());
 
             resultSet.close();
 
-        } catch (MessageException e) {
-            ShowExceptionSupport.showException(e.getMessage());
         } catch (SQLException | ConnectionDbException | NotFoundException e) {
             e.printStackTrace();
         }

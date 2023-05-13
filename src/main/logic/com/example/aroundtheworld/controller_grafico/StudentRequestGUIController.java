@@ -28,7 +28,7 @@ public class StudentRequestGUIController implements Observer {
 
         StudentBean studentBean = Session.getCurrentSession().getStudentBean();
         ReserveRoomController reserveRoomController = new ReserveRoomController();
-        List<ResidenceRequestBean> requestList = reserveRoomController.getModifiedRequest(studentBean.getId());
+        List<ResidenceRequestBean> requestList = reserveRoomController.getStudentResidenceRequest(studentBean.getId());
 
         for(ResidenceRequestBean requestBean: requestList){
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -38,7 +38,11 @@ public class StudentRequestGUIController implements Observer {
 
             RequestItemGUIController requestItemGUIController = fxmlLoader.getController();
             requestItemGUIController.setPane(requestBox);
-            requestItemGUIController.setModifiedRequest(requestBean);
+            if(requestBean.getStatus() == 1){
+                requestItemGUIController.setModifiedRequest(requestBean);
+            }else {
+                requestItemGUIController.setPendingRequest(requestBean);
+            }
 
             residenceReqList.getChildren().add(requestBox);
 

@@ -98,8 +98,8 @@ public class SimpleQueries {
     }
 
 
-    public static ResultSet retrieveModifiedRequests(Statement stmt, int id) throws SQLException{
-        String sql = "SELECT * FROM residenceRequest WHERE CURRENT_DATE() <= departure AND status = 1 AND idStudent = '"+ id + "'";
+    public static ResultSet retrieveStudentResidenceRequests(Statement stmt, int id) throws SQLException{
+        String sql = "SELECT * FROM residenceRequest WHERE CURRENT_DATE() <= departure AND status != 2 AND idStudent = '"+ id + "' ORDER BY status DESC";
         return stmt.executeQuery(sql);
     }
 

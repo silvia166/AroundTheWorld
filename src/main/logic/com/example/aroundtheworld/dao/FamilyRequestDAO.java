@@ -64,7 +64,7 @@ public class FamilyRequestDAO {
         }
     }
 
-    public static List<FamilyRequest> retrieveRequests(int id) throws NotFoundException{
+    public static List<FamilyRequest> retrieveRequests(int id){
         Statement stmt;
         List<FamilyRequest> familyRequestsList = new ArrayList<>();
         FamilyRequest familyRequest;
@@ -74,48 +74,46 @@ public class FamilyRequestDAO {
 
             ResultSet resultSet = SimpleQueries.retrieveFamilyRequests(stmt, id);
 
-            if (!resultSet.first()) {
-                throw new NotFoundException("No request found for family with id: " + id);
+            if(resultSet.first()) {
+                resultSet.first();
+                do {
+                    int requestId = resultSet.getInt(ID);
+                    int studentId = resultSet.getInt(IDSTUD);
+                    String city = resultSet.getString(CITY);
+                    Date arrival = resultSet.getDate(ARRIVAL);
+                    Date departure = resultSet.getDate(DEPARTURE);
+                    String house = resultSet.getString(HOUSE);
+                    int status = resultSet.getInt(STATUS);
+                    int siblings = resultSet.getInt(SIBLINGS);
+                    int animals = resultSet.getInt(ANIMALS);
+                    int vegetarian = resultSet.getInt(VEGETARIAN);
+                    int vegan = resultSet.getInt(VEGAN);
+                    int travels = resultSet.getInt(TRAVELS);
+                    int books = resultSet.getInt(BOOKS);
+                    int sport = resultSet.getInt(SPORT);
+                    int nature = resultSet.getInt(NATURE);
+                    int film = resultSet.getInt(FILM);
+                    int videoGames = resultSet.getInt(VIDEOGAMES);
+                    int cooking = resultSet.getInt(COOKING);
+                    String compatibility = resultSet.getString(COMPATIBILITY);
+
+                    familyRequest = new FamilyRequest(city, arrival.toString(), departure.toString(), siblings, animals, studentId, id);
+
+                    familyRequest.setCompatibility(Float.parseFloat(compatibility));
+                    familyRequest.setStatus(status);
+                    familyRequest.setId(requestId);
+
+                    FamilyPreferences preferences = new FamilyPreferences();
+                    preferences.setHouse(house);
+                    preferences.setHobbies(travels, sport, books, nature, film, videoGames, cooking);
+                    preferences.setFood(vegetarian, vegan);
+
+                    familyRequest.setFamilyPreferences(preferences);
+
+                    familyRequestsList.add(familyRequest);
+
+                } while (resultSet.next());
             }
-
-            resultSet.first();
-            do {
-                int requestId = resultSet.getInt(ID);
-                int studentId = resultSet.getInt(IDSTUD);
-                String city = resultSet.getString(CITY);
-                Date arrival = resultSet.getDate(ARRIVAL);
-                Date departure = resultSet.getDate(DEPARTURE);
-                String house = resultSet.getString(HOUSE);
-                int status = resultSet.getInt(STATUS);
-                int siblings = resultSet.getInt(SIBLINGS);
-                int animals = resultSet.getInt(ANIMALS);
-                int vegetarian = resultSet.getInt(VEGETARIAN);
-                int vegan = resultSet.getInt(VEGAN);
-                int travels = resultSet.getInt(TRAVELS);
-                int books = resultSet.getInt(BOOKS);
-                int sport = resultSet.getInt(SPORT);
-                int nature = resultSet.getInt(NATURE);
-                int film = resultSet.getInt(FILM);
-                int videoGames = resultSet.getInt(VIDEOGAMES);
-                int cooking = resultSet.getInt(COOKING);
-                String compatibility = resultSet.getString(COMPATIBILITY);
-
-                familyRequest = new FamilyRequest(city,arrival.toString(),departure.toString(),siblings,animals,studentId,id);
-
-                familyRequest.setCompatibility(Float.parseFloat(compatibility));
-                familyRequest.setStatus(status);
-                familyRequest.setId(requestId);
-
-                FamilyPreferences preferences = new FamilyPreferences();
-                preferences.setHouse(house);
-                preferences.setHobbies(travels,sport,books,nature,film,videoGames,cooking);
-                preferences.setFood(vegetarian,vegan);
-
-                familyRequest.setFamilyPreferences(preferences);
-
-                familyRequestsList.add(familyRequest);
-
-            } while (resultSet.next());
 
             resultSet.close();
 

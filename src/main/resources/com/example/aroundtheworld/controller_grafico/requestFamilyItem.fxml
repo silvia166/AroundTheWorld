@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="reqPane" prefHeight="170.0" style="-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20;" styleClass="shadowPending" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.RequestItemGUIController">
+<AnchorPane fx:id="reqPane" prefHeight="170.0" style="-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20;" styleClass="shadowGreen" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.RequestItemGUIController">
    <children>
       <VBox fx:id="vBox" alignment="CENTER" spacing="7.0" styleClass="request-box">
          <padding>
@@ -42,7 +42,7 @@
       <HBox alignment="CENTER" layoutY="86.0" prefWidth="250.0" spacing="20.0">
          <children>
             <VBox alignment="CENTER" prefHeight="16.0" prefWidth="0.0" />
-            <Label fx:id="arrivalLabel" contentDisplay="CENTER" prefHeight="17.0" prefWidth="73.0" text=" 12-12-2023" />
+            <Label fx:id="arrivalLabel" contentDisplay="CENTER" prefHeight="18.0" prefWidth="66.0" text=" 12-12-2023" />
             <Label fx:id="userName1" alignment="CENTER">
                <font>
                   <Font size="15.0" />
@@ -55,14 +55,14 @@
       <HBox alignment="CENTER" layoutX="1.0" layoutY="53.0" prefHeight="22.0" prefWidth="249.0">
          <children>
             <VBox alignment="CENTER" prefHeight="16.0" prefWidth="0.0" />
-            <Label fx:id="modifyLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="129.0" text="Compatibility:" textAlignment="CENTER" />
+            <Label fx:id="modifyLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="108.0" text="Compatibility:" textAlignment="CENTER" />
             <Label fx:id="userName11" alignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
             <VBox alignment="CENTER" layoutX="90.0" layoutY="10.0" />
-            <Label fx:id="compatibilityLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="118.0" text="50% " textAlignment="CENTER" />
+            <Label fx:id="compatibilityLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="98.0" text="50% " textAlignment="CENTER" />
          </children>
       </HBox>
       <Button fx:id="rejectBtn" layoutX="16.0" layoutY="131.0" mnemonicParsing="false" onAction="#rejectRequest" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="Reject" />

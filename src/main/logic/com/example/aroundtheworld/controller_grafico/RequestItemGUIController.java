@@ -200,13 +200,15 @@ public class RequestItemGUIController implements Observer {
         rejectBtn1.setVisible(true);
     }
 
-    public void acceptModifiedRequest() throws IOException{
+    public void acceptModifiedRequest() throws IOException {
         ReserveRoomController reserveRoomController = new ReserveRoomController();
         reserveRoomController.updateStatus(this.residenceRequest, 2, this.pane);
     }
 
     public void rejectModifiedRequest(){
-
+        ReserveRoomController reserveRoomController = new ReserveRoomController();
+        reserveRoomController.deleteResidenceRequest(this.residenceRequest, this.pane);
     }
+
 }
 

@@ -19,10 +19,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class StudentRequestGUIController implements Observer {
-
     @FXML
     private HBox familyReqList;
-
     @FXML
     private HBox residenceReqList;
 
@@ -64,7 +62,10 @@ public class StudentRequestGUIController implements Observer {
 
     @Override
     public void update(Object object1, Object object2) {
-        //
+        if (residenceReqList.getChildren().contains((Pane)object2))
+            residenceReqList.getChildren().remove((Pane)object2);
+        else if (familyReqList.getChildren().contains((Pane)object2))
+            familyReqList.getChildren().remove((Pane)object2);
     }
 
     public void backToAccess() throws IOException {

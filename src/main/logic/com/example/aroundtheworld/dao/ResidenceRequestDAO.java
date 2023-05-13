@@ -3,10 +3,14 @@ package com.example.aroundtheworld.dao;
 import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
+import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.ConnectionDbException;
+import com.example.aroundtheworld.exception.DuplicateRequestException;
+import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.ResidenceRequest;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -28,14 +32,19 @@ public class ResidenceRequestDAO {
     private ResidenceRequestDAO() {
     }
 
-    public static void newRequest(ResidenceRequest residenceRequest) {
+    public static void newRequest(ResidenceRequest residenceRequest) throws  DuplicateRequestException{
 
         Statement stmt;
 
         try {
             stmt = ConnectionDB.getConnection();
 
-            CRUDQueries.insertResidenceRequest(stmt, residenceRequest);
+            ResultSet resultSet = SimpleQueries.selectDistinctRequest(stmt, residenceRequest.getIdStudent(), residenceRequest.getArrival(), residenceRequest.getDeparture());
+            if(!resultSet.first()){
+                CRUDQueries.insertResidenceRequest(stmt, residenceRequest);
+            } else {
+                throw new DuplicateRequestException();
+            }
 
         } catch (SQLException | ConnectionDbException e) {
             e.printStackTrace();
@@ -95,7 +104,7 @@ public class ResidenceRequestDAO {
         }
     }
 
-    public static List<ResidenceRequest> retrieveModifiedRequests(int id) throws NotFoundException{
+    public static List<ResidenceRequest> retrieveModifiedRequests(int id) throws IOException {
         Statement stmt;
         List<ResidenceRequest> residenceRequestList = new ArrayList<>();
         ResidenceRequest residenceRequest;
@@ -106,7 +115,7 @@ public class ResidenceRequestDAO {
             ResultSet resultSet = SimpleQueries.retrieveModifiedRequests(stmt, id);
 
             if (!resultSet.first()) {
-                throw new NotFoundException("No request found for the student with id:" + id);
+                throw new MessageException("You have no requests");
             }
 
             resultSet.first();
@@ -131,13 +140,33 @@ public class ResidenceRequestDAO {
 
             resultSet.close();
 
-        } catch (SQLException | ConnectionDbException e) {
+        } catch (MessageException e) {
+            ShowExceptionSupport.showException(e.getMessage());
+        } catch (SQLException | ConnectionDbException | NotFoundException e) {
             e.printStackTrace();
         }
+
 
         return residenceRequestList;
     }
 
     public static void updateRequest(int id, int status) {
+        Statement stmt;
+        try {
+            stmt = ConnectionDB.getConnection();
+            CRUDQueries.updateResidenceRequestStatus(stmt, status, id);
+        } catch (SQLException | ConnectionDbException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteResidenceRequest(int id) {
+        Statement stmt;
+        try {
+            stmt = ConnectionDB.getConnection();
+            CRUDQueries.deleteResidenceRequest(stmt, id);
+        } catch (SQLException | ConnectionDbException e) {
+            e.printStackTrace();
+        }
     }
 }

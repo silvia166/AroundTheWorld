@@ -7,6 +7,7 @@ import com.example.aroundtheworld.controller_applicativo.BookingResidenceControl
 import com.example.aroundtheworld.controller_applicativo.ContactFamilyController;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
+import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.FormEmptyException;
 import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.NotFoundException;
@@ -97,7 +98,7 @@ public class BookingResidenceGUIController implements Initializable {
 
             ShowExceptionSupport.showException("Your request has been successfully saved!");
 
-        } catch (FormEmptyException | MessageException e) {
+        } catch (FormEmptyException | MessageException | DuplicateRequestException e) {
             ShowExceptionSupport.showException(e.getMessage());
         } catch (NotFoundException e) {
             throw new RuntimeException(e);

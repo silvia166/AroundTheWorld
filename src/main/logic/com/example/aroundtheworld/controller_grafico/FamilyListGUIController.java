@@ -84,18 +84,6 @@ public class FamilyListGUIController {
         return count;
     }
 
-    public void savedRequest() throws IOException {
-        Stage dialog = new Stage();
-        dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.initStyle(StageStyle.UNDECORATED);
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(Main.class.getResource("savedRequest.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        dialog.setScene(scene);
-        dialog.centerOnScreen();
-        dialog.show();
-    }
-
     public void backStudHomepage(ActionEvent event) throws IOException {
         ((Node)event.getSource()).getScene().getWindow().hide();
         Main.getSecondaryStage().hide();

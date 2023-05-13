@@ -3,10 +3,13 @@ package com.example.aroundtheworld.dao;
 import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
+import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.ConnectionDbException;
+import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.*;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -42,14 +45,19 @@ public class FamilyRequestDAO {
     private FamilyRequestDAO() {
     }
 
-    public static void newRequest(FamilyRequest familyRequest) {
+    public static void newRequest(FamilyRequest familyRequest) throws DuplicateRequestException{
 
         Statement stmt;
 
         try {
             stmt = ConnectionDB.getConnection();
 
-            CRUDQueries.insertRequest(stmt, familyRequest);
+            ResultSet resultSet = SimpleQueries.selectDistinctRequest(stmt, familyRequest.getIdStudent(), familyRequest.getArrival(), familyRequest.getDeparture());
+            if(!resultSet.first()){
+                CRUDQueries.insertRequest(stmt, familyRequest);
+            } else {
+                throw new DuplicateRequestException();
+            }
 
         } catch (SQLException | ConnectionDbException e) {
             e.printStackTrace();

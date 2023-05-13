@@ -2,10 +2,7 @@ package com.example.aroundtheworld.controller_grafico;
 
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.bean.RoomBean;
-import com.example.aroundtheworld.controller_applicativo.ContactFamilyController;
 import com.example.aroundtheworld.controller_applicativo.ReserveRoomController;
-import com.example.aroundtheworld.engineering.ShowExceptionSupport;
-import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,7 +43,7 @@ public class ReserveRoomGUIController {
     private ResidenceRequestBean requestBean;
     private Pane pane;
 
-    public void reserveRoom(ResidenceRequestBean residenceRequest, Object object) {
+    public void reserveRoom(ResidenceRequestBean residenceRequest, Object object) throws IOException {
 
         this.requestBean = residenceRequest;
         this.pane = (Pane) object;

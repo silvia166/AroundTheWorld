@@ -5,6 +5,8 @@ import com.example.aroundtheworld.controller_grafico.FamilyListGUIController;
 import com.example.aroundtheworld.dao.FamilyDAO;
 import com.example.aroundtheworld.dao.FamilyRequestDAO;
 import com.example.aroundtheworld.dao.StudentDAO;
+import com.example.aroundtheworld.engineering.ShowExceptionSupport;
+import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.*;
@@ -129,7 +131,7 @@ public class ContactFamilyController {
         return familyBean;
     }
 
-    public void saveRequest(FamilyRequestBean familyRequestBean) throws IOException {
+    public void saveRequest(FamilyRequestBean familyRequestBean) throws DuplicateRequestException {
         FamilyRequest familyRequest;
         familyRequest = new FamilyRequest(familyRequestBean.getCityBean(), familyRequestBean.getArrivalBean(), familyRequestBean.getDepartureBean(), familyRequestBean.getSiblingsBean(), familyRequestBean.getAnimalsBean(), familyRequestBean.getIdStudentBean(), familyRequestBean.getIdFamilyBean());
         familyRequest.setCompatibility(familyRequestBean.getCompatibilityBean());
@@ -142,8 +144,6 @@ public class ContactFamilyController {
 
         FamilyRequestDAO.newRequest(familyRequest);
 
-        FamilyListGUIController familyListGUIController = new FamilyListGUIController();
-        familyListGUIController.savedRequest();
     }
 
     public List<FamilyRequestBean> getFamilyRequests(FamilyBean familyBean) throws NotFoundException {

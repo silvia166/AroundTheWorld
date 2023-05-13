@@ -4,6 +4,8 @@ import com.example.aroundtheworld.bean.CompatibleFamilyBean;
 import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.controller_applicativo.ContactFamilyController;
+import com.example.aroundtheworld.engineering.ShowExceptionSupport;
+import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +35,14 @@ public class FamilyItemGUIController {
                 familyRequest.setCompatibility(family.getCompatibility());
                 familyRequest.setIdFamily(family.getId());
                 ContactFamilyController contactFamilyController = new ContactFamilyController();
-                contactFamilyController.saveRequest(familyRequest);
+                try {
+                        contactFamilyController.saveRequest(familyRequest);
+                        Main.getSecondaryStage().hide();
+                        ShowExceptionSupport.showException("Your request has been successfully saved!");
+
+                } catch (DuplicateRequestException e) {
+                        ShowExceptionSupport.showException(e.getMessage());
+                }
         }
         @FXML
         void viewProfile() throws NotFoundException, IOException {

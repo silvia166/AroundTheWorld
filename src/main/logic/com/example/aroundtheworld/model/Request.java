@@ -1,7 +1,6 @@
 package com.example.aroundtheworld.model;
 
 public class Request {
-
     private int id;
     private String city;
     private String arrival;

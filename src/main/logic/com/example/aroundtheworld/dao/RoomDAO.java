@@ -19,7 +19,7 @@ public class RoomDAO {
 
     private RoomDAO(){}
 
-    public static List<Room> retrieveAvailableRooms(int idResidence, String arrival, String departure) throws IOException, NoAvailableRoomsException {
+    public static List<Room> retrieveAvailableRooms(int idResidence, String arrival, String departure) throws NoAvailableRoomsException {
         Statement stmt;
         Room room;
         List<Room> roomList = new ArrayList<>();

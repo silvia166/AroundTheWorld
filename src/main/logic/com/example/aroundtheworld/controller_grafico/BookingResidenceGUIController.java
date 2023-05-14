@@ -26,10 +26,8 @@ import java.util.Objects;
 
 
 public class BookingResidenceGUIController {
-
     Scene scene;
     Stage stage;
-
     @FXML
     ChoiceBox cityBox = new ChoiceBox();
     @FXML
@@ -92,7 +90,7 @@ public class BookingResidenceGUIController {
         } catch (FormEmptyException | MessageException | DuplicateRequestException e) {
             ShowExceptionSupport.showException(e.getMessage());
         } catch (NotFoundException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }

@@ -62,6 +62,11 @@ public class RequestItemGUIController implements Observer {
     @FXML
     private Label statusLabel;
 
+    private static final String GREENSHADOW = "-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(81, 241, 155), 10.0 , 0.0 , 0.0 ,5.0);";
+    private static final String SHADOW = "-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);";
+    private static final String REDSHADOW = "-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(252,126,126), 10.0 , 0.0 , 0.0 ,5.0);";
+    private static final String LIGHTGREEN = "-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(192,249,221), 10.0 , 0.0 , 0.0 ,5.0);";
+
 
     public void setPane(Pane pane) {
         this.pane = pane;
@@ -78,28 +83,20 @@ public class RequestItemGUIController implements Observer {
         if (familyRequestBean.getStatus() == 1){
             reqPane.getChildren().removeAll(acceptBtn,rejectBtn,viewReqBtn);
             notBookedLabel.setVisible(true);
-            reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(81, 241, 155), 10.0 , 0.0 , 0.0 ,5.0);");
+            reqPane.setStyle(GREENSHADOW);
         }
     }
 
-    public void acceptRequest() throws IOException {
+    public void acceptRequest() {
         ContactFamilyController contactFamilyController = new ContactFamilyController();
         this.familyRequest.register(this);
-        try {
-            contactFamilyController.acceptRequest(this.familyRequest, this.pane);
-        } catch (NotFoundException e) {
-            ShowExceptionSupport.showException(e.getMessage());
-        }
+        contactFamilyController.acceptRequest(this.familyRequest, this.pane);
     }
 
-    public void rejectRequest() throws IOException {
+    public void rejectRequest() {
         ContactFamilyController contactFamilyController = new ContactFamilyController();
         this.familyRequest.register(this);
-        try {
-            contactFamilyController.rejectRequest(this.familyRequest, this.pane);
-        } catch (NotFoundException e) {
-            ShowExceptionSupport.showException(e.getMessage());
-        }
+        contactFamilyController.rejectRequest(this.familyRequest, this.pane);
     }
 
     public void viewRequest() throws IOException, NotFoundException {
@@ -130,17 +127,17 @@ public class RequestItemGUIController implements Observer {
             if (((FamilyRequestBean) object1).getStatus() == 1) {
                 reqPane.getChildren().removeAll(acceptBtn, rejectBtn, viewReqBtn);
                 notBookedLabel.setVisible(true);
-                reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(81, 241, 155), 10.0 , 0.0 , 0.0 ,5.0);");
+                reqPane.setStyle(GREENSHADOW);
             }
 
         } else if (object1 instanceof ResidenceRequestBean){
 
             if (((ResidenceRequestBean) object1).getStatus() == 1){
                 reqPane.getChildren().remove(manageButton);
-                reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(252,126,126), 10.0 , 0.0 , 0.0 ,5.0);");
+                reqPane.setStyle(REDSHADOW);
             } else if (((ResidenceRequestBean) object1).getStatus() == 2){
                 reqPane.getChildren().remove(manageButton);
-                reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(81,241,155), 10.0 , 0.0 , 0.0 ,5.0);");
+                reqPane.setStyle(GREENSHADOW);
             }
         }
     }
@@ -156,12 +153,12 @@ public class RequestItemGUIController implements Observer {
 
         if (requestBean.getStatus() == 1){
             reqPane.getChildren().remove(manageButton);
-            reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(252,126,126), 10.0 , 0.0 , 0.0 ,5.0);");
+            reqPane.setStyle(REDSHADOW);
         } else if (requestBean.getStatus() == 2){
             reqPane.getChildren().remove(manageButton);
-            reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(81, 241, 155), 10.0 , 0.0 , 0.0 ,5.0);");
+            reqPane.setStyle(GREENSHADOW);
         }else{
-            reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);");
+            reqPane.setStyle(SHADOW);
         }
     }
 
@@ -203,8 +200,7 @@ public class RequestItemGUIController implements Observer {
         arrivalLabel.setText(requestBean.getArrival());
         departureLabel.setText(requestBean.getDeparture());
 
-        reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(192,249,221), 10.0 , 0.0 , 0.0 ,5.0);");
-
+        reqPane.setStyle(LIGHTGREEN);
     }
 
     public void acceptModifiedRequest() {
@@ -234,7 +230,7 @@ public class RequestItemGUIController implements Observer {
         modifiedLabel.setText("Requested:");
         reqPane.getChildren().removeAll(rejectBtn, acceptBtn);
 
-        reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(192,249,221), 10.0 , 0.0 , 0.0 ,5.0);");
+        reqPane.setStyle(LIGHTGREEN);
     }
 
 }

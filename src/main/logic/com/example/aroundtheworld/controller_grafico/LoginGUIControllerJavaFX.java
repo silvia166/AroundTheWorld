@@ -23,9 +23,6 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class LoginGUIControllerJavaFX {
-
-    private Stage stage;
-    private Scene scene;
     @FXML
     TextField usernameField;
     @FXML
@@ -53,7 +50,7 @@ public class LoginGUIControllerJavaFX {
                 default -> throw new UserNotFoundException();
             }
 
-            scene = new Scene(root);
+            Scene scene = new Scene(root);
             dialog.setScene(scene);
             dialog.show();
 
@@ -67,7 +64,7 @@ public class LoginGUIControllerJavaFX {
     public void toCreateAccount() throws IOException {
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("createAccount.fxml")));
-        scene = new Scene(root);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
@@ -79,7 +76,7 @@ public class LoginGUIControllerJavaFX {
         cityController.setCity(cityBean);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("city.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(fxmlLoader.load()));
 
         CityGUIController cityGUIController = fxmlLoader.getController();

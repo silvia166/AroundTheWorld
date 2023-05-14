@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.io.IOException;
 
-public class StudentProfileGUIController extends LogoutGUIControllerJavaFX {
+public class StudentProfileGUIController {
     @FXML
     private Label birth;
 

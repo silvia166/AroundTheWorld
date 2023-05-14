@@ -163,13 +163,13 @@ public class ContactFamilyController {
         return familyRequestsBeans;
     }
 
-    public void acceptRequest(FamilyRequestBean familyRequest, Object object) throws NotFoundException{
+    public void acceptRequest(FamilyRequestBean familyRequest, Object object) {
         familyRequest.setStatus(1);
         familyRequest.notifyObservers(familyRequest, object);
         FamilyRequestDAO.updateStatus(1, familyRequest.getId());
     }
 
-    public void rejectRequest(FamilyRequestBean familyRequest, Object object) throws NotFoundException{
+    public void rejectRequest(FamilyRequestBean familyRequest, Object object) {
         familyRequest.notifyObservers(familyRequest, object);
         FamilyRequestDAO.deleteRequest(familyRequest.getId());
     }
@@ -177,8 +177,6 @@ public class ContactFamilyController {
     public StudentBean viewRequest(FamilyRequestBean familyRequest) throws NotFoundException {
 
         Student student = StudentDAO.retrieveStudent(null, familyRequest.getIdStudentBean());
-        StudentBean studentBean = new StudentBean(student.getName(), student.getSurname(), student.getNationality(), student.getDateOfBirth(), student.getEmail(), student.getPhoneNumber(), student.getId());
-
-        return studentBean;
+        return new StudentBean(student.getName(), student.getSurname(), student.getNationality(), student.getDateOfBirth(), student.getEmail(), student.getPhoneNumber(), student.getId());
     }
 }

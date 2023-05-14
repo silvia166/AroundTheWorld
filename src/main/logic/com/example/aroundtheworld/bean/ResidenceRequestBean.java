@@ -12,7 +12,6 @@ public class ResidenceRequestBean extends Subject {
     private int idResidence;
     private int status;
     private String studentName;
-
     private int roomNumber;
 
     public ResidenceRequestBean(String city, String arrival, String departure, String room, int idStudent, int status) {

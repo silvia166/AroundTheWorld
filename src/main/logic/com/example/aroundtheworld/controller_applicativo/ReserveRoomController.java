@@ -29,7 +29,7 @@ public class ReserveRoomController {
         return residenceRequestBeans;
     }
 
-    public List<RoomBean> getAvailableRooms(ResidenceRequestBean residenceRequest) throws IOException, NoAvailableRoomsException {
+    public List<RoomBean> getAvailableRooms(ResidenceRequestBean residenceRequest) throws NoAvailableRoomsException {
         List<RoomBean> roomBeans = new ArrayList<>();
         List<Room> rooms = RoomDAO.retrieveAvailableRooms(residenceRequest.getIdResidence(),residenceRequest.getArrival(),residenceRequest.getDeparture());
 
@@ -46,7 +46,7 @@ public class ReserveRoomController {
         ResidenceRequestDAO.updateRoom(selectedRoom.getNumber(), requestBean.getId(), status);
     }
 
-    public List<ResidenceRequestBean> getStudentResidenceRequest(int id) throws IOException {
+    public List<ResidenceRequestBean> getStudentResidenceRequest(int id) {
         List<ResidenceRequestBean> residenceRequestBeans = new ArrayList<>();
         List<ResidenceRequest> requests = ResidenceRequestDAO.retrieveStudentResidenceRequest(id);
 

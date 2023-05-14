@@ -16,7 +16,6 @@ import java.util.Date;
 import java.util.List;
 
 public class ResidenceRequestDAO {
-
     private static final String ID = "idRequest";
     private static final String IDSTUD = "idStudent";
     private static final String IDRES = "idResidence";
@@ -76,7 +75,9 @@ public class ResidenceRequestDAO {
                     residenceRequest.setIdResidence(idResidence);
                     residenceRequest.setId(requestId);
                     residenceRequest.setStudentName(studentName);
-
+                    if (roomNum != 0) {
+                        residenceRequest.setRoomNumber(roomNum);
+                    }
                     residenceRequestList.add(residenceRequest);
 
                 } while (resultSet.next());
@@ -128,6 +129,9 @@ public class ResidenceRequestDAO {
                     residenceRequest = new ResidenceRequest(city, arrival.toString(), departure.toString(), room, studentId, status);
                     residenceRequest.setIdResidence(idResidence);
                     residenceRequest.setId(requestId);
+                    if (roomNum != 0) {
+                        residenceRequest.setRoomNumber(roomNum);
+                    }
 
                     residenceRequestList.add(residenceRequest);
 
@@ -139,7 +143,6 @@ public class ResidenceRequestDAO {
         } catch (SQLException | ConnectionDbException | NotFoundException e) {
             e.printStackTrace();
         }
-
 
         return residenceRequestList;
     }

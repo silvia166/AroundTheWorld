@@ -1,6 +1,6 @@
 package com.example.aroundtheworld.model;
 
-public class FamilyRequest extends Request{
+public class FamilyRequest extends Request {
     private int siblings;
     private int animals;
     private FamilyPreferences familyPreferences;

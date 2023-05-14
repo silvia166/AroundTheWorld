@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class SimpleQueries {
+
     private SimpleQueries() {}
 
     public static ResultSet checkUser(Statement stmt, String username, String password) throws SQLException {
@@ -107,5 +108,4 @@ public class SimpleQueries {
         String sql = "SELECT idRequest FROM residenceRequest WHERE idStudent = '"+ idStudent + "' AND ((arrival > '" + arrival + "' AND arrival < '" + departure + "') OR (departure > '"+arrival+"' AND departure < '"+ departure + "') OR (arrival < '" + arrival + "' AND departure > '" + departure + "') OR (arrival > '"+ arrival +"' AND departure < '" + departure +"')) UNION SELECT idRequest FROM familyRequest WHERE idStudent = '"+ idStudent + "' AND ((arrival > '" + arrival + "' AND arrival < '" + departure + "') OR (departure > '"+arrival+"' AND departure < '"+ departure + "') OR (arrival < '" + arrival + "' AND departure > '" + departure + "') OR (arrival > '"+ arrival +"' AND departure < '" + departure +"'))";
         return stmt.executeQuery(sql);
     }
-
 }

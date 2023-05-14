@@ -23,7 +23,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
-public class FamilyProfileGUIController extends LogoutGUIControllerJavaFX {
+public class FamilyProfileGUIController {
     Scene scene;
     @FXML
     private Label address;
@@ -243,6 +243,11 @@ public class FamilyProfileGUIController extends LogoutGUIControllerJavaFX {
         }
 
         return listFood;
+    }
+
+    public void logout() throws IOException {
+        LogoutGUIControllerJavaFX logoutGUIControllerJavaFX = new LogoutGUIControllerJavaFX();
+        logoutGUIControllerJavaFX.logout();
     }
 
 }

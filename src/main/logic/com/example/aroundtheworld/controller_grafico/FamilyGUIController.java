@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class FamilyGUIController extends LogoutGUIControllerJavaFX {
+public class FamilyGUIController {
 
     public void toFamilyProfile() throws IOException {
         Stage stage = Main.getStage();
@@ -37,5 +37,8 @@ public class FamilyGUIController extends LogoutGUIControllerJavaFX {
         stage.setScene(scene);
         stage.show();
     }
-
+    public void logout() throws IOException {
+        LogoutGUIControllerJavaFX logoutGUIControllerJavaFX = new LogoutGUIControllerJavaFX();
+        logoutGUIControllerJavaFX.logout();
+    }
 }

@@ -8,7 +8,6 @@ import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.ResidenceRequest;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -49,7 +48,7 @@ public class ResidenceRequestDAO {
         }
     }
 
-    public static List<ResidenceRequest> retrieveResidenceRequests() throws NotFoundException {
+    public static List<ResidenceRequest> retrieveRequests() throws NotFoundException {
         Statement stmt;
         List<ResidenceRequest> residenceRequestList = new ArrayList<>();
         ResidenceRequest residenceRequest;
@@ -71,10 +70,12 @@ public class ResidenceRequestDAO {
                     int idResidence = resultSet.getInt(IDRES);
                     int roomNum = resultSet.getInt(ROOMNUMBER);
                     String city = ResidenceDAO.retrieveResidencebyId(idResidence);
+                    String studentName = StudentDAO.getNameById(studentId);
 
                     residenceRequest = new ResidenceRequest(city, arrival.toString(), departure.toString(), room, studentId, status);
                     residenceRequest.setIdResidence(idResidence);
                     residenceRequest.setId(requestId);
+                    residenceRequest.setStudentName(studentName);
 
                     residenceRequestList.add(residenceRequest);
 
@@ -100,7 +101,7 @@ public class ResidenceRequestDAO {
         }
     }
 
-    public static List<ResidenceRequest> retrieveStudentResidenceRequest(int id) throws IOException {
+    public static List<ResidenceRequest> retrieveStudentResidenceRequest(int id) {
         Statement stmt;
         List<ResidenceRequest> residenceRequestList = new ArrayList<>();
         ResidenceRequest residenceRequest;
@@ -143,7 +144,7 @@ public class ResidenceRequestDAO {
         return residenceRequestList;
     }
 
-    public static void updateRequest(int id, int status) {
+    public static void updateStatus(int id, int status) {
         Statement stmt;
         try {
             stmt = ConnectionDB.getConnection();
@@ -153,7 +154,7 @@ public class ResidenceRequestDAO {
         }
     }
 
-    public static void deleteResidenceRequest(int id) {
+    public static void deleteRequest(int id) {
         Statement stmt;
         try {
             stmt = ConnectionDB.getConnection();

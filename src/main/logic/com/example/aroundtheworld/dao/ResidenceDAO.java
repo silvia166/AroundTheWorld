@@ -39,8 +39,9 @@ public class ResidenceDAO {
                 String name = resultSet.getString(NAME);
                 String address = resultSet.getString(ADDRESS);
                 String distance = resultSet.getString(DISTANCE);
+                city = resultSet.getString(CITY);
 
-                residence = new Residence(id,name,address,distance);
+                residence = new Residence(id,name,address,distance,city);
 
             } while(resultSet.next());
 

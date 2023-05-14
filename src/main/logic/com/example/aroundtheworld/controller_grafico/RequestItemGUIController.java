@@ -16,9 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -35,8 +33,6 @@ public class RequestItemGUIController implements Observer {
     @FXML
     private Label departureLabel;
     @FXML
-    private HBox manageReqBox;
-    @FXML
     private Label nameLabel;
     @FXML
     private Label cityLabel;
@@ -45,23 +41,26 @@ public class RequestItemGUIController implements Observer {
     @FXML
     private Label notBookedLabel;
     @FXML
-    private VBox vBox;
-    @FXML
     private Button viewReqBtn;
     @FXML
     private Button manageButton;
     @FXML
-    private Label modifyLabel;
-    @FXML
-    private Button acceptBtn1;
-    @FXML
-    private Button rejectBtn1;
+    private Label modifiedLabel;
     @FXML
     private AnchorPane reqPane;
 
     private FamilyRequestBean familyRequest;
     private Pane pane;
     private ResidenceRequestBean residenceRequest;
+
+    @FXML
+    private Label residenceLabel;
+
+    @FXML
+    private Label roomLabel;
+
+    @FXML
+    private Label statusLabel;
 
 
     public void setPane(Pane pane) {
@@ -138,7 +137,7 @@ public class RequestItemGUIController implements Observer {
 
             if (((ResidenceRequestBean) object1).getStatus() == 1){
                 reqPane.getChildren().remove(manageButton);
-                reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(255,178,123), 10.0 , 0.0 , 0.0 ,5.0);");
+                reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(252,126,126), 10.0 , 0.0 , 0.0 ,5.0);");
             } else if (((ResidenceRequestBean) object1).getStatus() == 2){
                 reqPane.getChildren().remove(manageButton);
                 reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(81,241,155), 10.0 , 0.0 , 0.0 ,5.0);");
@@ -198,18 +197,17 @@ public class RequestItemGUIController implements Observer {
             room = "Single";
         }
 
-        nameLabel.setText(requestBean.getCity());
-        modifyLabel.setText("Modification:");
-        compatibilityLabel.setText(room + " Room");
+        residenceLabel.setText(requestBean.getCity()+" Residence");
+        statusLabel.setText("Modified Request");
+        roomLabel.setText(room + " Room");
         arrivalLabel.setText(requestBean.getArrival());
         departureLabel.setText(requestBean.getDeparture());
 
-        reqPane.getChildren().removeAll(viewReqBtn, rejectBtn, acceptBtn);
-        acceptBtn1.setVisible(true);
-        rejectBtn1.setVisible(true);
+        reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(192,249,221), 10.0 , 0.0 , 0.0 ,5.0);");
+
     }
 
-    public void acceptModifiedRequest() throws IOException {
+    public void acceptModifiedRequest() {
         ReserveRoomController reserveRoomController = new ReserveRoomController();
         reserveRoomController.updateStatus(this.residenceRequest, 2, this.pane);
     }
@@ -222,21 +220,21 @@ public class RequestItemGUIController implements Observer {
     public void setPendingRequest(ResidenceRequestBean requestBean) {
         this.residenceRequest = requestBean;
 
-        String room = null;
+        String room;
         if(requestBean.getRoom().equals("single")){
             room = "Single";
         }else{
             room = "Double";
         }
-        nameLabel.setText("Pending Request");
-        modifyLabel.setText(requestBean.getCity());
-        compatibilityLabel.setText(room + " Room");
+        statusLabel.setText("Pending Request");
+        residenceLabel.setText(requestBean.getCity()+" Residence");
+        roomLabel.setText(room + " Room");
         arrivalLabel.setText(requestBean.getArrival());
         departureLabel.setText(requestBean.getDeparture());
+        modifiedLabel.setText("Requested:");
+        reqPane.getChildren().removeAll(rejectBtn, acceptBtn);
 
-        reqPane.getChildren().removeAll(viewReqBtn, rejectBtn, acceptBtn);
-
-        reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);");
+        reqPane.setStyle("-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(192,249,221), 10.0 , 0.0 , 0.0 ,5.0);");
     }
 
 }

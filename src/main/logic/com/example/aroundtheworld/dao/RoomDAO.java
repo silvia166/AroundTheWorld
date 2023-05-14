@@ -1,13 +1,9 @@
 package com.example.aroundtheworld.dao;
 
 import com.example.aroundtheworld.connection.ConnectionDB;
-import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
-import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.ConnectionDbException;
-import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.NoAvailableRoomsException;
-import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.*;
 
 import java.io.IOException;

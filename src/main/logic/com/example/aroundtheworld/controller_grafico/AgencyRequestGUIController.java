@@ -1,6 +1,5 @@
 package com.example.aroundtheworld.controller_grafico;
 
-import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.controller_applicativo.ReserveRoomController;
 import com.example.aroundtheworld.engineering.Session;

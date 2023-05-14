@@ -26,101 +26,68 @@ import java.util.*;
 import static java.lang.Integer.parseInt;
 
 public class AddFamilyGUIController {
-
     @FXML
     private TextField addressField;
-
     @FXML
     private ChoiceBox<String> birdsBox;
-
     @FXML
     private CheckBox booksBox;
-
     @FXML
     private ChoiceBox<String> catBox;
-
     @FXML
     private ChoiceBox<String> cityBox;
-
     @FXML
     private CheckBox cookingBox;
-
     @FXML
     private ChoiceBox<String> dogBox;
-
     @FXML
     private ImageView familyImg;
-
     @FXML
     private CheckBox filmBox;
-
     @FXML
     private TextField nameField;
-
     @FXML
     private TextField phoneField;
-
     @FXML
     private CheckBox natureBox;
-
     @FXML
     private RadioButton noPrefRB;
-
     @FXML
     private ChoiceBox<String> otherBox;
-
     @FXML
     private ChoiceBox<String> reptilesBox;
-
     @FXML
     private ChoiceBox<String> rodensBox;
-
     @FXML
     private RadioButton sharedRB;
-
     @FXML
     private RadioButton singleRB;
-
     @FXML
     private CheckBox sportBox;
-
     @FXML
     private CheckBox travelsBox;
-
     @FXML
     private RadioButton veganRB;
-
     @FXML
     private RadioButton vegetarianRB;
-
     @FXML
     private CheckBox videogamesBox;
-
     @FXML
     private TableView<FamilyMemberBean> tableViewMembers;
-
     @FXML
     private TableColumn<FamilyMemberBean, String> nameColumn;
-
     @FXML
     private TableColumn<FamilyMemberBean, Integer> ageColumn;
-
     @FXML
     private TableColumn<FamilyMemberBean, String> parenthoodColumn;
-
     @FXML
     private TextField nameInput;
-
     @FXML
     private TextField ageInput;
-
-
     @FXML
     private ChoiceBox<String> parenthoodInput;
-
     @FXML
     ObservableList<String> animalList = FXCollections.observableArrayList("1","2","3","4+");
-
     @FXML
     ObservableList<String> parenthoodList = FXCollections.observableArrayList("Father","Mother","Sister","Brother", "Grandmother", "Grandfather", "Uncle", "Aunt", "Cousin");
     @FXML
@@ -182,10 +149,9 @@ public class AddFamilyGUIController {
             if(addressField.getText() == null)
                 throw new FormEmptyException("Address");
             if(!vegetarianRB.isSelected() && !veganRB.isSelected() && !noPrefRB.isSelected())
-                throw new FormEmptyException("Food Diet Preferencese");
+                throw new FormEmptyException("Food Diet Preferences");
             if(!singleRB.isSelected() && !sharedRB.isSelected())
                 throw new FormEmptyException("House");
-
 
             animals = getAnimalList();
             membersList = getMembers();

@@ -3,13 +3,10 @@ package com.example.aroundtheworld.dao;
 import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
-import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
-import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.*;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -97,11 +94,14 @@ public class FamilyRequestDAO {
                     int cooking = resultSet.getInt(COOKING);
                     String compatibility = resultSet.getString(COMPATIBILITY);
 
-                    familyRequest = new FamilyRequest(city, arrival.toString(), departure.toString(), siblings, animals, studentId, id);
+                    String studentName = StudentDAO.getNameById(studentId);
+
+                    familyRequest = new FamilyRequest(city, arrival.toString(), departure.toString(), siblings, animals, studentId, status);
 
                     familyRequest.setCompatibility(Float.parseFloat(compatibility));
-                    familyRequest.setStatus(status);
+                    familyRequest.setIdFamily(id);
                     familyRequest.setId(requestId);
+                    familyRequest.setStudentName(studentName);
 
                     FamilyPreferences preferences = new FamilyPreferences();
                     preferences.setHouse(house);
@@ -126,16 +126,19 @@ public class FamilyRequestDAO {
 
     public static void updateStatus(int status, int id) {
         Statement stmt;
-
         try {
             stmt = ConnectionDB.getConnection();
+            CRUDQueries.updateStatusRequest(stmt, status, id);
+        } catch (SQLException | ConnectionDbException e) {
+            e.printStackTrace();
+        }
+    }
 
-            if(status == 1) {
-                CRUDQueries.updateStatusRequest(stmt, status, id);
-            }else if(status == 2){
-                CRUDQueries.deleteRequest(stmt, id);
-            }
-
+    public static void deleteRequest(int id) {
+        Statement stmt;
+        try {
+            stmt = ConnectionDB.getConnection();
+            CRUDQueries.deleteRequest(stmt, id);
         } catch (SQLException | ConnectionDbException e) {
             e.printStackTrace();
         }

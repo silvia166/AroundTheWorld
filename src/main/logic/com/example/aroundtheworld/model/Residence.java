@@ -6,12 +6,14 @@ public class Residence {
     private String name;
     private String address;
     private String distanceSchool;
+    private String city;
 
-    public Residence(int id, String name, String address, String distanceSchool) {
+    public Residence(int id, String name, String address, String distanceSchool, String city) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.distanceSchool = distanceSchool;
+        this.city = city;
     }
 
     public int getId() {

@@ -1,17 +1,14 @@
 package com.example.aroundtheworld.controller_applicativo;
 
 import com.example.aroundtheworld.bean.*;
-import com.example.aroundtheworld.controller_grafico.FamilyListGUIController;
 import com.example.aroundtheworld.dao.FamilyDAO;
 import com.example.aroundtheworld.dao.FamilyRequestDAO;
 import com.example.aroundtheworld.dao.StudentDAO;
-import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.*;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -133,7 +130,8 @@ public class ContactFamilyController {
 
     public void saveRequest(FamilyRequestBean familyRequestBean) throws DuplicateRequestException {
         FamilyRequest familyRequest;
-        familyRequest = new FamilyRequest(familyRequestBean.getCityBean(), familyRequestBean.getArrivalBean(), familyRequestBean.getDepartureBean(), familyRequestBean.getSiblingsBean(), familyRequestBean.getAnimalsBean(), familyRequestBean.getIdStudentBean(), familyRequestBean.getIdFamilyBean());
+        familyRequest = new FamilyRequest(familyRequestBean.getCityBean(), familyRequestBean.getArrivalBean(), familyRequestBean.getDepartureBean(), familyRequestBean.getSiblingsBean(), familyRequestBean.getAnimalsBean(), familyRequestBean.getIdStudentBean(), 0);
+        familyRequest.setIdFamily(familyRequestBean.getIdFamilyBean());
         familyRequest.setCompatibility(familyRequestBean.getCompatibilityBean());
 
         FamilyPreferences preferences = new FamilyPreferences();
@@ -146,13 +144,11 @@ public class ContactFamilyController {
 
     }
 
-    public List<FamilyRequestBean> getFamilyRequests(FamilyBean familyBean) throws NotFoundException {
+    public List<FamilyRequestBean> getFamilyRequests(FamilyBean familyBean) {
         List<FamilyRequestBean> familyRequestsBeans = new ArrayList<>();
         List<FamilyRequest> requests = FamilyRequestDAO.retrieveRequests(familyBean.getId());
-        String studentName;
 
         for(FamilyRequest request: requests){
-            studentName = StudentDAO.getNameById(request.getIdStudent());
             FamilyRequestBean familyRequestBean = new FamilyRequestBean(request.getCity(), request.getArrival(), request.getDeparture(), request.getSiblings(), request.getAnimals(), request.getIdStudent());
             familyRequestBean.setFood(request.getFamilyPreferences().getVegetarian(), request.getFamilyPreferences().getVegan());
             familyRequestBean.setHouse(request.getFamilyPreferences().getHouse());
@@ -161,7 +157,7 @@ public class ContactFamilyController {
             familyRequestBean.setCompatibility(request.getCompatibility());
             familyRequestBean.setIdFamily(familyBean.getId());
             familyRequestBean.setStatus(request.getStatus());
-            familyRequestBean.setStudentName(studentName);
+            familyRequestBean.setStudentName(request.getStudentName());
             familyRequestsBeans.add(familyRequestBean);
         }
         return familyRequestsBeans;
@@ -174,9 +170,8 @@ public class ContactFamilyController {
     }
 
     public void rejectRequest(FamilyRequestBean familyRequest, Object object) throws NotFoundException{
-        familyRequest.setStatus(2);
         familyRequest.notifyObservers(familyRequest, object);
-        FamilyRequestDAO.updateStatus(2, familyRequest.getId());
+        FamilyRequestDAO.deleteRequest(familyRequest.getId());
     }
 
     public StudentBean viewRequest(FamilyRequestBean familyRequest) throws NotFoundException {

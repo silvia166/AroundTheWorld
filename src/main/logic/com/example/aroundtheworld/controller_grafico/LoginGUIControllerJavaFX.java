@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class LoginGUIControllerJavaFX extends LogoutGUIControllerJavaFX {
+public class LoginGUIControllerJavaFX {
 
     private Stage stage;
     private Scene scene;
@@ -64,9 +64,9 @@ public class LoginGUIControllerJavaFX extends LogoutGUIControllerJavaFX {
         }
     }
 
-    public void toCreateAccount(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("createAccount.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    public void toCreateAccount() throws IOException {
+        Stage stage = Main.getStage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("createAccount.fxml")));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

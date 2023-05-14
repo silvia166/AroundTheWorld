@@ -32,7 +32,7 @@ public class StudentRequestGUIController implements Observer {
 
         for(ResidenceRequestBean requestBean: requestList){
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("requestFamilyItem.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("requestStudentItem.fxml"));
             Pane requestBox = fxmlLoader.load();
             requestBean.register(this);
 

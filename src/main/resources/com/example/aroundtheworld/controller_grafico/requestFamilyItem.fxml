@@ -39,16 +39,16 @@
             <VBox alignment="CENTER" layoutX="90.0" layoutY="10.0" />
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutY="86.0" prefWidth="250.0" spacing="20.0">
+      <HBox alignment="CENTER" layoutY="86.0" prefWidth="250.0" spacing="10.0">
          <children>
             <VBox alignment="CENTER" prefHeight="16.0" prefWidth="0.0" />
-            <Label fx:id="arrivalLabel" contentDisplay="CENTER" prefHeight="18.0" prefWidth="66.0" text=" 12-12-2023" />
+            <Label fx:id="arrivalLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="146.0" text=" 12-12-2023" />
             <Label fx:id="userName1" alignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="departureLabel" contentDisplay="CENTER" text=" 25-12-2023" />
+            <Label fx:id="departureLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="120.0" text=" 25-12-2023" />
             <VBox alignment="CENTER" layoutX="90.0" layoutY="10.0" />
          </children>
       </HBox>
@@ -72,8 +72,6 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="rejectBtn1" layoutX="42.0" layoutY="131.0" mnemonicParsing="false" onAction="#rejectModifiedRequest" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="Reject" visible="false" />
-      <Button fx:id="acceptBtn1" layoutX="150.0" layoutY="131.0" mnemonicParsing="false" onAction="#acceptModifiedRequest" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="Accept" visible="false" />
    </children>
    <opaqueInsets>
       <Insets right="10.0" />

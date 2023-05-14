@@ -19,7 +19,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class CreateAccountGUIController extends LogoutGUIControllerJavaFX {
+public class CreateAccountGUIController {
 
     @FXML
     private DatePicker birthField;
@@ -78,5 +78,10 @@ public class CreateAccountGUIController extends LogoutGUIControllerJavaFX {
         } catch (MessageException e) {
             ShowExceptionSupport.showException(e.getMessage());
         }
+    }
+
+    public void logout() throws IOException {
+        LogoutGUIControllerJavaFX logoutGUIControllerJavaFX = new LogoutGUIControllerJavaFX();
+        logoutGUIControllerJavaFX.logout();
     }
 }

@@ -145,7 +145,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="36.0" layoutY="653.0" mnemonicParsing="false" onAction="#backToAccess" opacity="0.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 100;">
+      <Button layoutX="36.0" layoutY="653.0" mnemonicParsing="false" onAction="#logout" opacity="0.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 100;">
          <font>
             <Font size="26.0" />
          </font>

@@ -1,27 +1,20 @@
 package com.example.aroundtheworld.model;
 
-public class FamilyRequest {
-
-    private int id;
-    private String city;
-    private String arrival;
-    private String departure;
+public class FamilyRequest extends Request{
     private int siblings;
     private int animals;
     private FamilyPreferences familyPreferences;
-    private int idStudent;
     private int idFamily;
     private float compatibility;
     private int rate;
-    private int status;
 
-    public FamilyRequest(String city, String arrival, String departure, int siblings, int animals, int idStudent, int idFamily) {
-        this.city = city;
-        this.arrival = arrival;
-        this.departure = departure;
+    public FamilyRequest(String city, String arrival, String departure, int siblings, int animals, int idStudent, int status) {
+        super(city, arrival, departure, idStudent, status);
         this.siblings = siblings;
         this.animals = animals;
-        this.idStudent = idStudent;
+    }
+
+    public void setIdFamily(int idFamily) {
         this.idFamily = idFamily;
     }
 
@@ -41,18 +34,6 @@ public class FamilyRequest {
         this.familyPreferences = familyPreferences;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public String getArrival() {
-        return arrival;
-    }
-
-    public String getDeparture() {
-        return departure;
-    }
-
     public int getSiblings() {
         return siblings;
     }
@@ -65,10 +46,6 @@ public class FamilyRequest {
         return familyPreferences;
     }
 
-    public int getIdStudent() {
-        return idStudent;
-    }
-
     public int getIdFamily() {
         return idFamily;
     }
@@ -77,18 +54,4 @@ public class FamilyRequest {
         return compatibility;
     }
 
-    public int getStatus() {
-        return status;
-    }
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }

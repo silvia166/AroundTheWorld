@@ -8,7 +8,6 @@ import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.ResidenceRequest;
 
-import java.io.IOException;
 import java.time.LocalDate;
 
 public class BookingResidenceController {

@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class LogoutGUIControllerJavaFX {
-    public void backToAccess() throws IOException {
+    public void logout() throws IOException {
         Session.closeSession();
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("accessPage.fxml")));

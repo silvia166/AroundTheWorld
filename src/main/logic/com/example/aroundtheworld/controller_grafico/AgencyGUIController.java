@@ -10,9 +10,8 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.Objects;
 
-public class AgencyGUIController extends LogoutGUIControllerJavaFX {
+public class AgencyGUIController {
     Scene scene;
-
     public void toAddFamily() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("newFamilyForm.fxml"));
         Parent root1 = fxmlLoader.load();
@@ -40,5 +39,9 @@ public class AgencyGUIController extends LogoutGUIControllerJavaFX {
         stage.show();
     }
 
+    public void logout() throws IOException {
+        LogoutGUIControllerJavaFX logoutGUIControllerJavaFX = new LogoutGUIControllerJavaFX();
+        logoutGUIControllerJavaFX.logout();
+    }
 
 }

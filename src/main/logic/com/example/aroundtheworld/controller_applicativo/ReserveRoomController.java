@@ -5,7 +5,6 @@ import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.bean.RoomBean;
 import com.example.aroundtheworld.dao.ResidenceRequestDAO;
 import com.example.aroundtheworld.dao.RoomDAO;
-import com.example.aroundtheworld.dao.StudentDAO;
 import com.example.aroundtheworld.exception.NoAvailableRoomsException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.ResidenceRequest;
@@ -18,13 +17,11 @@ import java.util.List;
 public class ReserveRoomController {
     public List<ResidenceRequestBean> getResidenceRequests() throws NotFoundException {
         List<ResidenceRequestBean> residenceRequestBeans = new ArrayList<>();
-        List<ResidenceRequest> requests = ResidenceRequestDAO.retrieveResidenceRequests();
-        String studentName;
+        List<ResidenceRequest> requests = ResidenceRequestDAO.retrieveRequests();
 
         for(ResidenceRequest request: requests){
-            studentName = StudentDAO.getNameById(request.getIdStudent());
             ResidenceRequestBean residenceRequestBean = new ResidenceRequestBean(request.getCity(), request.getArrival(), request.getDeparture(), request.getRoom(), request.getIdStudent(), request.getStatus());
-            residenceRequestBean.setStudentName(studentName);
+            residenceRequestBean.setStudentName(request.getStudentName());
             residenceRequestBean.setIdResidence(request.getIdResidence());
             residenceRequestBean.setId(request.getId());
             residenceRequestBeans.add(residenceRequestBean);
@@ -64,11 +61,11 @@ public class ReserveRoomController {
     public void updateStatus(ResidenceRequestBean requestBean, int status, Object object) {
         requestBean.setStatus(status);
         requestBean.notifyObservers(requestBean, object);
-        ResidenceRequestDAO.updateRequest(requestBean.getId(), status);
+        ResidenceRequestDAO.updateStatus(requestBean.getId(), status);
     }
 
     public void deleteResidenceRequest(ResidenceRequestBean requestBean, Object object) {
         requestBean.notifyObservers(requestBean, object);
-        ResidenceRequestDAO.deleteResidenceRequest(requestBean.getId());
+        ResidenceRequestDAO.deleteRequest(requestBean.getId());
     }
 }

@@ -13,6 +13,8 @@ public class ResidenceRequestBean extends Subject {
     private int status;
     private String studentName;
 
+    private int roomNumber;
+
     public ResidenceRequestBean(String city, String arrival, String departure, String room, int idStudent, int status) {
         this.city = city;
         this.arrival = arrival;
@@ -69,5 +71,13 @@ public class ResidenceRequestBean extends Subject {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(int roomNumber) {
+        this.roomNumber = roomNumber;
     }
 }

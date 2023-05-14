@@ -61,11 +61,11 @@ public class ReserveRoomGUIController {
         ReserveRoomController reserveRoomController = new ReserveRoomController();
         List<RoomBean> rooms = reserveRoomController.getAvailableRooms(residenceRequest);
 
-        setTableViewMembers(rooms);
+        displayRooms(rooms);
 
     }
 
-    private void setTableViewMembers(List<RoomBean> roomBeans) {
+    private void displayRooms(List<RoomBean> roomBeans) {
         roomColumn.setCellValueFactory(new PropertyValueFactory<>("Number"));
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("Type"));
 

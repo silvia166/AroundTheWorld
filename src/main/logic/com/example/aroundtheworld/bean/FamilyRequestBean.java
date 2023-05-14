@@ -1,15 +1,8 @@
 package com.example.aroundtheworld.bean;
 
-import com.example.aroundtheworld.engineering.observer.Observer;
 import com.example.aroundtheworld.engineering.observer.Subject;
-import com.example.aroundtheworld.model.Family;
-import com.example.aroundtheworld.model.FamilyRequest;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class FamilyRequestBean extends Subject {
-
     private int id;
     private String city;
     private String arrival;

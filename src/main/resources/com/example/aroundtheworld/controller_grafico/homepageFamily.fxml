@@ -61,7 +61,7 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Button layoutX="13.0" layoutY="669.0" mnemonicParsing="false" onAction="#backToAccess" prefHeight="66.0" prefWidth="91.0" style="-fx-background-color: #C0F9DD; -fx-border-color: white; -fx-border-width: 0; -fx-border-radius: 20;">
+      <Button layoutX="13.0" layoutY="669.0" mnemonicParsing="false" onAction="#logout" prefHeight="66.0" prefWidth="91.0" style="-fx-background-color: #C0F9DD; -fx-border-color: white; -fx-border-width: 0; -fx-border-radius: 20;">
          <font>
             <Font name="Cambria" size="20.0" />
          </font>

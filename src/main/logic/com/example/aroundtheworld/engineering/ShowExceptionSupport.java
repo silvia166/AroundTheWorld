@@ -21,7 +21,7 @@ public class ShowExceptionSupport {
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initStyle(StageStyle.UNDECORATED);
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(Main.class.getResource("errorBox.fxml"));
+        fxmlLoader.setLocation(Main.class.getResource("messageBox.fxml"));
         Scene scene = null;
 
         try {

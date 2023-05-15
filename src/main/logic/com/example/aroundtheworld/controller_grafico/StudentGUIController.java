@@ -10,7 +10,7 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.util.Objects;
 
-public class StudentGUIControllerJavaFX {
+public class StudentGUIController {
     Stage dialog;
     Scene scene;
 
@@ -71,8 +71,8 @@ public class StudentGUIControllerJavaFX {
     }
 
     public void logout() throws IOException {
-        LogoutGUIControllerJavaFX logoutGUIControllerJavaFX = new LogoutGUIControllerJavaFX();
-        logoutGUIControllerJavaFX.logout();
+        LogoutGUIController logoutGUIController = new LogoutGUIController();
+        logoutGUIController.logout();
     }
 
 }

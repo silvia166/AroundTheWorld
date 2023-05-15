@@ -38,7 +38,7 @@ public class FamilyGUIController {
         stage.show();
     }
     public void logout() throws IOException {
-        LogoutGUIControllerJavaFX logoutGUIControllerJavaFX = new LogoutGUIControllerJavaFX();
-        logoutGUIControllerJavaFX.logout();
+        LogoutGUIController logoutGUIController = new LogoutGUIController();
+        logoutGUIController.logout();
     }
 }

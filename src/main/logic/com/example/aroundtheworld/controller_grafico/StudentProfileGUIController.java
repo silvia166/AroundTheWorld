@@ -41,22 +41,22 @@ public class StudentProfileGUIController {
     }
 
     public void toHomepageStudent() throws IOException {
-        StudentGUIControllerJavaFX studentGraphicControllerJavaFX = new StudentGUIControllerJavaFX();
+        StudentGUIController studentGraphicControllerJavaFX = new StudentGUIController();
         studentGraphicControllerJavaFX.toHomepageStudent();
     }
 
     public void toRequestStudent() throws IOException {
-        StudentGUIControllerJavaFX studentGraphicControllerJavaFX = new StudentGUIControllerJavaFX();
+        StudentGUIController studentGraphicControllerJavaFX = new StudentGUIController();
         studentGraphicControllerJavaFX.toRequestStudent();
     }
 
     public void toTravelStudent() throws IOException {
-        StudentGUIControllerJavaFX studentGraphicControllerJavaFX = new StudentGUIControllerJavaFX();
+        StudentGUIController studentGraphicControllerJavaFX = new StudentGUIController();
         studentGraphicControllerJavaFX.toTravelStudent();
     }
 
     public void logout() throws IOException {
-        LogoutGUIControllerJavaFX logoutGUIControllerJavaFX = new LogoutGUIControllerJavaFX();
-        logoutGUIControllerJavaFX.logout();
+        LogoutGUIController logoutGUIController = new LogoutGUIController();
+        logoutGUIController.logout();
     }
 }

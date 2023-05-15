@@ -50,17 +50,17 @@ public class StudentRequestGUIController implements Observer {
     }
 
     public void toHomepageStudent() throws IOException {
-        StudentGUIControllerJavaFX studentGraphicControllerJavaFX = new StudentGUIControllerJavaFX();
+        StudentGUIController studentGraphicControllerJavaFX = new StudentGUIController();
         studentGraphicControllerJavaFX.toHomepageStudent();
     }
 
     public void toProfileStudent() throws IOException {
-        StudentGUIControllerJavaFX studentGraphicControllerJavaFX = new StudentGUIControllerJavaFX();
+        StudentGUIController studentGraphicControllerJavaFX = new StudentGUIController();
         studentGraphicControllerJavaFX.toProfileStudent();
     }
 
     public void toTravelStudent() throws IOException {
-        StudentGUIControllerJavaFX studentGraphicControllerJavaFX = new StudentGUIControllerJavaFX();
+        StudentGUIController studentGraphicControllerJavaFX = new StudentGUIController();
         studentGraphicControllerJavaFX.toTravelStudent();
     }
 

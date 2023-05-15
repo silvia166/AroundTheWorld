@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0"
             prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.aroundtheworld.controller_grafico.LoginGUIControllerJavaFX">
+            fx:controller="com.example.aroundtheworld.controller_grafico.LoginGUIController">
    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c0f9dd" height="675.0" layoutY="74.0" stroke="#c0f9dd"
               strokeType="INSIDE" strokeWidth="0.0" width="370.0"/>
    <Pane layoutX="25.0" layoutY="56.0" prefHeight="74.0" prefWidth="1200.0" style="-fx-background-color: #C0F9DD;"

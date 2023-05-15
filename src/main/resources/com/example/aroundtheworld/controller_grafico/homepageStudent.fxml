@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.StudentGUIControllerJavaFX">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.StudentGUIController">
    <Pane layoutX="25.0" layoutY="56.0" prefHeight="74.0" prefWidth="1200.0" style="-fx-background-color: #C0F9DD;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Text layoutX="115.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Around the world" wrappingWidth="356.93919368502577">
          <font>

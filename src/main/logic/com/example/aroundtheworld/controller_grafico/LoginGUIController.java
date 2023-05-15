@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class LoginGUIControllerJavaFX {
+public class LoginGUIController {
     @FXML
     TextField usernameField;
     @FXML

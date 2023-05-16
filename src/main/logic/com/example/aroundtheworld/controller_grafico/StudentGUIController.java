@@ -1,6 +1,7 @@
 package com.example.aroundtheworld.controller_grafico;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
@@ -73,6 +74,19 @@ public class StudentGUIController {
     public void logout() throws IOException {
         LogoutGUIController logoutGUIController = new LogoutGUIController();
         logoutGUIController.logout();
+    }
+
+    public void quoteForm() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("quoteForm.fxml"));
+        Parent root1 = fxmlLoader.load();
+        dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initStyle(StageStyle.UNDECORATED);
+        dialog.setScene(new Scene(root1));
+        QuoteGUIController quoteGUIController = fxmlLoader.getController();
+        quoteGUIController.setQuoteForm();
+        dialog.centerOnScreen();
+        dialog.show();
     }
 
 }

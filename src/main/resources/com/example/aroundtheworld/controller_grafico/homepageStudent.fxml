@@ -50,7 +50,7 @@
    <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="107.0" layoutY="293.0">
       <Image url="@image/chat.png" />
    </ImageView>
-   <Button layoutX="804.0" layoutY="561.0" mnemonicParsing="false" onAction="#toContactFamily" prefHeight="50.0" prefWidth="295.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Contact a family">
+   <Button layoutX="804.0" layoutY="416.0" mnemonicParsing="false" onAction="#toContactFamily" prefHeight="50.0" prefWidth="295.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Contact a family">
       <font>
          <Font size="26.0" />
       </font>
@@ -74,7 +74,7 @@
    <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="445.0" layoutY="430.0">
       <Image url="@image/big-family.png" />
    </ImageView>
-   <Text layoutX="846.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book your travel " textAlignment="CENTER" wrappingWidth="211.21797729019954">
+   <Text layoutX="845.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book your travel " textAlignment="CENTER" wrappingWidth="211.21797729019954">
       <font>
          <Font size="26.0" />
       </font>
@@ -92,4 +92,9 @@
    <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="107.0" layoutY="447.0">
       <Image url="@image/user.png" />
    </ImageView>
+   <Button layoutX="804.0" layoutY="550.0" mnemonicParsing="false" onAction="#quoteForm" prefHeight="50.0" prefWidth="295.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Request Quote">
+      <font>
+         <Font size="26.0" />
+      </font>
+   </Button>
 </AnchorPane>

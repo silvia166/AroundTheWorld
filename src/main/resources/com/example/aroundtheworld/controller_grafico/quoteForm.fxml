@@ -21,7 +21,7 @@
             <Font size="26.0" />
          </font>
       </Text>
-      <Text layoutX="50.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Permanence:" wrappingWidth="99.83344852261234">
+      <Text layoutX="50.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Permanence:" wrappingWidth="126.5">
          <font>
             <Font size="18.0" />
          </font>

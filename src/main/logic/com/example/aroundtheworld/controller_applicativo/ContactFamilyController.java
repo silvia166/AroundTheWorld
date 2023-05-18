@@ -8,6 +8,7 @@ import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.*;
+import javafx.scene.layout.Pane;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -163,14 +164,14 @@ public class ContactFamilyController {
         return familyRequestsBeans;
     }
 
-    public void acceptRequest(FamilyRequestBean familyRequest, Object object) {
+    public void acceptRequest(FamilyRequestBean familyRequest, Pane pane) {
         familyRequest.setStatus(1);
-        familyRequest.notifyObservers(familyRequest, object);
+        familyRequest.notifyObserversFamily(familyRequest, pane);
         FamilyRequestDAO.updateStatus(1, familyRequest.getId());
     }
 
-    public void rejectRequest(FamilyRequestBean familyRequest, Object object) {
-        familyRequest.notifyObservers(familyRequest, object);
+    public void rejectRequest(FamilyRequestBean familyRequest, Pane pane) {
+        familyRequest.notifyObserversFamily(familyRequest, pane);
         FamilyRequestDAO.deleteRequest(familyRequest.getId());
     }
 

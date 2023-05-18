@@ -1,5 +1,9 @@
 package com.example.aroundtheworld.engineering.observer;
 
+import com.example.aroundtheworld.bean.FamilyRequestBean;
+import com.example.aroundtheworld.bean.ResidenceRequestBean;
+import javafx.scene.layout.Pane;
+
 import java.util.List;
 import java.util.Vector;
 
@@ -33,9 +37,14 @@ public abstract class Subject {
         observersList.remove(observer);
     }
 
-    public void notifyObservers(Object object1, Object object2) {
+    public void notifyObserversResidence(ResidenceRequestBean requestBean, Pane pane) {
         for (Observer observer : observersList) {
-            observer.update(object1, object2);
+            observer.updateResidence(requestBean, pane);
+        }
+    }
+    public void notifyObserversFamily(FamilyRequestBean requestBean, Pane pane) {
+        for (Observer observer : observersList) {
+            observer.updateFamily(requestBean, pane);
         }
     }
 

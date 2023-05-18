@@ -1,11 +1,11 @@
 package com.example.aroundtheworld.controller_grafico;
 
+import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.controller_applicativo.ReserveRoomController;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.engineering.observer.Observer;
-import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,7 +24,7 @@ public class StudentRequestGUIController implements Observer {
     @FXML
     private HBox residenceReqList;
 
-    public void initialize() throws NotFoundException, IOException {
+    public void initialize() throws IOException {
 
         StudentBean studentBean = Session.getCurrentSession().getStudentBean();
         ReserveRoomController reserveRoomController = new ReserveRoomController();
@@ -65,11 +65,16 @@ public class StudentRequestGUIController implements Observer {
     }
 
     @Override
-    public void update(Object object1, Object object2) {
-        if (residenceReqList.getChildren().contains((Pane)object2))
-            residenceReqList.getChildren().remove((Pane)object2);
-        else if (familyReqList.getChildren().contains((Pane)object2))
-            familyReqList.getChildren().remove((Pane)object2);
+    public void updateResidence(ResidenceRequestBean requestBean, Pane pane) {
+        if (residenceReqList.getChildren().contains(pane))
+            residenceReqList.getChildren().remove(pane);
+        else if (familyReqList.getChildren().contains(pane))
+            familyReqList.getChildren().remove(pane);
+    }
+
+    @Override
+    public void updateFamily(FamilyRequestBean requestBean, Pane pane) {
+        //ignore
     }
 
     public void backToAccess() throws IOException {

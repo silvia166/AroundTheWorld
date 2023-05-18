@@ -1,5 +1,6 @@
 package com.example.aroundtheworld.controller_grafico;
 
+import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.controller_applicativo.ReserveRoomController;
 import com.example.aroundtheworld.engineering.Session;
@@ -65,14 +66,19 @@ public class AgencyRequestGUIController implements Observer {
     }
 
     @Override
-    public void update(Object object1, Object object2) {
-        if (pendingReqList.getChildren().contains((Pane)object2))
-            pendingReqList.getChildren().remove((Pane)object2);
+    public void updateResidence(ResidenceRequestBean requestBean, Pane pane) {
+        if (pendingReqList.getChildren().contains(pane))
+            pendingReqList.getChildren().remove(pane);
 
-        if (((ResidenceRequestBean)object1).getStatus() == 1) {
-            modifiedReqList.getChildren().add((Pane)object2);
-        } else if (((ResidenceRequestBean)object1).getStatus() == 2) {
-            confirmedReqList.getChildren().add((Pane)object2);
+        if (requestBean.getStatus() == 1) {
+            modifiedReqList.getChildren().add(pane);
+        } else if (requestBean.getStatus() == 2) {
+            confirmedReqList.getChildren().add(pane);
         }
+    }
+
+    @Override
+    public void updateFamily(FamilyRequestBean requestBean, Pane pane) {
+        //ignore
     }
 }

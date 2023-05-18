@@ -9,6 +9,7 @@ import com.example.aroundtheworld.exception.NoAvailableRoomsException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.ResidenceRequest;
 import com.example.aroundtheworld.model.Room;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,9 +41,9 @@ public class ReserveRoomController {
         return roomBeans;
     }
 
-    public void reserveRoom(RoomBean selectedRoom, ResidenceRequestBean requestBean, int status, Object object) {
+    public void reserveRoom(RoomBean selectedRoom, ResidenceRequestBean requestBean, int status, Pane pane) {
         requestBean.setStatus(status);
-        requestBean.notifyObservers(requestBean, object);
+        requestBean.notifyObserversResidence(requestBean, pane);
         ResidenceRequestDAO.updateRoom(selectedRoom.getNumber(), requestBean.getId(), status);
     }
 
@@ -58,14 +59,14 @@ public class ReserveRoomController {
         return residenceRequestBeans;
     }
 
-    public void updateStatus(ResidenceRequestBean requestBean, int status, Object object) {
+    public void updateStatus(ResidenceRequestBean requestBean, int status, Pane pane) {
         requestBean.setStatus(status);
-        requestBean.notifyObservers(requestBean, object);
+        requestBean.notifyObserversResidence(requestBean, pane);
         ResidenceRequestDAO.updateStatus(requestBean.getId(), status);
     }
 
-    public void deleteResidenceRequest(ResidenceRequestBean requestBean, Object object) {
-        requestBean.notifyObservers(requestBean, object);
+    public void deleteResidenceRequest(ResidenceRequestBean requestBean, Pane pane) {
+        requestBean.notifyObserversResidence(requestBean, pane);
         ResidenceRequestDAO.deleteRequest(requestBean.getId());
     }
 }

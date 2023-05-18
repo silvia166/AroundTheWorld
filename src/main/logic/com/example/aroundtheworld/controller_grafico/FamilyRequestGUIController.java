@@ -2,10 +2,10 @@ package com.example.aroundtheworld.controller_grafico;
 
 import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
+import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.controller_applicativo.ContactFamilyController;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.engineering.observer.Observer;
-import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -44,7 +44,7 @@ public class FamilyRequestGUIController implements Observer {
         familyGUIController.toHomepageFamily();
     }
 
-    public void initialize() throws NotFoundException, IOException {
+    public void initialize() throws IOException {
 
         FamilyBean familyBean = Session.getCurrentSession().getFamilyBean();
 
@@ -70,12 +70,17 @@ public class FamilyRequestGUIController implements Observer {
     }
 
     @Override
-    public void update(Object object1, Object object2) {
-        if (sentReqList.getChildren().contains((Pane)object2))
-            sentReqList.getChildren().remove((Pane)object2);
+    public void updateResidence(ResidenceRequestBean requestBean, Pane pane) {
+        //ignore
+    }
 
-        if (((FamilyRequestBean)object1).getStatus() == 1) {
-            confirmedReqList.getChildren().add((Pane)object2);
+    @Override
+    public void updateFamily(FamilyRequestBean requestBean, Pane pane) {
+        if (sentReqList.getChildren().contains(pane))
+            sentReqList.getChildren().remove(pane);
+
+        if (requestBean.getStatus() == 1) {
+            confirmedReqList.getChildren().add(pane);
         }
     }
 }

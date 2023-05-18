@@ -120,28 +120,6 @@ public class RequestItemGUIController implements Observer {
         stage.show();
     }
 
-    @Override
-    public void update(Object object1, Object object2) {
-
-        if (object1 instanceof FamilyRequestBean) {
-            if (((FamilyRequestBean) object1).getStatus() == 1) {
-                reqPane.getChildren().removeAll(acceptBtn, rejectBtn, viewReqBtn);
-                notBookedLabel.setVisible(true);
-                reqPane.setStyle(GREENSHADOW);
-            }
-
-        } else if (object1 instanceof ResidenceRequestBean){
-
-            if (((ResidenceRequestBean) object1).getStatus() == 1){
-                reqPane.getChildren().remove(manageButton);
-                reqPane.setStyle(REDSHADOW);
-            } else if (((ResidenceRequestBean) object1).getStatus() == 2){
-                reqPane.getChildren().remove(manageButton);
-                reqPane.setStyle(GREENSHADOW);
-            }
-        }
-    }
-
     public void setResidenceRequest(ResidenceRequestBean requestBean) {
 
         this.residenceRequest = requestBean;
@@ -233,5 +211,24 @@ public class RequestItemGUIController implements Observer {
         reqPane.setStyle(LIGHTGREEN);
     }
 
+    @Override
+    public void updateResidence(ResidenceRequestBean requestBean, Pane pane) {
+        if (requestBean.getStatus() == 1){
+            reqPane.getChildren().remove(manageButton);
+            reqPane.setStyle(REDSHADOW);
+        } else if (requestBean.getStatus() == 2){
+            reqPane.getChildren().remove(manageButton);
+            reqPane.setStyle(GREENSHADOW);
+        }
+    }
+
+    @Override
+    public void updateFamily(FamilyRequestBean requestBean, Pane pane) {
+        if (requestBean.getStatus() == 1) {
+            reqPane.getChildren().removeAll(acceptBtn, rejectBtn, viewReqBtn);
+            notBookedLabel.setVisible(true);
+            reqPane.setStyle(GREENSHADOW);
+        }
+    }
 }
 

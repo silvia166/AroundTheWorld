@@ -5,6 +5,7 @@ import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyMemberBean;
 import com.example.aroundtheworld.controller_applicativo.AddFamilyController;
 import com.example.aroundtheworld.engineering.ImageConverterSupport;
+import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.FormEmptyException;
 import com.example.aroundtheworld.exception.PhoneFormatException;
 import javafx.collections.FXCollections;
@@ -134,7 +135,7 @@ public class AddFamilyGUIController {
     }
 
     @FXML
-    void addFamily(ActionEvent event) {
+    void addFamily(ActionEvent event) throws IOException {
 
         List<AnimalBean> animals;
         List<FamilyMemberBean> membersList;
@@ -181,7 +182,7 @@ public class AddFamilyGUIController {
             ((Node)event.getSource()).getScene().getWindow().hide();
 
         }catch(FormEmptyException | PhoneFormatException e ){
-            e.printStackTrace();
+            ShowExceptionSupport.showException(e.getMessage());
         }
     }
 

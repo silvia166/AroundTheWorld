@@ -83,7 +83,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" prefHeight="200.0" prefWidth="760.0" styleClass="transparent" vbarPolicy="NEVER" VBox.vgrow="NEVER">
+            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" minHeight="-Infinity" prefHeight="200.0" prefWidth="760.0" styleClass="transparent" stylesheets="@style.css" vbarPolicy="NEVER" VBox.vgrow="NEVER">
                <content>
                   <HBox fx:id="sentReqList" alignment="CENTER" fillHeight="false" spacing="15.0" />
                </content>
@@ -99,7 +99,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="480.0" minHeight="-Infinity" prefHeight="200.0" prefWidth="897.0" styleClass="transparent" vbarPolicy="NEVER" VBox.vgrow="NEVER">
+            <ScrollPane fitToHeight="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="480.0" minHeight="-Infinity" prefHeight="200.0" prefWidth="897.0" styleClass="transparent" stylesheets="@style.css" vbarPolicy="NEVER" VBox.vgrow="NEVER">
                <content>
                   <HBox fx:id="confirmedReqList" alignment="CENTER" fillHeight="false" spacing="15.0" />
                </content>

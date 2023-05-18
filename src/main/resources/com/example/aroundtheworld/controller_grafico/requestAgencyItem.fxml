@@ -27,7 +27,7 @@
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="manageButton" layoutX="59.0" layoutY="105.0" mnemonicParsing="false" onAction="#manageRequest" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="Manage Request" />
+      <Button fx:id="manageButton" layoutX="59.0" layoutY="105.0" mnemonicParsing="false" onAction="#manageRequest" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" text="Manage Request" />
       <Label fx:id="cityLabel" alignment="CENTER" layoutY="46.0" prefHeight="17.0" prefWidth="228.0" text="City" textAlignment="CENTER" />
       <HBox alignment="CENTER" layoutY="15.0" prefHeight="19.0" prefWidth="228.0" spacing="5.0">
          <children>

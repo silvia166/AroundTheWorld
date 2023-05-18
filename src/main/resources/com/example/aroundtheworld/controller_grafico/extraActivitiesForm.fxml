@@ -25,12 +25,12 @@
             <Font size="26.0" />
          </font>
       </Text>
-      <Button layoutX="60.0" layoutY="460.0" mnemonicParsing="false" onAction="#getExtra" prefHeight="42.0" prefWidth="204.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Calculate Quote">
+      <Button layoutX="60.0" layoutY="460.0" mnemonicParsing="false" onAction="#getExtra" prefHeight="42.0" prefWidth="204.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" styleClass="shadowLight" stylesheets="@style.css" text="Calculate Quote">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="734.0" layoutY="30.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: #C0F9DD; -fx-border-color: black;" text="X">
+      <Button layoutX="734.0" layoutY="30.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: #C0F9DD; -fx-border-color: black;" styleClass="shadowLight" stylesheets="@style.css" text="X">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

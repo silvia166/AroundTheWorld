@@ -26,7 +26,6 @@ public class FamilyDAO {
 
     private FamilyDAO() {}
 
-
     public static Family retrieveFamily(String username) throws NotFoundException {
         Connection connection;
         Family family = null;
@@ -172,8 +171,8 @@ public class FamilyDAO {
 
     public static Family retrieveFamilyName(int idFamily) {
         Connection connection;
-        String name = null;
-        String photo = null;
+        String name;
+        String photo;
         Family family = null;
 
         try{

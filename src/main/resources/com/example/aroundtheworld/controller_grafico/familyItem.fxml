@@ -14,7 +14,7 @@
          <children>
             <Label fx:id="familyName" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="197.0" text="Smith" textAlignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font size="16.0" />
                </font></Label>
          </children>
       </HBox>
@@ -28,7 +28,7 @@
             </font>
          </Label>
       </HBox>
-      <HBox layoutY="142.0" prefHeight="19.0" prefWidth="200.0">
+      <HBox alignment="CENTER" layoutY="142.0" prefHeight="19.0" prefWidth="200.0">
          <children>
             <Label fx:id="arrivalLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="243.0" text="Compatibility:" textAlignment="CENTER">
                <font>
@@ -40,12 +40,12 @@
                </font></Label>
          </children>
       </HBox>
-      <Button fx:id="sendRequestBtn" layoutX="103.0" layoutY="199.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="20.0" prefWidth="90.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="Send Request">
+      <Button fx:id="sendRequestBtn" layoutX="103.0" layoutY="199.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="20.0" prefWidth="90.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" text="Send Request">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button fx:id="viewProfileBtn" layoutX="7.0" layoutY="199.0" mnemonicParsing="false" onAction="#viewProfile" prefHeight="20.0" prefWidth="90.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="View Profile">
+      <Button fx:id="viewProfileBtn" layoutX="7.0" layoutY="199.0" mnemonicParsing="false" onAction="#viewProfile" prefHeight="20.0" prefWidth="90.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" text="View Profile">
          <font>
             <Font size="10.0" />
          </font>
@@ -60,6 +60,6 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <Label fx:id="statusLabel" alignment="CENTER" layoutX="38.0" layoutY="172.0" prefHeight="18.0" prefWidth="124.0" text="Status Label" textAlignment="CENTER" />
+      <Label fx:id="statusLabel" alignment="CENTER" layoutX="2.0" layoutY="169.0" prefHeight="18.0" prefWidth="197.0" textAlignment="CENTER" />
    </children>
 </AnchorPane>

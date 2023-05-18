@@ -20,7 +20,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <Button fx:id="ErrorBtn" layoutX="131.0" layoutY="131.0" mnemonicParsing="false" onAction="#close" prefHeight="35.0" prefWidth="87.0" style="-fx-background-radius: 20; -fx-background-color: #C0F9DD;" text="OK">
+   <Button fx:id="ErrorBtn" layoutX="131.0" layoutY="131.0" mnemonicParsing="false" onAction="#close" prefHeight="35.0" prefWidth="87.0" style="-fx-background-radius: 20; -fx-background-color: #C0F9DD;" styleClass="shadowLight" stylesheets="@style.css" text="OK">
       <font>
          <Font size="14.0" />
       </font>

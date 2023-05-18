@@ -2,7 +2,6 @@ package com.example.aroundtheworld.controller_applicativo;
 
 import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.dao.FamilyRequestDAO;
-import com.example.aroundtheworld.dao.ResidenceRequestDAO;
 import com.example.aroundtheworld.model.FamilyRequest;
 import javafx.scene.layout.Pane;
 
@@ -30,4 +29,8 @@ public class BookingFamilyController {
     }
 
 
+    public void bookFamily(FamilyRequestBean familyRequest, Pane pane) {
+        familyRequest.notifyObserversFamily(familyRequest, pane);
+        FamilyRequestDAO.updateStatus(2, familyRequest.getId());
+    }
 }

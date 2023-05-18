@@ -4,7 +4,6 @@ import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
-import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.*;
 
 import java.sql.Connection;
@@ -167,7 +166,6 @@ public class FamilyRequestDAO {
                     float compatibility = Float.parseFloat(resultSet.getString(COMPATIBILITY));
 
                     Family family = FamilyDAO.retrieveFamilyName(idFamily);
-
 
                     familyRequest = new FamilyRequest(city, arrival.toString(), departure.toString(), idStudent, status, compatibility);
                     familyRequest.setFamilyName(family.getName());

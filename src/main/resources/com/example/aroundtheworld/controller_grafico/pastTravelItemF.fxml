@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="170.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ispwproject.adoptme.controller.graficcontroller.gui.GUIRequestItemController">
+<AnchorPane prefHeight="170.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.RequestItemGUIController">
    <children>
       <Label layoutX="73.0" layoutY="50.0" text="Nationality and Age" />
       <HBox alignment="CENTER" layoutX="2.0" layoutY="80.0" prefWidth="250.0" spacing="20.0">
@@ -28,6 +28,6 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="68.0" layoutY="125.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="button1" text="Show Review" />
+      <Button layoutX="68.0" layoutY="125.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #c0f9dd; -fx-background-radius: 20;" styleClass="shadow" stylesheets="@style.css" text="Show Review" />
    </children>
 </AnchorPane>

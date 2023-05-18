@@ -101,7 +101,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="698.0" layoutY="634.0" mnemonicParsing="false" onAction="#contactFamily" prefHeight="42.0" prefWidth="132.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="View Results">
+      <Button layoutX="698.0" layoutY="634.0" mnemonicParsing="false" onAction="#contactFamily" prefHeight="42.0" prefWidth="132.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" styleClass="shadowLight" stylesheets="@style.css" text="View Results">
          <font>
             <Font size="18.0" />
          </font>
@@ -163,7 +163,7 @@
             <Font size="18.0" />
          </font>
       </RadioButton>
-      <Button layoutX="831.0" layoutY="31.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: #C0F9DD; -fx-border-color: black;" text="X">
+      <Button layoutX="831.0" layoutY="31.0" mnemonicParsing="false" onAction="#backButton" style="-fx-background-color: #C0F9DD; -fx-border-color: black;" styleClass="shadowLight" stylesheets="@style.css" text="X">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

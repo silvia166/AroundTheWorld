@@ -10,7 +10,6 @@ public class FamilyRequestBean extends Subject {
     private int siblings;
     private int animals;
     private int idStudent;
-
     private String studentName;
     private String familyName;
     private int idFamily;

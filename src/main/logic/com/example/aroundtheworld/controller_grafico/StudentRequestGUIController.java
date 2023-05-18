@@ -30,8 +30,6 @@ public class StudentRequestGUIController implements Observer {
         StudentBean studentBean = Session.getCurrentSession().getStudentBean();
         ReserveRoomController reserveRoomController = new ReserveRoomController();
         List<ResidenceRequestBean> requestList = reserveRoomController.getStudentResidenceRequest(studentBean.getId());
-        BookingFamilyController bookingFamilyController = new BookingFamilyController();
-        List<FamilyRequestBean> familyRequestList = bookingFamilyController.getStudentFamilyRequest(studentBean.getId());
 
         for(ResidenceRequestBean requestBean: requestList){
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -48,6 +46,9 @@ public class StudentRequestGUIController implements Observer {
             }
             residenceReqList.getChildren().add(requestBox);
         }
+
+        BookingFamilyController bookingFamilyController = new BookingFamilyController();
+        List<FamilyRequestBean> familyRequestList = bookingFamilyController.getStudentFamilyRequest(studentBean.getId());
 
         for(FamilyRequestBean requestBean: familyRequestList){
             FXMLLoader fxmlLoader = new FXMLLoader();

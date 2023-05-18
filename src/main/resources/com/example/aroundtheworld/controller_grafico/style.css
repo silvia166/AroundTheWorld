@@ -2,7 +2,17 @@
     -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
 }
 
-.shadowGreen{
-    -fx-effect: dropShadow(three-pass-box, rgb(81, 241, 155), 10.0 , 0.0 , 0.0 ,5.0);
+.shadowGreen {
+    -fx-effect: dropShadow(three-pass-box, rgb(81, 241, 155), 5.0, 0.0, 0.0, 5.0);
 }
+
+.shadowLight{
+    -fx-background-color:  #C0F9DD;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 5.0 , 0.0 , 0.0 ,5.0);
+}
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
 

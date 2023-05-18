@@ -50,7 +50,7 @@
    <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="107.0" layoutY="293.0">
       <Image url="@image/chat.png" />
    </ImageView>
-   <Button layoutX="804.0" layoutY="416.0" mnemonicParsing="false" onAction="#toContactFamily" prefHeight="50.0" prefWidth="295.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Contact a family">
+   <Button layoutX="804.0" layoutY="416.0" mnemonicParsing="false" onAction="#toContactFamily" prefHeight="50.0" prefWidth="295.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" styleClass="shadowLight" stylesheets="@style.css" text="Contact a family">
       <font>
          <Font size="26.0" />
       </font>
@@ -79,7 +79,7 @@
          <Font size="26.0" />
       </font>
    </Text>
-   <Button layoutX="804.0" layoutY="285.0" mnemonicParsing="false" onAction="#toBookingResidence" prefHeight="50.0" prefWidth="295.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Residence">
+   <Button layoutX="804.0" layoutY="285.0" mnemonicParsing="false" onAction="#toBookingResidence" prefHeight="50.0" prefWidth="295.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" styleClass="shadowLight" stylesheets="@style.css" text="Residence">
       <font>
          <Font size="26.0" />
       </font>
@@ -92,7 +92,7 @@
    <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="107.0" layoutY="447.0">
       <Image url="@image/user.png" />
    </ImageView>
-   <Button layoutX="804.0" layoutY="550.0" mnemonicParsing="false" onAction="#quoteForm" prefHeight="50.0" prefWidth="295.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="Request Quote">
+   <Button layoutX="804.0" layoutY="550.0" mnemonicParsing="false" onAction="#quoteForm" prefHeight="50.0" prefWidth="295.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" styleClass="shadowLight" stylesheets="@style.css" text="Request Quote">
       <font>
          <Font size="26.0" />
       </font>

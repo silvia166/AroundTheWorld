@@ -3,12 +3,9 @@ package com.example.aroundtheworld.controller_grafico;
 import com.example.aroundtheworld.bean.CompatibleFamilyBean;
 import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
-import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.controller_applicativo.BookingFamilyController;
 import com.example.aroundtheworld.controller_applicativo.ContactFamilyController;
-import com.example.aroundtheworld.controller_applicativo.ReserveRoomController;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
-import com.example.aroundtheworld.engineering.observer.Observer;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXML;
@@ -38,9 +35,6 @@ public class FamilyItemGUIController {
         private Label arrivalLabel;
         @FXML
         private ImageView img;
-        private CompatibleFamilyBean family;
-        private FamilyRequestBean familyRequest;
-        private Pane pane;
         @FXML
         private Button bookBtn;
         @FXML
@@ -53,6 +47,14 @@ public class FamilyItemGUIController {
         private Button viewProfileBtn;
         @FXML
         private AnchorPane reqPane;
+
+        private CompatibleFamilyBean family;
+        private FamilyRequestBean familyRequest;
+        private Pane pane;
+
+        private static final String LIGHTGREEN = "-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(192,249,221), 10.0 , 0.0 , 0.0 ,5.0);";
+
+
 
         @FXML
         void sendRequest() throws IOException {
@@ -94,26 +96,30 @@ public class FamilyItemGUIController {
 
                 this.family = compatibleFamilyBean;
                 this.familyRequest = familyRequestBean;
-
                 familyName.setText(compatibleFamilyBean.getName() + "  family");
                 familyCity.setText(familyRequestBean.getCityBean());
                 compatibility.setText("" + compatibleFamilyBean.getCompatibility() + "%");
                 if (compatibleFamilyBean.getImgSrc() != null) {
-                        Image image = new Image(getClass().getResourceAsStream(compatibleFamilyBean.getImgSrc()));
+                        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(compatibleFamilyBean.getImgSrc())));
                         img.setImage(image);
                 }
         }
 
-        public void setPane(Pane requestBox) {
+        public void setPane(Pane pane) {
                 this.pane = pane;
         }
 
         public void setFamilyRequest(FamilyRequestBean requestBean) {
+                this.familyRequest = requestBean;
 
+                reqPane.setStyle(LIGHTGREEN);
                 reqPane.getChildren().removeAll(viewProfileBtn, sendRequestBtn);
-                familyName.setText(requestBean.getFamilyName() + " - " + requestBean.getCompatibilityBean());
-                Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(requestBean.getImgFamily())));
-                img.setImage(image);
+                familyName.setText(requestBean.getFamilyName() + " - " + requestBean.getCompatibilityBean() + "%");
+
+                if(requestBean.getImgFamily() != null){
+                        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(requestBean.getImgFamily())));
+                        img.setImage(image);
+                }
                 familyCity.setText(requestBean.getCityBean());
                 arrivalLabel.setText(requestBean.getArrivalBean());
                 compatibility.setText(requestBean.getDepartureBean());
@@ -126,13 +132,15 @@ public class FamilyItemGUIController {
                 }
         }
 
-
         public void rejectRequest() {
                 BookingFamilyController bookingFamilyController = new BookingFamilyController();
                 bookingFamilyController.rejectRequest(this.familyRequest, this.pane);
         }
 
-        public void bookFamily(){}
+        public void bookFamily(){
+                BookingFamilyController bookingFamilyController = new BookingFamilyController();
+                bookingFamilyController.bookFamily(this.familyRequest, this.pane);
+        }
 
 }
 

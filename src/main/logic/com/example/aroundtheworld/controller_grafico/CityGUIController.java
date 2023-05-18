@@ -82,13 +82,13 @@ public class CityGUIController {
         act2Name.setText(city.getAct2Bean());
         act3Name.setText(city.getAct3Bean());
 
-        Image image = new Image(getClass().getResourceAsStream(city.getCityImgSrcBean()));
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(city.getCityImgSrcBean())));
         cityImg.setImage(image);
-        image = new Image(getClass().getResourceAsStream(city.getAct1ImgSrcBean()));
+        image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(city.getAct1ImgSrcBean())));
         act1Img.setImage(image);
-        image = new Image(getClass().getResourceAsStream(city.getAct2ImgSrcBean()));
+        image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(city.getAct2ImgSrcBean())));
         act2Img.setImage(image);
-        image = new Image(getClass().getResourceAsStream(city.getAct3ImgSrcBean()));
+        image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(city.getAct3ImgSrcBean())));
         act3Img.setImage(image);
     }
 

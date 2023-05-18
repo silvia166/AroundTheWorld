@@ -138,7 +138,7 @@
             <Image url="@image/big-family.png" />
          </image>
       </ImageView>
-      <Button layoutX="636.0" layoutY="196.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="233.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" text="View distance from school">
+      <Button layoutX="636.0" layoutY="196.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="233.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" styleClass="shadowLight" stylesheets="@style.css" text="View distance from school">
          <font>
             <Font size="18.0" />
          </font>

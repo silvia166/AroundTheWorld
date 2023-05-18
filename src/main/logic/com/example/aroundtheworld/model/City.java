@@ -11,9 +11,7 @@ public class City {
     private String act2ImgSrc;
     private String act3;
     private String act3ImgSrc;
-
     private Residence residence;
-
     private School school;
 
     public City(String name, String language, String act1, String act2, String act3, Residence residence, School school) {

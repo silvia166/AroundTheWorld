@@ -10,8 +10,6 @@ import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.ResidenceRequest;
 import com.example.aroundtheworld.model.Room;
 import javafx.scene.layout.Pane;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

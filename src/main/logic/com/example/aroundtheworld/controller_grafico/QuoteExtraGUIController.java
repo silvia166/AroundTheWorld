@@ -43,7 +43,7 @@ public class QuoteExtraGUIController {
     QuoteBean quoteBean;
 
     @FXML
-    public void setExtraForm(QuoteBean quoteBean) throws NotFoundException {
+    public void setExtraActivities(QuoteBean quoteBean) throws NotFoundException {
         this.quoteBean = quoteBean;
         QuoteController quoteController = new QuoteController();
         CityBean cityBean = quoteController.getCityInfo(quoteBean.getCity());

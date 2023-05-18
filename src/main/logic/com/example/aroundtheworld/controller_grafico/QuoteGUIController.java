@@ -126,7 +126,7 @@ public class QuoteGUIController {
             Scene scene = new Scene(fxmlLoader.load());
 
             QuoteExtraGUIController quoteExtraGUIController = fxmlLoader.getController();
-            quoteExtraGUIController.setExtraForm(quoteBean);
+            quoteExtraGUIController.setExtraActivities(quoteBean);
 
             stage.setScene(scene);
             stage.show();

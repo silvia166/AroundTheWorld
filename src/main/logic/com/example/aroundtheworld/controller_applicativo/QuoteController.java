@@ -55,7 +55,7 @@ public class QuoteController {
                     quote = new LouvreDecorator(quote);
                 }
                 if(quoteBean.getActivity2() == 1){
-                    quote = new DisneylandParisDecorator(quote);
+                    quote = new DisneylandDecorator(quote);
                 }
                 if(quoteBean.getActivity3() == 1){
                     quote = new CruiseDecorator(quote);

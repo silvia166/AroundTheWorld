@@ -13,7 +13,6 @@ import com.example.aroundtheworld.model.FamilyPreferences;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class FamilyDAO {
         FamilyPreferences preferences;
 
         try{
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveFamily(connection, username);
 
@@ -80,7 +79,7 @@ public class FamilyDAO {
         Connection connection;
 
         try{
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             CRUDQueries.insertUser(connection, email, "123", "family");
             CRUDQueries.insertFamily(connection, name, phone, city, address, email, imgSrc);
@@ -97,7 +96,7 @@ public class FamilyDAO {
         int id = 0;
 
         try{
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveFamilyID(connection, name);
 
@@ -130,7 +129,7 @@ public class FamilyDAO {
 
 
         try{
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveFamilyIDByCity(connection, city);
 

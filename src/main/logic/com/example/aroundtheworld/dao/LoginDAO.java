@@ -8,7 +8,6 @@ import com.example.aroundtheworld.dao.queries.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class LoginDAO {
     private LoginDAO() {}
@@ -18,7 +17,7 @@ public class LoginDAO {
 
         try {
 
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
             ResultSet resultSet = SimpleQueries.checkUser(connection, username,password);
 
             if (!resultSet.isBeforeFirst()){

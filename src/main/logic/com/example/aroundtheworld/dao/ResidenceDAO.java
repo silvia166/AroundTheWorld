@@ -9,7 +9,6 @@ import com.example.aroundtheworld.model.Residence;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class ResidenceDAO {
 
@@ -26,7 +25,7 @@ public class ResidenceDAO {
 
 
         try{
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveResidence(connection, city);
 
@@ -60,7 +59,7 @@ public class ResidenceDAO {
 
 
         try{
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveIdResidence(connection, city);
 
@@ -89,7 +88,7 @@ public class ResidenceDAO {
 
 
         try{
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveResidencebyId(connection, idResidence);
 

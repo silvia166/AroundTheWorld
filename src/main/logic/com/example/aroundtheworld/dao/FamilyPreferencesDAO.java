@@ -10,7 +10,6 @@ import com.example.aroundtheworld.model.FamilyPreferences;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class FamilyPreferencesDAO {
     private static final String HOUSE = "house";
@@ -31,7 +30,7 @@ public class FamilyPreferencesDAO {
         FamilyPreferences preferences = null;
 
         try{
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrievePreferences(connection, familyId);
 
@@ -71,7 +70,7 @@ public class FamilyPreferencesDAO {
         Connection connection;
 
         try{
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             CRUDQueries.insertPreferences(connection, id, familyPreferences);
 

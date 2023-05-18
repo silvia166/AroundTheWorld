@@ -11,7 +11,6 @@ import com.example.aroundtheworld.model.School;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class CityDAO {
 
@@ -33,7 +32,7 @@ public class CityDAO {
         School school;
 
         try{
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveCity(connection, name);
 

@@ -10,7 +10,6 @@ import com.example.aroundtheworld.model.FamilyMember;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,7 @@ public class FamilyMemberDAO {
         int currentYear = currentDate.getYear();
 
         try{
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveFamilyMember(connection, familyId);
 
@@ -70,7 +69,7 @@ public class FamilyMemberDAO {
         int currentYear = currentDate.getYear();
 
         try{
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             birth = String.valueOf(currentYear - age);
             CRUDQueries.insertMember(connection, id, name, birth, parenthood);

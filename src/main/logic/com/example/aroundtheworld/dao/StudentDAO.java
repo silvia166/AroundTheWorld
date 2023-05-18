@@ -10,7 +10,6 @@ import com.example.aroundtheworld.model.Student;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class StudentDAO {
     private static final String ID = "idStudent";
@@ -28,7 +27,7 @@ public class StudentDAO {
         Student student = null;
 
         try{
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
             ResultSet resultSet = null;
 
             if(id == 0){
@@ -68,7 +67,7 @@ public class StudentDAO {
         Connection connection;
 
         try{
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             CRUDQueries.insertUser(connection, email, password, "student");
             CRUDQueries.insertStudent(connection, name, surname, birth, nationality, phoneNumber, email);
@@ -84,7 +83,7 @@ public class StudentDAO {
         String studentName = null;
 
         try{
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveStudentNameById(connection, idStudent);
 

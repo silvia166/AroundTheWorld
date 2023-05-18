@@ -9,7 +9,6 @@ import com.example.aroundtheworld.model.Animal;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class AnimalDAO {
         Animal animal;
 
         try {
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveAnimal(connection, familyId);
 
@@ -55,7 +54,7 @@ public class AnimalDAO {
         Connection connection;
 
         try {
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
             CRUDQueries.insertAnimal(connection, id, type, quantity);
 
         } catch (SQLException | ConnectionDbException e) {

@@ -10,7 +10,6 @@ import com.example.aroundtheworld.model.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -48,7 +47,7 @@ public class FamilyRequestDAO {
         Connection connection;
 
         try {
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.selectDistinctRequest(connection, familyRequest.getIdStudent(), familyRequest.getArrival(), familyRequest.getDeparture());
             if(!resultSet.first()){
@@ -68,7 +67,7 @@ public class FamilyRequestDAO {
         FamilyRequest familyRequest;
 
         try {
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveFamilyRequests(connection, id);
 
@@ -128,7 +127,7 @@ public class FamilyRequestDAO {
     public static void updateStatus(int status, int id) {
         Connection connection;
         try {
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
             CRUDQueries.updateStatusRequest(connection, status, id);
         } catch (SQLException | ConnectionDbException e) {
             e.printStackTrace();
@@ -138,7 +137,7 @@ public class FamilyRequestDAO {
     public static void deleteRequest(int id) {
         Connection connection;
         try {
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
             CRUDQueries.deleteRequest(connection, id);
         } catch (SQLException | ConnectionDbException e) {
             e.printStackTrace();

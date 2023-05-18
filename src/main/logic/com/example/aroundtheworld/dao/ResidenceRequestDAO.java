@@ -11,7 +11,6 @@ import com.example.aroundtheworld.model.ResidenceRequest;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,7 +33,7 @@ public class ResidenceRequestDAO {
         Connection connection;
 
         try {
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.selectDistinctRequest(connection, residenceRequest.getIdStudent(), residenceRequest.getArrival(), residenceRequest.getDeparture());
             if(!resultSet.first()){
@@ -54,7 +53,7 @@ public class ResidenceRequestDAO {
         ResidenceRequest residenceRequest;
 
         try {
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveResidenceRequests(connection);
 
@@ -96,7 +95,7 @@ public class ResidenceRequestDAO {
     public static void updateRoom(int number, int id, int status) {
         Connection connection;
         try {
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
             CRUDQueries.updateResidenceRequest(connection, status, id, number);
         } catch (SQLException | ConnectionDbException e) {
             e.printStackTrace();
@@ -110,7 +109,7 @@ public class ResidenceRequestDAO {
 
         try {
 
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveStudentResidenceRequests(connection, id);
 
@@ -151,7 +150,7 @@ public class ResidenceRequestDAO {
     public static void updateStatus(int id, int status) {
         Connection connection;
         try {
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
             CRUDQueries.updateResidenceRequestStatus(connection, status, id);
         } catch (SQLException | ConnectionDbException e) {
             e.printStackTrace();
@@ -161,7 +160,7 @@ public class ResidenceRequestDAO {
     public static void deleteRequest(int id) {
         Connection connection;
         try {
-            connection = ConnectionDB.getConnectionP();
+            connection = ConnectionDB.getConnection();
             CRUDQueries.deleteResidenceRequest(connection, id);
         } catch (SQLException | ConnectionDbException e) {
             e.printStackTrace();

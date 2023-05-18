@@ -177,6 +177,7 @@ public class QuoteGUIController {
             case "Paris" -> path = "image/parisFlag.png";
             case "New York" -> path = "image/newYorkFlag.png";
             case "Valencia" -> path = "image/valenciaFlag.png";
+            default -> {}
         }
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)));
         imgQuote.setImage(image);

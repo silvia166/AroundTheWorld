@@ -13,7 +13,7 @@ public class CRUDQueries {
     }
 
     public static int insertStudent(Connection connection, String name, String surname, String birth, String nationality, String phoneNumber, String email) throws SQLException {
-        String insertStatement = String.format("INSERT INTO student (name, surname, nationality, birth, email, phoneNumber) VALUES (?, ?, ?, ?, ?, ?)");
+        String insertStatement = "INSERT INTO student (name, surname, nationality, birth, email, phoneNumber) VALUES (?, ?, ?, ?, ?, ?)";
         preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setString(1,name);
         preparedStatement.setString(2,surname);
@@ -25,7 +25,7 @@ public class CRUDQueries {
     }
 
     public static int insertUser(Connection connection, String email, String password, String role) throws SQLException {
-        String insertStatement = String.format("INSERT INTO user (username, password, role) VALUES (?, ?, ?)");
+        String insertStatement = "INSERT INTO user (username, password, role) VALUES (?, ?, ?)";
         preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setString(1,email);
         preparedStatement.setString(2,password);
@@ -34,7 +34,7 @@ public class CRUDQueries {
     }
 
     public static int insertFamily(Connection connection, String name, String phone, String city, String address, String email, String imgSrc) throws SQLException {
-        String insertStatement = String.format("INSERT INTO family (name, phoneNumber, city, address, photo, email) VALUES (?, ?, ?, ?, ?, ?)");
+        String insertStatement = "INSERT INTO family (name, phoneNumber, city, address, photo, email) VALUES (?, ?, ?, ?, ?, ?)";
         preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setString(1,name);
         preparedStatement.setString(2,phone);
@@ -46,7 +46,7 @@ public class CRUDQueries {
     }
 
     public static int insertPreferences(Connection connection, int id, FamilyPreferences preferences) throws SQLException {
-        String insertStatement = String.format("INSERT INTO familyPreferences (idFamily, house, vegetarian, vegan, travels, sport, books, nature, film, videogames, cooking) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        String insertStatement = "INSERT INTO familyPreferences (idFamily, house, vegetarian, vegan, travels, sport, books, nature, film, videogames, cooking) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,id);
         preparedStatement.setString(2,preferences.getHouse());
@@ -62,7 +62,7 @@ public class CRUDQueries {
         return preparedStatement.executeUpdate();
     }
     public static int insertAnimal(Connection connection, int id, String type, int quantity) throws SQLException {
-        String insertStatement = String.format("INSERT INTO familyAnimal (idFamily, type, quantity) VALUES (?, ?, ?)");
+        String insertStatement = "INSERT INTO familyAnimal (idFamily, type, quantity) VALUES (?, ?, ?)";
         preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,id);
         preparedStatement.setString(2,type);
@@ -71,7 +71,7 @@ public class CRUDQueries {
     }
 
     public static int insertMember(Connection connection, int id, String name, String birth, String parenthood) throws SQLException {
-        String insertStatement = String.format("INSERT INTO familyMember (idFamily, name, birth, parenthood) VALUES (?, ?, ?, ?)");
+        String insertStatement = "INSERT INTO familyMember (idFamily, name, birth, parenthood) VALUES (?, ?, ?, ?)";
         preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,id);
         preparedStatement.setString(2,name);
@@ -81,7 +81,7 @@ public class CRUDQueries {
     }
 
     public static int insertRequest(Connection connection, FamilyRequest familyRequest) throws SQLException {
-        String insertStatement = String.format("INSERT INTO familyRequest (arrival, departure, city, house, status, siblings, animals, vegetarian, vegan, travels, books, sport, nature, film, videogames, cooking, idStudent, idFamily, compatibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        String insertStatement = "INSERT INTO familyRequest (arrival, departure, city, house, status, siblings, animals, vegetarian, vegan, travels, books, sport, nature, film, videogames, cooking, idStudent, idFamily, compatibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setString(1,familyRequest.getArrival());
         preparedStatement.setString(2,familyRequest.getDeparture());
@@ -106,7 +106,7 @@ public class CRUDQueries {
     }
 
     public static int updateStatusRequest(Connection connection, int status, int id) throws SQLException {
-        String insertStatement = String.format("UPDATE familyRequest SET status = ? WHERE idRequest = ?");
+        String insertStatement = "UPDATE familyRequest SET status = ? WHERE idRequest = ?";
         preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,status);
         preparedStatement.setInt(2,id);
@@ -114,14 +114,14 @@ public class CRUDQueries {
     }
 
     public static int deleteRequest(Connection connection, int id) throws SQLException{
-        String insertStatement = String.format("DELETE FROM familyRequest WHERE idRequest = ?");
+        String insertStatement = "DELETE FROM familyRequest WHERE idRequest = ?";
         preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,id);
         return preparedStatement.executeUpdate();
     }
 
     public static int insertResidenceRequest(Connection connection, ResidenceRequest residenceRequest) throws SQLException {
-        String insertStatement = String.format("INSERT INTO residenceRequest (arrival, departure, idResidence, room, status, idStudent) VALUES (?, ?, ?, ?, ?, ?)");
+        String insertStatement = "INSERT INTO residenceRequest (arrival, departure, idResidence, room, status, idStudent) VALUES (?, ?, ?, ?, ?, ?)";
         preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setString(1,residenceRequest.getArrival());
         preparedStatement.setString(2,residenceRequest.getDeparture());
@@ -133,7 +133,7 @@ public class CRUDQueries {
     }
 
     public static int updateResidenceRequest(Connection connection, int status, int id, int number) throws SQLException {
-        String insertStatement = String.format("UPDATE residenceRequest SET status = ?, roomNumber = ? WHERE idRequest = ?");
+        String insertStatement = "UPDATE residenceRequest SET status = ?, roomNumber = ? WHERE idRequest = ?";
         preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,status);
         preparedStatement.setInt(2,number);
@@ -142,7 +142,7 @@ public class CRUDQueries {
     }
 
     public static int updateResidenceRequestStatus(Connection connection, int status, int id) throws SQLException {
-        String insertStatement = String.format("UPDATE residenceRequest SET status = ? WHERE idRequest = ?");
+        String insertStatement = "UPDATE residenceRequest SET status = ? WHERE idRequest = ?";
         preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,status);
         preparedStatement.setInt(2,id);
@@ -150,7 +150,7 @@ public class CRUDQueries {
     }
 
     public static int deleteResidenceRequest(Connection connection, int id) throws SQLException {
-        String insertStatement = String.format("DELETE FROM residenceRequest WHERE idRequest = ?", id);
+        String insertStatement = "DELETE FROM residenceRequest WHERE idRequest = ?";
         preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,id);
         return preparedStatement.executeUpdate();

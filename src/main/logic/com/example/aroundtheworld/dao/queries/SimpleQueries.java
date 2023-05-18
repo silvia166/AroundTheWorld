@@ -1,8 +1,5 @@
 package com.example.aroundtheworld.dao.queries;
 
-import com.example.aroundtheworld.connection.ConnectionDB;
-import com.example.aroundtheworld.exception.ConnectionDbException;
-
 import java.sql.*;
 
 public class SimpleQueries {
@@ -10,7 +7,7 @@ public class SimpleQueries {
     private static PreparedStatement preparedStatement = null;
     private SimpleQueries() {}
 
-    public static ResultSet checkUser(Connection connection, String username, String password) throws SQLException, ConnectionDbException {
+    public static ResultSet checkUser(Connection connection, String username, String password) throws SQLException {
         String sql = "SELECT role FROM user WHERE username = ? AND password = ?";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setString(1,username);
@@ -18,21 +15,21 @@ public class SimpleQueries {
         return preparedStatement.executeQuery();
     }
 
-    public static ResultSet retrieveStudent(Connection connection, String username) throws SQLException, ConnectionDbException {
+    public static ResultSet retrieveStudent(Connection connection, String username) throws SQLException {
         String sql = "SELECT * FROM student WHERE email = ?";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setString(1,username);
         return preparedStatement.executeQuery();
     }
 
-    public static ResultSet retrieveFamily(Connection connection, String username) throws SQLException, ConnectionDbException {
+    public static ResultSet retrieveFamily(Connection connection, String username) throws SQLException {
         String sql = "SELECT * FROM family WHERE email = ? ";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setString(1,username);
         return preparedStatement.executeQuery();
     }
 
-    public static ResultSet retrieveFamilyMember(Connection connection, int familyId) throws SQLException, ConnectionDbException {
+    public static ResultSet retrieveFamilyMember(Connection connection, int familyId) throws SQLException {
         String sql = "SELECT name, birth, parenthood FROM familyMember WHERE idFamily = ?";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,familyId);

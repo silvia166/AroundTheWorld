@@ -58,7 +58,7 @@ public class FamilyItemGUIController {
                 Scene scene = new Scene(fxmlLoader.load());
 
                 FamilyProfileGUIController familyProfileGUIController = fxmlLoader.getController();
-                familyProfileGUIController.initializeSelectedProfile(familyBean, this.family.getCompatibility());
+                familyProfileGUIController.displaySelectedProfile(familyBean, this.family.getCompatibility());
 
                 stage.setScene(scene);
                 stage.centerOnScreen();

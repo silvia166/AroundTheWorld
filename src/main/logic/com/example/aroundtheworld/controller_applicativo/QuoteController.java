@@ -8,8 +8,6 @@ import com.example.aroundtheworld.engineering.decorator.decorations.*;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.City;
 
-import java.io.IOException;
-
 public class QuoteController {
     public CityBean getCityInfo(String cityName) throws NotFoundException {
         City city = CityDAO.retrieveCity(cityName);
@@ -87,12 +85,12 @@ public class QuoteController {
                     quote = new MercadoCentralDecorator(quote);
                 }
             }
+            default -> {}
         }
 
         quote = addStandardInformation(quoteBean, quote);
 
-        int price = quote.getPrice() + (250 * quoteBean.getWeeks());
-        return price;
+        return quote.getPrice() + (250 * quoteBean.getWeeks());
 
     }
 

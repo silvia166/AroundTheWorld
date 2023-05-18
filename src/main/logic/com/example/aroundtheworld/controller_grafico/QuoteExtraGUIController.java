@@ -59,7 +59,7 @@ public class QuoteExtraGUIController {
         img3.setImage(image);
 
     }
-    public void getExtra(ActionEvent event) throws IOException {
+    public void getExtra() throws IOException {
         try {
             if (act1Label.isSelected()) {
                 quoteBean.setActivity1(1);
@@ -85,12 +85,7 @@ public class QuoteExtraGUIController {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(Main.class.getResource("quoteResult.fxml"));
             Scene scene = null;
-
-            try {
-                scene = new Scene(fxmlLoader.load());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            scene = new Scene(fxmlLoader.load());
             QuoteGUIController quoteGUIController = fxmlLoader.getController();
             quoteGUIController.showQuoteResult(price, quoteBean);
 

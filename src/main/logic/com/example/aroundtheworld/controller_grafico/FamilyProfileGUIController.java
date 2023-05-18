@@ -95,7 +95,7 @@ public class FamilyProfileGUIController {
         setTableViewMembers(familyBean.getMembersBean());
     }
 
-    public void initializeSelectedProfile(FamilyBean familyBean, float compatibility) {
+    public void displaySelectedProfile(FamilyBean familyBean, float compatibility) {
 
         name.setText(familyBean.getNameBean());
         address.setText(familyBean.getAddressBean());

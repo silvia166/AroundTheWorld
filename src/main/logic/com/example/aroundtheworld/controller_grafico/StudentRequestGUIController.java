@@ -3,6 +3,7 @@ package com.example.aroundtheworld.controller_grafico;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.bean.StudentBean;
+import com.example.aroundtheworld.controller_applicativo.BookingFamilyController;
 import com.example.aroundtheworld.controller_applicativo.ReserveRoomController;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.engineering.observer.Observer;
@@ -29,6 +30,8 @@ public class StudentRequestGUIController implements Observer {
         StudentBean studentBean = Session.getCurrentSession().getStudentBean();
         ReserveRoomController reserveRoomController = new ReserveRoomController();
         List<ResidenceRequestBean> requestList = reserveRoomController.getStudentResidenceRequest(studentBean.getId());
+        BookingFamilyController bookingFamilyController = new BookingFamilyController();
+        List<FamilyRequestBean> familyRequestList = bookingFamilyController.getStudentFamilyRequest(studentBean.getId());
 
         for(ResidenceRequestBean requestBean: requestList){
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -43,9 +46,19 @@ public class StudentRequestGUIController implements Observer {
             }else {
                 requestItemGUIController.setPendingRequest(requestBean);
             }
-
             residenceReqList.getChildren().add(requestBox);
+        }
 
+        for(FamilyRequestBean requestBean: familyRequestList){
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("familyItem.fxml"));
+            Pane requestBox = fxmlLoader.load();
+            requestBean.register(this);
+
+            FamilyItemGUIController familyItemGUIController = fxmlLoader.getController();
+            familyItemGUIController.setPane(requestBox);
+            familyItemGUIController.setFamilyRequest(requestBean);
+            familyReqList.getChildren().add(requestBox);
         }
     }
 
@@ -68,13 +81,13 @@ public class StudentRequestGUIController implements Observer {
     public void updateResidence(ResidenceRequestBean requestBean, Pane pane) {
         if (residenceReqList.getChildren().contains(pane))
             residenceReqList.getChildren().remove(pane);
-        else if (familyReqList.getChildren().contains(pane))
-            familyReqList.getChildren().remove(pane);
+
     }
 
     @Override
     public void updateFamily(FamilyRequestBean requestBean, Pane pane) {
-        //ignore
+        if (familyReqList.getChildren().contains(pane))
+            familyReqList.getChildren().remove(pane);
     }
 
     public void backToAccess() throws IOException {

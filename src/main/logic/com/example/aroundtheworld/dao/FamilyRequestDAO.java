@@ -4,6 +4,7 @@ import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
+import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.*;
 
 import java.sql.Connection;
@@ -141,5 +142,49 @@ public class FamilyRequestDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static List<FamilyRequest> retrieveStudentFamilyRequest(int idStudent) {
+        Connection connection;
+        List<FamilyRequest> familyRequestList = new ArrayList<>();
+        FamilyRequest familyRequest;
+
+        try {
+
+            connection = ConnectionDB.getConnection();
+
+            ResultSet resultSet = SimpleQueries.retrieveStudentFamilyRequests(connection, idStudent);
+
+            if(resultSet.first()) {
+                resultSet.first();
+                do {
+                    int requestId = resultSet.getInt(ID);
+                    Date arrival = resultSet.getDate(ARRIVAL);
+                    Date departure = resultSet.getDate(DEPARTURE);
+                    int status = resultSet.getInt(STATUS);
+                    int idFamily = resultSet.getInt(IDFAM);
+                    String city = resultSet.getString(CITY);
+                    float compatibility = Float.parseFloat(resultSet.getString(COMPATIBILITY));
+
+                    Family family = FamilyDAO.retrieveFamilyName(idFamily);
+
+
+                    familyRequest = new FamilyRequest(city, arrival.toString(), departure.toString(), idStudent, status, compatibility);
+                    familyRequest.setFamilyName(family.getName());
+                    familyRequest.setImgFamily(family.getImgSrc());
+                    familyRequest.setId(requestId);
+
+                    familyRequestList.add(familyRequest);
+
+                } while (resultSet.next());
+            }
+
+            resultSet.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return familyRequestList;
     }
 }

@@ -3,21 +3,29 @@ package com.example.aroundtheworld.controller_grafico;
 import com.example.aroundtheworld.bean.CompatibleFamilyBean;
 import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
+import com.example.aroundtheworld.bean.ResidenceRequestBean;
+import com.example.aroundtheworld.controller_applicativo.BookingFamilyController;
 import com.example.aroundtheworld.controller_applicativo.ContactFamilyController;
+import com.example.aroundtheworld.controller_applicativo.ReserveRoomController;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
+import com.example.aroundtheworld.engineering.observer.Observer;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class FamilyItemGUIController {
         @FXML
@@ -27,9 +35,25 @@ public class FamilyItemGUIController {
         @FXML
         private Label familyName;
         @FXML
+        private Label arrivalLabel;
+        @FXML
         private ImageView img;
         private CompatibleFamilyBean family;
         private FamilyRequestBean familyRequest;
+        private Pane pane;
+        @FXML
+        private Button bookBtn;
+        @FXML
+        private Button rejectBtn;
+        @FXML
+        private Button sendRequestBtn;
+        @FXML
+        private Label statusLabel;
+        @FXML
+        private Button viewProfileBtn;
+        @FXML
+        private AnchorPane reqPane;
+
         @FXML
         void sendRequest() throws IOException {
                 familyRequest.setCompatibility(family.getCompatibility());
@@ -44,12 +68,13 @@ public class FamilyItemGUIController {
                         ShowExceptionSupport.showException(e.getMessage());
                 }
         }
+
         @FXML
         void viewProfile() throws NotFoundException, IOException {
                 ContactFamilyController contactFamilyController = new ContactFamilyController();
                 FamilyBean familyBean = contactFamilyController.getFamilyProfile(family);
 
-                Stage stage =  new Stage();
+                Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.initStyle(StageStyle.UNDECORATED);
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -70,14 +95,44 @@ public class FamilyItemGUIController {
                 this.family = compatibleFamilyBean;
                 this.familyRequest = familyRequestBean;
 
-                familyName.setText(compatibleFamilyBean.getName()+"  family");
+                familyName.setText(compatibleFamilyBean.getName() + "  family");
                 familyCity.setText(familyRequestBean.getCityBean());
-                compatibility.setText(""+compatibleFamilyBean.getCompatibility()+"%");
-                if(compatibleFamilyBean.getImgSrc() != null){
+                compatibility.setText("" + compatibleFamilyBean.getCompatibility() + "%");
+                if (compatibleFamilyBean.getImgSrc() != null) {
                         Image image = new Image(getClass().getResourceAsStream(compatibleFamilyBean.getImgSrc()));
                         img.setImage(image);
                 }
         }
+
+        public void setPane(Pane requestBox) {
+                this.pane = pane;
+        }
+
+        public void setFamilyRequest(FamilyRequestBean requestBean) {
+
+                reqPane.getChildren().removeAll(viewProfileBtn, sendRequestBtn);
+                familyName.setText(requestBean.getFamilyName() + " - " + requestBean.getCompatibilityBean());
+                Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(requestBean.getImgFamily())));
+                img.setImage(image);
+                familyCity.setText(requestBean.getCityBean());
+                arrivalLabel.setText(requestBean.getArrivalBean());
+                compatibility.setText(requestBean.getDepartureBean());
+                if(requestBean.getStatus() == 0){
+                        statusLabel.setText("Pending Request");
+                }else{
+                        statusLabel.setText("Accepted Request");
+                        bookBtn.setVisible(true);
+                        rejectBtn.setVisible(true);
+                }
+        }
+
+
+        public void rejectRequest() {
+                BookingFamilyController bookingFamilyController = new BookingFamilyController();
+                bookingFamilyController.rejectRequest(this.familyRequest, this.pane);
+        }
+
+        public void bookFamily(){}
 
 }
 

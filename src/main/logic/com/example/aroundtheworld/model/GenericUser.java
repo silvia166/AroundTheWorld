@@ -13,6 +13,7 @@ public abstract class GenericUser {
         this.email = email;
     }
 
+    protected GenericUser(){}
     public int getId() {
         return id;
     }

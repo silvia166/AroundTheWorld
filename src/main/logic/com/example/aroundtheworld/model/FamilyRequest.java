@@ -7,11 +7,34 @@ public class FamilyRequest extends Request {
     private int idFamily;
     private float compatibility;
     private int rate;
+    private String familyName;
+    private String imgFamily;
 
     public FamilyRequest(String city, String arrival, String departure, int siblings, int animals, int idStudent, int status) {
         super(city, arrival, departure, idStudent, status);
         this.siblings = siblings;
         this.animals = animals;
+    }
+
+    public FamilyRequest(String city, String arrival, String departure, int idStudent, int status, float compatibility) {
+        super(city, arrival, departure, idStudent, status);
+        this.compatibility = compatibility;
+    }
+
+    public String getImgFamily() {
+        return imgFamily;
+    }
+
+    public void setImgFamily(String imgFamily) {
+        this.imgFamily = imgFamily;
+    }
+
+    public String getFamilyName() {
+        return familyName;
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
     }
 
     public void setIdFamily(int idFamily) {

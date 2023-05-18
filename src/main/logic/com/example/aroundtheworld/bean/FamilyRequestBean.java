@@ -12,6 +12,7 @@ public class FamilyRequestBean extends Subject {
     private int idStudent;
 
     private String studentName;
+    private String familyName;
     private int idFamily;
     private float compatibility;
 
@@ -28,6 +29,7 @@ public class FamilyRequestBean extends Subject {
     private int videoGames;
     private int cooking;
     private String house;
+    private String imgFamily;
 
     public FamilyRequestBean(String city, String arrival, String departure, int siblings, int animals, int idStudent){
         this.city = city;
@@ -36,6 +38,31 @@ public class FamilyRequestBean extends Subject {
         this.siblings = siblings;
         this.animals = animals;
         this.idStudent = idStudent;
+    }
+
+    public String getImgFamily() {
+        return imgFamily;
+    }
+
+    public void setImgFamily(String imgFamily) {
+        this.imgFamily = imgFamily;
+    }
+
+    public String getFamilyName() {
+        return familyName;
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
+    }
+
+    public FamilyRequestBean(String city, String arrival, String departure, int status, int idFamily, float compatibility){
+        this.city = city;
+        this.arrival = arrival;
+        this.departure = departure;
+        this.status = status;
+        this.idFamily = idFamily;
+        this.compatibility = compatibility;
     }
 
     public int getId() {

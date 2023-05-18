@@ -1,12 +1,15 @@
 package com.example.aroundtheworld.controller_applicativo;
 
 
+import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.bean.RoomBean;
+import com.example.aroundtheworld.dao.FamilyRequestDAO;
 import com.example.aroundtheworld.dao.ResidenceRequestDAO;
 import com.example.aroundtheworld.dao.RoomDAO;
 import com.example.aroundtheworld.exception.NoAvailableRoomsException;
 import com.example.aroundtheworld.exception.NotFoundException;
+import com.example.aroundtheworld.model.FamilyRequest;
 import com.example.aroundtheworld.model.ResidenceRequest;
 import com.example.aroundtheworld.model.Room;
 import javafx.scene.layout.Pane;
@@ -67,4 +70,5 @@ public class ReserveRoomController {
         requestBean.notifyObserversResidence(requestBean, pane);
         ResidenceRequestDAO.deleteRequest(requestBean.getId());
     }
+
 }

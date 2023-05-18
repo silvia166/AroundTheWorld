@@ -170,5 +170,35 @@ public class FamilyDAO {
     }
 
 
+    public static Family retrieveFamilyName(int idFamily) {
+        Connection connection;
+        String name = null;
+        String photo = null;
+        Family family = null;
+
+        try{
+            connection = ConnectionDB.getConnection();
+
+            ResultSet resultSet = SimpleQueries.retrieveFamilyName(connection, idFamily);
+
+            if (!resultSet.first()){
+                throw new NotFoundException("No family found with id"+ idFamily);
+            }
+
+            resultSet.first();
+
+            name = resultSet.getString(NAME);
+            photo = resultSet.getString(PHOTO);
+            family = new Family(name, photo);
+
+            resultSet.close();
+
+
+        } catch(SQLException | NotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return family;
+    }
 }
 

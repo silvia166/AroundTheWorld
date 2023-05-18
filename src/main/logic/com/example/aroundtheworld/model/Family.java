@@ -18,6 +18,12 @@ public class Family extends GenericUser {
         this.address = address;
     }
 
+    public Family(String name, String imgSrc) {
+        super();
+        this.name = name;
+        this.imgSrc = imgSrc;
+    }
+
     public Family(int id, String phoneNumber, String name, String city, String address) {
         super(id, 2, phoneNumber, null);
         this.name = name;

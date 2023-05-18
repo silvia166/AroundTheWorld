@@ -172,12 +172,11 @@ public class QuoteGUIController {
         priceLabel.setText(price +" €");
 
         switch (quoteBean.getCity()){
-            case "London" -> path = "image/londonFlag.png";
             case "Rome" -> path = "image/romeFlag.png";
             case "Paris" -> path = "image/parisFlag.png";
             case "New York" -> path = "image/newYorkFlag.png";
             case "Valencia" -> path = "image/valenciaFlag.png";
-            default -> {}
+            default -> path = "image/londonFlag.png";
         }
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)));
         imgQuote.setImage(image);

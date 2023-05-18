@@ -25,18 +25,6 @@ public class QuoteController {
         Quote quote = null;
 
         switch (quoteBean.getCity()){
-            case "London" -> {
-                quote = new LondonQuote();
-                if(quoteBean.getActivity1() == 1){
-                    quote = new LondonEyeDecorator(quote);
-                }
-                if(quoteBean.getActivity2() == 1){
-                    quote = new HPStudiosDecorator(quote);
-                }
-                if(quoteBean.getActivity3() == 1){
-                    quote = new BuckinghamPalaceDecorator(quote);
-                }
-            }
             case "Rome" -> {
                 quote = new RomeQuote();
                 if(quoteBean.getActivity1() == 1){
@@ -85,7 +73,18 @@ public class QuoteController {
                     quote = new MercadoCentralDecorator(quote);
                 }
             }
-            default -> {}
+            default -> {
+                quote = new LondonQuote();
+                if(quoteBean.getActivity1() == 1){
+                    quote = new LondonEyeDecorator(quote);
+                }
+                if(quoteBean.getActivity2() == 1){
+                    quote = new HPStudiosDecorator(quote);
+                }
+                if(quoteBean.getActivity3() == 1){
+                    quote = new BuckinghamPalaceDecorator(quote);
+                }
+            }
         }
 
         quote = addStandardInformation(quoteBean, quote);

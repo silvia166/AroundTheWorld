@@ -175,7 +175,7 @@ public class ContactFamilyController {
         FamilyRequestDAO.deleteRequest(familyRequest.getId());
     }
 
-    public StudentBean viewRequest(FamilyRequestBean familyRequest) throws NotFoundException {
+    public StudentBean getStudent(FamilyRequestBean familyRequest) throws NotFoundException {
 
         Student student = StudentDAO.retrieveStudent(null, familyRequest.getIdStudentBean());
         return new StudentBean(student.getName(), student.getSurname(), student.getNationality(), student.getDateOfBirth(), student.getEmail(), student.getPhoneNumber(), student.getId());

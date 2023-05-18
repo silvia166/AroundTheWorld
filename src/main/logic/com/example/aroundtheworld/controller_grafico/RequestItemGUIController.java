@@ -102,7 +102,7 @@ public class RequestItemGUIController implements Observer {
     public void viewRequest() throws IOException, NotFoundException {
 
         ContactFamilyController contactFamilyController = new ContactFamilyController();
-        StudentBean studentBean = contactFamilyController.viewRequest(this.familyRequest);
+        StudentBean studentBean = contactFamilyController.getStudent(this.familyRequest);
 
         Stage stage =  new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);

@@ -112,8 +112,8 @@ public class RequestItemGUIController implements Observer {
 
         Scene scene = new Scene(fxmlLoader.load());
 
-        ViewFamilyRequestGUIController viewFamilyRequestGUIController = fxmlLoader.getController();
-        viewFamilyRequestGUIController.initialize(studentBean, this.familyRequest);
+        ViewRequestGUIController viewRequestGUIController = fxmlLoader.getController();
+        viewRequestGUIController.displayRequest(studentBean, this.familyRequest);
 
         stage.setScene(scene);
         stage.centerOnScreen();

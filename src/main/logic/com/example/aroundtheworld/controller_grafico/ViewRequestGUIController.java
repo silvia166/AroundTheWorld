@@ -9,7 +9,7 @@ import javafx.scene.text.Text;
 
 import java.time.Year;
 
-public class ViewFamilyRequestGUIController {
+public class ViewRequestGUIController {
     @FXML
     private Text ageLabel;
     @FXML
@@ -51,7 +51,7 @@ public class ViewFamilyRequestGUIController {
     @FXML
     private Text surnameText;
 
-    public void initialize(StudentBean studentBean, FamilyRequestBean familyRequestBean){
+    public void displayRequest(StudentBean studentBean, FamilyRequestBean familyRequestBean){
 
         nameText.setText(studentBean.getName());
         surnameText.setText(studentBean.getSurname());

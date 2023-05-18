@@ -72,7 +72,7 @@ public class StudentDAO {
             CRUDQueries.insertUser(connection, email, password, "student");
             CRUDQueries.insertStudent(connection, name, surname, birth, nationality, phoneNumber, email);
 
-        } catch(SQLException | ConnectionDbException e) {
+        } catch(SQLException e) {
             e.printStackTrace();
         }
 
@@ -103,7 +103,7 @@ public class StudentDAO {
 
             resultSet.close();
 
-        } catch(SQLException | ConnectionDbException | NotFoundException e) {
+        } catch(SQLException | NotFoundException e) {
             e.printStackTrace();
         }
         return studentName;

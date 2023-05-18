@@ -74,7 +74,7 @@ public class FamilyMemberDAO {
             birth = String.valueOf(currentYear - age);
             CRUDQueries.insertMember(connection, id, name, birth, parenthood);
 
-        } catch(SQLException | ConnectionDbException e) {
+        } catch(SQLException e) {
             e.printStackTrace();
         }
 

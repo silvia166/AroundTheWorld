@@ -56,7 +56,7 @@ public class FamilyRequestDAO {
                 throw new DuplicateRequestException();
             }
 
-        } catch (SQLException | ConnectionDbException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -117,7 +117,7 @@ public class FamilyRequestDAO {
 
             resultSet.close();
 
-        } catch (SQLException | ConnectionDbException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -129,7 +129,7 @@ public class FamilyRequestDAO {
         try {
             connection = ConnectionDB.getConnection();
             CRUDQueries.updateStatusRequest(connection, status, id);
-        } catch (SQLException | ConnectionDbException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -139,7 +139,7 @@ public class FamilyRequestDAO {
         try {
             connection = ConnectionDB.getConnection();
             CRUDQueries.deleteRequest(connection, id);
-        } catch (SQLException | ConnectionDbException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

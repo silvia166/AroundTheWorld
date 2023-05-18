@@ -42,7 +42,7 @@ public class ResidenceRequestDAO {
                 throw new DuplicateRequestException();
             }
 
-        } catch (SQLException | ConnectionDbException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -85,7 +85,7 @@ public class ResidenceRequestDAO {
 
             resultSet.close();
 
-        } catch (SQLException | ConnectionDbException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -97,7 +97,7 @@ public class ResidenceRequestDAO {
         try {
             connection = ConnectionDB.getConnection();
             CRUDQueries.updateResidenceRequest(connection, status, id, number);
-        } catch (SQLException | ConnectionDbException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -140,7 +140,7 @@ public class ResidenceRequestDAO {
 
             resultSet.close();
 
-        } catch (SQLException | ConnectionDbException | NotFoundException e) {
+        } catch (SQLException | NotFoundException e) {
             e.printStackTrace();
         }
 
@@ -152,7 +152,7 @@ public class ResidenceRequestDAO {
         try {
             connection = ConnectionDB.getConnection();
             CRUDQueries.updateResidenceRequestStatus(connection, status, id);
-        } catch (SQLException | ConnectionDbException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -162,7 +162,7 @@ public class ResidenceRequestDAO {
         try {
             connection = ConnectionDB.getConnection();
             CRUDQueries.deleteResidenceRequest(connection, id);
-        } catch (SQLException | ConnectionDbException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

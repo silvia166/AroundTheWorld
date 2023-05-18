@@ -84,7 +84,7 @@ public class FamilyDAO {
             CRUDQueries.insertUser(connection, email, "123", "family");
             CRUDQueries.insertFamily(connection, name, phone, city, address, email, imgSrc);
 
-        } catch(SQLException | ConnectionDbException e) {
+        } catch(SQLException e) {
             e.printStackTrace();
         }
 
@@ -111,7 +111,7 @@ public class FamilyDAO {
             resultSet.close();
 
 
-        } catch(SQLException | ConnectionDbException | NotFoundException e) {
+        } catch(SQLException | NotFoundException e) {
             e.printStackTrace();
         }
 
@@ -163,7 +163,7 @@ public class FamilyDAO {
             resultSet.close();
 
 
-        } catch(SQLException | ConnectionDbException | NotFoundException e) {
+        } catch(SQLException | NotFoundException e) {
             e.printStackTrace();
         }
 

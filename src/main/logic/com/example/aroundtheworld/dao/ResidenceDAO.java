@@ -47,7 +47,7 @@ public class ResidenceDAO {
 
             resultSet.close();
 
-        } catch(SQLException | ConnectionDbException e){
+        } catch(SQLException e){
             e.printStackTrace();
         }
         return residence;
@@ -75,7 +75,7 @@ public class ResidenceDAO {
 
             resultSet.close();
 
-        } catch(SQLException | ConnectionDbException e){
+        } catch(SQLException e){
             e.printStackTrace();
         }
         return idResidence;
@@ -104,7 +104,7 @@ public class ResidenceDAO {
 
             resultSet.close();
 
-        } catch(SQLException | ConnectionDbException e){
+        } catch(SQLException e){
             e.printStackTrace();
         }
         return city;

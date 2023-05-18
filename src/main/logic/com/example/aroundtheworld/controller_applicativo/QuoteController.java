@@ -3,7 +3,6 @@ package com.example.aroundtheworld.controller_applicativo;
 import com.example.aroundtheworld.bean.CityBean;
 import com.example.aroundtheworld.bean.QuoteBean;
 import com.example.aroundtheworld.dao.CityDAO;
-import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.engineering.decorator.*;
 import com.example.aroundtheworld.engineering.decorator.decorations.*;
 import com.example.aroundtheworld.exception.NotFoundException;
@@ -24,7 +23,7 @@ public class QuoteController {
         return cityBean;
     }
 
-    public int calculateQuote(QuoteBean quoteBean) throws IOException {
+    public int calculateQuote(QuoteBean quoteBean) {
         Quote quote = null;
 
         switch (quoteBean.getCity()){

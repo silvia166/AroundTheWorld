@@ -60,7 +60,7 @@ public class FamilyPreferencesDAO {
 
             resultSet.close();
 
-        }catch(SQLException | ConnectionDbException | NotFoundException e){
+        }catch(SQLException | NotFoundException e){
             e.printStackTrace();
         }
         return preferences;
@@ -74,7 +74,7 @@ public class FamilyPreferencesDAO {
 
             CRUDQueries.insertPreferences(connection, id, familyPreferences);
 
-        } catch(SQLException | ConnectionDbException e) {
+        } catch(SQLException e) {
             e.printStackTrace();
         }
     }

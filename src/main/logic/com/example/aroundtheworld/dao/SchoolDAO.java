@@ -47,7 +47,7 @@ public class SchoolDAO {
 
             resultSet.close();
 
-        } catch(SQLException | ConnectionDbException e){
+        } catch(SQLException e){
             e.printStackTrace();
         }
         return school;

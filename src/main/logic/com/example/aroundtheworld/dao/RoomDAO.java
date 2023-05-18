@@ -44,7 +44,7 @@ public class RoomDAO {
             } while (resultSet.next());
 
             resultSet.close();
-        } catch (SQLException | ConnectionDbException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
             return roomList;

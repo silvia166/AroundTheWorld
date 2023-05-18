@@ -44,7 +44,7 @@ public class AnimalDAO {
 
             resultSet.close();
 
-        } catch (SQLException | ConnectionDbException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return animals;
@@ -57,7 +57,7 @@ public class AnimalDAO {
             connection = ConnectionDB.getConnection();
             CRUDQueries.insertAnimal(connection, id, type, quantity);
 
-        } catch (SQLException | ConnectionDbException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 

@@ -7,6 +7,7 @@ import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.model.*;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -44,14 +45,14 @@ public class FamilyRequestDAO {
 
     public static void newRequest(FamilyRequest familyRequest) throws DuplicateRequestException{
 
-        Statement stmt;
+        Connection connection;
 
         try {
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.selectDistinctRequest(stmt, familyRequest.getIdStudent(), familyRequest.getArrival(), familyRequest.getDeparture());
+            ResultSet resultSet = SimpleQueries.selectDistinctRequest(connection, familyRequest.getIdStudent(), familyRequest.getArrival(), familyRequest.getDeparture());
             if(!resultSet.first()){
-                CRUDQueries.insertRequest(stmt, familyRequest);
+                CRUDQueries.insertRequest(connection, familyRequest);
             } else {
                 throw new DuplicateRequestException();
             }
@@ -62,14 +63,14 @@ public class FamilyRequestDAO {
     }
 
     public static List<FamilyRequest> retrieveRequests(int id){
-        Statement stmt;
+        Connection connection;
         List<FamilyRequest> familyRequestsList = new ArrayList<>();
         FamilyRequest familyRequest;
 
         try {
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.retrieveFamilyRequests(stmt, id);
+            ResultSet resultSet = SimpleQueries.retrieveFamilyRequests(connection, id);
 
             if(resultSet.first()) {
                 resultSet.first();
@@ -125,20 +126,20 @@ public class FamilyRequestDAO {
     }
 
     public static void updateStatus(int status, int id) {
-        Statement stmt;
+        Connection connection;
         try {
-            stmt = ConnectionDB.getConnection();
-            CRUDQueries.updateStatusRequest(stmt, status, id);
+            connection = ConnectionDB.getConnectionP();
+            CRUDQueries.updateStatusRequest(connection, status, id);
         } catch (SQLException | ConnectionDbException e) {
             e.printStackTrace();
         }
     }
 
     public static void deleteRequest(int id) {
-        Statement stmt;
+        Connection connection;
         try {
-            stmt = ConnectionDB.getConnection();
-            CRUDQueries.deleteRequest(stmt, id);
+            connection = ConnectionDB.getConnectionP();
+            CRUDQueries.deleteRequest(connection, id);
         } catch (SQLException | ConnectionDbException e) {
             e.printStackTrace();
         }

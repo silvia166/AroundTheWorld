@@ -7,6 +7,7 @@ import com.example.aroundtheworld.exception.NoAvailableRoomsException;
 import com.example.aroundtheworld.model.*;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,14 +21,14 @@ public class RoomDAO {
     private RoomDAO(){}
 
     public static List<Room> retrieveAvailableRooms(int idResidence, String arrival, String departure) throws NoAvailableRoomsException {
-        Statement stmt;
+        Connection connection;
         Room room;
         List<Room> roomList = new ArrayList<>();
 
         try {
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.retrieveRooms(stmt, idResidence, arrival, departure);
+            ResultSet resultSet = SimpleQueries.retrieveRooms(connection, idResidence, arrival, departure);
 
             if (!resultSet.first()) {
                 throw new NoAvailableRoomsException();

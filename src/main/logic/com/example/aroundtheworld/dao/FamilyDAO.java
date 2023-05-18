@@ -10,6 +10,7 @@ import com.example.aroundtheworld.model.Family;
 import com.example.aroundtheworld.model.FamilyMember;
 import com.example.aroundtheworld.model.FamilyPreferences;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -29,16 +30,16 @@ public class FamilyDAO {
 
 
     public static Family retrieveFamily(String username) throws NotFoundException {
-        Statement stmt;
+        Connection connection;
         Family family = null;
         List<FamilyMember> familyMembers;
         List<Animal> animals;
         FamilyPreferences preferences;
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.retrieveFamily(stmt, username);
+            ResultSet resultSet = SimpleQueries.retrieveFamily(connection, username);
 
             if(!resultSet.first()) {
                 throw new NotFoundException("No family found with username: " + username);
@@ -76,13 +77,13 @@ public class FamilyDAO {
 
     public static void addFamily(String name, String phone, String city, String address, String imgSrc, String email) {
 
-        Statement stmt;
+        Connection connection;
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            CRUDQueries.insertUser(stmt, email, "123", "family");
-            CRUDQueries.insertFamily(stmt, name, phone, city, address, email, imgSrc);
+            CRUDQueries.insertUser(connection, email, "123", "family");
+            CRUDQueries.insertFamily(connection, name, phone, city, address, email, imgSrc);
 
         } catch(SQLException | ConnectionDbException e) {
             e.printStackTrace();
@@ -92,13 +93,13 @@ public class FamilyDAO {
 
     public static int retrieveFamilyID(String name) {
 
-        Statement stmt;
+        Connection connection;
         int id = 0;
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.retrieveFamilyID(stmt, name);
+            ResultSet resultSet = SimpleQueries.retrieveFamilyID(connection, name);
 
             if (!resultSet.first()){
                 throw new NotFoundException("No family found with name"+ name);
@@ -120,7 +121,7 @@ public class FamilyDAO {
 
     public static List<Family> retrieveFamilies(String city) {
 
-        Statement stmt;
+        Connection connection;
         Family family;
         List<FamilyMember> familyMembers;
         List<Animal> animals;
@@ -129,9 +130,9 @@ public class FamilyDAO {
 
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.retrieveFamilyIDByCity(stmt, city);
+            ResultSet resultSet = SimpleQueries.retrieveFamilyIDByCity(connection, city);
 
             if (!resultSet.first()){
                 throw new NotFoundException("No family found in the city"+ city);

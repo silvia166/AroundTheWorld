@@ -7,6 +7,7 @@ import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Student;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,17 +24,17 @@ public class StudentDAO {
     private StudentDAO(){}
 
     public static Student retrieveStudent(String username, int id) throws NotFoundException{
-        Statement stmt;
+        Connection connection;
         Student student = null;
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
             ResultSet resultSet = null;
 
             if(id == 0){
-                resultSet = SimpleQueries.retrieveStudent(stmt, username);
+                resultSet = SimpleQueries.retrieveStudent(connection, username);
             } else if(username == null){
-                resultSet = SimpleQueries.retrieveStudentById(stmt, id);
+                resultSet = SimpleQueries.retrieveStudentById(connection, id);
             }
 
             if(!resultSet.first()){
@@ -64,13 +65,13 @@ public class StudentDAO {
 
 
     public static void addStudent(String name, String surname, String birth, String nationality, String phoneNumber, String email, String password) {
-        Statement stmt;
+        Connection connection;
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            CRUDQueries.insertUser(stmt, email, password, "student");
-            CRUDQueries.insertStudent(stmt, name, surname, birth, nationality, phoneNumber, email);
+            CRUDQueries.insertUser(connection, email, password, "student");
+            CRUDQueries.insertStudent(connection, name, surname, birth, nationality, phoneNumber, email);
 
         } catch(SQLException | ConnectionDbException e) {
             e.printStackTrace();
@@ -79,13 +80,13 @@ public class StudentDAO {
     }
 
     public static String getNameById(int idStudent) {
-        Statement stmt;
+        Connection connection;
         String studentName = null;
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.retrieveStudentNameById(stmt, idStudent);
+            ResultSet resultSet = SimpleQueries.retrieveStudentNameById(connection, idStudent);
 
             if(!resultSet.first()){
                 throw new NotFoundException("No student found with id: " + idStudent);

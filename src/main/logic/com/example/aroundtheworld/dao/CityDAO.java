@@ -8,6 +8,7 @@ import com.example.aroundtheworld.model.City;
 import com.example.aroundtheworld.model.Residence;
 import com.example.aroundtheworld.model.School;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,15 +27,15 @@ public class CityDAO {
     private CityDAO(){}
     public static City retrieveCity(String name) throws NotFoundException {
 
-        Statement stmt;
+        Connection connection;
         City city = null;
         Residence residence;
         School school;
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.retrieveCity(stmt, name);
+            ResultSet resultSet = SimpleQueries.retrieveCity(connection, name);
 
             if(!resultSet.first()) {
                 throw new NotFoundException("No city found with name: " + name);

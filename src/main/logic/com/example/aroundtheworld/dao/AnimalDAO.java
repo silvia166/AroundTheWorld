@@ -6,6 +6,7 @@ import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.model.Animal;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,45 +20,45 @@ public class AnimalDAO {
 
     private AnimalDAO(){}
     public static List<Animal> retrieveAnimal(int familyId) {
-            Statement stmt;
-            List<Animal> animals = new ArrayList<>();
-            Animal animal;
+        Connection connection;
+        List<Animal> animals = new ArrayList<>();
+        Animal animal;
 
-            try{
-                stmt = ConnectionDB.getConnection();
+        try {
+            connection = ConnectionDB.getConnectionP();
 
-                ResultSet resultSet = SimpleQueries.retrieveAnimal(stmt, familyId);
+            ResultSet resultSet = SimpleQueries.retrieveAnimal(connection, familyId);
 
-                if(!resultSet.first()) {
-                    return animals;
-                }
-
-                resultSet.first();
-                do{
-                    String type = resultSet.getString(TYPE);
-                    int qt = resultSet.getInt(QT);
-
-                    animal = new Animal(type,qt);
-                    animals.add(animal);
-
-                } while(resultSet.next());
-
-                resultSet.close();
-
-            } catch(SQLException | ConnectionDbException e){
-                e.printStackTrace();
+            if (!resultSet.first()) {
+                return animals;
             }
-            return animals;
+
+            resultSet.first();
+            do {
+                String type = resultSet.getString(TYPE);
+                int qt = resultSet.getInt(QT);
+
+                animal = new Animal(type, qt);
+                animals.add(animal);
+
+            } while (resultSet.next());
+
+            resultSet.close();
+
+        } catch (SQLException | ConnectionDbException e) {
+            e.printStackTrace();
         }
+        return animals;
+    }
 
     public static void addAnimal(String type, int quantity, int id) {
-        Statement stmt;
+        Connection connection;
 
-        try{
-            stmt = ConnectionDB.getConnection();
-            CRUDQueries.insertAnimal(stmt, id, type, quantity);
+        try {
+            connection = ConnectionDB.getConnectionP();
+            CRUDQueries.insertAnimal(connection, id, type, quantity);
 
-        } catch(SQLException | ConnectionDbException e) {
+        } catch (SQLException | ConnectionDbException e) {
             e.printStackTrace();
         }
 

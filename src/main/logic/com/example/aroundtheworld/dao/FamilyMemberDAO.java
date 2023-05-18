@@ -7,6 +7,7 @@ import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.FamilyMember;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -24,7 +25,7 @@ public class FamilyMemberDAO {
 
     private FamilyMemberDAO(){}
     public static List<FamilyMember> retrieveMembers(int familyId) throws NotFoundException {
-        Statement stmt;
+        Connection connection;
         List<FamilyMember> familyMembers = new ArrayList<>();
         FamilyMember familyMember;
         int age;
@@ -33,9 +34,9 @@ public class FamilyMemberDAO {
         int currentYear = currentDate.getYear();
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.retrieveFamilyMember(stmt, familyId);
+            ResultSet resultSet = SimpleQueries.retrieveFamilyMember(connection, familyId);
 
             if(!resultSet.first()) {
                 throw new NotFoundException("No member found in family with id: " + familyId);
@@ -63,16 +64,16 @@ public class FamilyMemberDAO {
 
     public static void addMember(String name, int age, String parenthood, int id) {
 
-        Statement stmt;
+        Connection connection;
         String birth;
         LocalDate currentDate = LocalDate.now();
         int currentYear = currentDate.getYear();
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
             birth = String.valueOf(currentYear - age);
-            CRUDQueries.insertMember(stmt, id, name, birth, parenthood);
+            CRUDQueries.insertMember(connection, id, name, birth, parenthood);
 
         } catch(SQLException | ConnectionDbException e) {
             e.printStackTrace();

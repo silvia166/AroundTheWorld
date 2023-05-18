@@ -7,6 +7,7 @@ import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.FamilyPreferences;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,13 +27,13 @@ public class FamilyPreferencesDAO {
     private FamilyPreferencesDAO(){}
 
     public static FamilyPreferences retrievePreferences(int familyId) {
-        Statement stmt;
+        Connection connection;
         FamilyPreferences preferences = null;
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.retrievePreferences(stmt, familyId);
+            ResultSet resultSet = SimpleQueries.retrievePreferences(connection, familyId);
 
             if(!resultSet.first()) {
                 throw new NotFoundException("No preferences found for family with id: " + familyId);
@@ -67,12 +68,12 @@ public class FamilyPreferencesDAO {
     }
 
     public static void addPreferences(FamilyPreferences familyPreferences, int id) {
-        Statement stmt;
+        Connection connection;
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            CRUDQueries.insertPreferences(stmt, id, familyPreferences);
+            CRUDQueries.insertPreferences(connection, id, familyPreferences);
 
         } catch(SQLException | ConnectionDbException e) {
             e.printStackTrace();

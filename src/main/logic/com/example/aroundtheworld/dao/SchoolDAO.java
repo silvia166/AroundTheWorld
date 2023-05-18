@@ -6,6 +6,7 @@ import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.School;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,14 +21,14 @@ public class SchoolDAO {
 
     private SchoolDAO(){}
     public static School retrieveSchool(String city) throws NotFoundException {
-        Statement stmt;
+        Connection connection;
         School school = null;
 
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.retrieveSchool(stmt, city);
+            ResultSet resultSet = SimpleQueries.retrieveSchool(connection, city);
 
             if(!resultSet.first()) {
                 throw new NotFoundException("No school found in city with name: " + city);

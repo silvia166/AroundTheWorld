@@ -8,6 +8,7 @@ import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.ResidenceRequest;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -30,14 +31,14 @@ public class ResidenceRequestDAO {
 
     public static void newRequest(ResidenceRequest residenceRequest) throws  DuplicateRequestException{
 
-        Statement stmt;
+        Connection connection;
 
         try {
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.selectDistinctRequest(stmt, residenceRequest.getIdStudent(), residenceRequest.getArrival(), residenceRequest.getDeparture());
+            ResultSet resultSet = SimpleQueries.selectDistinctRequest(connection, residenceRequest.getIdStudent(), residenceRequest.getArrival(), residenceRequest.getDeparture());
             if(!resultSet.first()){
-                CRUDQueries.insertResidenceRequest(stmt, residenceRequest);
+                CRUDQueries.insertResidenceRequest(connection, residenceRequest);
             } else {
                 throw new DuplicateRequestException();
             }
@@ -48,14 +49,14 @@ public class ResidenceRequestDAO {
     }
 
     public static List<ResidenceRequest> retrieveRequests() throws NotFoundException {
-        Statement stmt;
+        Connection connection;
         List<ResidenceRequest> residenceRequestList = new ArrayList<>();
         ResidenceRequest residenceRequest;
 
         try {
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.retrieveResidenceRequests(stmt);
+            ResultSet resultSet = SimpleQueries.retrieveResidenceRequests(connection);
 
             if (resultSet.first()) {
                 resultSet.first();
@@ -93,25 +94,25 @@ public class ResidenceRequestDAO {
     }
 
     public static void updateRoom(int number, int id, int status) {
-        Statement stmt;
+        Connection connection;
         try {
-            stmt = ConnectionDB.getConnection();
-            CRUDQueries.updateResidenceRequest(stmt, status, id, number);
+            connection = ConnectionDB.getConnectionP();
+            CRUDQueries.updateResidenceRequest(connection, status, id, number);
         } catch (SQLException | ConnectionDbException e) {
             e.printStackTrace();
         }
     }
 
     public static List<ResidenceRequest> retrieveStudentResidenceRequest(int id) {
-        Statement stmt;
+        Connection connection;
         List<ResidenceRequest> residenceRequestList = new ArrayList<>();
         ResidenceRequest residenceRequest;
 
         try {
 
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.retrieveStudentResidenceRequests(stmt, id);
+            ResultSet resultSet = SimpleQueries.retrieveStudentResidenceRequests(connection, id);
 
             if(resultSet.first()) {
                 resultSet.first();
@@ -148,20 +149,20 @@ public class ResidenceRequestDAO {
     }
 
     public static void updateStatus(int id, int status) {
-        Statement stmt;
+        Connection connection;
         try {
-            stmt = ConnectionDB.getConnection();
-            CRUDQueries.updateResidenceRequestStatus(stmt, status, id);
+            connection = ConnectionDB.getConnectionP();
+            CRUDQueries.updateResidenceRequestStatus(connection, status, id);
         } catch (SQLException | ConnectionDbException e) {
             e.printStackTrace();
         }
     }
 
     public static void deleteRequest(int id) {
-        Statement stmt;
+        Connection connection;
         try {
-            stmt = ConnectionDB.getConnection();
-            CRUDQueries.deleteResidenceRequest(stmt, id);
+            connection = ConnectionDB.getConnectionP();
+            CRUDQueries.deleteResidenceRequest(connection, id);
         } catch (SQLException | ConnectionDbException e) {
             e.printStackTrace();
         }

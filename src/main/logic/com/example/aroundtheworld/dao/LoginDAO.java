@@ -5,6 +5,7 @@ import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.dao.queries.*;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,15 +13,15 @@ import java.sql.Statement;
 public class LoginDAO {
     private LoginDAO() {}
     public static int checkUser(String username, String password) {
-        Statement stmt;
+        Connection connection;
         int role = 0;
 
         try {
-            stmt = ConnectionDB.getConnection();
 
-            ResultSet resultSet = SimpleQueries.checkUser(stmt,username,password);
+            connection = ConnectionDB.getConnectionP();
+            ResultSet resultSet = SimpleQueries.checkUser(connection, username,password);
 
-            if (!resultSet.first()){
+            if (!resultSet.isBeforeFirst()){
                 throw new NotFoundException("No user found with "+ username);
             }
 

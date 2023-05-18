@@ -6,6 +6,7 @@ import com.example.aroundtheworld.exception.ConnectionDbException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Residence;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,14 +21,14 @@ public class ResidenceDAO {
 
     private ResidenceDAO(){}
     public static Residence retrieveResidence(String city) throws NotFoundException {
-        Statement stmt;
+        Connection connection;
         Residence residence = null;
 
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.retrieveResidence(stmt, city);
+            ResultSet resultSet = SimpleQueries.retrieveResidence(connection, city);
 
             if(!resultSet.first()) {
                 throw new NotFoundException("No residence found in city with name: " + city);
@@ -54,14 +55,14 @@ public class ResidenceDAO {
     }
 
     public static int getIdResidence(String city) throws NotFoundException{
-        Statement stmt;
+        Connection connection;
         int idResidence = 0;
 
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.retrieveIdResidence(stmt, city);
+            ResultSet resultSet = SimpleQueries.retrieveIdResidence(connection, city);
 
             if(!resultSet.first()) {
                 throw new NotFoundException("No residence found in city with name: " + city);
@@ -83,14 +84,14 @@ public class ResidenceDAO {
 
     public static String retrieveResidencebyId(int idResidence) throws NotFoundException {
 
-        Statement stmt;
+        Connection connection;
         String city = null;
 
 
         try{
-            stmt = ConnectionDB.getConnection();
+            connection = ConnectionDB.getConnectionP();
 
-            ResultSet resultSet = SimpleQueries.retrieveResidencebyId(stmt, idResidence);
+            ResultSet resultSet = SimpleQueries.retrieveResidencebyId(connection, idResidence);
 
             if(!resultSet.first()) {
                 throw new NotFoundException("No residence found with id: " + idResidence);

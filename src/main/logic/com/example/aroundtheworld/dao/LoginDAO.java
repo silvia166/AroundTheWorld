@@ -36,7 +36,7 @@ public class LoginDAO {
 
             resultSet.close();
 
-        } catch (NotFoundException | SQLException | ConnectionDbException e){
+        } catch (NotFoundException | SQLException e){
             e.printStackTrace();
         }
 

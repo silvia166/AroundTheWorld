@@ -1,7 +1,10 @@
 package com.example.aroundtheworld.controller_applicativo;
 
 import com.example.aroundtheworld.bean.FamilyRequestBean;
+import com.example.aroundtheworld.bean.TravelBean;
+import com.example.aroundtheworld.dao.FamilyDAO;
 import com.example.aroundtheworld.dao.FamilyRequestDAO;
+import com.example.aroundtheworld.model.Family;
 import com.example.aroundtheworld.model.FamilyRequest;
 import javafx.scene.layout.Pane;
 
@@ -10,17 +13,18 @@ import java.util.List;
 
 public class BookingFamilyController {
     public List<FamilyRequestBean> getStudentFamilyRequest(int id) {
-        List<FamilyRequestBean> familyRequestList = new ArrayList<>();
-        List<FamilyRequest> requests = FamilyRequestDAO.retrieveStudentFamilyRequest(id);
+        List<FamilyRequestBean> familyRequestBeanList = new ArrayList<>();
+        List<FamilyRequest> requests = FamilyRequestDAO.retrieveStudentRequest(id);
 
         for(FamilyRequest request: requests){
-            FamilyRequestBean familyRequestBean = new FamilyRequestBean(request.getCity(), request.getArrival(), request.getDeparture(), request.getStatus(), request.getIdFamily(), request.getCompatibility());
+            Family family = FamilyDAO.retrieveFamilyName(request.getIdFamily());
+            FamilyRequestBean familyRequestBean = new FamilyRequestBean(request.getCity(),request.getArrival(), request.getDeparture(), request.getStatus(), request.getIdFamily());
             familyRequestBean.setId(request.getId());
-            familyRequestBean.setFamilyName(request.getFamilyName());
-            familyRequestBean.setImgFamily(request.getImgFamily());
-            familyRequestList.add(familyRequestBean);
+            familyRequestBean.setFamilyName(family.getName());
+            familyRequestBean.setImgFamily(family.getImgSrc());
+            familyRequestBeanList.add(familyRequestBean);
         }
-        return familyRequestList;
+        return familyRequestBeanList;
     }
 
     public void rejectRequest(FamilyRequestBean familyRequest, Pane pane) {

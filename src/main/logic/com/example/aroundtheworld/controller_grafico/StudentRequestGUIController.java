@@ -48,17 +48,17 @@ public class StudentRequestGUIController implements Observer {
         }
 
         BookingFamilyController bookingFamilyController = new BookingFamilyController();
-        List<FamilyRequestBean> familyRequestList = bookingFamilyController.getStudentFamilyRequest(studentBean.getId());
+        List<FamilyRequestBean> familyRequestBeanList = bookingFamilyController.getStudentFamilyRequest(studentBean.getId());
 
-        for(FamilyRequestBean requestBean: familyRequestList){
+        for(FamilyRequestBean familyRequestBean: familyRequestBeanList){
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("familyItem.fxml"));
             Pane requestBox = fxmlLoader.load();
-            requestBean.register(this);
+            familyRequestBean.register(this);
 
             FamilyItemGUIController familyItemGUIController = fxmlLoader.getController();
             familyItemGUIController.setPane(requestBox);
-            familyItemGUIController.setFamilyRequest(requestBean);
+            familyItemGUIController.setFamilyRequest(familyRequestBean);
             familyReqList.getChildren().add(requestBox);
         }
     }
@@ -82,7 +82,6 @@ public class StudentRequestGUIController implements Observer {
     public void updateResidence(ResidenceRequestBean requestBean, Pane pane) {
         if (residenceReqList.getChildren().contains(pane))
             residenceReqList.getChildren().remove(pane);
-
     }
 
     @Override

@@ -183,7 +183,7 @@ public class SimpleQueries {
     }
 
     public static ResultSet retrieveStudentFamilyRequests(Connection connection, int idStudent) throws SQLException {
-        String sql = "SELECT idRequest, arrival, departure, city, status, idFamily, compatibility FROM familyRequest WHERE CURRENT_DATE() <= departure AND status != 2 AND idStudent = ? ORDER BY status DESC";
+        String sql = "SELECT idRequest, arrival, departure, city, status, idFamily FROM familyRequest WHERE CURRENT_DATE() <= departure AND status != 2 AND idStudent = ? ORDER BY status DESC";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,idStudent);
         return preparedStatement.executeQuery();
@@ -191,6 +191,13 @@ public class SimpleQueries {
 
     public static ResultSet retrieveFamilyName(Connection connection, int idFamily) throws SQLException {
         String sql = "SELECT name, photo FROM family WHERE idFamily = ?";
+        preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        preparedStatement.setInt(1,idFamily);
+        return preparedStatement.executeQuery();
+    }
+
+    public static ResultSet retrieveBookingsByFamily(Connection connection, int idFamily) throws SQLException {
+        String sql = "SELECT idRequest, arrival, departure, idStudent, rate FROM familyRequest WHERE status = 2 AND idFamily = ?";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,idFamily);
         return preparedStatement.executeQuery();

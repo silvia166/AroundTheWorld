@@ -55,13 +55,12 @@ public class FamilyRequestBean extends Subject {
         this.familyName = familyName;
     }
 
-    public FamilyRequestBean(String city, String arrival, String departure, int status, int idFamily, float compatibility){
+    public FamilyRequestBean(String city, String arrival, String departure, int status, int idFamily){
         this.city = city;
         this.arrival = arrival;
         this.departure = departure;
         this.status = status;
         this.idFamily = idFamily;
-        this.compatibility = compatibility;
     }
 
     public int getId() {

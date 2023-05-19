@@ -54,8 +54,6 @@ public class FamilyItemGUIController {
 
         private static final String LIGHTGREEN = "-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(192,249,221), 10.0 , 0.0 , 0.0 ,5.0);";
 
-
-
         @FXML
         void sendRequest() throws IOException {
                 familyRequest.setCompatibility(family.getCompatibility());
@@ -114,7 +112,7 @@ public class FamilyItemGUIController {
 
                 reqPane.setStyle(LIGHTGREEN);
                 reqPane.getChildren().removeAll(viewProfileBtn, sendRequestBtn);
-                familyName.setText(requestBean.getFamilyName() + " - " + requestBean.getCompatibilityBean() + "%");
+                familyName.setText(requestBean.getFamilyName());
 
                 if(requestBean.getImgFamily() != null){
                         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(requestBean.getImgFamily())));

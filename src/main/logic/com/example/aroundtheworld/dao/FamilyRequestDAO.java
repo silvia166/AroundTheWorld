@@ -143,15 +143,13 @@ public class FamilyRequestDAO {
         }
     }
 
-    public static List<FamilyRequest> retrieveStudentFamilyRequest(int idStudent) {
+    public static List<FamilyRequest> retrieveStudentRequest(int idStudent) {
         Connection connection;
         List<FamilyRequest> familyRequestList = new ArrayList<>();
         FamilyRequest familyRequest;
 
         try {
-
             connection = ConnectionDB.getConnection();
-
             ResultSet resultSet = SimpleQueries.retrieveStudentFamilyRequests(connection, idStudent);
 
             if(resultSet.first()) {
@@ -163,14 +161,46 @@ public class FamilyRequestDAO {
                     int status = resultSet.getInt(STATUS);
                     int idFamily = resultSet.getInt(IDFAM);
                     String city = resultSet.getString(CITY);
-                    float compatibility = Float.parseFloat(resultSet.getString(COMPATIBILITY));
 
-                    Family family = FamilyDAO.retrieveFamilyName(idFamily);
-
-                    familyRequest = new FamilyRequest(city, arrival.toString(), departure.toString(), idStudent, status, compatibility);
-                    familyRequest.setFamilyName(family.getName());
-                    familyRequest.setImgFamily(family.getImgSrc());
+                    familyRequest = new FamilyRequest(city, arrival.toString(), departure.toString(), idStudent, idFamily, status);
                     familyRequest.setId(requestId);
+
+                    familyRequestList.add(familyRequest);
+
+                } while (resultSet.next());
+            }
+
+            resultSet.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return familyRequestList;
+    }
+
+    public static List<FamilyRequest> retrieveTravelsByFamily(int idFamily) {
+        Connection connection;
+        List<FamilyRequest> familyRequestList = new ArrayList<>();
+        FamilyRequest familyRequest;
+
+        try {
+            connection = ConnectionDB.getConnection();
+
+            ResultSet resultSet = SimpleQueries.retrieveBookingsByFamily(connection, idFamily);
+
+            if(resultSet.first()) {
+                resultSet.first();
+                do {
+                    int requestId = resultSet.getInt(ID);
+                    Date arrival = resultSet.getDate(ARRIVAL);
+                    Date departure = resultSet.getDate(DEPARTURE);
+                    int idStudent = resultSet.getInt(IDSTUD);
+                    int rate = resultSet.getInt(RATE);
+
+                    familyRequest = new FamilyRequest(null, arrival.toString(), departure.toString(), idStudent, idFamily, 2);
+                    familyRequest.setId(requestId);
+                    familyRequest.setRate(rate);
 
                     familyRequestList.add(familyRequest);
 

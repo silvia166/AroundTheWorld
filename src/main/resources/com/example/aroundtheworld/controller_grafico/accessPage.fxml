@@ -70,7 +70,7 @@
          <Font size="20.0" />
       </font>
    </Button>
-   <Button layoutX="75.0" layoutY="629.0" mnemonicParsing="false" onAction="#toCreateAccount" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #C0F9DD; -fx-border-color: white; -fx-border-width: 1; -fx-border-radius: 20; -fx-background-radius: 20;" styleClass="shadowLight" stylesheets="@style.css" text="Create your account">
+   <Button layoutX="75.0" layoutY="541.0" mnemonicParsing="false" onAction="#toCreateAccount" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #C0F9DD; -fx-border-color: white; -fx-border-width: 1; -fx-border-radius: 20; -fx-background-radius: 20;" styleClass="shadowLight" stylesheets="@style.css" text="Create your account">
       <font>
          <Font size="20.0" />
       </font>
@@ -90,7 +90,7 @@
          <Font size="26.0" />
       </font>
    </Text>
-   <Text layoutX="11.0" layoutY="602.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not a member yet?" textAlignment="CENTER" wrappingWidth="350.25272369384766">
+   <Text layoutX="11.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Not a member yet?" textAlignment="CENTER" wrappingWidth="350.25272369384766">
       <font>
          <Font size="26.0" />
       </font>
@@ -119,9 +119,4 @@
    <ImageView fitHeight="56.0" fitWidth="61.0" layoutX="982.0" layoutY="101.0">
       <Image url="@image/world2.png" />
    </ImageView>
-   <Button layoutX="75.0" layoutY="450.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="40.0" prefWidth="220.0" style="-fx-background-color: #C0F9DD; -fx-border-color: white; -fx-border-width: 1; -fx-border-radius: 20; -fx-background-radius: 20;" styleClass="shadowLight" stylesheets="@style.css" text="Login with Facebook">
-      <font>
-         <Font size="20.0" />
-      </font>
-   </Button>
 </AnchorPane>

@@ -215,4 +215,42 @@ public class FamilyRequestDAO {
 
         return familyRequestList;
     }
+
+    public static List<FamilyRequest> retrieveTravelsByStudent(int idStudent) {
+        Connection connection;
+        List<FamilyRequest> familyRequestList = new ArrayList<>();
+        FamilyRequest familyRequest;
+
+        try {
+            connection = ConnectionDB.getConnection();
+
+            ResultSet resultSet = SimpleQueries.retrieveFamilyBookingsByStudent(connection, idStudent);
+
+            if(resultSet.first()) {
+                resultSet.first();
+                do {
+                    int requestId = resultSet.getInt(ID);
+                    Date arrival = resultSet.getDate(ARRIVAL);
+                    Date departure = resultSet.getDate(DEPARTURE);
+                    int idFamily = resultSet.getInt(IDFAM);
+                    int rate = resultSet.getInt(RATE);
+                    String city = resultSet.getString(CITY);
+
+                    familyRequest = new FamilyRequest(city, arrival.toString(), departure.toString(), idStudent, idFamily, 2);
+                    familyRequest.setId(requestId);
+                    familyRequest.setRate(rate);
+
+                    familyRequestList.add(familyRequest);
+
+                } while (resultSet.next());
+            }
+
+            resultSet.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return familyRequestList;
+    }
 }

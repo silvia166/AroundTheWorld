@@ -2,7 +2,7 @@ package com.example.aroundtheworld.controller_grafico;
 
 import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.TravelBean;
-import com.example.aroundtheworld.controller_applicativo.FamilyTravelsController;
+import com.example.aroundtheworld.controller_applicativo.TravelsController;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXML;
@@ -43,8 +43,8 @@ public class FamilyHomepageGUIController {
 
         FamilyBean familyBean = Session.getCurrentSession().getFamilyBean();
 
-        FamilyTravelsController familyTravelsController = new FamilyTravelsController();
-        List<TravelBean> requestList = familyTravelsController.getFamilyTravels(familyBean);
+        TravelsController travelsController = new TravelsController();
+        List<TravelBean> requestList = travelsController.getFamilyTravels(familyBean);
 
         for(TravelBean travelBean: requestList){
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -58,10 +58,10 @@ public class FamilyHomepageGUIController {
             LocalDate arrival = LocalDate.parse(travelBean.getArrival());
 
             if (arrival.isAfter(currentDate)){
-                travelItemGUIController.setFutureTravel(travelBean);
+                travelItemGUIController.setFutureTravelFamily(travelBean);
                 nextArrivalsList.getChildren().add(requestBox);
             } else {
-                travelItemGUIController.setPastTravel(travelBean);
+                travelItemGUIController.setPastTravelFamily(travelBean);
                 pastTravelsList.getChildren().add(requestBox);
             }
         }

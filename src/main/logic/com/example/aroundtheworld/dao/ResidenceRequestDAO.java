@@ -165,4 +165,42 @@ public class ResidenceRequestDAO {
             e.printStackTrace();
         }
     }
+
+    public static List<ResidenceRequest> retrieveTravelsByStudent(int idStudent) {
+        Connection connection;
+        List<ResidenceRequest> residenceRequestList = new ArrayList<>();
+        ResidenceRequest residenceRequest;
+
+        try {
+
+            connection = ConnectionDB.getConnection();
+
+            ResultSet resultSet = SimpleQueries.retrieveResidenceBookingsByStudent(connection, idStudent);
+
+            if(resultSet.first()) {
+                resultSet.first();
+                do {
+                    int requestId = resultSet.getInt(ID);
+                    Date arrival = resultSet.getDate(ARRIVAL);
+                    Date departure = resultSet.getDate(DEPARTURE);
+                    int idResidence = resultSet.getInt(IDRES);
+                    String city = ResidenceDAO.retrieveResidencebyId(idResidence);
+
+                    residenceRequest = new ResidenceRequest(city, arrival.toString(), departure.toString(), null, idStudent, 2);
+                    residenceRequest.setIdResidence(idResidence);
+                    residenceRequest.setId(requestId);
+
+                    residenceRequestList.add(residenceRequest);
+
+                } while (resultSet.next());
+            }
+
+            resultSet.close();
+
+        } catch (SQLException | NotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return residenceRequestList;
+    }
 }

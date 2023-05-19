@@ -202,4 +202,18 @@ public class SimpleQueries {
         preparedStatement.setInt(1,idFamily);
         return preparedStatement.executeQuery();
     }
+
+    public static ResultSet retrieveFamilyBookingsByStudent(Connection connection, int idStudent) throws SQLException {
+        String sql = "SELECT city, idRequest, arrival, departure, idFamily, rate FROM familyRequest WHERE status = 2 AND idStudent = ?";
+        preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        preparedStatement.setInt(1,idStudent);
+        return preparedStatement.executeQuery();
+    }
+
+    public static ResultSet retrieveResidenceBookingsByStudent(Connection connection, int idStudent) throws SQLException {
+        String sql = "SELECT idResidence, idRequest, arrival, departure FROM residenceRequest WHERE status = 2 AND idStudent = ?";
+        preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        preparedStatement.setInt(1,idStudent);
+        return preparedStatement.executeQuery();
+    }
 }

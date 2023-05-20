@@ -112,11 +112,6 @@ public class FamilyBean {
         return true;
     }
 
-    public void setFood(int vegetarian, int vegan) {
-        this.vegetarian = vegetarian;
-        this.vegan = vegan;
-    }
-
     public void setHobbies(int travels, int sport, int books, int nature, int film, int videoGames, int cooking) {
         this.travels = travels;
         this.sport = sport;
@@ -126,12 +121,15 @@ public class FamilyBean {
         this.videoGames = videoGames;
         this.cooking = cooking;
     }
-
-    public String getHouse() {
-        return house;
+    public void setFood(int vegetarian, int vegan) {
+        this.vegetarian = vegetarian;
+        this.vegan = vegan;
     }
     public void setHouse(String house) {
         this.house = house;
+    }
+    public String getHouse() {
+        return house;
     }
     public int getNature() {
         return nature;

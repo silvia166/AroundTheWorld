@@ -48,7 +48,7 @@ public class ResidenceDAO {
             resultSet.close();
 
         } catch(SQLException e){
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
         return residence;
     }

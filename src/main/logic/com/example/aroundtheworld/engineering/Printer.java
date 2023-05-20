@@ -1,12 +1,15 @@
 package com.example.aroundtheworld.engineering;
 
-public class Printer {
 
+import java.sql.SQLException;
+import java.util.logging.Logger;
+
+public class Printer {
+        static Logger log = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
         private Printer(){}
-        public static void print(String message){
-            System.out.println(message);
-        }
         public static void error(String error){
-            System.err.println(error);
+                log.info(error);
         }
+
+
 }

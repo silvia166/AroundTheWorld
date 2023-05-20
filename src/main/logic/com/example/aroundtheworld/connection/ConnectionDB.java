@@ -1,6 +1,8 @@
 package com.example.aroundtheworld.connection;
 
 
+import com.example.aroundtheworld.exception.ConnectionDbException;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -14,7 +16,7 @@ public class ConnectionDB {
 
     private static Connection connection;
 
-    public static Connection getConnection(){
+    public static Connection getConnection() throws ConnectionDbException {
         String user;
         String password;
         String url;
@@ -33,7 +35,7 @@ public class ConnectionDB {
                 connection = DriverManager.getConnection(url,user, password);
 
             } catch (SQLException | IOException | ClassNotFoundException e) {
-                System.err.println(e.getMessage());
+                throw new ConnectionDbException();
             }
         }
         return connection;

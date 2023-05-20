@@ -3,6 +3,7 @@ package com.example.aroundtheworld.dao;
 import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
+import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Animal;
 import com.example.aroundtheworld.model.Family;
@@ -66,7 +67,7 @@ public class FamilyDAO {
             resultSet.close();
 
         }catch(SQLException e){
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
         return family;
@@ -83,7 +84,7 @@ public class FamilyDAO {
             CRUDQueries.insertFamily(connection, name, phone, city, address, email, imgSrc);
 
         } catch(SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
     }
@@ -110,7 +111,7 @@ public class FamilyDAO {
 
 
         } catch(SQLException | NotFoundException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
         return id;
@@ -162,7 +163,7 @@ public class FamilyDAO {
 
 
         } catch(SQLException | NotFoundException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
         return familyList;
@@ -194,7 +195,7 @@ public class FamilyDAO {
 
 
         } catch(SQLException | NotFoundException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
         return family;

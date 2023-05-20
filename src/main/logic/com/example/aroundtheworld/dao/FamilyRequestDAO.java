@@ -3,6 +3,7 @@ package com.example.aroundtheworld.dao;
 import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
+import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.model.*;
 
@@ -56,7 +57,7 @@ public class FamilyRequestDAO {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
     }
 
@@ -117,7 +118,7 @@ public class FamilyRequestDAO {
             resultSet.close();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
         return familyRequestsList;
@@ -129,7 +130,7 @@ public class FamilyRequestDAO {
             connection = ConnectionDB.getConnection();
             CRUDQueries.updateStatusRequest(connection, status, id);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
     }
 
@@ -139,7 +140,7 @@ public class FamilyRequestDAO {
             connection = ConnectionDB.getConnection();
             CRUDQueries.deleteRequest(connection, id);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
     }
 
@@ -173,7 +174,7 @@ public class FamilyRequestDAO {
             resultSet.close();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
         return familyRequestList;
@@ -210,7 +211,7 @@ public class FamilyRequestDAO {
             resultSet.close();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
         return familyRequestList;
@@ -248,7 +249,7 @@ public class FamilyRequestDAO {
             resultSet.close();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
         return familyRequestList;
@@ -260,7 +261,7 @@ public class FamilyRequestDAO {
             connection = ConnectionDB.getConnection();
             CRUDQueries.updateRateRequest(connection, rate, idRequest);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
     }
 }

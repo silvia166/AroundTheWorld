@@ -3,6 +3,7 @@ package com.example.aroundtheworld.dao;
 import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
+import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.FamilyMember;
 
@@ -55,7 +56,7 @@ public class FamilyMemberDAO {
             resultSet.close();
 
         }catch(SQLException e){
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
         return familyMembers;
     }
@@ -74,7 +75,7 @@ public class FamilyMemberDAO {
             CRUDQueries.insertMember(connection, id, name, birth, parenthood);
 
         } catch(SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
     }

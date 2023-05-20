@@ -2,6 +2,7 @@ package com.example.aroundtheworld.dao;
 
 import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
+import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.City;
 import com.example.aroundtheworld.model.Residence;
@@ -64,7 +65,7 @@ public class CityDAO {
             resultSet.close();
 
         } catch(SQLException e){
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
         return city;
     }

@@ -33,7 +33,7 @@ public class ConnectionDB {
                 connection = DriverManager.getConnection(url,user, password);
 
             } catch (SQLException | IOException | ClassNotFoundException e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         }
         return connection;

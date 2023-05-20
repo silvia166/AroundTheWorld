@@ -110,8 +110,8 @@ public class ContactFamilyController {
         Family family = FamilyDAO.retrieveFamily(compatibleFamilyBean.getEmail());
 
         FamilyBean familyBean = new FamilyBean(family.getName(), family.getCity(), family.getAddress(), family.getId(), family.getPhoneNumber(), family.getEmail());
-        familyBean.setHobbies(family.getPreferences().getTravels(), family.getPreferences().getSport(), family.getPreferences().getBooks(), family.getPreferences().getNature(), family.getPreferences().getFilm(), family.getPreferences().getVideoGames(), family.getPreferences().getCooking());
-        familyBean.setFood(family.getPreferences().getVegetarian(), family.getPreferences().getVegan());
+        familyBean.setFamilyHobbies(family.getPreferences().getTravels(), family.getPreferences().getSport(), family.getPreferences().getBooks(), family.getPreferences().getNature(), family.getPreferences().getFilm(), family.getPreferences().getVideoGames(), family.getPreferences().getCooking());
+        familyBean.setFamilyFood(family.getPreferences().getVegetarian(), family.getPreferences().getVegan());
         familyBean.setHouse(family.getPreferences().getHouse());
 
         for(FamilyMember member: family.getMembers()){

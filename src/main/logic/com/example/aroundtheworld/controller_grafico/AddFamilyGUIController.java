@@ -233,8 +233,8 @@ public class AddFamilyGUIController {
         else
             room = "Shared";
 
-        familyBean.setFood(vegetarian, vegan);
-        familyBean.setHobbies(travels, sport, books, nature, film, videoGames, cooking);
+        familyBean.setFamilyFood(vegetarian, vegan);
+        familyBean.setFamilyHobbies(travels, sport, books, nature, film, videoGames, cooking);
         familyBean.setHouse(room);
 
     }

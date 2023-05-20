@@ -112,18 +112,18 @@ public class FamilyBean {
         return true;
     }
 
-    public void setHobbies(int travels, int sport, int books, int nature, int film, int videoGames, int cooking) {
+    public void setFamilyHobbies(int travels, int sport, int books, int nature, int film, int videoGames, int cooking) {
         this.travels = travels;
+        this.nature = nature;
         this.sport = sport;
         this.books = books;
-        this.nature = nature;
+        this.cooking = cooking;
         this.film = film;
         this.videoGames = videoGames;
-        this.cooking = cooking;
     }
-    public void setFood(int vegetarian, int vegan) {
-        this.vegetarian = vegetarian;
+    public void setFamilyFood(int vegetarian, int vegan) {
         this.vegan = vegan;
+        this.vegetarian = vegetarian;
     }
     public void setHouse(String house) {
         this.house = house;

@@ -13,7 +13,7 @@ public class StudentProfileGUIController {
     private Label birth;
 
     @FXML
-    private TextField email;
+    private Label email;
 
     @FXML
     private Label name;
@@ -22,7 +22,7 @@ public class StudentProfileGUIController {
     private Label nationality;
 
     @FXML
-    private TextField phone;
+    private Label phone;
 
     @FXML
     private Label surname;
@@ -36,8 +36,8 @@ public class StudentProfileGUIController {
         birth.setText(studentBean.getBirth());
 
         nationality.setText(studentBean.getNationality());
-        phone.setPromptText(studentBean.getPhoneNumber());
-        email.setPromptText(studentBean.getEmail());
+        phone.setText(studentBean.getPhoneNumber());
+        email.setText(studentBean.getEmail());
     }
 
     public void toHomepageStudent() throws IOException {

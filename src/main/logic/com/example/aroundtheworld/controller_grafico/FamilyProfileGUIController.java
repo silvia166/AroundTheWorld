@@ -77,42 +77,42 @@ public class FamilyProfileGUIController {
 
         FamilyBean familyBean = Session.getCurrentSession().getFamilyBean();
 
-        name.setText(familyBean.getNameBean());
-        address.setText(familyBean.getAddressBean());
+        name.setText(familyBean.getName());
+        address.setText(familyBean.getAddress());
         house.setText(familyBean.getHouse());
-        phone.setText(familyBean.getPhoneBean());
+        phone.setText(familyBean.getPhone());
 
-        if (familyBean.getImgSrcBean() != null){
-            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(familyBean.getImgSrcBean())));
+        if (familyBean.getImgSrc() != null){
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(familyBean.getImgSrc())));
             imgFamily.setImage(image);
         }
-        String listAnimal = checkAnimals(familyBean.getAnimalsBean());
+        String listAnimal = checkAnimals(familyBean.getAnimals());
         animals.setText(listAnimal);
         String listFood = checkFood(familyBean.getVegetarian(), familyBean.getVegan());
         food.setText(listFood);
         String listHobby = checkHobbies(familyBean.getTravels(),familyBean.getBooks(), familyBean.getFilm(), familyBean.getVideoGames(), familyBean.getNature(), familyBean.getCooking(), familyBean.getSport());
         hobbies.setText(listHobby);
-        setTableViewMembers(familyBean.getMembersBean());
+        setTableViewMembers(familyBean.getMembers());
     }
 
     public void displaySelectedProfile(FamilyBean familyBean, float compatibility) {
 
-        name.setText(familyBean.getNameBean());
-        address.setText(familyBean.getAddressBean());
+        name.setText(familyBean.getName());
+        address.setText(familyBean.getAddress());
         compatibilityL.setText(compatibility +"%");
         house.setText(familyBean.getHouse());
-        phone.setText(familyBean.getPhoneBean());
+        phone.setText(familyBean.getPhone());
 
-        String listAnimal = checkAnimals(familyBean.getAnimalsBean());
+        String listAnimal = checkAnimals(familyBean.getAnimals());
         animals.setText(listAnimal);
         String listFood = checkFood(familyBean.getVegetarian(), familyBean.getVegan());
         food.setText(listFood);
         String listHobby = checkHobbies(familyBean.getTravels(),familyBean.getBooks(), familyBean.getFilm(), familyBean.getVideoGames(), familyBean.getNature(), familyBean.getCooking(), familyBean.getSport());
         hobbies.setText(listHobby);
-        setTableViewMembers(familyBean.getMembersBean());
+        setTableViewMembers(familyBean.getMembers());
 
-        if (familyBean.getImgSrcBean() != null){
-            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(familyBean.getImgSrcBean())));
+        if (familyBean.getImgSrc() != null){
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(familyBean.getImgSrc())));
             imgFamily.setImage(image);
         }
     }

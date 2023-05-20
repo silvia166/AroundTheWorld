@@ -110,18 +110,18 @@ public class ContactFamilyController {
         Family family = FamilyDAO.retrieveFamily(compatibleFamilyBean.getEmail());
 
         FamilyBean familyBean = new FamilyBean(family.getName(), family.getCity(), family.getAddress(), family.getId(), family.getPhoneNumber(), family.getEmail());
-        familyBean.setHouse(family.getPreferences().getHouse());
-        familyBean.setFood(family.getPreferences().getVegetarian(), family.getPreferences().getVegan());
         familyBean.setHobbies(family.getPreferences().getTravels(), family.getPreferences().getSport(), family.getPreferences().getBooks(), family.getPreferences().getNature(), family.getPreferences().getFilm(), family.getPreferences().getVideoGames(), family.getPreferences().getCooking());
-
-        for(Animal animal: family.getAnimals()){
-            AnimalBean animalBean = new AnimalBean(animal.getType(), animal.getQuantity());
-            familyBean.addAnimal(animalBean);
-        }
+        familyBean.setFood(family.getPreferences().getVegetarian(), family.getPreferences().getVegan());
+        familyBean.setHouse(family.getPreferences().getHouse());
 
         for(FamilyMember member: family.getMembers()){
             FamilyMemberBean memberBean = new FamilyMemberBean(member.getName(), member.getAge(), member.getParenthood());
             familyBean.addMember(memberBean);
+        }
+
+        for(Animal animal: family.getAnimals()){
+            AnimalBean animalBean = new AnimalBean(animal.getType(), animal.getQuantity());
+            familyBean.addAnimal(animalBean);
         }
 
         familyBean.setImgSrc(family.getImgSrc());

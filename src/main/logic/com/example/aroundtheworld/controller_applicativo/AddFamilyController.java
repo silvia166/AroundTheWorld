@@ -12,14 +12,14 @@ import com.example.aroundtheworld.model.FamilyPreferences;
 public class AddFamilyController {
 
     public void createFamily(FamilyBean familyBean) {
-        FamilyDAO.addFamily(familyBean.getNameBean(), familyBean.getPhoneBean(), familyBean.getCityBean(), familyBean.getAddressBean(), familyBean.getImgSrcBean(), familyBean.getEmailBean());
-        int id = FamilyDAO.retrieveFamilyID(familyBean.getNameBean());
+        FamilyDAO.addFamily(familyBean.getName(), familyBean.getPhone(), familyBean.getCity(), familyBean.getAddress(), familyBean.getImgSrc(), familyBean.getEmail());
+        int id = FamilyDAO.retrieveFamilyID(familyBean.getName());
 
-        for(AnimalBean animalBean: familyBean.getAnimalsBean()){
+        for(AnimalBean animalBean: familyBean.getAnimals()){
             AnimalDAO.addAnimal(animalBean.getType(), animalBean.getQuantity(), id);
         }
 
-        for(FamilyMemberBean familyMemberBean: familyBean.getMembersBean()){
+        for(FamilyMemberBean familyMemberBean: familyBean.getMembers()){
             FamilyMemberDAO.addMember(familyMemberBean.getName(), familyMemberBean.getAge(), familyMemberBean.getParenthood(), id);
         }
 

@@ -59,20 +59,21 @@ public class ResidenceRequestDAO {
             if (resultSet.first()) {
                 resultSet.first();
                 do {
-                    int requestId = resultSet.getInt(ID);
-                    int studentId = resultSet.getInt(IDSTUD);
-                    Date arrival = resultSet.getDate(ARRIVAL);
-                    Date departure = resultSet.getDate(DEPARTURE);
-                    String room = resultSet.getString(ROOM);
-                    int status = resultSet.getInt(STATUS);
                     int idResidence = resultSet.getInt(IDRES);
+                    int idRequest = resultSet.getInt(ID);
+                    Date arrival = resultSet.getDate(ARRIVAL);
+                    int status = resultSet.getInt(STATUS);
+                    Date departure = resultSet.getDate(DEPARTURE);
+                    int idStudent = resultSet.getInt(IDSTUD);
+                    String room = resultSet.getString(ROOM);
                     int roomNum = resultSet.getInt(ROOMNUMBER);
-                    String city = ResidenceDAO.retrieveResidencebyId(idResidence);
-                    String studentName = StudentDAO.getNameById(studentId);
 
-                    residenceRequest = new ResidenceRequest(city, arrival.toString(), departure.toString(), room, studentId, status);
+                    String city = ResidenceDAO.retrieveResidencebyId(idResidence);
+                    String studentName = StudentDAO.getNameById(idStudent);
+
+                    residenceRequest = new ResidenceRequest(city, arrival.toString(), departure.toString(), room, idStudent, status);
                     residenceRequest.setIdResidence(idResidence);
-                    residenceRequest.setId(requestId);
+                    residenceRequest.setId(idRequest);
                     residenceRequest.setStudentName(studentName);
                     if (roomNum != 0) {
                         residenceRequest.setRoomNumber(roomNum);

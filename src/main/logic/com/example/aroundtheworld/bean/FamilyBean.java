@@ -16,15 +16,16 @@ public class FamilyBean {
     private int id;
 
     //preferences
+    private int books;
     private int vegetarian;
     private int vegan;
+    private int film;
     private int travels;
     private int sport;
-    private int books;
-    private int nature;
-    private int film;
-    private int videoGames;
     private int cooking;
+    private int nature;
+    private int videoGames;
+
     private String house;
 
     public FamilyBean(String name, String city, String address, int id, String phone, String email) {
@@ -60,35 +61,35 @@ public class FamilyBean {
         this.members.add(memberBean);
     }
 
-    public String getNameBean() {
+    public String getName() {
         return name;
     }
 
-    public String getImgSrcBean() {
+    public String getImgSrc() {
         return imgSrc;
     }
 
-    public String getCityBean() {
+    public String getCity() {
         return city;
     }
 
-    public String getAddressBean() {
+    public String getAddress() {
         return address;
     }
 
-    public List<AnimalBean> getAnimalsBean() {
+    public List<AnimalBean> getAnimals() {
         return animals;
     }
 
-    public List<FamilyMemberBean> getMembersBean() {
+    public List<FamilyMemberBean> getMembers() {
         return members;
     }
 
-    public String getPhoneBean() {
+    public String getPhone() {
         return phone;
     }
 
-    public String getEmailBean() {
+    public String getEmail() {
         return email;
     }
 
@@ -129,51 +130,39 @@ public class FamilyBean {
     public String getHouse() {
         return house;
     }
-
     public void setHouse(String house) {
         this.house = house;
     }
-
-    public int getVegetarian() {
-        return vegetarian;
-    }
-
-    public int getVegan() {
-        return vegan;
-    }
-
-    public int getTravels() {
-        return travels;
-    }
-
-    public int getSport() {
-        return sport;
-    }
-
-    public int getBooks() {
-        return books;
-    }
-
     public int getNature() {
         return nature;
     }
-
-    public int getFilm() {
-        return film;
+    public int getVegetarian() {
+        return vegetarian;
     }
-
-    public int getVideoGames() {
-        return videoGames;
+    public int getTravels() {
+        return travels;
     }
-
+    public int getVegan() {
+        return vegan;
+    }
     public int getCooking() {
         return cooking;
     }
-
+    public int getSport() {
+        return sport;
+    }
+    public int getFilm() {
+        return film;
+    }
+    public int getBooks() {
+        return books;
+    }
+    public int getVideoGames() {
+        return videoGames;
+    }
     public void setAnimals(List<AnimalBean> animals) {
         this.animals = animals;
     }
-
     public void setMembers(List<FamilyMemberBean> members) {
         this.members = members;
     }

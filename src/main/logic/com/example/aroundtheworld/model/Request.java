@@ -22,20 +22,20 @@ public class Request {
         this.id = id;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
     public String getArrival() {
         return arrival;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getDeparture() {
         return departure;
+    }
+
+    public String getCity() {
+        return city;
     }
 
     public int getIdStudent() {

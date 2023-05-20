@@ -18,14 +18,14 @@ public class FamilyRequestBean extends Subject {
     private int status;
 
     //preferences
+    private int film;
     private int vegetarian;
-    private int vegan;
-    private int travels;
-    private int sport;
+    private int videoGames;
     private int books;
     private int nature;
-    private int film;
-    private int videoGames;
+    private int travels;
+    private int vegan;
+    private int sport;
     private int cooking;
     private String house;
     private String imgFamily;
@@ -136,51 +136,39 @@ public class FamilyRequestBean extends Subject {
     public String getHouse() {
         return house;
     }
-
-    public void setHouse(String house) {
-        this.house = house;
-    }
-
-    public int getVegetarian() {
-        return vegetarian;
-    }
-
-    public int getVegan() {
-        return vegan;
-    }
-
-    public int getTravels() {
-        return travels;
-    }
-
-    public int getSport() {
-        return sport;
-    }
-
     public int getBooks() {
         return books;
     }
-
-    public int getNature() {
-        return nature;
+    public int getTravels() {
+        return travels;
     }
-
-    public int getFilm() {
-        return film;
+    public int getSport() {
+        return sport;
     }
-
     public int getVideoGames() {
         return videoGames;
     }
-
+    public int getVegetarian() {
+        return vegetarian;
+    }
+    public int getFilm() {
+        return film;
+    }
+    public int getVegan() {
+        return vegan;
+    }
     public int getCooking() {
         return cooking;
     }
-
+    public int getNature() {
+        return nature;
+    }
+    public void setHouse(String house) {
+        this.house = house;
+    }
     public int getStatus() {
         return status;
     }
-
     public void setStatus(int status) {
         this.status = status;
     }

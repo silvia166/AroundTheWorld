@@ -27,7 +27,10 @@ public class TravelsController {
             int currYear = Year.now().getValue();
             int birthYear = Integer.parseInt(String.format("%." + 4 + "s", student.getDateOfBirth()));
             int age = currYear - birthYear;
-            TravelBean travelBean = new TravelBean(student.getName(), request.getArrival(), request.getDeparture(), request.getId(), student.getNationality(), age);
+            String studentname = student.getName();
+            studentname = studentname.concat(" ");
+            studentname = studentname.concat(student.getSurname());
+            TravelBean travelBean = new TravelBean(studentname, request.getArrival(), request.getDeparture(), request.getId(), student.getNationality(), age);
             travelBean.setRate(request.getRate());
             travelBeanList.add(travelBean);
         }

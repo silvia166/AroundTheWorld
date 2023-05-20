@@ -155,4 +155,12 @@ public class CRUDQueries {
         preparedStatement.setInt(1,id);
         return preparedStatement.executeUpdate();
     }
+
+    public static int updateRateRequest(Connection connection, int rate, int idRequest) throws SQLException {
+        String insertStatement = "UPDATE familyRequest SET rate = ? WHERE idRequest = ?";
+        preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        preparedStatement.setInt(1,rate);
+        preparedStatement.setInt(2,idRequest);
+        return preparedStatement.executeUpdate();
+    }
 }

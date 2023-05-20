@@ -253,4 +253,14 @@ public class FamilyRequestDAO {
 
         return familyRequestList;
     }
+
+    public static void updateRate(int rate, int idRequest) {
+        Connection connection;
+        try {
+            connection = ConnectionDB.getConnection();
+            CRUDQueries.updateRateRequest(connection, rate, idRequest);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

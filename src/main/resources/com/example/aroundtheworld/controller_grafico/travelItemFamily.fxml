@@ -10,7 +10,7 @@
 
 <AnchorPane fx:id="bookingPane" prefHeight="170.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20;" styleClass="shadow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.controller_grafico.TravelItemGUIController">
    <children>
-      <Label fx:id="nationalityAgeLabel" layoutX="73.0" layoutY="50.0" text="Nationality and Age" />
+      <Label fx:id="nationalityAgeLabel" alignment="CENTER" layoutY="50.0" prefHeight="18.0" prefWidth="252.0" text="Nationality and Age" />
       <HBox alignment="CENTER" layoutX="2.0" layoutY="84.0" prefWidth="250.0" spacing="20.0">
          <children>
             <VBox alignment="CENTER" prefHeight="16.0" prefWidth="0.0" />
@@ -24,7 +24,7 @@
             <VBox alignment="CENTER" layoutX="90.0" layoutY="10.0" />
          </children>
       </HBox>
-      <Label fx:id="studNameLabel" alignment="CENTER" layoutX="106.0" layoutY="14.0" text="Name">
+      <Label fx:id="studNameLabel" alignment="CENTER" layoutY="14.0" prefHeight="22.0" prefWidth="252.0" text="Name">
          <font>
             <Font size="15.0" />
          </font>

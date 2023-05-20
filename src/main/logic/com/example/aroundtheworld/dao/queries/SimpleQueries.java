@@ -204,7 +204,7 @@ public class SimpleQueries {
     }
 
     public static ResultSet retrieveFamilyBookingsByStudent(Connection connection, int idStudent) throws SQLException {
-        String sql = "SELECT city, idRequest, arrival, departure, idFamily, rate FROM familyRequest WHERE status = 2 AND idStudent = ?";
+        String sql = "SELECT city, idRequest, arrival, departure, idFamily, rate FROM familyRequest WHERE status = 2 AND idStudent = ? ORDER BY rate ASC";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,idStudent);
         return preparedStatement.executeQuery();

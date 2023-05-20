@@ -1,9 +1,11 @@
 package com.example.aroundtheworld.controller_grafico;
 import com.example.aroundtheworld.bean.TravelBean;
+import com.example.aroundtheworld.controller_applicativo.RateController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
@@ -47,7 +49,9 @@ public class TravelItemGUIController {
     private TravelBean travelBean;
 
     private static final String YELLOWSHADOW = "-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(255,178,11), 5.0 , 0.0 , 0.0 ,5.0);";
-    private static final String PINKSHADOW = "-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(192,249,221), 5.0 , 0.0 , 0.0 ,5.0);";
+    private static final String GREENSHADOW = "-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(192,249,221), 5.0 , 0.0 , 0.0 ,5.0);";
+
+    Image imageStar = new Image(Objects.requireNonNull(getClass().getResourceAsStream("image/star.png")));
 
     public void setPastTravelFamily(TravelBean travelBean) {
         this.travelBean = travelBean;
@@ -102,7 +106,7 @@ public class TravelItemGUIController {
         arrivalLabel.setText(travelBean.getArrival());
         departureLabel.setText(travelBean.getDeparture());
         statusLabel.setText("Next arrival");
-        bookingPane.setStyle(PINKSHADOW);
+        bookingPane.setStyle(GREENSHADOW);
 
         rate1.setVisible(false);
         rate2.setVisible(false);
@@ -123,7 +127,7 @@ public class TravelItemGUIController {
         cityLabel.setText(travelBean.getCity());
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(travelBean.getImg())));
         img.setImage(image);
-        bookingPane.setStyle(PINKSHADOW);
+        bookingPane.setStyle(GREENSHADOW);
 
         rate1.setVisible(false);
         rate2.setVisible(false);
@@ -163,7 +167,6 @@ public class TravelItemGUIController {
         }else{
 
             accommodation.setText(travelBean.getFamilyName() + " Family");
-            Image imageStar = new Image(Objects.requireNonNull(getClass().getResourceAsStream("image/star.png")));
             Image imageStarGrey = new Image(Objects.requireNonNull(getClass().getResourceAsStream("image/greyStar.png")));
             switch (travelBean.getRate()) {
                 case 5 -> {
@@ -199,6 +202,42 @@ public class TravelItemGUIController {
                     rate1.setImage(imageStarGrey);
                 }
             }
+        }
+    }
+
+    @FXML
+    void rateTravel(MouseEvent event) {
+        int rate = 0;
+        if(travelBean.getRate()==0) {
+            if (event.getSource().equals(rate1)) {
+                rate1.setImage(imageStar);
+                rate = 1;
+            } else if (event.getSource().equals(rate2)) {
+                rate = 2;
+                rate2.setImage(imageStar);
+                rate1.setImage(imageStar);
+            } else if (event.getSource().equals(rate3)) {
+                rate = 3;
+                rate3.setImage(imageStar);
+                rate2.setImage(imageStar);
+                rate1.setImage(imageStar);
+            } else if (event.getSource().equals(rate4)) {
+                rate = 4;
+                rate4.setImage(imageStar);
+                rate3.setImage(imageStar);
+                rate2.setImage(imageStar);
+                rate1.setImage(imageStar);
+            } else if (event.getSource().equals(rate5)) {
+                rate = 5;
+                rate5.setImage(imageStar);
+                rate4.setImage(imageStar);
+                rate3.setImage(imageStar);
+                rate2.setImage(imageStar);
+                rate1.setImage(imageStar);
+            }
+
+            RateController rateController = new RateController();
+            rateController.rateFamily(rate, travelBean.getId());
         }
     }
 

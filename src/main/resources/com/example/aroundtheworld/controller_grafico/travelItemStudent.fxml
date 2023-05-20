@@ -49,27 +49,27 @@
       <Label fx:id="statusLabel" alignment="CENTER" layoutX="2.0" layoutY="179.0" prefHeight="18.0" prefWidth="197.0" textAlignment="CENTER" />
       <HBox alignment="CENTER" layoutY="172.0" prefHeight="30.0" prefWidth="199.0" spacing="4.0">
          <children>
-            <ImageView fx:id="rate1" fitHeight="35.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="rate1" fitHeight="35.0" fitWidth="23.0" onMouseClicked="#rateTravel" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/greyStar.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="rate2" fitHeight="35.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="rate2" fitHeight="35.0" fitWidth="23.0" onMouseClicked="#rateTravel" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/greyStar.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="rate3" fitHeight="35.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="rate3" fitHeight="35.0" fitWidth="23.0" onMouseClicked="#rateTravel" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/greyStar.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="rate4" fitHeight="35.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="rate4" fitHeight="35.0" fitWidth="23.0" onMouseClicked="#rateTravel" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/greyStar.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="rate5" fitHeight="35.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="rate5" fitHeight="35.0" fitWidth="23.0" onMouseClicked="#rateTravel" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/greyStar.png" />
                </image>

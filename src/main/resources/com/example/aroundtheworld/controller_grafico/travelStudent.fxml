@@ -104,14 +104,30 @@
                   <Insets left="20.0" />
                </VBox.margin>
             </ScrollPane>
-            <Label layoutX="10.0" layoutY="355.0" text="Past Travels">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </Label>
+            <HBox prefHeight="26.0" prefWidth="780.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="14.0" prefWidth="115.0" text="Past Travels ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="251.0" text="Click on the " textAlignment="CENTER">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="26.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@image/greyStar.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="22.0" prefWidth="304.0" text=" to review your family">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
             <ScrollPane fitToHeight="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="480.0" minHeight="-Infinity" prefHeight="230.0" prefWidth="760.0" styleClass="transparent" stylesheets="@style.css" vbarPolicy="NEVER" VBox.vgrow="NEVER">
                <content>
                   <HBox fx:id="pastTravelList" alignment="CENTER" fillHeight="false" spacing="15.0">

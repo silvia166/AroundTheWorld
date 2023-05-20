@@ -1,7 +1,5 @@
 package com.example.aroundtheworld.engineering;
 
-
-import java.sql.SQLException;
 import java.util.logging.Logger;
 
 public class Printer {

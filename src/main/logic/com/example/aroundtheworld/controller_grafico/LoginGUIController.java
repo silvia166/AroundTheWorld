@@ -4,6 +4,7 @@ import com.example.aroundtheworld.bean.CityBean;
 import com.example.aroundtheworld.bean.LoginBean;
 import com.example.aroundtheworld.controller_applicativo.CityController;
 import com.example.aroundtheworld.controller_applicativo.LoginController;
+import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.EmailFormatException;
 import com.example.aroundtheworld.exception.NotFoundException;
@@ -57,7 +58,7 @@ public class LoginGUIController {
         } catch (EmailFormatException | UserNotFoundException  e) {
             ShowExceptionSupport.showException(e.getMessage());
         } catch (IOException e){
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
     }
 

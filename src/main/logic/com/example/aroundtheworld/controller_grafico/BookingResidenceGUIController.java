@@ -2,6 +2,7 @@ package com.example.aroundtheworld.controller_grafico;
 
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.controller_applicativo.BookingResidenceController;
+import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
@@ -90,7 +91,7 @@ public class BookingResidenceGUIController {
         } catch (FormEmptyException | MessageException | DuplicateRequestException e) {
             ShowExceptionSupport.showException(e.getMessage());
         } catch (NotFoundException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
     }
 }

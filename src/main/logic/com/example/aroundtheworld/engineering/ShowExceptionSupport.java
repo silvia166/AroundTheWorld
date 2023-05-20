@@ -27,7 +27,7 @@ public class ShowExceptionSupport {
         try {
             scene = new Scene(fxmlLoader.load());
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
         MessageBoxGUIController errorBox = fxmlLoader.getController();

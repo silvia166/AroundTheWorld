@@ -2,6 +2,7 @@ package com.example.aroundtheworld.controller_grafico;
 
 import com.example.aroundtheworld.bean.CompatibleFamilyBean;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
+import com.example.aroundtheworld.engineering.Printer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -76,7 +77,7 @@ public class FamilyListGUIController {
             }
 
         } catch (IOException e){
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
         return count;

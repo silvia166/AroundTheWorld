@@ -3,6 +3,7 @@ package com.example.aroundtheworld.dao;
 import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
+import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.ResidenceRequest;
@@ -42,7 +43,7 @@ public class ResidenceRequestDAO {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
     }
 
@@ -86,7 +87,7 @@ public class ResidenceRequestDAO {
             resultSet.close();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
         return residenceRequestList;
@@ -98,7 +99,7 @@ public class ResidenceRequestDAO {
             connection = ConnectionDB.getConnection();
             CRUDQueries.updateResidenceRequest(connection, status, id, number);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
     }
 
@@ -141,7 +142,7 @@ public class ResidenceRequestDAO {
             resultSet.close();
 
         } catch (SQLException | NotFoundException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
         return residenceRequestList;
@@ -153,7 +154,7 @@ public class ResidenceRequestDAO {
             connection = ConnectionDB.getConnection();
             CRUDQueries.updateResidenceRequestStatus(connection, status, id);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
     }
 
@@ -163,7 +164,7 @@ public class ResidenceRequestDAO {
             connection = ConnectionDB.getConnection();
             CRUDQueries.deleteResidenceRequest(connection, id);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
     }
 
@@ -199,7 +200,7 @@ public class ResidenceRequestDAO {
             resultSet.close();
 
         } catch (SQLException | NotFoundException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
         return residenceRequestList;

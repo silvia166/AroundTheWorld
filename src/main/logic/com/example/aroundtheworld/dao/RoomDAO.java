@@ -2,6 +2,7 @@ package com.example.aroundtheworld.dao;
 
 import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
+import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.exception.NoAvailableRoomsException;
 import com.example.aroundtheworld.model.*;
 
@@ -44,7 +45,7 @@ public class RoomDAO {
 
             resultSet.close();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
             return roomList;
     }

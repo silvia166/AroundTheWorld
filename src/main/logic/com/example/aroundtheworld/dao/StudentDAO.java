@@ -3,6 +3,7 @@ package com.example.aroundtheworld.dao;
 import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
+import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Student;
 
@@ -56,7 +57,7 @@ public class StudentDAO {
             resultSet.close();
 
         } catch(SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
         return student;
     }
@@ -72,7 +73,7 @@ public class StudentDAO {
             CRUDQueries.insertStudent(connection, name, surname, birth, nationality, phoneNumber, email);
 
         } catch(SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
     }
@@ -103,7 +104,7 @@ public class StudentDAO {
             resultSet.close();
 
         } catch(SQLException | NotFoundException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
         return studentName;
     }

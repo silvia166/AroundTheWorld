@@ -3,6 +3,9 @@ package com.example.aroundtheworld.dao;
 import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
+import com.example.aroundtheworld.engineering.Printer;
+import com.example.aroundtheworld.exception.ConnectionDbException;
+import com.example.aroundtheworld.exception.PersistenceLayerException;
 import com.example.aroundtheworld.model.Animal;
 
 import java.sql.Connection;
@@ -43,8 +46,8 @@ public class AnimalDAO {
 
             resultSet.close();
 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException  e) {
+            Printer.error(e.getMessage());
         }
         return animals;
     }
@@ -57,7 +60,7 @@ public class AnimalDAO {
             CRUDQueries.insertAnimal(connection, id, type, quantity);
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            Printer.error(e.getMessage());
         }
 
     }

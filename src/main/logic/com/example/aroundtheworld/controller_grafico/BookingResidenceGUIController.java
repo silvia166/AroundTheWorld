@@ -90,7 +90,7 @@ public class BookingResidenceGUIController {
         } catch (FormEmptyException | MessageException | DuplicateRequestException e) {
             ShowExceptionSupport.showException(e.getMessage());
         } catch (NotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }

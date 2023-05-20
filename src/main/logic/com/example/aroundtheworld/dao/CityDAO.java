@@ -64,7 +64,7 @@ public class CityDAO {
             resultSet.close();
 
         } catch(SQLException e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return city;
     }

@@ -55,7 +55,7 @@ public class FamilyMemberDAO {
             resultSet.close();
 
         }catch(SQLException e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return familyMembers;
     }
@@ -74,7 +74,7 @@ public class FamilyMemberDAO {
             CRUDQueries.insertMember(connection, id, name, birth, parenthood);
 
         } catch(SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
     }

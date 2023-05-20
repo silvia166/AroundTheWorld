@@ -56,7 +56,7 @@ public class StudentDAO {
             resultSet.close();
 
         } catch(SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return student;
     }
@@ -72,7 +72,7 @@ public class StudentDAO {
             CRUDQueries.insertStudent(connection, name, surname, birth, nationality, phoneNumber, email);
 
         } catch(SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
     }
@@ -103,7 +103,7 @@ public class StudentDAO {
             resultSet.close();
 
         } catch(SQLException | NotFoundException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return studentName;
     }

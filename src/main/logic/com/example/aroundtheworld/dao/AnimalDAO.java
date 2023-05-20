@@ -44,7 +44,7 @@ public class AnimalDAO {
             resultSet.close();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return animals;
     }
@@ -57,7 +57,7 @@ public class AnimalDAO {
             CRUDQueries.insertAnimal(connection, id, type, quantity);
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
     }

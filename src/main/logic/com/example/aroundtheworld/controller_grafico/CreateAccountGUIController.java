@@ -73,9 +73,7 @@ public class CreateAccountGUIController {
             stage.setScene(scene);
             stage.show();
 
-        }catch(EmailFormatException | FormEmptyException | PhoneFormatException e ){
-            e.printStackTrace();
-        } catch (MessageException e) {
+        }catch(EmailFormatException | FormEmptyException | PhoneFormatException | MessageException e ){
             ShowExceptionSupport.showException(e.getMessage());
         }
     }

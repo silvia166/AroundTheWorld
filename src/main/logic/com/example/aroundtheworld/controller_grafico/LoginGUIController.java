@@ -57,7 +57,7 @@ public class LoginGUIController {
         } catch (EmailFormatException | UserNotFoundException  e) {
             ShowExceptionSupport.showException(e.getMessage());
         } catch (IOException e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 

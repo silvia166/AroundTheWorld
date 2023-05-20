@@ -76,19 +76,10 @@ public class FamilyListGUIController {
             }
 
         } catch (IOException e){
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
         return count;
-    }
-
-    public void backStudHomepage(ActionEvent event) throws IOException {
-        ((Node)event.getSource()).getScene().getWindow().hide();
-        Main.getSecondaryStage().hide();
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("homepageStudent.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        Main.getStage().setScene(scene);
-        Main.getStage().show();
     }
 
     public void close(ActionEvent event) {

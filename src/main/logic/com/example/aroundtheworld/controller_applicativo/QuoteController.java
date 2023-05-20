@@ -26,64 +26,19 @@ public class QuoteController {
 
         switch (quoteBean.getCity()){
             case "Rome" -> {
-                quote = new RomeQuote();
-                if(quoteBean.getActivity1() == 1){
-                    quote = new ColosseumDecorator(quote);
-                }
-                if(quoteBean.getActivity2() == 1){
-                    quote = new VaticanMuseumDecorator(quote);
-                }
-                if(quoteBean.getActivity3() == 1){
-                    quote = new FoodDecorator(quote);
-                }
+                quote = romeActivity(quoteBean);
             }
             case "New York" -> {
-                quote = new NewYorkQuote();
-                if(quoteBean.getActivity1() == 1){
-                    quote = new TimeSquareDecorator(quote);
-                }
-                if(quoteBean.getActivity2() == 1){
-                    quote = new EmpireDecorator(quote);
-                }
-                if(quoteBean.getActivity3() == 1){
-                    quote = new CentralParkDecorator(quote);
-                }
+                quote = newYorkActivity(quoteBean);
             }
             case "Paris" -> {
-                quote = new ParisQuote();
-                if(quoteBean.getActivity1() == 1){
-                    quote = new LouvreDecorator(quote);
-                }
-                if(quoteBean.getActivity2() == 1){
-                    quote = new DisneylandDecorator(quote);
-                }
-                if(quoteBean.getActivity3() == 1){
-                    quote = new CruiseDecorator(quote);
-                }
+                quote = parisActivity(quoteBean);
             }
             case "Valencia" -> {
-                quote = new ValenciaQuote();
-                if(quoteBean.getActivity1() == 1){
-                    quote = new OceanographicDecorator(quote);
-                }
-                if(quoteBean.getActivity2() == 1){
-                    quote = new ScienceMuseumDecorator(quote);
-                }
-                if(quoteBean.getActivity3() == 1){
-                    quote = new MercadoCentralDecorator(quote);
-                }
+                quote = valenciaActivity(quoteBean);
             }
             default -> {
-                quote = new LondonQuote();
-                if(quoteBean.getActivity1() == 1){
-                    quote = new LondonEyeDecorator(quote);
-                }
-                if(quoteBean.getActivity2() == 1){
-                    quote = new HPStudiosDecorator(quote);
-                }
-                if(quoteBean.getActivity3() == 1){
-                    quote = new BuckinghamPalaceDecorator(quote);
-                }
+                quote = londonActivity(quoteBean);
             }
         }
 
@@ -92,6 +47,78 @@ public class QuoteController {
         return quote.getPrice() + (250 * quoteBean.getWeeks());
 
     }
+
+    private Quote londonActivity(QuoteBean quoteBean) {
+        Quote quote = new LondonQuote();
+        if(quoteBean.getActivity1() == 1){
+            quote = new LondonEyeDecorator(quote);
+        }
+        if(quoteBean.getActivity2() == 1){
+            quote = new HPStudiosDecorator(quote);
+        }
+        if(quoteBean.getActivity3() == 1){
+            quote = new BuckinghamPalaceDecorator(quote);
+        }
+        return quote;
+    }
+
+    private Quote valenciaActivity(QuoteBean quoteBean) {
+        Quote quote = new ValenciaQuote();
+        if(quoteBean.getActivity1() == 1){
+            quote = new OceanographicDecorator(quote);
+        }
+        if(quoteBean.getActivity2() == 1){
+            quote = new ScienceMuseumDecorator(quote);
+        }
+        if(quoteBean.getActivity3() == 1){
+            quote = new MercadoCentralDecorator(quote);
+        }
+        return quote;
+    }
+
+    private Quote parisActivity(QuoteBean quoteBean) {
+        Quote quote = new ParisQuote();
+        if(quoteBean.getActivity1() == 1){
+            quote = new LouvreDecorator(quote);
+        }
+        if(quoteBean.getActivity2() == 1){
+            quote = new DisneylandDecorator(quote);
+        }
+        if(quoteBean.getActivity3() == 1){
+            quote = new CruiseDecorator(quote);
+        }
+        return quote;
+    }
+
+    private Quote newYorkActivity(QuoteBean quoteBean) {
+        Quote quote = new NewYorkQuote();
+        if(quoteBean.getActivity1() == 1){
+            quote = new TimeSquareDecorator(quote);
+        }
+        if(quoteBean.getActivity2() == 1){
+            quote = new EmpireDecorator(quote);
+        }
+        if(quoteBean.getActivity3() == 1){
+            quote = new CentralParkDecorator(quote);
+        }
+        return quote;
+    }
+
+    private Quote romeActivity(QuoteBean quoteBean) {
+        Quote quote = new RomeQuote();
+        if(quoteBean.getActivity1() == 1){
+            quote = new ColosseumDecorator(quote);
+        }
+        if(quoteBean.getActivity2() == 1){
+            quote = new VaticanMuseumDecorator(quote);
+        }
+        if(quoteBean.getActivity3() == 1){
+            quote = new FoodDecorator(quote);
+        }
+        return quote;
+    }
+
+
 
     private Quote addStandardInformation(QuoteBean quoteBean, Quote quote) {
         if(quoteBean.getAccommodation().equals("host family")){

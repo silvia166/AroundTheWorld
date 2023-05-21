@@ -59,7 +59,7 @@ public class BookResidenceCLIController implements GraphicCLIController {
             ResidenceRequestBean residenceRequestBean = new ResidenceRequestBean(city, arrival, departure, room, idStudent, 0);
             BookingResidenceController bookingResidenceController = new BookingResidenceController();
             bookingResidenceController.sendRequest(residenceRequestBean);
-            Printer.printMessage("Request sent successfully\n");
+            bookingFormViewCLI.displayRequestSentMessage();
         }
         catch (MessageException | NotFoundException | DuplicateRequestException e){
             ShowExceptionSupport.showExceptionCLI(e.getMessage());

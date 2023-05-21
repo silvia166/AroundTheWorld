@@ -28,6 +28,7 @@ public class StudentCLIController implements GraphicCLIController{
             case CONTACT_FAMILY -> {
                 ContactFamilyCLIController contactFamilyCLIController = new ContactFamilyCLIController();
                 contactFamilyCLIController.start();
+                this.start();
                 }
             case REQUEST_QUOTE -> {}
             case MANAGE_REQUESTS -> {}

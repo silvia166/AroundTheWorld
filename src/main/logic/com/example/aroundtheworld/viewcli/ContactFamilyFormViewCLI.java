@@ -1,7 +1,5 @@
 package com.example.aroundtheworld.viewcli;
 import com.example.aroundtheworld.engineering.Printer;
-import com.example.aroundtheworld.engineering.ShowExceptionSupport;
-import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.graphiccontroller.cli.ContactFamilyCLIController;
 
 public class ContactFamilyFormViewCLI extends FormViewCLI{
@@ -30,10 +28,8 @@ public class ContactFamilyFormViewCLI extends FormViewCLI{
         int cooking = printPreference("Cooking:");
 
         contactFamilyCLIController.setMainRequestInfo(city,arrival,departure,siblings,animals,house,food);
-        try {
-            contactFamilyCLIController.setRequestHobbies(travels,sport,books,nature,film,videoGames,cooking);
-        } catch (MessageException e) {
-            ShowExceptionSupport.showExceptionCLI(e.getMessage());
-        }
+        contactFamilyCLIController.setRequestHobbies(travels,sport,books,nature,film,videoGames,cooking);
+
     }
+
 }

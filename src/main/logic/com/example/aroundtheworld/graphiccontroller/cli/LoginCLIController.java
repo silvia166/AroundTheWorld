@@ -1,6 +1,5 @@
 package com.example.aroundtheworld.graphiccontroller.cli;
 
-import com.example.aroundtheworld.appcontroller.CityController;
 import com.example.aroundtheworld.appcontroller.LoginController;
 import com.example.aroundtheworld.bean.LoginBean;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;

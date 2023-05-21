@@ -1,6 +1,5 @@
 package com.example.aroundtheworld.viewcli;
 
-import com.example.aroundtheworld.bean.CityBean;
 import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.CommandErrorException;

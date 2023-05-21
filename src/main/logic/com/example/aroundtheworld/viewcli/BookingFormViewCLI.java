@@ -46,4 +46,7 @@ public class BookingFormViewCLI {
         bookResidenceCLIController.sendResidenceRequest(city, arrival, departure, room);
     }
 
+    public void displayRequestSentMessage() {
+        Printer.printMessage("Request sent successfully\n");
+    }
 }

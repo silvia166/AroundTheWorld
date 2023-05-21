@@ -3,7 +3,10 @@ import com.example.aroundtheworld.appcontroller.ContactFamilyController;
 import com.example.aroundtheworld.bean.CompatibleFamilyBean;
 import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.engineering.Session;
+import com.example.aroundtheworld.engineering.ShowExceptionSupport;
+import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.MessageException;
+import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.viewcli.ContactFamilyFormViewCLI;
 
 import java.util.List;
@@ -30,11 +33,17 @@ public class ContactFamilyCLIController extends FormCLIController {
         }
     }
 
-    public void setRequestHobbies(int travels, int sport, int books, int nature, int film, int videoGames, int cooking) throws MessageException {
+    public void setRequestHobbies(int travels, int sport, int books, int nature, int film, int videoGames, int cooking) {
         this.familyRequestBean.setHobbies(travels,sport,books,nature,film,videoGames,cooking);
         ContactFamilyController contactFamilyController = new ContactFamilyController();
-        List<CompatibleFamilyBean> compatibleFamilies = contactFamilyController.getCompatibleFamilies(familyRequestBean);
-        FamilyInfoCLIController familyInfoCLIController = new FamilyInfoCLIController();
-        familyInfoCLIController.displayCompatibleFamilies(compatibleFamilies,familyRequestBean);
+        List<CompatibleFamilyBean> compatibleFamilies = null;
+        try {
+            compatibleFamilies = contactFamilyController.getCompatibleFamilies(familyRequestBean);
+            FamilyInfoCLIController familyInfoCLIController = new FamilyInfoCLIController();
+            familyInfoCLIController.displayCompatibleFamilies(compatibleFamilies,familyRequestBean);
+        } catch (MessageException | NotFoundException e) {
+            ShowExceptionSupport.showExceptionCLI(e.getMessage());
+        }
     }
+
 }

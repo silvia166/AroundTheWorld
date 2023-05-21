@@ -48,7 +48,7 @@ public class SchoolDAO {
             resultSet.close();
 
         } catch(SQLException e){
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
         return school;
     }

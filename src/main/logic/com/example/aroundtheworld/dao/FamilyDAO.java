@@ -67,7 +67,7 @@ public class FamilyDAO {
             resultSet.close();
 
         }catch(SQLException e){
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
 
         return family;
@@ -84,7 +84,7 @@ public class FamilyDAO {
             CRUDQueries.insertFamily(connection, name, phone, city, address, email, imgSrc);
 
         } catch(SQLException e) {
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
 
     }
@@ -111,7 +111,7 @@ public class FamilyDAO {
 
 
         } catch(SQLException | NotFoundException e) {
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
 
         return id;
@@ -163,7 +163,7 @@ public class FamilyDAO {
 
 
         } catch(SQLException | NotFoundException e) {
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
 
         return familyList;
@@ -195,7 +195,7 @@ public class FamilyDAO {
 
 
         } catch(SQLException | NotFoundException e) {
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
 
         return family;

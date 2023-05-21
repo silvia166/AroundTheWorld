@@ -1,7 +1,7 @@
 package com.example.aroundtheworld.engineering;
 
-import com.example.aroundtheworld.controller_grafico.MessageBoxGUIController;
-import com.example.aroundtheworld.controller_grafico.Main;
+import com.example.aroundtheworld.graphiccontroller.MessageBoxGUIController;
+import com.example.aroundtheworld.graphiccontroller.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
@@ -13,6 +13,11 @@ import java.io.IOException;
 public class ShowExceptionSupport {
     private ShowExceptionSupport() {
         //Costruttore privato perché ho tutti i metodi statici
+    }
+
+    public static void showExceptionCLI(String message) {
+        Printer.printError( "\n**************************************\n" + message + "\n\tPress ENTER to continue");
+        ScannerSupport.waitEnter();
     }
 
     public static void showException(String message) throws IOException {
@@ -27,7 +32,7 @@ public class ShowExceptionSupport {
         try {
             scene = new Scene(fxmlLoader.load());
         } catch (IOException e) {
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
 
         MessageBoxGUIController errorBox = fxmlLoader.getController();

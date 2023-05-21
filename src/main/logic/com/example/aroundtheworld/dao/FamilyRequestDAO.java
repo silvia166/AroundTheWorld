@@ -57,7 +57,7 @@ public class FamilyRequestDAO {
             }
 
         } catch (SQLException e) {
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
     }
 
@@ -118,7 +118,7 @@ public class FamilyRequestDAO {
             resultSet.close();
 
         } catch (SQLException e) {
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
 
         return familyRequestsList;
@@ -130,7 +130,7 @@ public class FamilyRequestDAO {
             connection = ConnectionDB.getConnection();
             CRUDQueries.updateStatusRequest(connection, status, id);
         } catch (SQLException e) {
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
     }
 
@@ -140,7 +140,7 @@ public class FamilyRequestDAO {
             connection = ConnectionDB.getConnection();
             CRUDQueries.deleteRequest(connection, id);
         } catch (SQLException e) {
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
     }
 
@@ -174,7 +174,7 @@ public class FamilyRequestDAO {
             resultSet.close();
 
         } catch (SQLException e) {
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
 
         return familyRequestList;
@@ -211,7 +211,7 @@ public class FamilyRequestDAO {
             resultSet.close();
 
         } catch (SQLException e) {
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
 
         return familyRequestList;
@@ -249,7 +249,7 @@ public class FamilyRequestDAO {
             resultSet.close();
 
         } catch (SQLException e) {
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
 
         return familyRequestList;
@@ -261,7 +261,7 @@ public class FamilyRequestDAO {
             connection = ConnectionDB.getConnection();
             CRUDQueries.updateRateRequest(connection, rate, idRequest);
         } catch (SQLException e) {
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
     }
 }

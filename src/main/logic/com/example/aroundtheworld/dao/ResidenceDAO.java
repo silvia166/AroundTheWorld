@@ -48,7 +48,7 @@ public class ResidenceDAO {
             resultSet.close();
 
         } catch(SQLException e){
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
         return residence;
     }
@@ -76,7 +76,7 @@ public class ResidenceDAO {
             resultSet.close();
 
         } catch(SQLException e){
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
         return idResidence;
     }
@@ -105,7 +105,7 @@ public class ResidenceDAO {
             resultSet.close();
 
         } catch(SQLException e){
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
         return city;
     }

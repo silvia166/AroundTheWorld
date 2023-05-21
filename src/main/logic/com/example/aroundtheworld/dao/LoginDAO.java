@@ -37,7 +37,7 @@ public class LoginDAO {
             resultSet.close();
 
         } catch (NotFoundException | SQLException e){
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
 
         return role;

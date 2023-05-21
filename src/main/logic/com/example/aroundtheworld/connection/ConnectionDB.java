@@ -35,7 +35,7 @@ public class ConnectionDB {
                 connection = DriverManager.getConnection(url,user, password);
 
             } catch (SQLException | IOException | ClassNotFoundException e) {
-                Printer.error(e.getMessage());
+                Printer.printError(e.getMessage());
             }
         }
         return connection;

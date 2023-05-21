@@ -65,7 +65,7 @@ public class CityDAO {
             resultSet.close();
 
         } catch(SQLException e){
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
         return city;
     }

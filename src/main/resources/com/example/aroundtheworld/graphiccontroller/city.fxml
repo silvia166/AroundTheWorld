@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.graphiccontroller.CityGUIController">
+   <children>
+      <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="45.0" layoutY="669.0">
+         <image>
+            <Image url="@image/arrow.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="25.0" layoutY="56.0" prefHeight="74.0" prefWidth="1200.0" style="-fx-background-color: #C0F9DD;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text layoutX="115.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Around the world" wrappingWidth="401.06072902679443">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="115.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="travel agency" wrappingWidth="208.81515502929688">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="56.0" fitWidth="57.0" layoutX="42.0" layoutY="10.0">
+               <image>
+                  <Image url="@image/world.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label fx:id="cityName" alignment="CENTER" layoutX="516.0" layoutY="89.0" prefHeight="31.0" prefWidth="165.0" text="London">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="139.0" layoutY="134.0" prefHeight="317.0" prefWidth="685.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.71466064453125" minWidth="10.0" prefWidth="252.14669799804688" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="900.0" minWidth="10.0" prefWidth="300.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Language:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="language" prefHeight="23.0" prefWidth="179.0" text="English" GridPane.columnIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="Residence:" GridPane.rowIndex="2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="School:" GridPane.rowIndex="6">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="Activity:" GridPane.rowIndex="13">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="residenceName" prefHeight="23.0" prefWidth="349.0" text="London Residence" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="schoolName" prefHeight="23.0" prefWidth="409.0" text="London School" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="schoolHours" prefHeight="23.0" prefWidth="361.0" text="8:00 am - 4:00 pm" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="schoolCourses" prefHeight="23.0" prefWidth="401.0" text="A1, A2, B1, B2, C1" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="residenceAddress" prefHeight="23.0" prefWidth="500.0" text="Clayton St, London SE11 5BZ, UK" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="schoolAddress" prefHeight="23.0" prefWidth="406.0" text="Fleming Rd, London, UK" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="distanceResidenceSchool" prefHeight="23.0" prefWidth="365.0" text="1,6 km" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="Check the current weather:" GridPane.rowIndex="11">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="weatherButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="172.0" style="-fx-background-color: #C0F9DD; -fx-background-radius: 20;" styleClass="shadowLight" stylesheets="@style.css" text="View temperature" GridPane.columnIndex="1" GridPane.rowIndex="11">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+      <VBox layoutX="388.0" layoutY="434.0" prefHeight="236.0" prefWidth="703.0">
+         <children>
+            <HBox prefHeight="236.0" prefWidth="722.0" spacing="70.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="236.0" prefWidth="227.0" spacing="10.0">
+                     <children>
+                        <Label fx:id="act1Name" alignment="CENTER" prefHeight="23.0" prefWidth="355.0" text="London Eye">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="act1Img" fitHeight="213.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/LondonEye.jpeg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="236.0" prefWidth="227.0" spacing="10.0">
+                     <children>
+                        <Label fx:id="act2Name" alignment="CENTER" prefHeight="23.0" prefWidth="355.0" text="Harry Potter Studios">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="act2Img" fitHeight="213.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/harryPotter.jpeg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="236.0" prefWidth="227.0" spacing="10.0">
+                     <children>
+                        <Label fx:id="act3Name" alignment="CENTER" prefHeight="23.0" prefWidth="224.0" text="Buckingham Palace">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="act3Img" fitHeight="213.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@image/buckinghamPalace.jpeg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="178.0" prefWidth="415.0" spacing="80.0" />
+         </children>
+      </VBox>
+      <ImageView fx:id="cityImg" fitHeight="282.0" fitWidth="209.0" layoutX="900.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/londra.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="45.0" layoutY="667.0" mnemonicParsing="false" onAction="#backToAccess" opacity="0.0" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 100;">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

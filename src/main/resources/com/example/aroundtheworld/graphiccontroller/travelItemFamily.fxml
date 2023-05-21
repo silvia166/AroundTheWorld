@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="bookingPane" prefHeight="170.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20;" styleClass="shadow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.graphiccontroller.TravelItemGUIController">
+   <children>
+      <Label fx:id="nationalityAgeLabel" alignment="CENTER" layoutY="50.0" prefHeight="18.0" prefWidth="252.0" text="Nationality and Age" />
+      <HBox alignment="CENTER" layoutX="2.0" layoutY="84.0" prefWidth="250.0" spacing="20.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="16.0" prefWidth="0.0" />
+            <Label fx:id="arrivalLabel" contentDisplay="CENTER" text=" 12-12-2023" />
+            <Label alignment="CENTER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="departureLabel" contentDisplay="CENTER" text=" 25-12-2023" />
+            <VBox alignment="CENTER" layoutX="90.0" layoutY="10.0" />
+         </children>
+      </HBox>
+      <Label fx:id="studNameLabel" alignment="CENTER" layoutY="14.0" prefHeight="22.0" prefWidth="252.0" text="Name">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" layoutY="119.0" prefHeight="29.0" prefWidth="252.0" spacing="4.0">
+         <children>
+            <ImageView fx:id="rate1" fitHeight="35.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/greyStar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="rate2" fitHeight="35.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/greyStar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="rate3" fitHeight="35.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/greyStar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="rate4" fitHeight="35.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/greyStar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="rate5" fitHeight="35.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/greyStar.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <Label fx:id="statusLabel" alignment="CENTER" layoutY="126.0" prefHeight="17.0" prefWidth="252.0" />
+   </children>
+</AnchorPane>

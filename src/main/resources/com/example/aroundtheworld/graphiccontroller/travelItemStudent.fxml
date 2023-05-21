@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="bookingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-radius: 30;" styleClass="shadow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.graphiccontroller.TravelItemGUIController">
+   <children>
+      <HBox layoutY="8.0" prefHeight="19.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="accommodation" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="197.0" text="Accommodation" textAlignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <ImageView fx:id="img" fitHeight="64.0" fitWidth="66.0" layoutX="68.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/big-family.png" />
+         </image>
+      </ImageView>
+      <HBox layoutY="112.0" prefHeight="19.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="cityLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="243.0" text="Name city" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutY="144.0" prefHeight="19.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="arrivalLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="243.0" text="arrival" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="departureLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="243.0" text="departure" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label fx:id="statusLabel" alignment="CENTER" layoutX="2.0" layoutY="179.0" prefHeight="18.0" prefWidth="197.0" textAlignment="CENTER" />
+      <HBox alignment="CENTER" layoutY="172.0" prefHeight="30.0" prefWidth="199.0" spacing="4.0">
+         <children>
+            <ImageView fx:id="rate1" fitHeight="35.0" fitWidth="23.0" onMouseClicked="#rateTravel" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/greyStar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="rate2" fitHeight="35.0" fitWidth="23.0" onMouseClicked="#rateTravel" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/greyStar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="rate3" fitHeight="35.0" fitWidth="23.0" onMouseClicked="#rateTravel" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/greyStar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="rate4" fitHeight="35.0" fitWidth="23.0" onMouseClicked="#rateTravel" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/greyStar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="rate5" fitHeight="35.0" fitWidth="23.0" onMouseClicked="#rateTravel" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@image/greyStar.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

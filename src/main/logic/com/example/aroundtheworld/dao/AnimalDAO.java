@@ -45,7 +45,7 @@ public class AnimalDAO {
             resultSet.close();
 
         } catch (SQLException  e) {
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
         return animals;
     }
@@ -58,7 +58,7 @@ public class AnimalDAO {
             CRUDQueries.insertAnimal(connection, id, type, quantity);
 
         } catch (SQLException e) {
-            Printer.error(e.getMessage());
+            Printer.printError(e.getMessage());
         }
 
     }

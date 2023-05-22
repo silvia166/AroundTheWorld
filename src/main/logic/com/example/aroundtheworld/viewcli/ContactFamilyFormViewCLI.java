@@ -10,6 +10,7 @@ public class ContactFamilyFormViewCLI extends FormViewCLI{
     }
 
     public void run() {
+        Printer.printMessage("\n-------------------------------------------- CONTACT FAMILY FORM --------------------------------------------");
         String city = printSelectionCity();
         String arrival = printArrival();
         String departure = printDeparture();

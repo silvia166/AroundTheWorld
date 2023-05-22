@@ -89,5 +89,50 @@ public abstract class FormViewCLI {
         return choice;
     }
 
+    public int printPeriod(){
+        int choice=0;
+        Printer.printMessage("\nSelect permanence:");
+        Printer.printMessage(" 1) Weeks \n 2) Months \n 3) Years");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            choice = formCLIController.executePermanence(scanner.nextLine());
+        } catch (CommandErrorException e) {
+            ShowExceptionSupport.showExceptionCLI(e.getMessage());
+            printPeriod();
+        }
+        return choice;
+    }
+
+    public int printQuantity(int count){
+
+        switch (count){
+            case 1-> {Printer.printMessage("\nInsert a number from 1 to 3 weeks:");}
+            case 2-> {Printer.printMessage("\nInsert a number from 1 to 11 months:");}
+            default -> {Printer.printMessage("\nInsert a number from 1 to 2 years:");}
+        }
+        int choice=0;
+        Scanner scanner = new Scanner(System.in);
+        try {
+            choice = formCLIController.executePeriod(scanner.nextLine(), count);
+        } catch (CommandErrorException e) {
+            ShowExceptionSupport.showExceptionCLI(e.getMessage());
+            printQuantity(count);
+        }
+        return choice;
+    }
+
+    public String printAccommodation(){
+        String choice = null;
+        Printer.printMessage("\nSelect the type of accommodation:");
+        Printer.printMessage(" 1) Residence \n 2) Host Family");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            choice = formCLIController.executeAccommodation(scanner.nextLine());
+        } catch (CommandErrorException e) {
+            ShowExceptionSupport.showExceptionCLI(e.getMessage());
+            printAccommodation();
+        }
+        return choice;
+    }
 
 }

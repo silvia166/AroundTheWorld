@@ -10,7 +10,7 @@ import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.viewcli.BookingFormViewCLI;
 
-public class BookResidenceCLIController implements GraphicCLIController {
+public class BookResidenceCLIController extends FormCLIController {
 
     private static final String LONDON = "1";
     private static final String ROME = "2";
@@ -26,30 +26,6 @@ public class BookResidenceCLIController implements GraphicCLIController {
     public void start() {
         this.bookingFormViewCLI = new BookingFormViewCLI(this);
         this.bookingFormViewCLI.run();
-    }
-
-    public String executeCity(String inputLine) throws CommandErrorException {
-        String city;
-        switch (inputLine){
-            case LONDON -> city = "London";
-            case ROME -> city = "Rome";
-            case PARIS -> city = "Paris";
-            case NEW_YORK -> city = "New York";
-            case VALENCIA -> city = "Valencia";
-            default -> throw new CommandErrorException();
-        }
-        return city;
-    }
-
-    public String executeRoom(String inputLine) throws CommandErrorException {
-        String room;
-
-        switch (inputLine){
-            case SINGLE -> room = "single";
-            case DOUBLE -> room = "double";
-            default -> throw new CommandErrorException();
-        }
-        return room;
     }
 
     public void sendResidenceRequest(String city, String arrival, String departure, String room) {

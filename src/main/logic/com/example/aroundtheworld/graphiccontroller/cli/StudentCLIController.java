@@ -30,7 +30,11 @@ public class StudentCLIController implements GraphicCLIController{
                 contactFamilyCLIController.start();
                 this.start();
                 }
-            case REQUEST_QUOTE -> {}
+            case REQUEST_QUOTE -> {
+                QuoteCLIController quoteCLIController = new QuoteCLIController();
+                quoteCLIController.start();
+                this.start();
+            }
             case MANAGE_REQUESTS -> {}
             case VIEW_TRAVELS -> {}
             case VIEW_PROFILE -> {}

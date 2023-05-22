@@ -17,6 +17,11 @@ public abstract class FormCLIController implements GraphicCLIController {
     private static final String NOPREF = "3";
     private static final String YES = "1";
     private static final String NO = "2";
+    private static final String WEEKS = "1";
+    private static final String MONTHS = "2";
+    private static final String YEARS = "3";
+    private static final String RESIDENCE = "1";
+    private static final String HOSTFAMILY = "2";
 
     FormViewCLI formViewCLI;
     public String executeCity(String line) throws CommandErrorException {
@@ -73,4 +78,44 @@ public abstract class FormCLIController implements GraphicCLIController {
         return choice;
     }
 
+    public int executePermanence(String nextLine) throws CommandErrorException {
+        int choice;
+        switch (nextLine){
+            case WEEKS -> choice = 1;
+            case MONTHS -> choice = 2;
+            case YEARS -> choice = 3;
+            default -> throw new CommandErrorException();
+        }
+        return choice;
+    }
+
+    public int executePeriod(String nextLine, int count) throws CommandErrorException {
+        int period = Integer.parseInt(nextLine);
+        switch(count){
+            case 1-> {
+                if(period > 3 || period < 1)
+                    throw new CommandErrorException();
+            }
+            case 2->{
+                if(period > 11 || period < 1)
+                    throw new CommandErrorException();
+            }
+            default->{
+                if(period > 2 || period < 1)
+                    throw new CommandErrorException();
+            }
+        }
+        return period;
+    }
+
+
+    public String executeAccommodation(String nextLine) throws CommandErrorException {
+        String choice = null;
+        switch(nextLine){
+            case RESIDENCE -> choice = "residence";
+            case HOSTFAMILY -> choice = "host family";
+            default -> throw new CommandErrorException();
+        }
+        return choice;
+    }
 }

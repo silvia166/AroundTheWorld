@@ -27,13 +27,17 @@ public class BookingFamilyController {
     }
 
     public void rejectRequest(FamilyRequestBean familyRequest, Pane pane) {
-        familyRequest.notifyObserversFamily(familyRequest, pane);
+        if(pane != null) {
+            familyRequest.notifyObserversFamily(familyRequest, pane);
+        }
         FamilyRequestDAO.deleteRequest(familyRequest.getId());
     }
 
 
     public void bookFamily(FamilyRequestBean familyRequest, Pane pane) {
-        familyRequest.notifyObserversFamily(familyRequest, pane);
+        if(pane != null){
+            familyRequest.notifyObserversFamily(familyRequest, pane);
+        }
         FamilyRequestDAO.updateStatus(2, familyRequest.getId());
     }
 }

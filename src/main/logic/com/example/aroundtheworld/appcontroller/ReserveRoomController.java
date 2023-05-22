@@ -59,12 +59,16 @@ public class ReserveRoomController {
 
     public void updateStatus(ResidenceRequestBean requestBean, int status, Pane pane) {
         requestBean.setStatus(status);
-        requestBean.notifyObserversResidence(requestBean, pane);
+        if(pane != null){
+            requestBean.notifyObserversResidence(requestBean, pane);
+        }
         ResidenceRequestDAO.updateStatus(requestBean.getId(), status);
     }
 
     public void deleteResidenceRequest(ResidenceRequestBean requestBean, Pane pane) {
-        requestBean.notifyObserversResidence(requestBean, pane);
+        if(pane != null){
+            requestBean.notifyObserversResidence(requestBean, pane);
+        }
         ResidenceRequestDAO.deleteRequest(requestBean.getId());
     }
 

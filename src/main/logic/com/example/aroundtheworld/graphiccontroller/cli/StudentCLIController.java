@@ -1,4 +1,5 @@
 package com.example.aroundtheworld.graphiccontroller.cli;
+import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.exception.*;
 import com.example.aroundtheworld.viewcli.StudentViewCLI;
 
@@ -35,10 +36,21 @@ public class StudentCLIController implements GraphicCLIController{
                 quoteCLIController.start();
                 this.start();
             }
-            case MANAGE_REQUESTS -> {}
+            case MANAGE_REQUESTS -> {
+                StudentRequestCLIController studentRequestCLIController = new StudentRequestCLIController();
+                studentRequestCLIController.start();
+            }
             case VIEW_TRAVELS -> {}
-            case VIEW_PROFILE -> {}
-            case LOGOUT -> {}
+            case VIEW_PROFILE -> {
+                StudentProfileCLIController studentProfileCLIController = new StudentProfileCLIController();
+                studentProfileCLIController.start();
+                this.start();
+            }
+            case LOGOUT -> {
+                Session.closeSession();
+                LoginCLIController loginCLIController = new LoginCLIController();
+                loginCLIController.start();
+            }
             default -> throw new CommandErrorException();
         }
     }

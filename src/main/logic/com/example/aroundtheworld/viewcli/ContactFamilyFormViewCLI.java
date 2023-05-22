@@ -31,7 +31,6 @@ public class ContactFamilyFormViewCLI{
 
         contactFamilyCLIController.setMainRequestInfo(city,arrival,departure,siblings,animals,house,food);
         contactFamilyCLIController.setRequestHobbies(travels,sport,books,nature,film,videoGames,cooking);
-
     }
 
 }

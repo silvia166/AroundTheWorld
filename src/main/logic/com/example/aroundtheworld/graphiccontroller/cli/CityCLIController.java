@@ -14,17 +14,14 @@ public class CityCLIController implements GraphicCLIController{
     private static final String PARIS = "3";
     private static final String NEW_YORK = "4";
     private static final String VALENCIA = "5";
-
     private static final String TEMPERATURE = "1";
     private static final String BACK = "2";
     private CityViewCLI cityViewCLI;
-
     @Override
     public void start() {
         this.cityViewCLI = new CityViewCLI(this);
         this.cityViewCLI.run();
     }
-
     public void getCity(String inputLine) throws CommandErrorException, NotFoundException {
         String name;
         switch (inputLine){
@@ -47,7 +44,10 @@ public class CityCLIController implements GraphicCLIController{
     public void executeCommand(String nextLine) throws CommandErrorException, NotImplementedException {
         switch (nextLine){
             case TEMPERATURE -> throw new NotImplementedException();
-            case BACK -> {}
+            case BACK -> {
+                LoginCLIController loginCLIController = new LoginCLIController();
+                loginCLIController.start();
+            }
             default -> throw new CommandErrorException();
         }
     }

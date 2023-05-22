@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public abstract class FormViewCLI {
     FormCLIController formCLIController;
-    public FormViewCLI(FormCLIController formCLIController) {
+    protected FormViewCLI(FormCLIController formCLIController) {
         this.formCLIController = formCLIController;
     }
     public String printSelectionCity() {

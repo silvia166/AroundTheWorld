@@ -2,7 +2,6 @@ package com.example.aroundtheworld.graphiccontroller.cli;
 
 import com.example.aroundtheworld.appcontroller.BookingResidenceController;
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
-import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.CommandErrorException;

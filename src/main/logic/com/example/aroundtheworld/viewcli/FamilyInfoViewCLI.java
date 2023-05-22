@@ -5,7 +5,6 @@ import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.CommandErrorException;
 import com.example.aroundtheworld.exception.NotFoundException;
-import com.example.aroundtheworld.graphiccontroller.cli.ContactFamilyCLIController;
 import com.example.aroundtheworld.graphiccontroller.cli.FamilyInfoCLIController;
 
 import java.util.Scanner;

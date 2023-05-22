@@ -59,6 +59,8 @@ public class StudentRequestViewCLI {
     public void printActionResidence(int i) {
         if (i == 1) {
             Printer.printMessage("\nYou selected a pending request, wait for the agency to manage it");
+            Printer.printMessage("Press ENTER to continue");
+            ScannerSupport.waitEnter();
         } else {
             Printer.printMessage("\n 1) Accept request \n 2) Reject request \n 3) Back");
             Scanner scanner = new Scanner(System.in);
@@ -89,7 +91,7 @@ public class StudentRequestViewCLI {
 
     public void printActionFamily(int i) {
         if (i == 1) {
-            Printer.printMessage("\n You selected a pending request, wait for the family to manage it");
+            Printer.printMessage("\nYou selected a pending request, wait for the family to manage it");
             Printer.printMessage("Press ENTER to continue");
             ScannerSupport.waitEnter();
         } else {

@@ -6,7 +6,7 @@ import com.example.aroundtheworld.bean.QuoteBean;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.viewcli.QuoteViewCLI;
 
-public class QuoteCLIController extends FormCLIController{
+public class QuoteCLIController implements GraphicCLIController{
 
     private QuoteViewCLI quoteViewCLI;
     private QuoteBean quoteBean;

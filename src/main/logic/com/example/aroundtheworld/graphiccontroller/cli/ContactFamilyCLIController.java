@@ -10,7 +10,7 @@ import com.example.aroundtheworld.viewcli.ContactFamilyFormViewCLI;
 
 import java.util.List;
 
-public class ContactFamilyCLIController extends FormCLIController {
+public class ContactFamilyCLIController implements GraphicCLIController {
 
     private ContactFamilyFormViewCLI contactFamilyFormViewCLI;
     private FamilyRequestBean familyRequestBean;

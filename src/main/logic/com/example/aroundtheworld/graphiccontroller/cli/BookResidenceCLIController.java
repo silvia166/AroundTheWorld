@@ -10,7 +10,7 @@ import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.viewcli.BookingFormViewCLI;
 
-public class BookResidenceCLIController extends FormCLIController {
+public class BookResidenceCLIController implements GraphicCLIController {
 
     private static final String LONDON = "1";
     private static final String ROME = "2";

@@ -7,24 +7,24 @@ import com.example.aroundtheworld.graphiccontroller.cli.BookResidenceCLIControll
 
 import java.util.Scanner;
 
-public class BookingFormViewCLI extends FormViewCLI {
+public class BookingFormViewCLI{
     private BookResidenceCLIController bookResidenceCLIController;
+    private FormViewCLI formViewCLI;
     public BookingFormViewCLI(BookResidenceCLIController bookResidenceCLIController) {
-        super(bookResidenceCLIController);
         this.bookResidenceCLIController = bookResidenceCLIController;
+        this.formViewCLI = new FormViewCLI();
     }
 
     public void run() {
         Printer.printMessage("\n-------------------------------------------- RESIDENCE FORM --------------------------------------------");
-        String city = printSelectionCity();
-        String arrival = printArrival();
-        String departure = printDeparture();
-        String room = printRoom();
-        BookResidenceCLIController bookResidenceCLIController = new BookResidenceCLIController();
+        String city = formViewCLI.printSelectionCity();
+        String arrival = formViewCLI.printArrival();
+        String departure = formViewCLI.printDeparture();
+        String room = formViewCLI.printRoom();
         bookResidenceCLIController.sendResidenceRequest(city, arrival, departure, room);
     }
 
     public void displayRequestSentMessage() {
-        Printer.printMessage("Request sent successfully\n");
+        Printer.printMessage("\nYour request has been successfully sent!\n");
     }
 }

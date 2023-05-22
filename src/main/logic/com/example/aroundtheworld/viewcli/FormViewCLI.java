@@ -7,10 +7,10 @@ import com.example.aroundtheworld.graphiccontroller.cli.FormCLIController;
 
 import java.util.Scanner;
 
-public abstract class FormViewCLI {
+public class FormViewCLI {
     FormCLIController formCLIController;
-    protected FormViewCLI(FormCLIController formCLIController) {
-        this.formCLIController = formCLIController;
+    protected FormViewCLI() {
+        this.formCLIController = new FormCLIController();
     }
     public String printSelectionCity() {
         String city = null;

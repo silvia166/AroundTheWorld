@@ -3,7 +3,7 @@ package com.example.aroundtheworld.graphiccontroller.cli;
 import com.example.aroundtheworld.exception.CommandErrorException;
 import com.example.aroundtheworld.viewcli.FormViewCLI;
 
-public abstract class FormCLIController implements GraphicCLIController {
+public class FormCLIController {
     private static final String LONDON = "1";
     private static final String ROME = "2";
     private static final String PARIS = "3";

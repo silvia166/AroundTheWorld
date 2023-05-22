@@ -2,31 +2,32 @@ package com.example.aroundtheworld.viewcli;
 import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.graphiccontroller.cli.ContactFamilyCLIController;
 
-public class ContactFamilyFormViewCLI extends FormViewCLI{
+public class ContactFamilyFormViewCLI{
     private ContactFamilyCLIController contactFamilyCLIController;
+    private FormViewCLI formViewCLI;
     public ContactFamilyFormViewCLI(ContactFamilyCLIController contactFamilyCLIController) {
-        super(contactFamilyCLIController);
+        this.formViewCLI = new FormViewCLI();
         this.contactFamilyCLIController = contactFamilyCLIController;
     }
 
     public void run() {
         Printer.printMessage("\n-------------------------------------------- CONTACT FAMILY FORM --------------------------------------------");
-        String city = printSelectionCity();
-        String arrival = printArrival();
-        String departure = printDeparture();
-        String house = printSelectionHouse();
-        int food = printSelectionFood(); // 0 -> vegetarian, 1 -> vegan, 2 -> no pref
+        String city = formViewCLI.printSelectionCity();
+        String arrival = formViewCLI.printArrival();
+        String departure = formViewCLI.printDeparture();
+        String house = formViewCLI.printSelectionHouse();
+        int food = formViewCLI.printSelectionFood(); // 0 -> vegetarian, 1 -> vegan, 2 -> no pref
         Printer.printMessage("\nSelect your preferences\n");
-        int siblings = printPreference("Siblings:");
-        int animals = printPreference("Animals:");
+        int siblings = formViewCLI.printPreference("Siblings:");
+        int animals = formViewCLI.printPreference("Animals:");
         Printer.printMessage("\nSelect your hobbies\n");
-        int travels = printPreference("Travels:");
-        int sport = printPreference("Sport:");
-        int books = printPreference("Books:");
-        int nature = printPreference("Nature:");
-        int film = printPreference("Film:");
-        int videoGames = printPreference("VideoGames:");
-        int cooking = printPreference("Cooking:");
+        int travels = formViewCLI.printPreference("Travels:");
+        int sport = formViewCLI.printPreference("Sport:");
+        int books = formViewCLI.printPreference("Books:");
+        int nature = formViewCLI.printPreference("Nature:");
+        int film = formViewCLI.printPreference("Film:");
+        int videoGames = formViewCLI.printPreference("VideoGames:");
+        int cooking = formViewCLI.printPreference("Cooking:");
 
         contactFamilyCLIController.setMainRequestInfo(city,arrival,departure,siblings,animals,house,food);
         contactFamilyCLIController.setRequestHobbies(travels,sport,books,nature,film,videoGames,cooking);

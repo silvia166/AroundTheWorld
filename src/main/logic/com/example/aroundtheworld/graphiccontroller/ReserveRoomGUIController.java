@@ -73,8 +73,8 @@ public class ReserveRoomGUIController {
         ObservableList<RoomBean> rooms = roomsTableView.getItems();
 
         while(iterator.hasNext()){
-            RoomBean member = iterator.next();
-            rooms.add(member);
+            RoomBean room = iterator.next();
+            rooms.add(room);
         }
         roomsTableView.setItems(rooms);
     }

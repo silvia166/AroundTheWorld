@@ -80,7 +80,7 @@ public class AddFamilyViewCLI {
     public int printNewMember() {
         int choice = 0;
         Printer.printMessage("Select: ");
-        Printer.printMessage(" 1) Add another memeber \n 2) Add family ");
+        Printer.printMessage(" 1) Add another member \n 2) Add family ");
         Scanner scanner = new Scanner(System.in);
         try {
             choice = addFamilyCLIController.executeNewMember(scanner.nextLine());

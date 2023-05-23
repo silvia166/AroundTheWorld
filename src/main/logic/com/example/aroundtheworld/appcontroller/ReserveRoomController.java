@@ -41,7 +41,9 @@ public class ReserveRoomController {
 
     public void reserveRoom(RoomBean selectedRoom, ResidenceRequestBean requestBean, int status, Pane pane) {
         requestBean.setStatus(status);
-        requestBean.notifyObserversResidence(requestBean, pane);
+        if(pane != null){
+            requestBean.notifyObserversResidence(requestBean, pane);
+            }
         ResidenceRequestDAO.updateRoom(selectedRoom.getNumber(), requestBean.getId(), status);
     }
 

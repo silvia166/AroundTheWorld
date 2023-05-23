@@ -27,6 +27,8 @@ public class AgencyCLIController implements GraphicCLIController {
                 this.start();
             }
             case MANAGE_REQUEST -> {
+                AgencyRequestCLIController agencyRequestCLIController = new AgencyRequestCLIController();
+                agencyRequestCLIController.start();
             }
             case LOGOUT -> {
                 Session.closeSession();

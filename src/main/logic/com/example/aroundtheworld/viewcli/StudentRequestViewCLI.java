@@ -4,6 +4,7 @@ import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.engineering.ScannerSupport;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.CommandErrorException;
+import com.example.aroundtheworld.graphiccontroller.cli.StudentCLIController;
 import com.example.aroundtheworld.graphiccontroller.cli.StudentRequestCLIController;
 
 import java.util.Scanner;
@@ -61,6 +62,8 @@ public class StudentRequestViewCLI {
             Printer.printMessage("\nYou selected a pending request, wait for the agency to manage it");
             Printer.printMessage("Press ENTER to continue");
             ScannerSupport.waitEnter();
+            StudentCLIController studentCLIController = new StudentCLIController();
+            studentCLIController.start();
         } else {
             Printer.printMessage("\n 1) Accept request \n 2) Reject request \n 3) Back");
             Scanner scanner = new Scanner(System.in);
@@ -94,6 +97,8 @@ public class StudentRequestViewCLI {
             Printer.printMessage("\nYou selected a pending request, wait for the family to manage it");
             Printer.printMessage("Press ENTER to continue");
             ScannerSupport.waitEnter();
+            StudentCLIController studentCLIController = new StudentCLIController();
+            studentCLIController.start();
         } else {
             Printer.printMessage("\n 1) Book travel \n 2) Reject \n 3) Back");
             Scanner scanner = new Scanner(System.in);

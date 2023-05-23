@@ -195,12 +195,12 @@
          </font>
       </Text>
       <ChoiceBox fx:id="cityBox" layoutX="215.0" layoutY="297.0" prefWidth="228.0" />
-      <Label layoutX="217.0" layoutY="407.0" prefHeight="23.0" prefWidth="62.0" text="Rodens">
+      <Label layoutX="217.0" layoutY="407.0" prefHeight="27.0" prefWidth="70.0" text="Rodents">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="rodensBox" layoutX="286.0" layoutY="407.0" prefHeight="26.0" prefWidth="48.0" />
+      <ChoiceBox fx:id="rodentsBox" layoutX="286.0" layoutY="407.0" prefHeight="26.0" prefWidth="48.0" />
       <Label layoutX="389.0" layoutY="407.0" prefHeight="27.0" prefWidth="66.0" text="Reptiles">
          <font>
             <Font size="18.0" />

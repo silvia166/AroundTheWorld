@@ -58,7 +58,7 @@ public class AddFamilyGUIController {
     @FXML
     private ChoiceBox<String> reptilesBox;
     @FXML
-    private ChoiceBox<String> rodensBox;
+    private ChoiceBox<String> rodentsBox;
     @FXML
     private RadioButton sharedRB;
     @FXML
@@ -100,7 +100,7 @@ public class AddFamilyGUIController {
         dogBox.setItems(animalList);
         catBox.setItems(animalList);
         birdsBox.setItems(animalList);
-        rodensBox.setItems(animalList);
+        rodentsBox.setItems(animalList);
         reptilesBox.setItems(animalList);
         otherBox.setItems(animalList);
 
@@ -268,8 +268,8 @@ public class AddFamilyGUIController {
             animal = new AnimalBean("Bird", checkNumberAnimal(birdsBox.getValue()));
             animals.add(animal);
         }
-        if(rodensBox.getValue() != null){
-            animal = new AnimalBean("Roden", checkNumberAnimal(rodensBox.getValue()));
+        if(rodentsBox.getValue() != null){
+            animal = new AnimalBean("Rodent", checkNumberAnimal(rodentsBox.getValue()));
             animals.add(animal);
         }
         if(reptilesBox.getValue() != null){

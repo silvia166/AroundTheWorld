@@ -135,4 +135,17 @@ public class FormViewCLI {
         return choice;
     }
 
+    public int printAnimal(String animal){
+        int choice;
+        Printer.printMessage(animal);
+        Scanner scanner = new Scanner(System.in);
+        choice = formCLIController.executeAnimal(scanner.nextLine());
+        return choice;
+    }
+
+    public String printMember(String message){
+        Printer.printMessage(message);
+        Scanner scanner = new Scanner(System.in);
+        return  scanner.nextLine();
+    }
 }

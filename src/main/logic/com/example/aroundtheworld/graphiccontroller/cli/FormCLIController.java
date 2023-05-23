@@ -118,4 +118,14 @@ public class FormCLIController {
         }
         return choice;
     }
+
+    public int executeAnimal(String nextLine) {
+        int quantity = Integer.parseInt(nextLine);
+        if(quantity < 0){
+            quantity = 0;
+        } else if (quantity > 4){
+            quantity = 4;
+        }
+        return quantity;
+    }
 }

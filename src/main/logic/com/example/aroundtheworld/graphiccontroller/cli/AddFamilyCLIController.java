@@ -1,8 +1,11 @@
 package com.example.aroundtheworld.graphiccontroller.cli;
+import com.example.aroundtheworld.appcontroller.AddFamilyController;
 import com.example.aroundtheworld.bean.AnimalBean;
 import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyMemberBean;
+import com.example.aroundtheworld.exception.CommandErrorException;
 import com.example.aroundtheworld.exception.PhoneFormatException;
+import com.example.aroundtheworld.graphiccontroller.AddFamilyGUIController;
 import com.example.aroundtheworld.viewcli.AddFamilyViewCLI;
 
 import java.util.ArrayList;
@@ -11,8 +14,10 @@ import java.util.List;
 public class AddFamilyCLIController {
 
     private AddFamilyViewCLI addFamilyViewCLI;
+    private static final String NEW_MEMBER = "1";
+    private static final String ADD_FAMILY = "2";
     private FamilyBean familyBean;
-    private List<FamilyMemberBean> familyMemberList;
+    private List<FamilyMemberBean> familyMemberList = new ArrayList<>();
 
     public void start() {
         this.addFamilyViewCLI = new AddFamilyViewCLI(this);
@@ -22,8 +27,13 @@ public class AddFamilyCLIController {
     public void createFamily(String name, String phone, String address, String city, String house) throws PhoneFormatException {
         String email = name.toLowerCase();
         email = email.concat("@gmail.com");
+        if(house.equals("single")){
+            house = "Single";
+        }else{
+            house = "Shared";
+        }
         this.familyBean = new FamilyBean(name, city, address, phone, email);
-
+        this.familyBean.setHouse(house);
     }
 
     public void setFamilyHobbies(int travels, int sport, int nature, int books, int film, int videoGames, int cooking, int food) {
@@ -60,4 +70,24 @@ public class AddFamilyCLIController {
         this.familyBean.setAnimals(animalBeanList);
     }
 
+    public int executeNewMember(String nextLine) throws CommandErrorException {
+        int choice = 0;
+        switch(nextLine){
+            case  NEW_MEMBER -> choice = 1;
+            case  ADD_FAMILY -> choice = 2;
+            default -> throw new CommandErrorException();
+        }
+        return choice;
+    }
+
+    public void addMember(String nameM, String ageM, String parenthoodM) {
+        FamilyMemberBean familyMemberBean = new FamilyMemberBean(nameM, Integer.parseInt(ageM), parenthoodM);
+        familyMemberList.add(familyMemberBean);
+    }
+
+    public void addFamily() {
+        this.familyBean.setMembers(familyMemberList);
+        AddFamilyController addFamilyController = new AddFamilyController();
+        addFamilyController.createFamily(this.familyBean);
+    }
 }

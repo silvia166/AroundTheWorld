@@ -23,6 +23,7 @@ public class FormCLIController {
     private static final String RESIDENCE = "1";
     private static final String HOSTFAMILY = "2";
 
+
     FormViewCLI formViewCLI;
     public String executeCity(String line) throws CommandErrorException {
         String city;
@@ -128,4 +129,5 @@ public class FormCLIController {
         }
         return quantity;
     }
+
 }

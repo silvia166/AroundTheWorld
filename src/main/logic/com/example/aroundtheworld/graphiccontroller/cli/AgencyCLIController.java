@@ -1,6 +1,7 @@
 package com.example.aroundtheworld.graphiccontroller.cli;
 
 import com.example.aroundtheworld.engineering.Printer;
+import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.exception.CommandErrorException;
 import com.example.aroundtheworld.viewcli.AddFamilyViewCLI;
 import com.example.aroundtheworld.viewcli.AgencyViewCLI;
@@ -9,6 +10,7 @@ import com.example.aroundtheworld.viewcli.StudentViewCLI;
 public class AgencyCLIController implements GraphicCLIController {
     private static final String ADD_FAMILY = "1";
     private static final String MANAGE_REQUEST = "2";
+    private static final String LOGOUT = "3";
 
     private AgencyViewCLI agencyViewCLI;
     @Override
@@ -25,9 +27,11 @@ public class AgencyCLIController implements GraphicCLIController {
                 this.start();
             }
             case MANAGE_REQUEST -> {
-                ContactFamilyCLIController contactFamilyCLIController = new ContactFamilyCLIController();
-                contactFamilyCLIController.start();
-                this.start();
+            }
+            case LOGOUT -> {
+                Session.closeSession();
+                LoginCLIController loginCLIController = new LoginCLIController();
+                loginCLIController.start();
             }
             default -> throw new CommandErrorException();
         }

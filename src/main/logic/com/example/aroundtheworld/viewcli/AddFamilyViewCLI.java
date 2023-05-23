@@ -2,6 +2,7 @@ package com.example.aroundtheworld.viewcli;
 
 import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
+import com.example.aroundtheworld.exception.CommandErrorException;
 import com.example.aroundtheworld.exception.PhoneFormatException;
 import com.example.aroundtheworld.graphiccontroller.cli.AddFamilyCLIController;
 
@@ -18,6 +19,7 @@ public class AddFamilyViewCLI {
     }
 
     public void run() {
+        int choice = 1;
         Printer.printMessage("\nInsert Family Name:");
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
@@ -60,5 +62,32 @@ public class AddFamilyViewCLI {
         String ageM = formViewCLI.printMember("Member age:");
         String parenthoodM = formViewCLI.printMember("Member parenthood:");
 
+        addFamilyCLIController.addMember(nameM, ageM, parenthoodM);
+
+        choice = printNewMember();
+        do{
+            nameM = formViewCLI.printMember("Member name:");
+            ageM = formViewCLI.printMember("Member age:");
+            parenthoodM = formViewCLI.printMember("Member parenthood:");
+            addFamilyCLIController.addMember(nameM, ageM, parenthoodM);
+            choice = printNewMember();
+        }while(choice == 1);
+
+        addFamilyCLIController.addFamily();
+
+    }
+
+    public int printNewMember() {
+        int choice = 0;
+        Printer.printMessage("Select: ");
+        Printer.printMessage(" 1) Add another memeber \n 2) Add family ");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            choice = addFamilyCLIController.executeNewMember(scanner.nextLine());
+        } catch (CommandErrorException e) {
+            ShowExceptionSupport.showExceptionCLI(e.getMessage());
+            printNewMember();
+        }
+        return choice;
     }
 }

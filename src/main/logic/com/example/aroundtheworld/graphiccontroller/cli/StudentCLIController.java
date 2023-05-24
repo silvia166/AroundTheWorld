@@ -4,7 +4,6 @@ import com.example.aroundtheworld.exception.*;
 import com.example.aroundtheworld.viewcli.StudentViewCLI;
 
 public class StudentCLIController implements GraphicCLIController{
-
     private static final String BOOK_RESIDENCE = "1";
     private static final String CONTACT_FAMILY = "2";
     private static final String REQUEST_QUOTE = "3";

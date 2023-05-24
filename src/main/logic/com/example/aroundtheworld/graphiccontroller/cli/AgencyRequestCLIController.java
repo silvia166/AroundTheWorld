@@ -118,7 +118,6 @@ public class AgencyRequestCLIController implements GraphicCLIController{
         }
     }
 
-
     private void manageRequest(int id){
         RoomBean selectedRoom = null;
 

@@ -13,7 +13,6 @@ import com.example.aroundtheworld.viewcli.FamilyInfoViewCLI;
 import java.util.List;
 
 public class FamilyProfileCLIController implements GraphicCLIController{
-
     private static final String VIEW_PROFILE = "1";
     private static final String SEND_REQUEST = "2";
 

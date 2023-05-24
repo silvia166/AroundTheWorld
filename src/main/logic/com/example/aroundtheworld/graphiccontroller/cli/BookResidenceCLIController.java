@@ -10,7 +10,6 @@ import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.viewcli.BookingFormViewCLI;
 
 public class BookResidenceCLIController implements GraphicCLIController {
-
     BookingFormViewCLI bookingFormViewCLI;
 
     @Override
@@ -18,7 +17,6 @@ public class BookResidenceCLIController implements GraphicCLIController {
         this.bookingFormViewCLI = new BookingFormViewCLI(this);
         this.bookingFormViewCLI.run();
     }
-
     public void sendResidenceRequest(String city, String arrival, String departure, String room) {
         try {
             int idStudent = Session.getCurrentSession().getStudentBean().getId();

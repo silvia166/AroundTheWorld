@@ -89,7 +89,7 @@ public class StudentRequestCLIController implements GraphicCLIController{
         for(FamilyRequestBean request : familyRequestList) {
             if (request.getId() == id) {
                 if (request.getStatus() == 0) {
-                    studentRequestViewCLI.printErrorSelection("family");;
+                    studentRequestViewCLI.printErrorSelection("family");
                     displayFamilyRequests(familyRequestList);
                 } else {
                     this.familyRequestBean = request;

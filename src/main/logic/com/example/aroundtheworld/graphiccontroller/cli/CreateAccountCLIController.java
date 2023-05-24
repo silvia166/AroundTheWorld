@@ -9,7 +9,6 @@ import com.example.aroundtheworld.exception.PhoneFormatException;
 import com.example.aroundtheworld.viewcli.AccountFormViewCLI;
 
 public class CreateAccountCLIController implements GraphicCLIController{
-
     AccountFormViewCLI accountFormViewCLI;
     @Override
     public void start() {

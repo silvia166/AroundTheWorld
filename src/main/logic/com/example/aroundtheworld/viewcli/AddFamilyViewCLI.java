@@ -17,7 +17,6 @@ public class AddFamilyViewCLI {
         formViewCLI = new FormViewCLI();
 
     }
-
     public void run() {
         int choice = 1;
         Printer.printMessage("\nInsert Family Name:");

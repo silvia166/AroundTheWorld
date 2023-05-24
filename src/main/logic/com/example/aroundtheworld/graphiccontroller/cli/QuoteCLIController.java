@@ -7,7 +7,6 @@ import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.viewcli.QuoteViewCLI;
 
 public class QuoteCLIController implements GraphicCLIController{
-
     private QuoteViewCLI quoteViewCLI;
     private QuoteBean quoteBean;
 
@@ -17,7 +16,6 @@ public class QuoteCLIController implements GraphicCLIController{
         this.quoteViewCLI.run();
 
     }
-
     public void getCityActivities(String city, int permanence, int quantity, String accommodation, String room) throws NotFoundException {
         if(permanence == 2){
             quantity = quantity * 4;

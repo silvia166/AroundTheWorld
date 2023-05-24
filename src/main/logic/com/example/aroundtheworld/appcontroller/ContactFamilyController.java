@@ -166,17 +166,20 @@ public class ContactFamilyController {
 
     public void acceptRequest(FamilyRequestBean familyRequest, Pane pane) {
         familyRequest.setStatus(1);
-        familyRequest.notifyObserversFamily(familyRequest, pane);
+        if(pane != null){
+            familyRequest.notifyObserversFamily(familyRequest, pane);
+        }
         FamilyRequestDAO.updateStatus(1, familyRequest.getId());
     }
 
     public void rejectRequest(FamilyRequestBean familyRequest, Pane pane) {
-        familyRequest.notifyObserversFamily(familyRequest, pane);
+        if(pane != null){
+            familyRequest.notifyObserversFamily(familyRequest, pane);
+        }
         FamilyRequestDAO.deleteRequest(familyRequest.getId());
     }
 
     public StudentBean getStudent(FamilyRequestBean familyRequest) throws NotFoundException {
-
         Student student = StudentDAO.retrieveStudent(null, familyRequest.getIdStudentBean());
         return new StudentBean(student.getName(), student.getSurname(), student.getNationality(), student.getDateOfBirth(), student.getEmail(), student.getPhoneNumber(), student.getId());
     }

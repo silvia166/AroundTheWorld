@@ -16,7 +16,6 @@ public class LoginViewCLI {
     }
     public void run()  {
         Printer.printMessage("\n-------------------------------------------- MAIN PAGE --------------------------------------------");
-        Printer.printMessage("-------------------------------------------- commands ---------------------------------------------");
         Printer.printMessage(" 1) Login \n 2) Login with Google \n 3) Sign up \n 4) Discover a city");
         Scanner scanner = new Scanner(System.in);
         String inputLine = scanner.nextLine();

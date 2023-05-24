@@ -48,14 +48,7 @@ public class TravelStudentViewCLI {
 
     public void displayPastTravel(int id, String familyName, String city, String arrival, String departure, int rate) {
         Printer.printMessage("\nId Request: "+id);
-        if(familyName != null){
-            Printer.printMessage(familyName);
-        } else {
-            Printer.printMessage("Residence");
-        }
-        Printer.printMessage("City: " + city);
-        Printer.printMessage("Arrival: "+ arrival);
-        Printer.printMessage("Departure: "+ departure);
+        displayNextTravel(familyName,city,arrival,departure);
         if (familyName != null) {
             if (rate != 0) {
                 Printer.printMessage("Rate: " + rate);

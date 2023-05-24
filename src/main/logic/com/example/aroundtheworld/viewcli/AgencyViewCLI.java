@@ -16,7 +16,6 @@ public class AgencyViewCLI {
 
     public void run() {
         Printer.printMessage("\n-------------------------------------------- AGENCY HOMEPAGE --------------------------------------------");
-        Printer.printMessage("------------------------------------------------- commands ---------------------------------------------");
         Printer.printMessage(" 1) Add Family  \n 2) Manage Requests \n 3) Logout");
         Scanner scanner = new Scanner(System.in);
         String inputLine = scanner.nextLine();

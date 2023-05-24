@@ -15,7 +15,6 @@ public class StudentViewCLI {
 
     public void run() {
         Printer.printMessage("\n-------------------------------------------- STUDENT HOMEPAGE --------------------------------------------");
-        Printer.printMessage("------------------------------------------------- commands ---------------------------------------------");
         Printer.printMessage(" 1) Book Residence \n 2) Contact Family \n 3) Request Quote \n 4) Manage Requests \n 5) View Travels \n 6) View Profile \n 7) Logout");
         Scanner scanner = new Scanner(System.in);
         String inputLine = scanner.nextLine();

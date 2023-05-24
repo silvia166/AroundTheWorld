@@ -14,8 +14,7 @@ public class FamilyViewCLI {
     }
 
     public void run() {
-        Printer.printMessage("\n-------------------------------------------- AGENCY HOMEPAGE --------------------------------------------");
-        Printer.printMessage("------------------------------------------------- commands ---------------------------------------------");
+        Printer.printMessage("\n-------------------------------------------- FAMILY HOMEPAGE --------------------------------------------");
         Printer.printMessage(" 1) View Travels  \n 2) Manage Requests \n 3) View Profile \n 4) Logout");
         Scanner scanner = new Scanner(System.in);
         String inputLine = scanner.nextLine();

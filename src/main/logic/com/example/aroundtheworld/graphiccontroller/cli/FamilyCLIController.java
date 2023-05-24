@@ -1,9 +1,7 @@
 package com.example.aroundtheworld.graphiccontroller.cli;
 
-import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.exception.CommandErrorException;
-import com.example.aroundtheworld.viewcli.AgencyViewCLI;
 import com.example.aroundtheworld.viewcli.FamilyViewCLI;
 
 public class FamilyCLIController implements GraphicCLIController {
@@ -20,8 +18,14 @@ public class FamilyCLIController implements GraphicCLIController {
 
     public void executeCommand(String inputLine) throws CommandErrorException {
         switch (inputLine){
-            case TRAVELS -> {}
-            case REQUEST -> {}
+            case TRAVELS -> {
+                FamilyTravelsCLIController familyTravelsCLIController = new FamilyTravelsCLIController();
+                familyTravelsCLIController.start();
+            }
+            case REQUEST -> {
+                FamilyRequestCLIController familyRequestCLIController = new FamilyRequestCLIController();
+                familyRequestCLIController.start();
+            }
             case PROFILE -> {
                 FamilyInfoCLIController familyInfoCLIController = new FamilyInfoCLIController();
                 familyInfoCLIController.start();

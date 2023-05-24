@@ -17,7 +17,6 @@ public class CityViewCLI {
     }
 
     public void run(){
-        Printer.printMessage("\n----------------------------------------- DISCOVER A CITY -----------------------------------------");
         Printer.printMessage("\nSelect city:");
         Printer.printMessage(" 1) London \n 2) Rome\n 3) Paris \n 4) New York \n 5) Valencia");
         Scanner scanner = new Scanner(System.in);

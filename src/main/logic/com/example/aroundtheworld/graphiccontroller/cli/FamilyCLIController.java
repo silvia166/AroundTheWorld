@@ -27,8 +27,8 @@ public class FamilyCLIController implements GraphicCLIController {
                 familyRequestCLIController.start();
             }
             case PROFILE -> {
-                FamilyInfoCLIController familyInfoCLIController = new FamilyInfoCLIController();
-                familyInfoCLIController.start();
+                FamilyProfileCLIController familyProfileCLIController = new FamilyProfileCLIController();
+                familyProfileCLIController.start();
             }
             case LOGOUT -> {
                 Session.closeSession();

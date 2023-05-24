@@ -38,8 +38,8 @@ public class ContactFamilyCLIController implements GraphicCLIController {
         List<CompatibleFamilyBean> compatibleFamilies = null;
         try {
             compatibleFamilies = contactFamilyController.getCompatibleFamilies(familyRequestBean);
-            FamilyInfoCLIController familyInfoCLIController = new FamilyInfoCLIController();
-            familyInfoCLIController.displayCompatibleFamilies(compatibleFamilies,familyRequestBean);
+            FamilyProfileCLIController familyProfileCLIController = new FamilyProfileCLIController();
+            familyProfileCLIController.displayCompatibleFamilies(compatibleFamilies,familyRequestBean);
         } catch (MessageException | NotFoundException e) {
             ShowExceptionSupport.showExceptionCLI(e.getMessage());
         }

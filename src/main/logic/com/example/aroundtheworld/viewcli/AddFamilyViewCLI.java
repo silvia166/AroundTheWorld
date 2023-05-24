@@ -48,12 +48,12 @@ public class AddFamilyViewCLI {
         int other = formViewCLI.printAnimal("Others:");
 
         try {
-            addFamilyCLIController.createFamily(name, phone, address, city, house);
+            addFamilyCLIController.createFamily(name, phone, address, city, house, food);
         } catch (PhoneFormatException e) {
             ShowExceptionSupport.showExceptionCLI(e.getMessage());
         }
 
-        addFamilyCLIController.setFamilyHobbies(travels,sport,nature,books, film, videoGames, cooking, food);
+        addFamilyCLIController.setFamilyHobbies(travels,sport,nature,books, film, videoGames, cooking);
         addFamilyCLIController.setAnimals(dog,cat,bird,rodent,reptile,other);
 
         Printer.printMessage("Insert first member");

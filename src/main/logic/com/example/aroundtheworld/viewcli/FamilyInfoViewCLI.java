@@ -4,16 +4,16 @@ import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.CommandErrorException;
 import com.example.aroundtheworld.exception.NotFoundException;
-import com.example.aroundtheworld.graphiccontroller.cli.FamilyInfoCLIController;
+import com.example.aroundtheworld.graphiccontroller.cli.FamilyProfileCLIController;
 
 import java.util.Scanner;
 
 public class FamilyInfoViewCLI {
 
-    private FamilyInfoCLIController familyInfoCLIController;
+    private FamilyProfileCLIController familyProfileCLIController;
 
-    public FamilyInfoViewCLI(FamilyInfoCLIController familyInfoCLIController) {
-        this.familyInfoCLIController = familyInfoCLIController;
+    public FamilyInfoViewCLI(FamilyProfileCLIController familyProfileCLIController) {
+        this.familyProfileCLIController = familyProfileCLIController;
     }
 
     public void run() throws NotFoundException {
@@ -22,7 +22,7 @@ public class FamilyInfoViewCLI {
         Printer.printMessage(" 1) View Profile 2) Send Request");
         Scanner scanner = new Scanner(System.in);
         try {
-            selection = familyInfoCLIController.executeSelection(scanner.nextLine());
+            selection = familyProfileCLIController.executeSelection(scanner.nextLine());
         } catch (CommandErrorException e) {
             ShowExceptionSupport.showExceptionCLI(e.getMessage());
         }
@@ -30,9 +30,9 @@ public class FamilyInfoViewCLI {
         int idFamily = Integer.parseInt(scanner.nextLine());
 
         if(selection == 1){
-            familyInfoCLIController.viewProfile(idFamily);
+            familyProfileCLIController.viewProfile(idFamily);
         } else {
-            familyInfoCLIController.sendRequest(idFamily);
+            familyProfileCLIController.sendRequest(idFamily);
         }
     }
 

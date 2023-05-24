@@ -1,11 +1,8 @@
 package com.example.aroundtheworld.viewcli;
 
 import com.example.aroundtheworld.engineering.Printer;
-import com.example.aroundtheworld.engineering.ShowExceptionSupport;
-import com.example.aroundtheworld.exception.CommandErrorException;
 import com.example.aroundtheworld.graphiccontroller.cli.BookResidenceCLIController;
 
-import java.util.Scanner;
 
 public class BookingFormViewCLI{
     private BookResidenceCLIController bookResidenceCLIController;

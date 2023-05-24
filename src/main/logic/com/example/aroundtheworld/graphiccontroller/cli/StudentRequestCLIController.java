@@ -73,7 +73,7 @@ public class StudentRequestCLIController implements GraphicCLIController{
         return choice;
     }
 
-    public void selectID(int id, int type) throws CommandErrorException {
+    public void selectID(int id, int type) {
         if(id == 0){
             StudentCLIController studentCLIController = new StudentCLIController();
             studentCLIController.start();
@@ -89,11 +89,11 @@ public class StudentRequestCLIController implements GraphicCLIController{
         for(FamilyRequestBean request : familyRequestList) {
             if (request.getId() == id) {
                 if (request.getStatus() == 0) {
-                    studentRequestViewCLI.printActionFamily(1);
+                    studentRequestViewCLI.printErrorSelection("family");;
                     displayFamilyRequests(familyRequestList);
                 } else {
                     this.familyRequestBean = request;
-                    studentRequestViewCLI.printActionFamily(2);
+                    studentRequestViewCLI.printActionFamily();
                 }
             }
         }
@@ -103,11 +103,11 @@ public class StudentRequestCLIController implements GraphicCLIController{
         for(ResidenceRequestBean request : residenceRequestList) {
             if (request.getId() == id) {
                 if (request.getStatus() == 0) {
-                    studentRequestViewCLI.printActionResidence(1);
+                    studentRequestViewCLI.printErrorSelection("agency");
                     displayResidenceRequests(residenceRequestList);
                 } else {
                     this.residenceRequestBean = request;
-                    studentRequestViewCLI.printActionResidence(2);
+                    studentRequestViewCLI.printActionResidence();
                 }
             }
         }

@@ -33,7 +33,6 @@ public class LoginViewCLI {
         Printer.printMessage("\nInsert password:");
         String password = scanner.nextLine();
 
-        LoginCLIController loginCLIController = new LoginCLIController();
         try {
             loginCLIController.checkLogin(email, password);
         }

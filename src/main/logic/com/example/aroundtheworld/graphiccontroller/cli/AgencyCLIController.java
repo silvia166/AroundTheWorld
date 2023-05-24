@@ -1,11 +1,8 @@
 package com.example.aroundtheworld.graphiccontroller.cli;
 
-import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.exception.CommandErrorException;
-import com.example.aroundtheworld.viewcli.AddFamilyViewCLI;
 import com.example.aroundtheworld.viewcli.AgencyViewCLI;
-import com.example.aroundtheworld.viewcli.StudentViewCLI;
 
 public class AgencyCLIController implements GraphicCLIController {
     private static final String ADD_FAMILY = "1";

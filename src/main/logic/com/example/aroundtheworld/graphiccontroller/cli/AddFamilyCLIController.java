@@ -5,7 +5,6 @@ import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyMemberBean;
 import com.example.aroundtheworld.exception.CommandErrorException;
 import com.example.aroundtheworld.exception.PhoneFormatException;
-import com.example.aroundtheworld.graphiccontroller.AddFamilyGUIController;
 import com.example.aroundtheworld.viewcli.AddFamilyViewCLI;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class AddFamilyCLIController {
         this.addFamilyViewCLI.run();
     }
 
-    public void createFamily(String name, String phone, String address, String city, String house) throws PhoneFormatException {
+    public void createFamily(String name, String phone, String address, String city, String house, int food) throws PhoneFormatException {
         String email = name.toLowerCase();
         email = email.concat("@gmail.com");
         if(house.equals("single")){
@@ -34,9 +33,14 @@ public class AddFamilyCLIController {
         }
         this.familyBean = new FamilyBean(name, city, address, phone, email);
         this.familyBean.setHouse(house);
+        switch (food){
+            case 0 -> this.familyBean.setFamilyFood(1,0);
+            case 1 -> this.familyBean.setFamilyFood(0,1);
+            default -> this.familyBean.setFamilyFood(0,0);
+        }
     }
 
-    public void setFamilyHobbies(int travels, int sport, int nature, int books, int film, int videoGames, int cooking, int food) {
+    public void setFamilyHobbies(int travels, int sport, int nature, int books, int film, int videoGames, int cooking) {
         this.familyBean.setFamilyHobbies(travels,sport,books,nature,film,videoGames,cooking);
     }
 

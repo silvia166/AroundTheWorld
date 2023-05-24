@@ -50,29 +50,17 @@ public class StudentRequestViewCLI {
         Printer.printMessage("\nInsert the ID of the request you want to manage or 0 to go back");
         Scanner scanner = new Scanner(System.in);
         int id = scanner.nextInt();
-        try {
-            studentRequestCLIController.selectID(id, type);
-        } catch (CommandErrorException e) {
-            ShowExceptionSupport.showExceptionCLI(e.getMessage());
-        }
+        studentRequestCLIController.selectID(id, type);
     }
 
-    public void printActionResidence(int i) {
-        if (i == 1) {
-            Printer.printMessage("\nYou selected a pending request, wait for the agency to manage it");
-            Printer.printMessage("Press ENTER to continue");
-            ScannerSupport.waitEnter();
-            StudentCLIController studentCLIController = new StudentCLIController();
-            studentCLIController.start();
-        } else {
-            Printer.printMessage("\n 1) Accept request \n 2) Reject request \n 3) Back");
-            Scanner scanner = new Scanner(System.in);
-            String choice = scanner.nextLine();
-            try {
-                studentRequestCLIController.executeAction(choice,1);
-            } catch (CommandErrorException e) {
-                ShowExceptionSupport.showExceptionCLI(e.getMessage());
-            }
+    public void printActionResidence() {
+        Printer.printMessage("\n 1) Accept request \n 2) Reject request \n 3) Back");
+        Scanner scanner = new Scanner(System.in);
+        String choice = scanner.nextLine();
+        try {
+            studentRequestCLIController.executeAction(choice, 1);
+        } catch (CommandErrorException e) {
+            ShowExceptionSupport.showExceptionCLI(e.getMessage());
         }
     }
     public void printNoRequest() {
@@ -92,22 +80,22 @@ public class StudentRequestViewCLI {
         Printer.printMessage(label);
     }
 
-    public void printActionFamily(int i) {
-        if (i == 1) {
-            Printer.printMessage("\nYou selected a pending request, wait for the family to manage it");
-            Printer.printMessage("Press ENTER to continue");
-            ScannerSupport.waitEnter();
-            StudentCLIController studentCLIController = new StudentCLIController();
-            studentCLIController.start();
-        } else {
-            Printer.printMessage("\n 1) Book travel \n 2) Reject \n 3) Back");
-            Scanner scanner = new Scanner(System.in);
-            String choice = scanner.nextLine();
-            try {
-                studentRequestCLIController.executeAction(choice,2);
-            } catch (CommandErrorException e) {
-                ShowExceptionSupport.showExceptionCLI(e.getMessage());
-            }
+    public void printActionFamily() {
+        Printer.printMessage("\n 1) Book travel \n 2) Reject \n 3) Back");
+        Scanner scanner = new Scanner(System.in);
+        String choice = scanner.nextLine();
+        try {
+            studentRequestCLIController.executeAction(choice, 2);
+        } catch (CommandErrorException e) {
+            ShowExceptionSupport.showExceptionCLI(e.getMessage());
         }
+    }
+
+    public void printErrorSelection(String type){
+        Printer.printMessage("\nYou selected a pending request, wait for the " +type+" to manage it");
+        Printer.printMessage("Press ENTER to continue");
+        ScannerSupport.waitEnter();
+        StudentCLIController studentCLIController = new StudentCLIController();
+        studentCLIController.start();
     }
 }

@@ -1,6 +1,5 @@
 package com.example.aroundtheworld.viewcli;
 
-import com.example.aroundtheworld.appcontroller.ContactFamilyController;
 import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.CommandErrorException;
@@ -12,7 +11,6 @@ import java.util.Scanner;
 public class FamilyInfoViewCLI {
 
     private FamilyInfoCLIController familyInfoCLIController;
-    private ContactFamilyController contactFamilyController;
 
     public FamilyInfoViewCLI(FamilyInfoCLIController familyInfoCLIController) {
         this.familyInfoCLIController = familyInfoCLIController;
@@ -33,7 +31,7 @@ public class FamilyInfoViewCLI {
 
         if(selection == 1){
             familyInfoCLIController.viewProfile(idFamily);
-        }else{
+        } else {
             familyInfoCLIController.sendRequest(idFamily);
         }
     }
@@ -95,7 +93,7 @@ public class FamilyInfoViewCLI {
         Printer.printMessage(name + " " + age + " " + parenthood);
     }
 
-    public void displayContinueMessagge() {
+    public void displayContinueMessage() {
         Printer.printMessage("\nPress ENTER to continue");
     }
 

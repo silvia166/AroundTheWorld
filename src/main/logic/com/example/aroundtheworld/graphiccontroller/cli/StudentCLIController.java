@@ -40,7 +40,10 @@ public class StudentCLIController implements GraphicCLIController{
                 StudentRequestCLIController studentRequestCLIController = new StudentRequestCLIController();
                 studentRequestCLIController.start();
             }
-            case VIEW_TRAVELS -> {}
+            case VIEW_TRAVELS -> {
+                TravelsStudentCLIController travelsStudentCLIController = new TravelsStudentCLIController();
+                travelsStudentCLIController.start();
+            }
             case VIEW_PROFILE -> {
                 StudentProfileCLIController studentProfileCLIController = new StudentProfileCLIController();
                 studentProfileCLIController.start();

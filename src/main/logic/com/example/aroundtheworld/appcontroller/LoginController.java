@@ -1,9 +1,7 @@
 package com.example.aroundtheworld.appcontroller;
 
 import com.example.aroundtheworld.bean.*;
-import com.example.aroundtheworld.dao.FamilyDAO;
-import com.example.aroundtheworld.dao.LoginDAO;
-import com.example.aroundtheworld.dao.StudentDAO;
+import com.example.aroundtheworld.dao.*;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Animal;
@@ -11,11 +9,21 @@ import com.example.aroundtheworld.model.Family;
 import com.example.aroundtheworld.model.FamilyMember;
 import com.example.aroundtheworld.model.Student;
 
+import java.time.LocalTime;
+
 
 public class LoginController {
     public void checkUser(LoginBean loginBean) {
-            int role = LoginDAO.checkUser(loginBean.getUsername(),loginBean.getPassword());
-            loginBean.setRole(role);
+
+        LoginDAO loginDAO;
+        if (LocalTime.now().getMinute()%2 == 0) {
+            loginDAO = new LoginDAOJDBC();
+        } else {
+            loginDAO = new LoginDAOCSV();
+        }
+
+        int role = loginDAO.checkUser(loginBean.getUsername(),loginBean.getPassword());
+        loginBean.setRole(role);
     }
 
     public void studentLogin(LoginBean loginBean) throws NotFoundException {

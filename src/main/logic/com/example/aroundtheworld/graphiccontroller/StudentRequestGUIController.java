@@ -25,7 +25,7 @@ public class StudentRequestGUIController implements Observer {
     @FXML
     private HBox residenceReqList;
 
-    public void initialize() throws IOException {
+    public void setStudentRequests() throws IOException {
 
         StudentBean studentBean = Session.getCurrentSession().getStudentBean();
         ReserveRoomController reserveRoomController = new ReserveRoomController();

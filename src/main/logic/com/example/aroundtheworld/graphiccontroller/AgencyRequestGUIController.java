@@ -40,7 +40,7 @@ public class AgencyRequestGUIController implements Observer {
         agencyGUIController.toHomepageAgency();
     }
 
-    public void initialize() throws NotFoundException, IOException {
+    public void setAgencyRequests() throws NotFoundException, IOException {
 
         ReserveRoomController reserveRoomController = new ReserveRoomController();
         List<ResidenceRequestBean> requestList = reserveRoomController.getResidenceRequests();

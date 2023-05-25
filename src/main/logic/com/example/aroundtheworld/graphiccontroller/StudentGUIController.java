@@ -56,8 +56,11 @@ public class StudentGUIController {
 
     public void toRequestStudent() throws IOException {
         Stage stage = Main.getStage();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("requestStudent.fxml")));
-        scene = new Scene(root);
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(Main.class.getResource("requestStudent.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        StudentRequestGUIController studentRequestGUIController = fxmlLoader.getController();
+        studentRequestGUIController.setStudentRequests();
         stage.setScene(scene);
         stage.show();
     }

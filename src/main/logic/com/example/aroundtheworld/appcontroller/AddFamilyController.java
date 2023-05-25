@@ -8,7 +8,6 @@ import com.example.aroundtheworld.dao.FamilyDAO;
 import com.example.aroundtheworld.dao.FamilyMemberDAO;
 import com.example.aroundtheworld.dao.FamilyPreferencesDAO;
 import com.example.aroundtheworld.engineering.Printer;
-import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.model.FamilyPreferences;
 
 import java.io.*;

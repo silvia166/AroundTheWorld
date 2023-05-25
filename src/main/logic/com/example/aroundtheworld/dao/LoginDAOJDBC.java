@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginDAOJDBC implements LoginDAO{
-    public LoginDAOJDBC() {}
     @Override
     public int checkUser(String username, String password) {
         Connection connection;

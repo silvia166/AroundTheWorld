@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class AgencyGUIController {
-    Scene scene;
+
     public void toAddFamily() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("newFamilyForm.fxml"));
         Parent root1 = fxmlLoader.load();
@@ -38,7 +38,7 @@ public class AgencyGUIController {
     public void toHomepageAgency() throws IOException {
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageAgency.fxml")));
-        scene = new Scene(root);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

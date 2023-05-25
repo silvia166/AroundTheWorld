@@ -1,7 +1,6 @@
 package com.example.aroundtheworld.dao;
 
 import com.example.aroundtheworld.engineering.Printer;
-import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.NotFoundException;
 
 import java.io.*;

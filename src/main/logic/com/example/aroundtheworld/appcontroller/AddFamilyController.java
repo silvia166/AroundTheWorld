@@ -7,6 +7,8 @@ import com.example.aroundtheworld.dao.AnimalDAO;
 import com.example.aroundtheworld.dao.FamilyDAO;
 import com.example.aroundtheworld.dao.FamilyMemberDAO;
 import com.example.aroundtheworld.dao.FamilyPreferencesDAO;
+import com.example.aroundtheworld.engineering.Printer;
+import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.model.FamilyPreferences;
 
 import java.io.*;
@@ -38,12 +40,11 @@ public class AddFamilyController {
         File file = new File(CSV_FILE_NAME);
 
         try {
-            BufferedReader input = new BufferedReader(new StringReader(user));
             PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(file, true)));
             output.println(user);
             output.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            Printer.printError(e.getMessage());
         }
     }
 }

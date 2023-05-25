@@ -11,12 +11,10 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class StudentGUIController {
-    Stage dialog;
-    Scene scene;
 
     public void toContactFamily() throws IOException {
 
-        dialog = new Stage();
+        Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initStyle(StageStyle.UNDECORATED);
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("contactFamilyForm.fxml"));
@@ -29,7 +27,7 @@ public class StudentGUIController {
     public void toBookingResidence() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("residenceForm.fxml"));
         Parent root1 = fxmlLoader.load();
-        dialog = new Stage();
+        Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initStyle(StageStyle.UNDECORATED);
         dialog.setScene(new Scene(root1));
@@ -41,7 +39,7 @@ public class StudentGUIController {
     public void toTravelStudent() throws IOException {
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("travelStudent.fxml")));
-        scene = new Scene(root);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
@@ -49,7 +47,7 @@ public class StudentGUIController {
     public void toProfileStudent() throws IOException {
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("profileStudent.fxml")));
-        scene = new Scene(root);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
@@ -68,7 +66,7 @@ public class StudentGUIController {
     public void toHomepageStudent() throws IOException {
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("homepageStudent.fxml")));
-        scene = new Scene(root);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
@@ -81,7 +79,7 @@ public class StudentGUIController {
     public void quoteForm() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("quoteForm.fxml"));
         Parent root1 = fxmlLoader.load();
-        dialog = new Stage();
+        Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initStyle(StageStyle.UNDECORATED);
         dialog.setScene(new Scene(root1));

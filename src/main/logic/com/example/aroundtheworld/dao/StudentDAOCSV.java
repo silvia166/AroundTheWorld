@@ -41,6 +41,7 @@ public class StudentDAOCSV extends StudentDAO{
             if(student == null){
                 throw new NotFoundException("No student found");
             }
+            bufferedReader.close();
         }catch(NotFoundException | IOException e){
             Printer.printError(e.getMessage());
         }
@@ -71,6 +72,7 @@ public class StudentDAOCSV extends StudentDAO{
             if(studentName == null){
                 throw new NotFoundException("No student found");
             }
+            bufferedReader.close();
         }catch(NotFoundException | IOException e){
             Printer.printError(e.getMessage());
         }

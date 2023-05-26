@@ -4,6 +4,8 @@ import com.example.aroundtheworld.bean.*;
 import com.example.aroundtheworld.dao.FamilyDAO;
 import com.example.aroundtheworld.dao.FamilyRequestDAO;
 import com.example.aroundtheworld.dao.StudentDAO;
+import com.example.aroundtheworld.dao.StudentDAOJDBC;
+import com.example.aroundtheworld.engineering.factory.StudentDAOFactory;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.NotFoundException;
@@ -180,7 +182,9 @@ public class ContactFamilyController {
     }
 
     public StudentBean getStudent(FamilyRequestBean familyRequest) throws NotFoundException {
-        Student student = StudentDAO.retrieveStudent(null, familyRequest.getIdStudentBean());
+
+        StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
+        Student student = studentDAO.retrieveStudent(null, familyRequest.getIdStudentBean());
         return new StudentBean(student.getName(), student.getSurname(), student.getNationality(), student.getDateOfBirth(), student.getEmail(), student.getPhoneNumber(), student.getId());
     }
 }

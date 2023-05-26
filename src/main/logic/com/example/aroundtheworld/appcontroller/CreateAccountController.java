@@ -2,7 +2,9 @@ package com.example.aroundtheworld.appcontroller;
 
 import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.dao.StudentDAO;
+import com.example.aroundtheworld.dao.StudentDAOJDBC;
 import com.example.aroundtheworld.engineering.Printer;
+import com.example.aroundtheworld.engineering.factory.StudentDAOFactory;
 import com.example.aroundtheworld.exception.MessageException;
 
 import java.io.*;
@@ -13,7 +15,8 @@ public class CreateAccountController {
     private static final String CSV_FILE_NAME = "src/main/res/Users.csv";
     public void createAccount(StudentBean studentBean) throws MessageException {
         checkBirth(studentBean.getBirth());
-        StudentDAO.addStudent(studentBean.getName(), studentBean.getSurname(), studentBean.getBirth(), studentBean.getNationality(), studentBean.getPhoneNumber(), studentBean.getEmail(), studentBean.getPassword());
+        StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
+        studentDAO.addStudent(studentBean.getName(), studentBean.getSurname(), studentBean.getBirth(), studentBean.getNationality(), studentBean.getPhoneNumber(), studentBean.getEmail(), studentBean.getPassword());
 
         String user = studentBean.getEmail();
         user = user.concat(",");

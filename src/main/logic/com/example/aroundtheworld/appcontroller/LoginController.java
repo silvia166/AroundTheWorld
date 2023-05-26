@@ -3,31 +3,27 @@ package com.example.aroundtheworld.appcontroller;
 import com.example.aroundtheworld.bean.*;
 import com.example.aroundtheworld.dao.*;
 import com.example.aroundtheworld.engineering.Session;
+import com.example.aroundtheworld.engineering.factory.LoginDAOFactory;
+import com.example.aroundtheworld.engineering.factory.StudentDAOFactory;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Animal;
 import com.example.aroundtheworld.model.Family;
 import com.example.aroundtheworld.model.FamilyMember;
 import com.example.aroundtheworld.model.Student;
 
-import java.time.LocalTime;
-
 
 public class LoginController {
     public void checkUser(LoginBean loginBean) {
 
-        LoginDAO loginDAO;
-        if (LocalTime.now().getMinute()%2 == 0) {
-            loginDAO = new LoginDAOJDBC();
-        } else {
-            loginDAO = new LoginDAOCSV();
-        }
+        LoginDAO loginDAO = LoginDAOFactory.getInstance().createLoginDAO();
 
         int role = loginDAO.checkUser(loginBean.getUsername(),loginBean.getPassword());
         loginBean.setRole(role);
     }
 
     public void studentLogin(LoginBean loginBean) throws NotFoundException {
-        Student student = StudentDAO.retrieveStudent(loginBean.getUsername(),0);
+        StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
+        Student student = studentDAO.retrieveStudent(loginBean.getUsername(),0);
 
         StudentBean studentBean = new StudentBean(student.getName(), student.getSurname(), student.getNationality(), student.getDateOfBirth(), student.getEmail(), student.getPhoneNumber(), student.getId());
         Session.setSessionInstance(studentBean);

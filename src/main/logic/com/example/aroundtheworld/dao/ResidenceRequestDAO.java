@@ -4,6 +4,7 @@ import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.engineering.Printer;
+import com.example.aroundtheworld.engineering.factory.StudentDAOFactory;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.ResidenceRequest;
@@ -70,7 +71,8 @@ public class ResidenceRequestDAO {
                     int roomNum = resultSet.getInt(ROOMNUMBER);
 
                     String city = ResidenceDAO.retrieveResidencebyId(idResidence);
-                    String studentName = StudentDAO.getNameById(idStudent);
+                    StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
+                    String studentName = studentDAO.getNameById(idStudent);
 
                     residenceRequest = new ResidenceRequest(city, arrival.toString(), departure.toString(), room, idStudent, status);
                     residenceRequest.setIdResidence(idResidence);

@@ -4,6 +4,7 @@ import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.engineering.Printer;
+import com.example.aroundtheworld.engineering.factory.StudentDAOFactory;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.model.*;
 
@@ -94,7 +95,8 @@ public class FamilyRequestDAO {
                     int cooking = resultSet.getInt(COOKING);
                     String compatibility = resultSet.getString(COMPATIBILITY);
 
-                    String studentName = StudentDAO.getNameById(studentId);
+                    StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
+                    String studentName = studentDAO.getNameById(studentId);
 
                     familyRequest = new FamilyRequest(city, arrival.toString(), departure.toString(), siblings, animals, studentId, status);
 

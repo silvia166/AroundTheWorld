@@ -3,10 +3,8 @@ package com.example.aroundtheworld.appcontroller;
 import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.bean.TravelBean;
-import com.example.aroundtheworld.dao.FamilyDAO;
-import com.example.aroundtheworld.dao.FamilyRequestDAO;
-import com.example.aroundtheworld.dao.ResidenceRequestDAO;
-import com.example.aroundtheworld.dao.StudentDAO;
+import com.example.aroundtheworld.dao.*;
+import com.example.aroundtheworld.engineering.factory.StudentDAOFactory;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Family;
 import com.example.aroundtheworld.model.FamilyRequest;
@@ -23,7 +21,8 @@ public class TravelsController {
         List<FamilyRequest> requests = FamilyRequestDAO.retrieveTravelsByFamily(familyBean.getId());
 
         for (FamilyRequest request : requests) {
-            Student student = StudentDAO.retrieveStudent(null, request.getIdStudent());
+            StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
+            Student student = studentDAO.retrieveStudent(null, request.getIdStudent());
             int currYear = Year.now().getValue();
             int birthYear = Integer.parseInt(String.format("%." + 4 + "s", student.getDateOfBirth()));
             int age = currYear - birthYear;

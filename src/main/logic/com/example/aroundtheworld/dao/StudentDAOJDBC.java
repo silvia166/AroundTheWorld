@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class StudentDAOJDBC implements StudentDAO{
+public class StudentDAOJDBC extends StudentDAO{
     private static final String ID = "idStudent";
     private static final String NAME = "name";
     private static final String SURNAME = "surname";
@@ -61,21 +61,6 @@ public class StudentDAOJDBC implements StudentDAO{
         return student;
     }
 
-    @Override
-    public void addStudent(String name, String surname, String birth, String nationality, String phoneNumber, String email, String password) {
-        Connection connection;
-
-        try{
-            connection = ConnectionDB.getConnection();
-
-            CRUDQueries.insertUser(connection, email, password, "student");
-            CRUDQueries.insertStudent(connection, name, surname, birth, nationality, phoneNumber, email);
-
-        } catch(SQLException e) {
-            Printer.printError(e.getMessage());
-        }
-
-    }
     @Override
     public String getNameById(int idStudent) {
         Connection connection;

@@ -17,21 +17,6 @@ public class CreateAccountController {
         checkBirth(studentBean.getBirth());
         StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
         studentDAO.addStudent(studentBean.getName(), studentBean.getSurname(), studentBean.getBirth(), studentBean.getNationality(), studentBean.getPhoneNumber(), studentBean.getEmail(), studentBean.getPassword());
-
-        String user = studentBean.getEmail();
-        user = user.concat(",");
-        user = user.concat(studentBean.getPassword());
-        user = user.concat(",student");
-
-        File file = new File(CSV_FILE_NAME);
-
-        try {
-            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(file, true)));
-            output.println(user);
-            output.close();
-        } catch (IOException e) {
-            Printer.printError(e.getMessage());
-        }
     }
 
         private void checkBirth(String birth) throws MessageException {

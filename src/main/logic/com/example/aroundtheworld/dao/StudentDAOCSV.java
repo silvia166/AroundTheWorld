@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class StudentDAOCSV implements StudentDAO{
+public class StudentDAOCSV extends StudentDAO{
 
     private static final String CSV_FILE_NAME = "src/main/res/Students.csv";
     private static final int IDSTUDENT = 0;
@@ -46,12 +46,6 @@ public class StudentDAOCSV implements StudentDAO{
         }
 
         return student;
-    }
-
-    @Override
-    public void addStudent(String name, String surname, String birth, String nationality, String phoneNumber, String email, String password) {
-
-
     }
 
     @Override

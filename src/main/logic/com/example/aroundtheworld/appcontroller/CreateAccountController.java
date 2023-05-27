@@ -2,8 +2,6 @@ package com.example.aroundtheworld.appcontroller;
 
 import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.dao.StudentDAO;
-import com.example.aroundtheworld.dao.StudentDAOJDBC;
-import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.engineering.factory.StudentDAOFactory;
 import com.example.aroundtheworld.exception.MessageException;
 
@@ -12,7 +10,6 @@ import java.time.LocalDate;
 
 public class CreateAccountController {
 
-    private static final String CSV_FILE_NAME = "src/main/res/Users.csv";
     public void createAccount(StudentBean studentBean) throws MessageException {
         checkBirth(studentBean.getBirth());
         StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();

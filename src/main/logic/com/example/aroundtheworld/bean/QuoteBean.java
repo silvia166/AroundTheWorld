@@ -16,7 +16,6 @@ public class QuoteBean {
         this.weeks = weeks;
         this.accommodation = accommodation;
         this.room = room;
-
     }
     public void setActivity1(int activity1) {
         this.activity1 = activity1;

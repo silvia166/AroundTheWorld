@@ -4,7 +4,6 @@ import com.example.aroundtheworld.bean.*;
 import com.example.aroundtheworld.dao.FamilyDAO;
 import com.example.aroundtheworld.dao.FamilyRequestDAO;
 import com.example.aroundtheworld.dao.StudentDAO;
-import com.example.aroundtheworld.dao.StudentDAOJDBC;
 import com.example.aroundtheworld.engineering.factory.StudentDAOFactory;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.MessageException;
@@ -33,7 +32,7 @@ public class ContactFamilyController {
             checked++;
         }
         for (FamilyMember member : family.getMembers()) {
-            if ((member.getParenthood().equals("Sister") || member.getParenthood().equals("Brother") || member.getParenthood().equals("Cousin")) && siblings == 0) {
+            if (member.getParenthood().equals("Sister") || member.getParenthood().equals("Brother") || member.getParenthood().equals("Cousin")) {
                 siblings = 1;
             }
         }
@@ -181,7 +180,7 @@ public class ContactFamilyController {
         FamilyRequestDAO.deleteRequest(familyRequest.getId());
     }
 
-    public StudentBean getStudent(FamilyRequestBean familyRequest) throws NotFoundException {
+    public StudentBean getStudent(FamilyRequestBean familyRequest) {
 
         StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
         Student student = studentDAO.retrieveStudent(null, familyRequest.getIdStudentBean());

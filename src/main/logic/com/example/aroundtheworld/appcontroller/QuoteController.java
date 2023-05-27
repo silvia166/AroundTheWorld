@@ -119,7 +119,6 @@ public class QuoteController {
     }
 
 
-
     private Quote addStandardInformation(QuoteBean quoteBean, Quote quote) {
         if(quoteBean.getAccommodation().equals("host family")){
             quote = new HostFamilyDecorator(quote, quoteBean.getWeeks());

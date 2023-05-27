@@ -1,6 +1,5 @@
 package com.example.aroundtheworld.dao;
 
-import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Student;
@@ -34,7 +33,11 @@ public class StudentDAOCSV extends StudentDAO{
 
             while((row = bufferedReader.readLine()) != null){
                 data = row.split(",");
-                if((id == 0 && data[EMAIL].equals(username)) || (username == null && data[IDSTUDENT].equals(id)) ) {
+                if(username != null){
+                    if(data[EMAIL].equals(username))
+                        student = new Student(data[NAME], data[SURNAME], data[NATIONALITY], data[BIRTH], data[EMAIL], data[PHONE], Integer.parseInt(data[IDSTUDENT]));
+                } else if (id != 0){
+                    if(data[IDSTUDENT].equals(id))
                     student = new Student(data[NAME], data[SURNAME], data[NATIONALITY], data[BIRTH], data[EMAIL], data[PHONE], Integer.parseInt(data[IDSTUDENT]));
                 }
             }
@@ -48,6 +51,7 @@ public class StudentDAOCSV extends StudentDAO{
 
         return student;
     }
+
 
     @Override
     public String getNameById(int idStudent) {

@@ -6,6 +6,7 @@ import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.engineering.factory.StudentDAOFactory;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
+import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.*;
 
 import java.sql.Connection;
@@ -265,5 +266,24 @@ public class FamilyRequestDAO {
         } catch (SQLException e) {
             Printer.printError(e.getMessage());
         }
+    }
+
+    public static int getNumberOfRequests(int id) {
+        Connection connection;
+        int number = 0;
+
+        try {
+            connection = ConnectionDB.getConnection();
+
+            ResultSet resultSet = SimpleQueries.getNumberOfRequests(connection, id);
+            if(!resultSet.first()) {
+                throw new NotFoundException("No family found");
+            }
+            resultSet.first();
+            number = resultSet.getInt(0);
+        } catch (SQLException | NotFoundException e) {
+            Printer.printError(e.getMessage());
+        }
+        return number;
     }
 }

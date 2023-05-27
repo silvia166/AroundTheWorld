@@ -218,7 +218,7 @@ public class SimpleQueries {
     }
 
     public static ResultSet getNumberOfRequests(Connection connection, int id) throws SQLException {
-        String sql = "SELECT count(*) FROM familyRequest WHERE idFamily = ?";
+        String sql = "SELECT count(*) as requests FROM familyRequest WHERE idFamily = ?";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,id);
         return preparedStatement.executeQuery();

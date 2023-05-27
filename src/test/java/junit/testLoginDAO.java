@@ -8,7 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class testLoginDAO {
 
-    /* Il seguente test verifica che venga ritornato il tipo di ruolo
+    /* SILVIA PERELLI
+       Il seguente test verifica che venga ritornato il tipo di ruolo
        corretto quando viene effettuato il login con il profilo di una famiglia */
 
     @Test

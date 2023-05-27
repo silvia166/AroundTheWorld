@@ -28,7 +28,7 @@ public class ContactFamilyController {
 
         int checked = checkPreferences(preferences, family.getPreferences());
 
-        if(family.getAnimals().isEmpty() && familyRequestBean.getAnimalsBean() == 0){
+        if((family.getAnimals().isEmpty() && familyRequestBean.getAnimalsBean() == 0) || (!family.getAnimals().isEmpty() && familyRequestBean.getAnimalsBean() == 1)){
             checked++;
         }
         for (FamilyMember member : family.getMembers()) {

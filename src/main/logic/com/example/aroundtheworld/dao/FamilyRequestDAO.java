@@ -280,7 +280,7 @@ public class FamilyRequestDAO {
                 throw new NotFoundException("No family found");
             }
             resultSet.first();
-            number = resultSet.getInt(0);
+            number = resultSet.getInt("requests");
         } catch (SQLException | NotFoundException e) {
             Printer.printError(e.getMessage());
         }

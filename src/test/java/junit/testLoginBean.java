@@ -9,9 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class testLoginBean {
 
-    /* il seguente test verifica se viene lanciata l'eccezione
-       EmailFormatException quando viene creata un'istanza di LoginBean passando
-       una mail con un formato sintatticamente errato */
+      /* SARA MALASPINA
+         Il seguente test verifica se viene lanciata l'eccezione
+         EmailFormatException quando viene creata un'istanza di LoginBean passando
+         una mail con un formato sintatticamente errato */
 
     @Test
     void testValidEmail() {

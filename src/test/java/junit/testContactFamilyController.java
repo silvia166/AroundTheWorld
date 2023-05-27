@@ -9,8 +9,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class testContactFamilyController {
-    /* il seguente test verifica che venga calcolata la giusta compatibilità tra
-      la richiesta per una famiglia e una determinata famiglia */
+
+    /* SARA MALASPINA
+       Il seguente test verifica che venga calcolata la giusta compatibilità tra
+       la richiesta per una famiglia e una determinata famiglia */
 
     @Test
     void testCalculateCompatibility() {
@@ -20,7 +22,7 @@ class testContactFamilyController {
         familyRequestBean.setHouse("single");
         familyRequestBean.setFood(1,0);
         try {
-            Family family = FamilyDAO.retrieveFamily("cesaroni@gmail.com");
+            Family family = FamilyDAO.retrieveFamily("barbieri@gmail.com");
             ContactFamilyController contactFamilyController = new ContactFamilyController();
             compatibility = contactFamilyController.calculateCompatibility(familyRequestBean,family);
         } catch (Exception ignore) {

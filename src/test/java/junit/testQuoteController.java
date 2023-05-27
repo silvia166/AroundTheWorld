@@ -7,8 +7,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class testQuoteController {
-    /* Il seguente test verifica che venga restituito il preventivo aspettato
-    tramite l'uso del pattern decorator, secondo specifiche caratteristiche scelte */
+
+    /* SILVIA PERELLI
+       Il seguente test verifica che venga restituito il preventivo aspettato
+       tramite l'uso del pattern decorator, secondo specifiche caratteristiche scelte */
 
     @Test
     void testCalculateQuote(){

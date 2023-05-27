@@ -10,8 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class testFamilyRequestDAO {
 
-    /* Il seguente test verifica che dopo l'aggiunta di una nuova richiesta per una famiglia, chiamando un
-     metodo del DAO che restituisce il numero di richieste per quella famiglia, questo venga incrementato di 1 */
+      /* SARA MALASPINA
+         Il seguente test verifica che dopo l'aggiunta di una nuova richiesta per una famiglia, chiamando un
+         metodo del DAO che restituisce il numero di richieste per quella famiglia, questo venga incrementato di 1 */
 
     @Test
     void testNewRequest(){

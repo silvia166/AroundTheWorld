@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class StudentDAOCSV extends StudentDAO{
+public class StudentDAOCSV extends StudentDAO {
 
     private static final String CSV_FILE_NAME = "src/main/res/Students.csv";
     private static final int IDSTUDENT = 0;
@@ -22,7 +22,6 @@ public class StudentDAOCSV extends StudentDAO{
 
     @Override
     public Student retrieveStudent(String username, int id) {
-
         Student student = null;
 
         try{
@@ -36,9 +35,9 @@ public class StudentDAOCSV extends StudentDAO{
                 if(username != null){
                     if(data[EMAIL].equals(username))
                         student = new Student(data[NAME], data[SURNAME], data[NATIONALITY], data[BIRTH], data[EMAIL], data[PHONE], Integer.parseInt(data[IDSTUDENT]));
-                } else if (id != 0){
-                    if(data[IDSTUDENT].equals(id))
-                    student = new Student(data[NAME], data[SURNAME], data[NATIONALITY], data[BIRTH], data[EMAIL], data[PHONE], Integer.parseInt(data[IDSTUDENT]));
+                } else {
+                    if(Integer.parseInt(data[IDSTUDENT]) == id)
+                        student = new Student(data[NAME], data[SURNAME], data[NATIONALITY], data[BIRTH], data[EMAIL], data[PHONE], Integer.parseInt(data[IDSTUDENT]));
                 }
             }
             if(student == null){

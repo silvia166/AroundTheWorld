@@ -9,8 +9,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class testBookingResidenceController {
 
-    /* Il seguente test verifica che venga sollevata un'eccezione quando
-    viene inviata una richiesta con una data di arrivo precedente alla data corrente */
+    /* SILVIA PERELLI
+       Il seguente test verifica che venga sollevata un'eccezione quando
+       viene inviata una richiesta con una data di arrivo precedente alla data corrente */
 
     @Test
     void testSendRequest(){

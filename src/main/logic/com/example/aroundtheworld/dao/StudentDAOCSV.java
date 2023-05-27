@@ -64,7 +64,7 @@ public class StudentDAOCSV extends StudentDAO {
 
             while((row = bufferedReader.readLine()) != null){
                 data = row.split(",");
-                if(data[IDSTUDENT].equals(idStudent)) {
+                if(Integer.parseInt(data[IDSTUDENT]) == idStudent) {
                     String name = data[NAME];
                     String surname = data[SURNAME];
                     studentName = name;

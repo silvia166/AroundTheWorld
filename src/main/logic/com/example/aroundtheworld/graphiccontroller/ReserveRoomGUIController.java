@@ -3,6 +3,8 @@ package com.example.aroundtheworld.graphiccontroller;
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.bean.RoomBean;
 import com.example.aroundtheworld.appcontroller.ReserveRoomController;
+import com.example.aroundtheworld.engineering.ShowExceptionSupport;
+import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.NoAvailableRoomsException;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,7 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
@@ -80,7 +81,7 @@ public class ReserveRoomGUIController {
     }
 
     @FXML
-    void getSelectedRoom(MouseEvent event) {
+    void getSelectedRoom() {
         int index = roomsTableView.getSelectionModel().getSelectedIndex();
         String typeSelected = typeColumn.getCellData(index);
         if(requestBean.getRoom().equals(typeSelected)){
@@ -90,16 +91,22 @@ public class ReserveRoomGUIController {
         }
     }
 
-    public void selectRoom(ActionEvent event){
-        ReserveRoomController reserveRoomController = new ReserveRoomController();
-        RoomBean selectedRoom = roomsTableView.getSelectionModel().getSelectedItem();
-        if(roomBtn.getText().equals("Reserve room")){
-            reserveRoomController.reserveRoom(selectedRoom, requestBean, 2, this.pane);
-        } else {
-            reserveRoomController.reserveRoom(selectedRoom, requestBean, 1, this.pane);
+    public void selectRoom(ActionEvent event) throws IOException {
+        try {
+            ReserveRoomController reserveRoomController = new ReserveRoomController();
+            RoomBean selectedRoom = roomsTableView.getSelectionModel().getSelectedItem();
+            if (selectedRoom == null) {
+                throw new MessageException("Room must be selected");
+            }
+            if (roomBtn.getText().equals("Reserve room")) {
+                reserveRoomController.reserveRoom(selectedRoom, requestBean, 2, this.pane);
+            } else {
+                reserveRoomController.reserveRoom(selectedRoom, requestBean, 1, this.pane);
+            }
+            ((Node) event.getSource()).getScene().getWindow().hide();
+        } catch (MessageException e) {
+            ShowExceptionSupport.showException(e.getMessage());
         }
-
-        ((Node)event.getSource()).getScene().getWindow().hide();
     }
 
     public void backButton(ActionEvent event) throws IOException {

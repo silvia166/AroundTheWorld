@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class testLoginBean {
+class TestLoginBean {
 
       /* SARA MALASPINA
          Il seguente test verifica se viene lanciata l'eccezione

@@ -1,14 +1,13 @@
 package junit;
 
 import com.example.aroundtheworld.dao.FamilyRequestDAO;
-import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.model.FamilyPreferences;
 import com.example.aroundtheworld.model.FamilyRequest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class testFamilyRequestDAO {
+class TestFamilyRequestDAO {
 
       /* SARA MALASPINA
          Il seguente test verifica che dopo l'aggiunta di una nuova richiesta per una famiglia, chiamando un

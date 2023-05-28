@@ -34,7 +34,7 @@ public abstract class StudentDAO {
         user = user.concat(password);
         user = user.concat(",student");
 
-        String last_id = null;
+        int lastId = 0;
         String line;
         String[] data;
         try {
@@ -43,16 +43,15 @@ public abstract class StudentDAO {
 
             while((line = readFromFile.readLine()) != null){
                 data = line.split(",");
-                last_id = data[IDSTUDENT];
+                lastId = Integer.parseInt(data[IDSTUDENT]);
             }
 
             readFromFile.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            Printer.printError(e.getMessage());
         }
 
-        int count = Integer.parseInt(last_id) + 1;
-        String student = String.valueOf(count);
+        String student = String.valueOf(lastId+1);
         student = student.concat(",");
         student = student.concat(name);
         student = student.concat(",");
@@ -66,16 +65,16 @@ public abstract class StudentDAO {
         student = student.concat(",");
         student = student.concat(phoneNumber);
 
-        File file_user = new File(CSV_FILE_USERS);
-        File file_student = new File(CSV_FILE_STUDENTS);
+        File fileUser = new File(CSV_FILE_USERS);
+        File fileStudent = new File(CSV_FILE_STUDENTS);
 
         try {
-            PrintWriter output_user = new PrintWriter(new BufferedWriter(new FileWriter(file_user, true)));
-            PrintWriter output_student = new PrintWriter(new BufferedWriter(new FileWriter(file_student, true)));
-            output_user.println(user);
-            output_user.close();
-            output_student.println(student);
-            output_student.close();
+            PrintWriter outputUser = new PrintWriter(new BufferedWriter(new FileWriter(fileUser, true)));
+            PrintWriter outputStudent = new PrintWriter(new BufferedWriter(new FileWriter(fileStudent, true)));
+            outputUser.println(user);
+            outputUser.close();
+            outputStudent.println(student);
+            outputStudent.close();
         } catch (IOException e) {
             Printer.printError(e.getMessage());
         }

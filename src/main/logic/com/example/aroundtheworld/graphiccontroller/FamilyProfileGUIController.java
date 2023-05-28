@@ -4,7 +4,6 @@ import com.example.aroundtheworld.bean.AnimalBean;
 import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyMemberBean;
 import com.example.aroundtheworld.engineering.Session;
-import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,7 +49,7 @@ public class FamilyProfileGUIController {
     @FXML
     private Label phone;
 
-    public void toRequestFamily() throws IOException, NotFoundException {
+    public void toRequestFamily() throws IOException {
         FamilyGUIController familyGUIController = new FamilyGUIController();
         familyGUIController.toRequestFamily();
     }

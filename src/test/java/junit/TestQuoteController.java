@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class testQuoteController {
+class TestQuoteController {
 
     /* SILVIA PERELLI
        Il seguente test verifica che venga restituito il preventivo aspettato

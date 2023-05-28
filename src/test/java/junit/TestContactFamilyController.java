@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class testContactFamilyController {
+class TestContactFamilyController {
 
     /* SARA MALASPINA
        Il seguente test verifica che venga calcolata la giusta compatibilità tra

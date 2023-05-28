@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class testLoginDAO {
+class TestLoginDAO {
 
     /* SILVIA PERELLI
        Il seguente test verifica che venga ritornato il tipo di ruolo

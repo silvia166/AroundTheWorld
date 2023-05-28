@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class testBookingResidenceController {
+class TestBookingResidenceController {
 
     /* SILVIA PERELLI
        Il seguente test verifica che venga sollevata un'eccezione quando

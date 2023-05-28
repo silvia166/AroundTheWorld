@@ -96,7 +96,7 @@ public class FamilyRequestCLIController implements GraphicCLIController{
         }
     }
 
-    private void viewRequest() throws NotFoundException {
+    private void viewRequest() {
         ContactFamilyController contactFamilyController = new ContactFamilyController();
         StudentBean studentBean = contactFamilyController.getStudent(familyRequestBean);
         familyRequestViewCLI.printStudentInfo(studentBean.getName(), studentBean.getSurname(), studentBean.getBirth(),studentBean.getNationality(), studentBean.getEmail(), studentBean.getPhoneNumber());

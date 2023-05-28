@@ -21,7 +21,7 @@ public class LoginController {
         loginBean.setRole(role);
     }
 
-    public void studentLogin(LoginBean loginBean) throws NotFoundException {
+    public void studentLogin(LoginBean loginBean) {
         StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
         Student student = studentDAO.retrieveStudent(loginBean.getUsername(),0);
 

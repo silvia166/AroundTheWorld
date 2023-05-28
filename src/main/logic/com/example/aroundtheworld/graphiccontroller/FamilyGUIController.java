@@ -1,6 +1,5 @@
 package com.example.aroundtheworld.graphiccontroller;
 
-import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,11 +20,13 @@ public class FamilyGUIController {
         stage.setScene(scene);
         stage.show();
     }
-    public void toRequestFamily() throws IOException, NotFoundException {
+    public void toRequestFamily() throws IOException {
         Stage stage = Main.getStage();
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(Main.class.getResource("requestFamily.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        FamilyRequestGUIController familyRequestGUIController = fxmlLoader.getController();
+        familyRequestGUIController.displayFamilyRequests();
         stage.setScene(scene);
         stage.show();
     }

@@ -17,6 +17,21 @@ import java.util.List;
 
 public class ContactFamilyController {
 
+    public List<CompatibleFamilyBean> getCompatibleFamilies(FamilyRequestBean familyRequestBean) throws MessageException {
+        float compatibility;
+        List<CompatibleFamilyBean> compatibleFamilies = new ArrayList<>();
+        CompatibleFamilyBean compatibleFamilyBean;
+
+        checkRequestDate(familyRequestBean.getArrivalBean(), familyRequestBean.getDepartureBean());
+        List<Family> familyList = FamilyDAO.retrieveFamilies(familyRequestBean.getCityBean());
+        for (Family family: familyList){
+            compatibility = calculateCompatibility(familyRequestBean,family);
+            compatibleFamilyBean = new CompatibleFamilyBean(family.getId(),family.getName(), family.getImgSrc(), compatibility);
+            compatibleFamilies.add(compatibleFamilyBean);
+        }
+        return compatibleFamilies;
+    }
+
     public float calculateCompatibility(FamilyRequestBean familyRequestBean, Family family){
         double compatibility;
         int siblings = 0;
@@ -47,7 +62,7 @@ public class ContactFamilyController {
     private int checkPreferences(FamilyPreferences requestPref, FamilyPreferences familyPref) {
         int checked = 0;
 
-        if(requestPref.getHouse().equals(familyPref.getHouse())){
+        if(requestPref.getHouse().equalsIgnoreCase(familyPref.getHouse())){
             checked++;
         }
         if(requestPref.getVegetarian() == familyPref.getVegetarian()){
@@ -80,20 +95,6 @@ public class ContactFamilyController {
         return checked;
     }
 
-    public List<CompatibleFamilyBean> getCompatibleFamilies(FamilyRequestBean familyRequestBean) throws MessageException {
-        float compatibility;
-        List<CompatibleFamilyBean> compatibleFamilies = new ArrayList<>();
-        CompatibleFamilyBean compatibleFamilyBean;
-        checkRequestDate(familyRequestBean.getArrivalBean(), familyRequestBean.getDepartureBean());
-        List<Family> familyList = FamilyDAO.retrieveFamilies(familyRequestBean.getCityBean());
-        for (Family family: familyList){
-            compatibility = calculateCompatibility(familyRequestBean,family);
-            compatibleFamilyBean = new CompatibleFamilyBean(family.getId(),family.getName(), family.getImgSrc(), compatibility);
-            compatibleFamilies.add(compatibleFamilyBean);
-        }
-        return compatibleFamilies;
-    }
-
     private void checkRequestDate(String arrival, String departure) throws MessageException {
         LocalDate dateA = LocalDate.parse(arrival);
         LocalDate dateD = LocalDate.parse(departure);
@@ -119,12 +120,10 @@ public class ContactFamilyController {
             FamilyMemberBean memberBean = new FamilyMemberBean(member.getName(), member.getAge(), member.getParenthood());
             familyBean.addMember(memberBean);
         }
-
         for(Animal animal: family.getAnimals()){
             AnimalBean animalBean = new AnimalBean(animal.getType(), animal.getQuantity());
             familyBean.addAnimal(animalBean);
         }
-
         familyBean.setImgSrc(family.getImgSrc());
 
         return familyBean;

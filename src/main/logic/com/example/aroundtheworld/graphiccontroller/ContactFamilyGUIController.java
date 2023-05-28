@@ -7,7 +7,6 @@ import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.FormEmptyException;
 import com.example.aroundtheworld.exception.MessageException;
-import com.example.aroundtheworld.model.FamilyPreferences;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -62,9 +61,9 @@ public class ContactFamilyGUIController {
     @FXML
     private CheckBox videogamesC;
     @FXML
-    ChoiceBox cityBox;
+    ChoiceBox<String> cityBox;
     @FXML
-    ObservableList cityList = FXCollections.observableArrayList("London","Rome","Paris","New York","Valencia");
+    ObservableList<String> cityList = FXCollections.observableArrayList("London","Rome","Paris","New York","Valencia");
 
     @FXML
     public void initialize() {
@@ -103,11 +102,8 @@ public class ContactFamilyGUIController {
                 animals = 1;
             }
 
-            FamilyPreferences preferences = getRequestPreferences();
-            FamilyRequestBean familyRequestBean = new FamilyRequestBean(cityBox.getValue().toString(),arrivalBox.getValue().toString(),departureBox.getValue().toString(),siblings,animals,idStudent);
-            familyRequestBean.setHouse(preferences.getHouse());
-            familyRequestBean.setFood(preferences.getVegetarian(), preferences.getVegan());
-            familyRequestBean.setHobbies(preferences.getTravels(), preferences.getSport(), preferences.getBooks(), preferences.getNature(), preferences.getFilm(), preferences.getVideoGames(), preferences.getCooking());
+            FamilyRequestBean familyRequestBean = new FamilyRequestBean(cityBox.getValue(),arrivalBox.getValue().toString(),departureBox.getValue().toString(),siblings,animals,idStudent);
+            setRequestPreferences(familyRequestBean);
 
             ContactFamilyController contactFamilyController = new ContactFamilyController();
             List<CompatibleFamilyBean> families = contactFamilyController.getCompatibleFamilies(familyRequestBean);
@@ -134,7 +130,7 @@ public class ContactFamilyGUIController {
         }
     }
 
-    private FamilyPreferences getRequestPreferences() {
+    private void setRequestPreferences(FamilyRequestBean familyRequestBean) {
 
         String room;
         int vegetarian = 0;
@@ -158,12 +154,9 @@ public class ContactFamilyGUIController {
         else
             room = "shared";
 
-        FamilyPreferences familyPreferences = new FamilyPreferences();
-        familyPreferences.setFood(vegetarian, vegan);
-        familyPreferences.setHobbies(travels, sport, books, nature, film, videoGames, cooking);
-        familyPreferences.setHouse(room);
-
-        return familyPreferences;
+        familyRequestBean.setFood(vegetarian, vegan);
+        familyRequestBean.setHobbies(travels, sport, books, nature, film, videoGames, cooking);
+        familyRequestBean.setHouse(room);
     }
 
     private int checkSelectionCB(CheckBox box) {

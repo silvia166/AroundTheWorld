@@ -34,17 +34,17 @@ public class FamilyDAO {
         List<Animal> animals;
         FamilyPreferences preferences;
 
-        try{
+        try {
             connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveFamily(connection, username);
 
-            if(!resultSet.first()) {
+            if (!resultSet.first()) {
                 throw new NotFoundException("No family found with username: " + username);
             }
 
             resultSet.first();
-            do{
+            do {
                 int familyId = resultSet.getInt(ID);
                 String phoneNumber = resultSet.getString(PHONE);
                 String name = resultSet.getString(NAME);
@@ -62,11 +62,11 @@ public class FamilyDAO {
                 family.setPreferences(preferences);
                 family.setImgSrc(photo);
 
-            } while(resultSet.next());
+            } while (resultSet.next());
 
             resultSet.close();
 
-        }catch(SQLException e){
+        } catch (SQLException e) {
             Printer.printError(e.getMessage());
         }
 
@@ -74,33 +74,31 @@ public class FamilyDAO {
     }
 
     public static void addFamily(String name, String phone, String city, String address, String imgSrc, String email) {
-
         Connection connection;
 
-        try{
+        try {
             connection = ConnectionDB.getConnection();
 
             CRUDQueries.insertUser(connection, email, "123", "family");
             CRUDQueries.insertFamily(connection, name, phone, city, address, email, imgSrc);
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             Printer.printError(e.getMessage());
         }
 
     }
 
     public static int retrieveFamilyID(String name) {
-
         Connection connection;
         int id = 0;
 
-        try{
+        try {
             connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveFamilyID(connection, name);
 
-            if (!resultSet.first()){
-                throw new NotFoundException("No family found with name"+ name);
+            if (!resultSet.first()) {
+                throw new NotFoundException("No family found with name" + name);
             }
 
             resultSet.first();
@@ -110,7 +108,7 @@ public class FamilyDAO {
             resultSet.close();
 
 
-        } catch(SQLException | NotFoundException e) {
+        } catch (SQLException | NotFoundException e) {
             Printer.printError(e.getMessage());
         }
 
@@ -118,7 +116,6 @@ public class FamilyDAO {
     }
 
     public static List<Family> retrieveFamilies(String city) {
-
         Connection connection;
         Family family;
         List<FamilyMember> familyMembers;
@@ -126,19 +123,18 @@ public class FamilyDAO {
         FamilyPreferences preferences;
         List<Family> familyList = new ArrayList<>();
 
-
-        try{
+        try {
             connection = ConnectionDB.getConnection();
 
-            ResultSet resultSet = SimpleQueries.retrieveFamilyIDByCity(connection, city);
+            ResultSet resultSet = SimpleQueries.retrieveFamiliesByCity(connection, city);
 
-            if (!resultSet.first()){
-                throw new NotFoundException("No family found in the city"+ city);
+            if (!resultSet.first()) {
+                throw new NotFoundException("No family found in the city" + city);
             }
 
             resultSet.first();
 
-            do{
+            do {
                 int familyId = resultSet.getInt(ID);
                 String phoneNumber = resultSet.getString(PHONE);
                 String name = resultSet.getString(NAME);
@@ -157,15 +153,13 @@ public class FamilyDAO {
 
                 familyList.add(family);
 
-            } while(resultSet.next());
+            } while (resultSet.next());
 
             resultSet.close();
 
-
-        } catch(SQLException | NotFoundException e) {
+        } catch (SQLException | NotFoundException e) {
             Printer.printError(e.getMessage());
         }
-
         return familyList;
     }
 
@@ -176,13 +170,13 @@ public class FamilyDAO {
         String photo;
         Family family = null;
 
-        try{
+        try {
             connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.retrieveFamilyName(connection, idFamily);
 
-            if (!resultSet.first()){
-                throw new NotFoundException("No family found with id"+ idFamily);
+            if (!resultSet.first()) {
+                throw new NotFoundException("No family found with id" + idFamily);
             }
 
             resultSet.first();
@@ -194,7 +188,7 @@ public class FamilyDAO {
             resultSet.close();
 
 
-        } catch(SQLException | NotFoundException e) {
+        } catch (SQLException | NotFoundException e) {
             Printer.printError(e.getMessage());
         }
 

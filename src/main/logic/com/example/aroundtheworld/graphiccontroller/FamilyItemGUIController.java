@@ -47,11 +47,9 @@ public class FamilyItemGUIController {
         private Button viewProfileBtn;
         @FXML
         private AnchorPane reqPane;
-
         private CompatibleFamilyBean family;
         private FamilyRequestBean familyRequest;
         private Pane pane;
-
         private static final String LIGHTGREEN = "-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(192,249,221), 10.0 , 0.0 , 0.0 ,5.0);";
 
         @FXML

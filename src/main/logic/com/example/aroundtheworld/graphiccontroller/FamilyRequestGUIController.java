@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class FamilyRequestGUIController implements Observer {
-
     @FXML
     private HBox confirmedReqList;
     @FXML
@@ -44,7 +43,7 @@ public class FamilyRequestGUIController implements Observer {
         familyGUIController.toHomepageFamily();
     }
 
-    public void initialize() throws IOException {
+    public void displayFamilyRequests() throws IOException {
 
         FamilyBean familyBean = Session.getCurrentSession().getFamilyBean();
 

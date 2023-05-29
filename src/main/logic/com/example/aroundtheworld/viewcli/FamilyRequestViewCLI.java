@@ -58,7 +58,7 @@ public class FamilyRequestViewCLI {
         String choice = scanner.nextLine();
         try {
             familyRequestCLIController.executeOption(choice);
-        } catch (CommandErrorException | NotFoundException e) {
+        } catch (CommandErrorException e) {
             ShowExceptionSupport.showExceptionCLI(e.getMessage());
         }
     }

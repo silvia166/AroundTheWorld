@@ -4,7 +4,6 @@ import com.example.aroundtheworld.appcontroller.ContactFamilyController;
 import com.example.aroundtheworld.bean.*;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.exception.CommandErrorException;
-import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.viewcli.FamilyRequestViewCLI;
 
 import java.util.ArrayList;
@@ -87,7 +86,7 @@ public class FamilyRequestCLIController implements GraphicCLIController{
     }
 
 
-    public void executeOption(String choice) throws CommandErrorException, NotFoundException {
+    public void executeOption(String choice) throws CommandErrorException {
         switch (choice){
             case ACCEPT -> acceptRequest();
             case REJECT -> rejectRequest();
@@ -96,7 +95,7 @@ public class FamilyRequestCLIController implements GraphicCLIController{
         }
     }
 
-    private void viewRequest() throws NotFoundException {
+    private void viewRequest() {
         ContactFamilyController contactFamilyController = new ContactFamilyController();
         StudentBean studentBean = contactFamilyController.getStudent(familyRequestBean);
         familyRequestViewCLI.printStudentInfo(studentBean.getName(), studentBean.getSurname(), studentBean.getBirth(),studentBean.getNationality(), studentBean.getEmail(), studentBean.getPhoneNumber());

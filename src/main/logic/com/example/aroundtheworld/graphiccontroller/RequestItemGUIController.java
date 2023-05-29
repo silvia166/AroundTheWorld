@@ -8,7 +8,6 @@ import com.example.aroundtheworld.appcontroller.ReserveRoomController;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.engineering.observer.Observer;
 import com.example.aroundtheworld.exception.NoAvailableRoomsException;
-import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -99,7 +98,7 @@ public class RequestItemGUIController implements Observer {
         contactFamilyController.rejectRequest(this.familyRequest, this.pane);
     }
 
-    public void viewRequest() throws IOException, NotFoundException {
+    public void viewRequest() throws IOException {
 
         ContactFamilyController contactFamilyController = new ContactFamilyController();
         StudentBean studentBean = contactFamilyController.getStudent(this.familyRequest);

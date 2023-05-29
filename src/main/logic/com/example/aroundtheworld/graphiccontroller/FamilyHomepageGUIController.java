@@ -34,7 +34,7 @@ public class FamilyHomepageGUIController {
     }
 
     @FXML
-    void toRequestFamily() throws NotFoundException, IOException {
+    void toRequestFamily() throws IOException {
         FamilyGUIController familyGUIController = new FamilyGUIController();
         familyGUIController.toRequestFamily();
     }

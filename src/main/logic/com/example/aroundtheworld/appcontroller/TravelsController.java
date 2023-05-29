@@ -5,7 +5,6 @@ import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.bean.TravelBean;
 import com.example.aroundtheworld.dao.*;
 import com.example.aroundtheworld.engineering.factory.StudentDAOFactory;
-import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.Family;
 import com.example.aroundtheworld.model.FamilyRequest;
 import com.example.aroundtheworld.model.ResidenceRequest;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TravelsController {
-    public List<TravelBean> getFamilyTravels(FamilyBean familyBean) throws NotFoundException {
+    public List<TravelBean> getFamilyTravels(FamilyBean familyBean) {
         List<TravelBean> travelBeanList = new ArrayList<>();
         List<FamilyRequest> requests = FamilyRequestDAO.retrieveTravelsByFamily(familyBean.getId());
 

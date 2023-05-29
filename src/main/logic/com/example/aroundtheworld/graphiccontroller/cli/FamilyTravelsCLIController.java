@@ -4,9 +4,7 @@ import com.example.aroundtheworld.appcontroller.TravelsController;
 import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.TravelBean;
 import com.example.aroundtheworld.engineering.Session;
-import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.CommandErrorException;
-import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.viewcli.FamilyTravelViewCLI;
 
 import java.time.LocalDate;
@@ -26,21 +24,17 @@ public class FamilyTravelsCLIController implements GraphicCLIController{
         this.familyTravelViewCLI = new FamilyTravelViewCLI(this);
         FamilyBean familyBean = Session.getCurrentSession().getFamilyBean();
         TravelsController travelsController = new TravelsController();
-        try {
-            List<TravelBean> travelBeanList = travelsController.getFamilyTravels(familyBean);
-            LocalDate currentDate = LocalDate.now();
+        List<TravelBean> travelBeanList = travelsController.getFamilyTravels(familyBean);
+        LocalDate currentDate = LocalDate.now();
 
-            for(TravelBean travel: travelBeanList){
-                if(LocalDate.parse(travel.getArrival()).isAfter(currentDate)){
-                    nextTravels.add(travel);
-                } else {
-                    pastTravels.add(travel);
-                }
+        for(TravelBean travel: travelBeanList){
+            if(LocalDate.parse(travel.getArrival()).isAfter(currentDate)){
+                nextTravels.add(travel);
+            } else {
+                pastTravels.add(travel);
             }
-            familyTravelViewCLI.run();
-        } catch (NotFoundException e) {
-            ShowExceptionSupport.showExceptionCLI(e.getMessage());
         }
+        familyTravelViewCLI.run();
     }
 
     public void executeCommand(String nextLine) throws CommandErrorException {

@@ -78,7 +78,7 @@ public class SimpleQueries {
         return preparedStatement.executeQuery();
     }
 
-    public static ResultSet retrieveFamilyIDByCity(Connection connection, String city) throws SQLException {
+    public static ResultSet retrieveFamiliesByCity(Connection connection, String city) throws SQLException {
         String sql = "SELECT idFamily, name, phoneNumber, address, photo FROM family WHERE city = ?";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setString(1,city);

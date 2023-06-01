@@ -97,7 +97,7 @@ public class FamilyRequestCLIController implements GraphicCLIController{
 
     private void viewRequest() {
         ContactFamilyController contactFamilyController = new ContactFamilyController();
-        StudentBean studentBean = contactFamilyController.getStudent(familyRequestBean);
+        StudentBean studentBean = contactFamilyController.getStudent(familyRequestBean.getIdStudentBean());
         familyRequestViewCLI.printStudentInfo(studentBean.getName(), studentBean.getSurname(), studentBean.getBirth(),studentBean.getNationality(), studentBean.getEmail(), studentBean.getPhoneNumber());
         familyRequestViewCLI.printRequestInfo(familyRequestBean.getCityBean(),familyRequestBean.getArrivalBean(), familyRequestBean.getDepartureBean(),familyRequestBean.getHouse(),familyRequestBean.getSiblingsBean(),familyRequestBean.getAnimalsBean());
         familyRequestViewCLI.printRequestFood(familyRequestBean.getVegan(),familyRequestBean.getVegetarian());

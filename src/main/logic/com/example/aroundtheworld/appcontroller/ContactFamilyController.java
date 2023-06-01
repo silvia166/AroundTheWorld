@@ -184,10 +184,10 @@ public class ContactFamilyController {
         FamilyRequestDAO.deleteRequest(familyRequest.getId());
     }
 
-    public StudentBean getStudent(FamilyRequestBean familyRequest) {
+    public StudentBean getStudent(int idStudent) {
 
         StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
-        Student student = studentDAO.retrieveStudent(null, familyRequest.getIdStudentBean());
+        Student student = studentDAO.retrieveStudent(null, idStudent);
         return new StudentBean(student.getName(), student.getSurname(), student.getNationality(), student.getDateOfBirth(), student.getEmail(), student.getPhoneNumber(), student.getId());
     }
 }

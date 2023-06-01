@@ -150,6 +150,8 @@ public class ContactFamilyController {
         List<FamilyRequest> requests = FamilyRequestDAO.retrieveRequests(familyBean.getId());
 
         for(FamilyRequest request: requests){
+            StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
+            String studentName = studentDAO.getNameById(request.getIdStudent());
             FamilyRequestBean familyRequestBean = new FamilyRequestBean(request.getCity(), request.getArrival(), request.getDeparture(), request.getSiblings(), request.getAnimals(), request.getIdStudent());
             familyRequestBean.setFood(request.getFamilyPreferences().getVegetarian(), request.getFamilyPreferences().getVegan());
             familyRequestBean.setHouse(request.getFamilyPreferences().getHouse());
@@ -158,7 +160,7 @@ public class ContactFamilyController {
             familyRequestBean.setCompatibility(request.getCompatibility());
             familyRequestBean.setIdFamily(familyBean.getId());
             familyRequestBean.setStatus(request.getStatus());
-            familyRequestBean.setStudentName(request.getStudentName());
+            familyRequestBean.setStudentName(studentName);
             familyRequestsBeans.add(familyRequestBean);
         }
         return familyRequestsBeans;

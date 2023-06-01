@@ -8,8 +8,6 @@ public class Request {
     private int idStudent;
     private int status;
 
-    private String studentName;
-
     public Request(String city, String arrival, String departure, int idStudent, int status) {
         this.city = city;
         this.arrival = arrival;
@@ -46,11 +44,4 @@ public class Request {
         return status;
     }
 
-    public String getStudentName() {
-        return studentName;
-    }
-
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
-    }
 }

@@ -71,13 +71,10 @@ public class ResidenceRequestDAO {
                     int roomNum = resultSet.getInt(ROOMNUMBER);
 
                     String city = ResidenceDAO.retrieveResidencebyId(idResidence);
-                    StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
-                    String studentName = studentDAO.getNameById(idStudent);
 
                     residenceRequest = new ResidenceRequest(city, arrival.toString(), departure.toString(), room, idStudent, status);
                     residenceRequest.setIdResidence(idResidence);
                     residenceRequest.setId(idRequest);
-                    residenceRequest.setStudentName(studentName);
                     if (roomNum != 0) {
                         residenceRequest.setRoomNumber(roomNum);
                     }

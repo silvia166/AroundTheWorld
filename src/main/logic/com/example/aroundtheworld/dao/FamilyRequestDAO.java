@@ -96,15 +96,12 @@ public class FamilyRequestDAO {
                     int cooking = resultSet.getInt(COOKING);
                     String compatibility = resultSet.getString(COMPATIBILITY);
 
-                    StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
-                    String studentName = studentDAO.getNameById(studentId);
 
                     familyRequest = new FamilyRequest(city, arrival.toString(), departure.toString(), siblings, animals, studentId, status);
 
                     familyRequest.setCompatibility(Float.parseFloat(compatibility));
                     familyRequest.setIdFamily(id);
                     familyRequest.setId(requestId);
-                    familyRequest.setStudentName(studentName);
 
                     FamilyPreferences preferences = new FamilyPreferences();
                     preferences.setHouse(house);

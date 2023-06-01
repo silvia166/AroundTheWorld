@@ -145,9 +145,9 @@ public class ContactFamilyController {
 
     }
 
-    public List<FamilyRequestBean> getFamilyRequests(FamilyBean familyBean) {
+    public List<FamilyRequestBean> getFamilyRequests(int idFamily) {
         List<FamilyRequestBean> familyRequestsBeans = new ArrayList<>();
-        List<FamilyRequest> requests = FamilyRequestDAO.retrieveRequests(familyBean.getId());
+        List<FamilyRequest> requests = FamilyRequestDAO.retrieveRequests(idFamily);
 
         for(FamilyRequest request: requests){
             StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
@@ -161,7 +161,7 @@ public class ContactFamilyController {
             familyRequestBean.setHobbies(request.getFamilyPreferences().getTravels(), request.getFamilyPreferences().getSport(), request.getFamilyPreferences().getBooks(), request.getFamilyPreferences().getNature(), request.getFamilyPreferences().getFilm(), request.getFamilyPreferences().getVideoGames(), request.getFamilyPreferences().getCooking());
             familyRequestBean.setId(request.getId());
             familyRequestBean.setCompatibility(request.getCompatibility());
-            familyRequestBean.setIdFamily(familyBean.getId());
+            familyRequestBean.setIdFamily(idFamily);
             familyRequestBean.setStatus(request.getStatus());
             familyRequestBean.setStudentName(studentName);
             familyRequestsBeans.add(familyRequestBean);

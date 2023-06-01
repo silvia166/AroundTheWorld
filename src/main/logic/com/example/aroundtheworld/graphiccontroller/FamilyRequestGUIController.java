@@ -48,7 +48,7 @@ public class FamilyRequestGUIController implements Observer {
         FamilyBean familyBean = Session.getCurrentSession().getFamilyBean();
 
         ContactFamilyController contactFamilyController = new ContactFamilyController();
-        List<FamilyRequestBean> requestList = contactFamilyController.getFamilyRequests(familyBean);
+        List<FamilyRequestBean> requestList = contactFamilyController.getFamilyRequests(familyBean.getId());
 
         for(FamilyRequestBean requestBean: requestList){
             FXMLLoader fxmlLoader = new FXMLLoader();

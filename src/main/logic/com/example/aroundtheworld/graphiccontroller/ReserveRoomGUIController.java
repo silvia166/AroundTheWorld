@@ -45,10 +45,10 @@ public class ReserveRoomGUIController {
     private ResidenceRequestBean requestBean;
     private Pane pane;
 
-    public void reserveRoom(ResidenceRequestBean residenceRequest, Object object) throws NoAvailableRoomsException {
+    public void reserveRoom(ResidenceRequestBean residenceRequest, Pane pane) throws NoAvailableRoomsException {
 
         this.requestBean = residenceRequest;
-        this.pane = (Pane) object;
+        this.pane = pane;
 
         studNameLabel.setText(residenceRequest.getStudentName());
         arrivalLabel.setText(residenceRequest.getArrival());

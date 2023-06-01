@@ -30,7 +30,7 @@ public class StudentRequestCLIController implements GraphicCLIController{
         int choice = studentRequestViewCLI.run();
         if (choice == 1) {
             ReserveRoomController reserveRoomController = new ReserveRoomController();
-            this.residenceRequestList = reserveRoomController.getStudentResidenceRequest(studentBean.getId());
+            this.residenceRequestList = reserveRoomController.getStudentResidenceRequests(studentBean.getId());
             displayResidenceRequests(residenceRequestList);
         } else {
             BookingFamilyController bookingFamilyController = new BookingFamilyController();

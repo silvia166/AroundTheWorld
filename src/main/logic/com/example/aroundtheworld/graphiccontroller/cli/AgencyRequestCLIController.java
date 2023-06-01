@@ -1,18 +1,13 @@
 package com.example.aroundtheworld.graphiccontroller.cli;
 
-import com.example.aroundtheworld.appcontroller.BookingFamilyController;
 import com.example.aroundtheworld.appcontroller.ReserveRoomController;
-import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.bean.RoomBean;
-import com.example.aroundtheworld.bean.StudentBean;
-import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.CommandErrorException;
 import com.example.aroundtheworld.exception.NoAvailableRoomsException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.viewcli.AgencyRequestsViewCLI;
-import com.example.aroundtheworld.viewcli.StudentRequestViewCLI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -147,9 +142,9 @@ public class AgencyRequestCLIController implements GraphicCLIController{
         }
 
         if(residenceRequestBean.getRoom().equals(selectedRoom.getType())){
-            reserveRoomController.reserveRoom(selectedRoom, residenceRequestBean, 2, null);
+            reserveRoomController.finalizeRequest(selectedRoom, residenceRequestBean, 2, null);
         }else{
-            reserveRoomController.reserveRoom(selectedRoom, residenceRequestBean, 1, null);
+            reserveRoomController.finalizeRequest(selectedRoom, residenceRequestBean, 1, null);
         }
 
         agencyRequestsViewCLI.printContinue();

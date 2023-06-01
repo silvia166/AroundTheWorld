@@ -99,9 +99,9 @@ public class ReserveRoomGUIController {
                 throw new MessageException("Room must be selected");
             }
             if (roomBtn.getText().equals("Reserve room")) {
-                reserveRoomController.reserveRoom(selectedRoom, requestBean, 2, this.pane);
+                reserveRoomController.finalizeRequest(selectedRoom, requestBean, 2, this.pane);
             } else {
-                reserveRoomController.reserveRoom(selectedRoom, requestBean, 1, this.pane);
+                reserveRoomController.finalizeRequest(selectedRoom, requestBean, 1, this.pane);
             }
             ((Node) event.getSource()).getScene().getWindow().hide();
         } catch (MessageException e) {

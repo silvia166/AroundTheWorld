@@ -39,7 +39,7 @@ public class ReserveRoomController {
         return roomBeans;
     }
 
-    public void reserveRoom(RoomBean selectedRoom, ResidenceRequestBean requestBean, int status, Pane pane) {
+    public void finalizeRequest(RoomBean selectedRoom, ResidenceRequestBean requestBean, int status, Pane pane) {
         requestBean.setStatus(status);
         if(pane != null){
             requestBean.notifyObserversResidence(requestBean, pane);
@@ -47,7 +47,7 @@ public class ReserveRoomController {
         ResidenceRequestDAO.updateRoom(selectedRoom.getNumber(), requestBean.getId(), status);
     }
 
-    public List<ResidenceRequestBean> getStudentResidenceRequest(int id) {
+    public List<ResidenceRequestBean> getStudentResidenceRequests(int id) {
         List<ResidenceRequestBean> residenceRequestBeans = new ArrayList<>();
         List<ResidenceRequest> requests = ResidenceRequestDAO.retrieveStudentResidenceRequest(id);
 

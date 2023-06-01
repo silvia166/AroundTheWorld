@@ -29,7 +29,7 @@ public class StudentRequestGUIController implements Observer {
 
         StudentBean studentBean = Session.getCurrentSession().getStudentBean();
         ReserveRoomController reserveRoomController = new ReserveRoomController();
-        List<ResidenceRequestBean> requestList = reserveRoomController.getStudentResidenceRequest(studentBean.getId());
+        List<ResidenceRequestBean> requestList = reserveRoomController.getStudentResidenceRequests(studentBean.getId());
 
         for(ResidenceRequestBean requestBean: requestList){
             FXMLLoader fxmlLoader = new FXMLLoader();

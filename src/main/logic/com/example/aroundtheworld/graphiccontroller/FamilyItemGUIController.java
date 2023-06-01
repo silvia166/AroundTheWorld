@@ -70,7 +70,7 @@ public class FamilyItemGUIController {
         @FXML
         void viewProfile() throws NotFoundException, IOException {
                 ContactFamilyController contactFamilyController = new ContactFamilyController();
-                FamilyBean familyBean = contactFamilyController.getFamilyProfile(family);
+                FamilyBean familyBean = contactFamilyController.getFamilyProfile(family.getId());
 
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);

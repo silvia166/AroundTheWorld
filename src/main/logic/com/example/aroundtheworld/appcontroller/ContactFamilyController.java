@@ -108,8 +108,8 @@ public class ContactFamilyController {
         }
     }
 
-    public FamilyBean getFamilyProfile(CompatibleFamilyBean compatibleFamilyBean) throws NotFoundException {
-        Family family = FamilyDAO.retrieveFamily(compatibleFamilyBean.getEmail());
+    public FamilyBean getFamilyProfile(int idFamily) throws NotFoundException {
+        Family family = FamilyDAO.retrieveFamily(null, idFamily);
 
         FamilyBean familyBean = new FamilyBean(family.getName(), family.getCity(), family.getAddress(), family.getId(), family.getPhoneNumber(), family.getEmail());
         familyBean.setFamilyHobbies(family.getPreferences().getTravels(), family.getPreferences().getSport(), family.getPreferences().getBooks(), family.getPreferences().getNature(), family.getPreferences().getFilm(), family.getPreferences().getVideoGames(), family.getPreferences().getCooking());

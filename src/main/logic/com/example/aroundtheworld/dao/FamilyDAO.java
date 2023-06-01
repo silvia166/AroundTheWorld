@@ -27,17 +27,22 @@ public class FamilyDAO {
 
     private FamilyDAO() {}
 
-    public static Family retrieveFamily(String username) throws NotFoundException {
+    public static Family retrieveFamily(String username, int idFamily) throws NotFoundException {
         Connection connection;
         Family family = null;
         List<FamilyMember> familyMembers;
         List<Animal> animals;
         FamilyPreferences preferences;
+        ResultSet resultSet = null;
 
         try {
             connection = ConnectionDB.getConnection();
 
-            ResultSet resultSet = SimpleQueries.retrieveFamily(connection, username);
+            if(username == null){
+                resultSet = SimpleQueries.retrieveFamilyById(connection, idFamily);
+            }else{
+                resultSet = SimpleQueries.retrieveFamilyByUsername(connection, username);
+            }
 
             if (!resultSet.first()) {
                 throw new NotFoundException("No family found with username: " + username);

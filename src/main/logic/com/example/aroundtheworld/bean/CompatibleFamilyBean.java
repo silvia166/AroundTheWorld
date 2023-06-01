@@ -30,9 +30,4 @@ public class CompatibleFamilyBean {
         return compatibility;
     }
 
-    public String getEmail(){
-        String mail = name.toLowerCase();
-        mail = mail.concat("@gmail.com");
-        return mail;
-    }
 }

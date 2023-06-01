@@ -30,7 +30,7 @@ public class LoginController {
     }
 
     public void familyLogin(LoginBean loginBean) throws NotFoundException {
-        Family family = FamilyDAO.retrieveFamily(loginBean.getUsername());
+        Family family = FamilyDAO.retrieveFamily(loginBean.getUsername(), 0);
 
         FamilyBean familyBean = new FamilyBean(family.getName(), family.getCity(), family.getAddress(), family.getId(), family.getPhoneNumber(), family.getEmail());
         familyBean.setHouse(family.getPreferences().getHouse());

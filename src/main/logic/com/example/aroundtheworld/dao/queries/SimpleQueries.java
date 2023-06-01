@@ -22,10 +22,17 @@ public class SimpleQueries {
         return preparedStatement.executeQuery();
     }
 
-    public static ResultSet retrieveFamily(Connection connection, String username) throws SQLException {
+    public static ResultSet retrieveFamilyByUsername(Connection connection, String username) throws SQLException {
         String sql = "SELECT * FROM family WHERE email = ? ";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setString(1,username);
+        return preparedStatement.executeQuery();
+    }
+
+    public static ResultSet retrieveFamilyById(Connection connection, int idFamily) throws SQLException {
+        String sql = "SELECT * FROM family WHERE idFamily = ? ";
+        preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        preparedStatement.setInt(1,idFamily);
         return preparedStatement.executeQuery();
     }
 

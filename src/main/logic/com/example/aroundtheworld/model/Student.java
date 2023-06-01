@@ -16,6 +16,12 @@ public class Student extends GenericUser {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public Student(String name, String surname){
+        super();
+        this.name = name;
+        this.surname = surname;
+    }
+
     public String getName() {
         return name;
     }

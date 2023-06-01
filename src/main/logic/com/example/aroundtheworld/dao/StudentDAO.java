@@ -80,5 +80,5 @@ public abstract class StudentDAO {
         }
 
     }
-    public abstract String getNameById(int idStudent);
+    public abstract Student getNameById(int idStudent);
 }

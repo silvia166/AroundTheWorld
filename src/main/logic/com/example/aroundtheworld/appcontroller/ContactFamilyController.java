@@ -151,7 +151,10 @@ public class ContactFamilyController {
 
         for(FamilyRequest request: requests){
             StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
-            String studentName = studentDAO.getNameById(request.getIdStudent());
+            Student student = studentDAO.getNameById(request.getIdStudent());
+            String studentName = student.getName();
+            studentName = studentName.concat(" ");
+            studentName = studentName.concat(student.getSurname());
             FamilyRequestBean familyRequestBean = new FamilyRequestBean(request.getCity(), request.getArrival(), request.getDeparture(), request.getSiblings(), request.getAnimals(), request.getIdStudent());
             familyRequestBean.setFood(request.getFamilyPreferences().getVegetarian(), request.getFamilyPreferences().getVegan());
             familyRequestBean.setHouse(request.getFamilyPreferences().getHouse());

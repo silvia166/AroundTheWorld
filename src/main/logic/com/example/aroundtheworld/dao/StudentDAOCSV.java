@@ -53,8 +53,8 @@ public class StudentDAOCSV extends StudentDAO {
 
 
     @Override
-    public String getNameById(int idStudent) {
-        String studentName = null;
+    public Student getNameById(int idStudent) {
+        Student student = null;
 
         try{
             File file = new File(CSV_FILE_NAME);
@@ -67,12 +67,10 @@ public class StudentDAOCSV extends StudentDAO {
                 if(Integer.parseInt(data[IDSTUDENT]) == idStudent) {
                     String name = data[NAME];
                     String surname = data[SURNAME];
-                    studentName = name;
-                    studentName = studentName.concat(" ");
-                    studentName = studentName.concat(surname);
+                    student = new Student(name, surname);
                 }
             }
-            if(studentName == null){
+            if(student == null){
                 throw new NotFoundException("No student found");
             }
             bufferedReader.close();
@@ -80,6 +78,6 @@ public class StudentDAOCSV extends StudentDAO {
             Printer.printError(e.getMessage());
         }
 
-        return studentName;
+        return student;
     }
 }

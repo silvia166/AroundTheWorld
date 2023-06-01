@@ -61,9 +61,9 @@ public class StudentDAOJDBC extends StudentDAO{
     }
 
     @Override
-    public String getNameById(int idStudent) {
+    public Student getNameById(int idStudent) {
         Connection connection;
-        String studentName = null;
+        Student student = null;
 
         try{
             connection = ConnectionDB.getConnection();
@@ -78,9 +78,7 @@ public class StudentDAOJDBC extends StudentDAO{
             do {
                 String name = resultSet.getString(NAME);
                 String surname = resultSet.getString(SURNAME);
-                studentName = name;
-                studentName = studentName.concat(" ");
-                studentName = studentName.concat(surname);
+                student = new Student(name, surname);
 
             } while(resultSet.next());
 
@@ -89,7 +87,7 @@ public class StudentDAOJDBC extends StudentDAO{
         } catch(SQLException | NotFoundException e) {
             Printer.printError(e.getMessage());
         }
-        return studentName;
+        return student;
     }
 
 }

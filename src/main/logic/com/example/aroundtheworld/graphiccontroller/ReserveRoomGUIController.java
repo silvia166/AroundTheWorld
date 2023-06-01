@@ -81,7 +81,7 @@ public class ReserveRoomGUIController {
     }
 
     @FXML
-    void getSelectedRoom() {
+    public void getSelectedRoom() {
         int index = roomsTableView.getSelectionModel().getSelectedIndex();
         String typeSelected = typeColumn.getCellData(index);
         if(requestBean.getRoom().equals(typeSelected)){
@@ -91,6 +91,7 @@ public class ReserveRoomGUIController {
         }
     }
 
+    @FXML
     public void selectRoom(ActionEvent event) throws IOException {
         try {
             ReserveRoomController reserveRoomController = new ReserveRoomController();

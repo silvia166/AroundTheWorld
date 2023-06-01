@@ -11,6 +11,7 @@ import com.example.aroundtheworld.exception.NoAvailableRoomsException;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.ResidenceRequest;
 import com.example.aroundtheworld.model.Room;
+import com.example.aroundtheworld.model.Student;
 import javafx.scene.layout.Pane;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,10 @@ public class ReserveRoomController {
 
         for(ResidenceRequest request: requests){
             StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
-            String studentName = studentDAO.getNameById(request.getIdStudent());
+            Student student = studentDAO.getNameById(request.getIdStudent());
+            String studentName = student.getName();
+            studentName = studentName.concat(" ");
+            studentName = studentName.concat(student.getSurname());
             ResidenceRequestBean residenceRequestBean = new ResidenceRequestBean(request.getCity(), request.getArrival(), request.getDeparture(), request.getRoom(), request.getIdStudent(), request.getStatus());
             residenceRequestBean.setStudentName(studentName);
             residenceRequestBean.setIdResidence(request.getIdResidence());

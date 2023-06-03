@@ -185,7 +185,6 @@ public class ContactFamilyController {
     }
 
     public StudentBean getStudent(int idStudent) {
-
         StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
         Student student = studentDAO.retrieveStudent(null, idStudent);
         return new StudentBean(student.getName(), student.getSurname(), student.getNationality(), student.getDateOfBirth(), student.getEmail(), student.getPhoneNumber(), student.getId());

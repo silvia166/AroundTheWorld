@@ -34,44 +34,33 @@ public class Family extends GenericUser {
     public FamilyPreferences getPreferences() {
         return preferences;
     }
-
-    public void setPreferences(FamilyPreferences preferences) {
-        this.preferences = preferences;
-    }
-
+    public void setPreferences(FamilyPreferences preferences) {this.preferences = preferences;}
     public void setImgSrc(String imgSrc) {
         this.imgSrc = imgSrc;
     }
     public void setAnimals(List<Animal> animals) {
         this.animals = animals;
     }
-
     public void setMembers(List<FamilyMember> members) {
         this.members = members;
     }
     public String getName() {
         return name;
     }
-
     public String getImgSrc() {
         return imgSrc;
     }
-
     public String getCity() {
         return city;
     }
-
     public String getAddress() {
         return address;
     }
-
     public List<Animal> getAnimals() {
         return animals;
     }
-
     public List<FamilyMember> getMembers() {
         return members;
     }
-
 
 }

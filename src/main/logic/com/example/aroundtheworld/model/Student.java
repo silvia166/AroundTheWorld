@@ -6,7 +6,6 @@ public class Student extends GenericUser {
     private String nationality;
     private String dateOfBirth;
 
-
     public Student(String name, String surname, String nationality, String dateOfBirth, String email, String phone, int id) {
 
         super(id, 1, phone, email);

@@ -1,7 +1,6 @@
 package com.example.aroundtheworld.model;
 
 public class Residence {
-
     private int id;
     private String name;
     private String address;

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="reqPane" prefHeight="145.0" prefWidth="223.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="shadow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.graphiccontroller.RequestItemGUIController">
+<AnchorPane fx:id="reqPane" prefHeight="145.0" prefWidth="223.0" style="-fx-background-color: white; -fx-background-radius: 20;" styleClass="shadow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.aroundtheworld.graphiccontroller.ResidenceRequestItemGUIController">
    <children>
       <VBox fx:id="vBox" alignment="CENTER" spacing="7.0" styleClass="request-box">
          <padding>

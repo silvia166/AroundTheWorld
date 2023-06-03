@@ -2,8 +2,6 @@ package com.example.aroundtheworld.graphiccontroller;
 
 import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
-import com.example.aroundtheworld.bean.StudentBean;
-import com.example.aroundtheworld.appcontroller.ContactFamilyController;
 import com.example.aroundtheworld.appcontroller.ReserveRoomController;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.engineering.observer.Observer;
@@ -22,7 +20,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class RequestItemGUIController implements Observer {
+public class ResidenceRequestItemGUIController implements Observer {
     @FXML
     private Button acceptBtn;
     @FXML
@@ -47,17 +45,12 @@ public class RequestItemGUIController implements Observer {
     private Label modifiedLabel;
     @FXML
     private AnchorPane reqPane;
-
-    private FamilyRequestBean familyRequest;
     private Pane pane;
     private ResidenceRequestBean residenceRequest;
-
     @FXML
     private Label residenceLabel;
-
     @FXML
     private Label roomLabel;
-
     @FXML
     private Label statusLabel;
 
@@ -66,57 +59,8 @@ public class RequestItemGUIController implements Observer {
     private static final String REDSHADOW = "-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(252,126,126), 10.0 , 0.0 , 0.0 ,5.0);";
     private static final String LIGHTGREEN = "-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(192,249,221), 10.0 , 0.0 , 0.0 ,5.0);";
 
-
     public void setPane(Pane pane) {
         this.pane = pane;
-    }
-
-    public void setFamilyRequest(FamilyRequestBean familyRequestBean) {
-        this.familyRequest = familyRequestBean;
-
-        nameLabel.setText(familyRequestBean.getStudentName());
-        compatibilityLabel.setText(familyRequestBean.getCompatibilityBean() +"%");
-        arrivalLabel.setText(familyRequest.getArrivalBean());
-        departureLabel.setText(familyRequest.getDepartureBean());
-
-        if (familyRequestBean.getStatus() == 1){
-            reqPane.getChildren().removeAll(acceptBtn,rejectBtn,viewReqBtn);
-            notBookedLabel.setVisible(true);
-            reqPane.setStyle(GREENSHADOW);
-        }
-    }
-
-    public void acceptRequest() {
-        ContactFamilyController contactFamilyController = new ContactFamilyController();
-        this.familyRequest.register(this);
-        contactFamilyController.acceptRequest(this.familyRequest, this.pane);
-    }
-
-    public void rejectRequest() {
-        ContactFamilyController contactFamilyController = new ContactFamilyController();
-        this.familyRequest.register(this);
-        contactFamilyController.rejectRequest(this.familyRequest, this.pane);
-    }
-
-    public void viewRequest() throws IOException {
-
-        ContactFamilyController contactFamilyController = new ContactFamilyController();
-        StudentBean studentBean = contactFamilyController.getStudent(this.familyRequest.getIdStudentBean());
-
-        Stage stage =  new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initStyle(StageStyle.UNDECORATED);
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(Main.class.getResource("viewRequestFamily.fxml"));
-
-        Scene scene = new Scene(fxmlLoader.load());
-
-        ViewRequestGUIController viewRequestGUIController = fxmlLoader.getController();
-        viewRequestGUIController.displayRequest(studentBean, this.familyRequest);
-
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.show();
     }
 
     public void setResidenceRequest(ResidenceRequestBean requestBean) {
@@ -223,11 +167,7 @@ public class RequestItemGUIController implements Observer {
 
     @Override
     public void updateFamily(FamilyRequestBean requestBean, Pane pane) {
-        if (requestBean.getStatus() == 1) {
-            reqPane.getChildren().removeAll(acceptBtn, rejectBtn, viewReqBtn);
-            notBookedLabel.setVisible(true);
-            reqPane.setStyle(GREENSHADOW);
-        }
+        //ignore
     }
 }
 

@@ -56,9 +56,9 @@ public class FamilyRequestGUIController implements Observer {
             Pane requestBox = fxmlLoader.load();
             requestBean.register(this);
 
-            RequestItemGUIController requestItemGUIController = fxmlLoader.getController();
-            requestItemGUIController.setPane(requestBox);
-            requestItemGUIController.setFamilyRequest(requestBean);
+            FamilyRequestItemGUIController familyRequestItemGUIController = fxmlLoader.getController();
+            familyRequestItemGUIController.setPane(requestBox);
+            familyRequestItemGUIController.setFamilyRequest(requestBean);
 
             if (requestBean.getStatus() == 0){
                 sentReqList.getChildren().add(requestBox);

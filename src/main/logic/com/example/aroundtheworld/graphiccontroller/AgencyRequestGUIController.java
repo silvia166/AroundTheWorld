@@ -51,9 +51,9 @@ public class AgencyRequestGUIController implements Observer {
             Pane requestBox = fxmlLoader.load();
             requestBean.register(this);
 
-            RequestItemGUIController requestItemGUIController = fxmlLoader.getController();
-            requestItemGUIController.setPane(requestBox);
-            requestItemGUIController.setResidenceRequest(requestBean);
+            ResidenceRequestItemGUIController residenceRequestItemGUIController = fxmlLoader.getController();
+            residenceRequestItemGUIController.setPane(requestBox);
+            residenceRequestItemGUIController.setResidenceRequest(requestBean);
 
             if (requestBean.getStatus() == 0){
                 pendingReqList.getChildren().add(requestBox);

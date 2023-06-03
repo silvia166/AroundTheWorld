@@ -37,12 +37,12 @@ public class StudentRequestGUIController implements Observer {
             Pane requestBox = fxmlLoader.load();
             requestBean.register(this);
 
-            RequestItemGUIController requestItemGUIController = fxmlLoader.getController();
-            requestItemGUIController.setPane(requestBox);
+            ResidenceRequestItemGUIController residenceRequestItemGUIController = fxmlLoader.getController();
+            residenceRequestItemGUIController.setPane(requestBox);
             if(requestBean.getStatus() == 1){
-                requestItemGUIController.setModifiedRequest(requestBean);
+                residenceRequestItemGUIController.setModifiedRequest(requestBean);
             }else {
-                requestItemGUIController.setPendingRequest(requestBean);
+                residenceRequestItemGUIController.setPendingRequest(requestBean);
             }
             residenceReqList.getChildren().add(requestBox);
         }

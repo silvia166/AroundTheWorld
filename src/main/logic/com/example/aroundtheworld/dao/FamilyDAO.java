@@ -10,6 +10,7 @@ import com.example.aroundtheworld.model.Family;
 import com.example.aroundtheworld.model.FamilyMember;
 import com.example.aroundtheworld.model.FamilyPreferences;
 
+import java.io.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,6 +25,7 @@ public class FamilyDAO {
     private static final String ADDRESS = "address";
     private static final String PHONE = "phoneNumber";
     private static final String PHOTO = "photo";
+    private static final String CSV_FILE_NAME = "src/main/res/Users.csv";
 
     private FamilyDAO() {}
 
@@ -88,6 +90,20 @@ public class FamilyDAO {
             CRUDQueries.insertFamily(connection, name, phone, city, address, email, imgSrc);
 
         } catch (SQLException e) {
+            Printer.printError(e.getMessage());
+        }
+
+
+        String user = email;
+        user = user.concat(",123,family");
+
+        File file = new File(CSV_FILE_NAME);
+
+        try {
+            PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(file, true)));
+            output.println(user);
+            output.close();
+        } catch (IOException e) {
             Printer.printError(e.getMessage());
         }
 

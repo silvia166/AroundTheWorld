@@ -13,7 +13,7 @@ public abstract class StudentDAO {
     private static final String CSV_FILE_USERS = "src/main/res/Users.csv";
     private static final String CSV_FILE_STUDENTS = "src/main/res/Students.csv";
     private static final int IDSTUDENT = 0;
-    public abstract Student retrieveStudent(String username, int id);
+
     public void addStudent(String name, String surname, String birth, String nationality, String phoneNumber, String email, String password){
         //JDBC
         Connection connection;
@@ -81,4 +81,6 @@ public abstract class StudentDAO {
 
     }
     public abstract Student getNameById(int idStudent);
+    public abstract Student retrieveStudentById(int id);
+    public abstract Student retrieveStudentByUsername(String username);
 }

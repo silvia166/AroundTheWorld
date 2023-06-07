@@ -4,6 +4,7 @@ import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.exception.NoAvailableRoomsException;
+import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.*;
 
 import java.sql.Connection;
@@ -48,5 +49,30 @@ public class RoomDAO {
             Printer.printError(e.getMessage());
         }
             return roomList;
+    }
+
+    public static Room retrieveRoom(int idResidence, int roomNumber){
+        Connection connection;
+        Room room = null;
+        try {
+            connection = ConnectionDB.getConnection();
+
+            ResultSet resultSet = SimpleQueries.retrieveRoomType(connection, idResidence, roomNumber);
+
+            if (!resultSet.first()) {
+                throw new NotFoundException("No room found");
+            }
+
+            resultSet.first();
+
+            String type = resultSet.getString(TYPE);
+            room = new Room(idResidence, roomNumber, type);
+
+            resultSet.close();
+        } catch (SQLException | NotFoundException e) {
+            Printer.printError(e.getMessage());
+        }
+        return room;
+
     }
 }

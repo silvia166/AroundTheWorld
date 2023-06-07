@@ -1,6 +1,7 @@
 package com.example.aroundtheworld.appcontroller;
 
 import com.example.aroundtheworld.bean.FamilyRequestBean;
+import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.dao.FamilyDAO;
 import com.example.aroundtheworld.dao.FamilyRequestDAO;
 import com.example.aroundtheworld.model.Family;
@@ -11,12 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookingFamilyController {
-    public List<FamilyRequestBean> getStudentFamilyRequest(int id) {
+    public List<FamilyRequestBean> getStudentFamilyRequest(StudentBean studentBean) {
         List<FamilyRequestBean> familyRequestBeanList = new ArrayList<>();
-        List<FamilyRequest> requests = FamilyRequestDAO.retrieveStudentRequest(id);
+        List<FamilyRequest> requests = FamilyRequestDAO.retrieveStudentRequest(studentBean.getId());
 
         for(FamilyRequest request: requests){
-            Family family = FamilyDAO.retrieveFamilyName(request.getIdFamily());
+            Family family = FamilyDAO.retrieveFamilyInfo(request.getIdFamily());
             FamilyRequestBean familyRequestBean = new FamilyRequestBean(request.getCity(),request.getArrival(), request.getDeparture(), request.getStatus(), request.getIdFamily());
             familyRequestBean.setId(request.getId());
             familyRequestBean.setFamilyName(family.getName());

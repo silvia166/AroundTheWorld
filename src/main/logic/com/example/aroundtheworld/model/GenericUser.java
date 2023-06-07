@@ -2,13 +2,13 @@ package com.example.aroundtheworld.model;
 
 public abstract class GenericUser {
     private int id;
-    private int type; // 1 student, 2 family
+    private int role; // 1 student, 2 family
     private String phoneNumber;
     private String email;
 
-    protected GenericUser(int id, int type, String phoneNumber, String email) {
+    protected GenericUser(int id, int role, String phoneNumber, String email) {
         this.id = id;
-        this.type = type;
+        this.role = role;
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
@@ -22,12 +22,12 @@ public abstract class GenericUser {
         this.id = id;
     }
 
-    public int getType() {
-        return type;
+    public int getRole() {
+        return role;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public void setRole(int role) {
+        this.role = role;
     }
 
     public String getPhoneNumber() {

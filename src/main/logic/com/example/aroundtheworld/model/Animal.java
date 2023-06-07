@@ -12,7 +12,6 @@ public class Animal {
     public String getType() {
         return type;
     }
-
     public int getQuantity() {
         return quantity;
     }

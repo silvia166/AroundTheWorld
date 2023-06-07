@@ -2,6 +2,7 @@ package junit;
 
 import com.example.aroundtheworld.dao.LoginDAO;
 import com.example.aroundtheworld.engineering.factory.LoginDAOFactory;
+import com.example.aroundtheworld.model.UserProfile;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,8 +16,8 @@ class TestLoginDAO {
     @Test
     void testCheckUser(){
         LoginDAO loginDAO = LoginDAOFactory.getInstance().createLoginDAO();
-        int role = loginDAO.checkUser("cesaroni@gmail.com","123");
+        UserProfile userProfile = loginDAO.checkUser("cesaroni@gmail.com","123");
 
-        assertEquals(2, role); //il test ha successo in quanto restituisce il ruolo 2, corrispondente alla famiglia
+        assertEquals(2, userProfile.getRole()); //il test ha successo in quanto restituisce il ruolo 2, corrispondente alla famiglia
     }
 }

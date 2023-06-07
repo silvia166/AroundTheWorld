@@ -25,26 +25,71 @@ public class FamilyDAO {
     private static final String ADDRESS = "address";
     private static final String PHONE = "phoneNumber";
     private static final String PHOTO = "photo";
+    private static final String EMAIL = "email";
     private static final String CSV_FILE_NAME = "src/main/res/Users.csv";
 
     private FamilyDAO() {}
 
-    public static Family retrieveFamily(String username, int idFamily) throws NotFoundException {
+    public static Family retrieveFamilyById(int idFamily) throws NotFoundException {
         Connection connection;
         Family family = null;
-        List<FamilyMember> familyMembers;
-        List<Animal> animals;
-        FamilyPreferences preferences;
-        ResultSet resultSet = null;
 
         try {
             connection = ConnectionDB.getConnection();
 
-            if(username == null){
-                resultSet = SimpleQueries.retrieveFamilyById(connection, idFamily);
-            }else{
-                resultSet = SimpleQueries.retrieveFamilyByUsername(connection, username);
+            ResultSet resultSet = SimpleQueries.retrieveFamilyById(connection, idFamily);
+
+            if (!resultSet.first()) {
+                throw new NotFoundException("No family found with id: " + idFamily);
             }
+
+            resultSet.first();
+            do {
+
+               family = setFamilyData(resultSet);
+
+            } while (resultSet.next());
+
+            resultSet.close();
+
+        } catch (SQLException e) {
+            Printer.printError(e.getMessage());
+        }
+
+        return family;
+    }
+
+    private static Family setFamilyData(ResultSet resultSet) throws NotFoundException, SQLException {
+        int familyId = resultSet.getInt(ID);
+        String phoneNumber = resultSet.getString(PHONE);
+        String name = resultSet.getString(NAME);
+        String city = resultSet.getString(CITY);
+        String address = resultSet.getString(ADDRESS);
+        String photo = resultSet.getString(PHOTO);
+        String email = resultSet.getString(EMAIL);
+
+        List<FamilyMember> familyMembers = FamilyMemberDAO.retrieveMembers(familyId);
+        List<Animal> animals = AnimalDAO.retrieveAnimal(familyId);
+        FamilyPreferences preferences = FamilyPreferencesDAO.retrievePreferences(familyId);
+
+        Family family = new Family(familyId, phoneNumber, name, city, address, email);
+        family.setAnimals(animals);
+        family.setMembers(familyMembers);
+        family.setPreferences(preferences);
+        family.setImgSrc(photo);
+
+        return family;
+    }
+
+    public static Family retrieveFamilyByUsername(String username) throws NotFoundException {
+        Connection connection;
+        Family family = null;
+        ResultSet resultSet;
+
+        try {
+            connection = ConnectionDB.getConnection();
+
+            resultSet = SimpleQueries.retrieveFamilyByUsername(connection, username);
 
             if (!resultSet.first()) {
                 throw new NotFoundException("No family found with username: " + username);
@@ -52,23 +97,7 @@ public class FamilyDAO {
 
             resultSet.first();
             do {
-                int familyId = resultSet.getInt(ID);
-                String phoneNumber = resultSet.getString(PHONE);
-                String name = resultSet.getString(NAME);
-                String city = resultSet.getString(CITY);
-                String address = resultSet.getString(ADDRESS);
-                String photo = resultSet.getString(PHOTO);
-
-                familyMembers = FamilyMemberDAO.retrieveMembers(familyId);
-                animals = AnimalDAO.retrieveAnimal(familyId);
-                preferences = FamilyPreferencesDAO.retrievePreferences(familyId);
-
-                family = new Family(familyId, phoneNumber, name, city, address, username);
-                family.setAnimals(animals);
-                family.setMembers(familyMembers);
-                family.setPreferences(preferences);
-                family.setImgSrc(photo);
-
+                family = setFamilyData(resultSet);
             } while (resultSet.next());
 
             resultSet.close();
@@ -109,22 +138,24 @@ public class FamilyDAO {
 
     }
 
-    public static int retrieveFamilyID(String name) {
+    public static Family retrieveFamilyID(String email) {
         Connection connection;
-        int id = 0;
+        Family family = null;
 
         try {
             connection = ConnectionDB.getConnection();
 
-            ResultSet resultSet = SimpleQueries.retrieveFamilyID(connection, name);
+            ResultSet resultSet = SimpleQueries.retrieveFamilyID(connection, email);
 
             if (!resultSet.first()) {
-                throw new NotFoundException("No family found with name" + name);
+                throw new NotFoundException("No family found with email" + email);
             }
 
             resultSet.first();
 
-            id = resultSet.getInt(1);
+            int id = resultSet.getInt(ID);
+            family = new Family();
+            family.setId(id);
 
             resultSet.close();
 
@@ -133,15 +164,12 @@ public class FamilyDAO {
             Printer.printError(e.getMessage());
         }
 
-        return id;
+        return family;
     }
 
     public static List<Family> retrieveFamilies(String city) {
         Connection connection;
         Family family;
-        List<FamilyMember> familyMembers;
-        List<Animal> animals;
-        FamilyPreferences preferences;
         List<Family> familyList = new ArrayList<>();
 
         try {
@@ -156,22 +184,8 @@ public class FamilyDAO {
             resultSet.first();
 
             do {
-                int familyId = resultSet.getInt(ID);
-                String phoneNumber = resultSet.getString(PHONE);
-                String name = resultSet.getString(NAME);
-                String address = resultSet.getString(ADDRESS);
-                String photo = resultSet.getString(PHOTO);
 
-                familyMembers = FamilyMemberDAO.retrieveMembers(familyId);
-                animals = AnimalDAO.retrieveAnimal(familyId);
-                preferences = FamilyPreferencesDAO.retrievePreferences(familyId);
-
-                family = new Family(familyId, phoneNumber, name, city, address);
-                family.setAnimals(animals);
-                family.setMembers(familyMembers);
-                family.setPreferences(preferences);
-                family.setImgSrc(photo);
-
+                family = setFamilyData(resultSet);
                 familyList.add(family);
 
             } while (resultSet.next());
@@ -185,7 +199,7 @@ public class FamilyDAO {
     }
 
 
-    public static Family retrieveFamilyName(int idFamily) {
+    public static Family retrieveFamilyInfo(int idFamily) {
         Connection connection;
         String name;
         String photo;
@@ -204,7 +218,9 @@ public class FamilyDAO {
 
             name = resultSet.getString(NAME);
             photo = resultSet.getString(PHOTO);
-            family = new Family(name, photo);
+            family = new Family();
+            family.setImgSrc(photo);
+            family.setName(name);
 
             resultSet.close();
 

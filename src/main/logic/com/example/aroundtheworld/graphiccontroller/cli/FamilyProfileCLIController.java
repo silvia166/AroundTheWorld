@@ -70,7 +70,7 @@ public class FamilyProfileCLIController implements GraphicCLIController{
         ContactFamilyController contactFamilyController = new ContactFamilyController();
         for(CompatibleFamilyBean compatibleFamily: compatibleFamilyBeanList){
             if(compatibleFamily.getId() == idFamily){
-                familyBean = contactFamilyController.getFamilyProfile(compatibleFamily.getId());
+                familyBean = contactFamilyController.getFamilyProfile(compatibleFamily);
             }
         }
         buildProfileInformation(familyBean);

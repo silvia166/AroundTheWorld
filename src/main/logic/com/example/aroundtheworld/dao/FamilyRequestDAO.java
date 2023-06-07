@@ -43,7 +43,7 @@ public class FamilyRequestDAO {
     private FamilyRequestDAO() {
     }
 
-    public static void newRequest(FamilyRequest familyRequest) throws DuplicateRequestException{
+    public static void newRequest(FamilyRequest familyRequest) throws DuplicateRequestException {
 
         Connection connection;
 
@@ -51,7 +51,7 @@ public class FamilyRequestDAO {
             connection = ConnectionDB.getConnection();
 
             ResultSet resultSet = SimpleQueries.selectDistinctRequest(connection, familyRequest.getIdStudent(), familyRequest.getArrival(), familyRequest.getDeparture());
-            if(!resultSet.first()){
+            if (!resultSet.first()) {
                 CRUDQueries.insertRequest(connection, familyRequest);
             } else {
                 throw new DuplicateRequestException();
@@ -62,7 +62,7 @@ public class FamilyRequestDAO {
         }
     }
 
-    public static List<FamilyRequest> retrieveRequests(int id){
+    public static List<FamilyRequest> retrieveRequests(int id) {
         Connection connection;
         List<FamilyRequest> familyRequestsList = new ArrayList<>();
         FamilyRequest familyRequest;
@@ -72,7 +72,7 @@ public class FamilyRequestDAO {
 
             ResultSet resultSet = SimpleQueries.retrieveFamilyRequests(connection, id);
 
-            if(resultSet.first()) {
+            if (resultSet.first()) {
                 resultSet.first();
                 do {
                     int requestId = resultSet.getInt(ID);
@@ -152,7 +152,7 @@ public class FamilyRequestDAO {
             connection = ConnectionDB.getConnection();
             ResultSet resultSet = SimpleQueries.retrieveStudentFamilyRequests(connection, idStudent);
 
-            if(resultSet.first()) {
+            if (resultSet.first()) {
                 resultSet.first();
                 do {
                     int requestId = resultSet.getInt(ID);
@@ -189,7 +189,7 @@ public class FamilyRequestDAO {
 
             ResultSet resultSet = SimpleQueries.retrieveBookingsByFamily(connection, idFamily);
 
-            if(resultSet.first()) {
+            if (resultSet.first()) {
                 resultSet.first();
                 do {
                     int requestId = resultSet.getInt(ID);
@@ -226,7 +226,7 @@ public class FamilyRequestDAO {
 
             ResultSet resultSet = SimpleQueries.retrieveFamilyBookingsByStudent(connection, idStudent);
 
-            if(resultSet.first()) {
+            if (resultSet.first()) {
                 resultSet.first();
                 do {
                     int requestId = resultSet.getInt(ID);
@@ -262,24 +262,5 @@ public class FamilyRequestDAO {
         } catch (SQLException e) {
             Printer.printError(e.getMessage());
         }
-    }
-
-    public static int getNumberOfRequests(int id) {
-        Connection connection;
-        int number = 0;
-
-        try {
-            connection = ConnectionDB.getConnection();
-
-            ResultSet resultSet = SimpleQueries.getNumberOfRequests(connection, id);
-            if(!resultSet.first()) {
-                throw new NotFoundException("No family found");
-            }
-            resultSet.first();
-            number = resultSet.getInt("requests");
-        } catch (SQLException | NotFoundException e) {
-            Printer.printError(e.getMessage());
-        }
-        return number;
     }
 }

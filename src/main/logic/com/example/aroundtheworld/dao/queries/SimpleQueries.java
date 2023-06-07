@@ -72,7 +72,7 @@ public class SimpleQueries {
     }
 
     public static ResultSet retrieveFamilyID(Connection connection, String name) throws SQLException {
-        String sql = "SELECT idFamily FROM family WHERE name = ?";
+        String sql = "SELECT idFamily FROM family WHERE email = ?";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setString(1,name);
         return preparedStatement.executeQuery();
@@ -86,7 +86,7 @@ public class SimpleQueries {
     }
 
     public static ResultSet retrieveFamiliesByCity(Connection connection, String city) throws SQLException {
-        String sql = "SELECT idFamily, name, phoneNumber, address, photo FROM family WHERE city = ?";
+        String sql = "SELECT * FROM family WHERE city = ?";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setString(1,city);
         return preparedStatement.executeQuery();
@@ -126,8 +126,8 @@ public class SimpleQueries {
         return preparedStatement.executeQuery();
     }
 
-    public static ResultSet retrieveResidencebyId(Connection connection, int idResidence) throws SQLException{
-        String sql = "SELECT city FROM residence WHERE idResidence = ?";
+    public static ResultSet retrieveResidenceById(Connection connection, int idResidence) throws SQLException{
+        String sql = "SELECT name, city FROM residence WHERE idResidence = ?";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,idResidence);
         return preparedStatement.executeQuery();
@@ -228,6 +228,14 @@ public class SimpleQueries {
         String sql = "SELECT count(*) as requests FROM familyRequest WHERE idFamily = ?";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,id);
+        return preparedStatement.executeQuery();
+    }
+
+    public static ResultSet retrieveRoomType(Connection connection, int idResidence, int roomNumber) throws SQLException {
+        String sql = "SELECT type FROM room WHERE idResidence = ? AND number = ?";
+        preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        preparedStatement.setInt(1,idResidence);
+        preparedStatement.setInt(2,roomNumber);
         return preparedStatement.executeQuery();
     }
 }

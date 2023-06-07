@@ -142,9 +142,11 @@ public class AgencyRequestCLIController implements GraphicCLIController{
         }
 
         if(residenceRequestBean.getRoom().equals(selectedRoom.getType())){
-            reserveRoomController.finalizeRequest(selectedRoom, residenceRequestBean, 2, null);
+            residenceRequestBean.setStatus(2);
+            reserveRoomController.finalizeRequest(selectedRoom, residenceRequestBean,  null);
         }else{
-            reserveRoomController.finalizeRequest(selectedRoom, residenceRequestBean, 1, null);
+            residenceRequestBean.setStatus(1);
+            reserveRoomController.finalizeRequest(selectedRoom, residenceRequestBean,  null);
         }
 
         agencyRequestsViewCLI.printContinue();

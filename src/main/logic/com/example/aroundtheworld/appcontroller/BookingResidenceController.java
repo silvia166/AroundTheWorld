@@ -6,6 +6,7 @@ import com.example.aroundtheworld.dao.ResidenceRequestDAO;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
 import com.example.aroundtheworld.exception.MessageException;
 import com.example.aroundtheworld.exception.NotFoundException;
+import com.example.aroundtheworld.model.Residence;
 import com.example.aroundtheworld.model.ResidenceRequest;
 
 import java.time.LocalDate;
@@ -13,9 +14,9 @@ import java.time.LocalDate;
 public class BookingResidenceController {
     public void sendRequest(ResidenceRequestBean residenceRequestBean) throws NotFoundException, MessageException,  DuplicateRequestException {
         checkRequestDate(residenceRequestBean.getArrival(), residenceRequestBean.getDeparture());
-        int idResidence = ResidenceDAO.getIdResidence(residenceRequestBean.getCity());
+        Residence residence = ResidenceDAO.retrieveResidence(residenceRequestBean.getCity());
         ResidenceRequest residenceRequest = new ResidenceRequest(residenceRequestBean.getCity(), residenceRequestBean.getArrival(), residenceRequestBean.getDeparture(), residenceRequestBean.getRoom(), residenceRequestBean.getIdStudent(), 0);
-        residenceRequest.setIdResidence(idResidence);
+        residenceRequest.setIdResidence(residence.getId());
         ResidenceRequestDAO.newRequest(residenceRequest);
     }
 

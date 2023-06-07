@@ -53,44 +53,16 @@ public class ResidenceDAO {
         return residence;
     }
 
-    public static int getIdResidence(String city) throws NotFoundException{
+    public static Residence retrieveResidenceById(int idResidence) throws NotFoundException {
+
         Connection connection;
-        int idResidence = 0;
+        Residence residence = null;
 
 
         try{
             connection = ConnectionDB.getConnection();
 
-            ResultSet resultSet = SimpleQueries.retrieveIdResidence(connection, city);
-
-            if(!resultSet.first()) {
-                throw new NotFoundException("No residence found in city with name: " + city);
-            }
-
-            resultSet.first();
-            do{
-                idResidence = resultSet.getInt(ID);
-
-            } while(resultSet.next());
-
-            resultSet.close();
-
-        } catch(SQLException e){
-            Printer.printError(e.getMessage());
-        }
-        return idResidence;
-    }
-
-    public static String retrieveResidencebyId(int idResidence) throws NotFoundException {
-
-        Connection connection;
-        String city = null;
-
-
-        try{
-            connection = ConnectionDB.getConnection();
-
-            ResultSet resultSet = SimpleQueries.retrieveResidencebyId(connection, idResidence);
+            ResultSet resultSet = SimpleQueries.retrieveResidenceById(connection, idResidence);
 
             if(!resultSet.first()) {
                 throw new NotFoundException("No residence found with id: " + idResidence);
@@ -98,7 +70,9 @@ public class ResidenceDAO {
 
             resultSet.first();
             do{
-                city = resultSet.getString(CITY);
+                String name = resultSet.getString(NAME);
+                String city = resultSet.getString(CITY);
+                residence = new Residence(idResidence, name, city);
 
             } while(resultSet.next());
 
@@ -107,7 +81,7 @@ public class ResidenceDAO {
         } catch(SQLException e){
             Printer.printError(e.getMessage());
         }
-        return city;
+        return residence;
     }
 }
 

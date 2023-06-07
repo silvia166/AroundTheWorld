@@ -20,35 +20,22 @@ public class StudentDAOJDBC extends StudentDAO{
     private static final String EMAIL = "email";
 
     @Override
-    public Student retrieveStudent(String username, int id) {
+    public Student retrieveStudentById(int id) {
         Connection connection;
         Student student = null;
 
         try{
             connection = ConnectionDB.getConnection();
-            ResultSet resultSet = null;
 
-            if(id == 0){
-                resultSet = SimpleQueries.retrieveStudent(connection, username);
-            } else if(username == null){
-                resultSet = SimpleQueries.retrieveStudentById(connection, id);
-            }
+            ResultSet resultSet = SimpleQueries.retrieveStudentById(connection, id);
 
             if(!resultSet.first()){
-                throw new NotFoundException("No student found with username: " + username);
+                throw new NotFoundException("No student found with id: " + id);
             }
 
             resultSet.first();
             do {
-                int studentId = resultSet.getInt(ID);
-                String phoneNumber = resultSet.getString(PHONE);
-                String name = resultSet.getString(NAME);
-                String surname = resultSet.getString(SURNAME);
-                String nationality = resultSet.getString(NATIONALITY);
-                String birth = String.valueOf(resultSet.getDate(BIRTH));
-                String email = resultSet.getString(EMAIL);
-
-                student = new Student(name, surname, nationality, birth, email, phoneNumber, studentId);
+                student = setStudentData(resultSet);
 
             } while(resultSet.next());
 
@@ -58,6 +45,46 @@ public class StudentDAOJDBC extends StudentDAO{
             Printer.printError(e.getMessage());
         }
         return student;
+    }
+
+    @Override
+    public Student retrieveStudentByUsername(String username) {
+        Connection connection;
+        Student student = null;
+
+        try{
+            connection = ConnectionDB.getConnection();
+
+            ResultSet resultSet = SimpleQueries.retrieveStudent(connection, username);
+
+            if(!resultSet.first()){
+                throw new NotFoundException("No student found with username: " + username);
+            }
+
+            resultSet.first();
+            do {
+                student = setStudentData(resultSet);
+
+            } while(resultSet.next());
+
+            resultSet.close();
+
+        } catch(SQLException | NotFoundException e) {
+            Printer.printError(e.getMessage());
+        }
+        return student;
+    }
+
+    private static Student setStudentData(ResultSet resultSet) throws SQLException {
+        int studentId = resultSet.getInt(ID);
+        String phoneNumber = resultSet.getString(PHONE);
+        String name = resultSet.getString(NAME);
+        String surname = resultSet.getString(SURNAME);
+        String nationality = resultSet.getString(NATIONALITY);
+        String birth = String.valueOf(resultSet.getDate(BIRTH));
+        String email = resultSet.getString(EMAIL);
+
+        return new Student(name, surname, nationality, birth, email, phoneNumber, studentId);
     }
 
     @Override

@@ -25,7 +25,7 @@ public class FamilyRequestCLIController implements GraphicCLIController{
         this.familyRequestViewCLI = new FamilyRequestViewCLI(this);
         FamilyBean familyBean = Session.getCurrentSession().getFamilyBean();
         ContactFamilyController contactFamilyController = new ContactFamilyController();
-        List<FamilyRequestBean> requests = contactFamilyController.getFamilyRequests(familyBean.getId());
+        List<FamilyRequestBean> requests = contactFamilyController.getFamilyRequests(familyBean);
         for(FamilyRequestBean request : requests){
             if(request.getStatus() == 0){
                 pendingRequest.add(request);

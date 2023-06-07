@@ -21,7 +21,7 @@ public class TravelsController {
 
         for (FamilyRequest request : requests) {
             StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
-            Student student = studentDAO.retrieveStudent(null, request.getIdStudent());
+            Student student = studentDAO.retrieveStudentById(request.getIdStudent());
             int currYear = Year.now().getValue();
             int birthYear = Integer.parseInt(String.format("%." + 4 + "s", student.getDateOfBirth()));
             int age = currYear - birthYear;
@@ -42,7 +42,7 @@ public class TravelsController {
 
 
         for (FamilyRequest request : familyRequests) {
-            Family family = FamilyDAO.retrieveFamilyName(request.getIdFamily());
+            Family family = FamilyDAO.retrieveFamilyInfo(request.getIdFamily());
             TravelBean travelBean = new TravelBean(request.getCity(), request.getArrival(), request.getDeparture(), request.getId(), family.getName(), family.getImgSrc());
             travelBean.setRate(request.getRate());
             travelBeanList.add(travelBean);

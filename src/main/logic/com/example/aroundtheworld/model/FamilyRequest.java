@@ -35,8 +35,12 @@ public class FamilyRequest extends Request {
         this.rate = rate;
     }
 
+    //per la relazione di composizione l'istanza passata di FamilyPrefrences deve essere clonata
     public void setFamilyPreferences(FamilyPreferences familyPreferences) {
-        this.familyPreferences = familyPreferences;
+        this.familyPreferences = new FamilyPreferences();
+        this.familyPreferences.setHouse(familyPreferences.getHouse());
+        this.familyPreferences.setHobbies(familyPreferences.getTravels(),familyPreferences.getSport(),familyPreferences.getBooks(),familyPreferences.getNature(),familyPreferences.getFilm(),familyPreferences.getVideoGames(),familyPreferences.getCooking());
+        this.familyPreferences.setFood(familyPreferences.getVegetarian(),familyPreferences.getVegan());
     }
 
     public int getSiblings() {

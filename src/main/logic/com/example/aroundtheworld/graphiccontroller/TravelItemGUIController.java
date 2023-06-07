@@ -236,8 +236,9 @@ public class TravelItemGUIController {
                 rate1.setImage(imageStar);
             }
 
+            travelBean.setRate(rate);
             RateController rateController = new RateController();
-            rateController.rateFamily(rate, travelBean.getId());
+            rateController.rateFamily(travelBean);
         }
     }
 

@@ -6,10 +6,7 @@ import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.engineering.factory.LoginDAOFactory;
 import com.example.aroundtheworld.engineering.factory.StudentDAOFactory;
 import com.example.aroundtheworld.exception.NotFoundException;
-import com.example.aroundtheworld.model.Animal;
-import com.example.aroundtheworld.model.Family;
-import com.example.aroundtheworld.model.FamilyMember;
-import com.example.aroundtheworld.model.Student;
+import com.example.aroundtheworld.model.*;
 
 
 public class LoginController {
@@ -17,20 +14,20 @@ public class LoginController {
 
         LoginDAO loginDAO = LoginDAOFactory.getInstance().createLoginDAO();
 
-        int role = loginDAO.checkUser(loginBean.getUsername(),loginBean.getPassword());
-        loginBean.setRole(role);
+        UserProfile userProfile = loginDAO.checkUser(loginBean.getUsername(),loginBean.getPassword());
+        loginBean.setRole(userProfile.getRole());
     }
 
     public void studentLogin(LoginBean loginBean) {
         StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
-        Student student = studentDAO.retrieveStudent(loginBean.getUsername(),0);
+        Student student = studentDAO.retrieveStudentByUsername(loginBean.getUsername());
 
         StudentBean studentBean = new StudentBean(student.getName(), student.getSurname(), student.getNationality(), student.getDateOfBirth(), student.getEmail(), student.getPhoneNumber(), student.getId());
         Session.setSessionInstance(studentBean);
     }
 
     public void familyLogin(LoginBean loginBean) throws NotFoundException {
-        Family family = FamilyDAO.retrieveFamily(loginBean.getUsername(), 0);
+        Family family = FamilyDAO.retrieveFamilyByUsername(loginBean.getUsername());
 
         FamilyBean familyBean = new FamilyBean(family.getName(), family.getCity(), family.getAddress(), family.getId(), family.getPhoneNumber(), family.getEmail());
         familyBean.setHouse(family.getPreferences().getHouse());

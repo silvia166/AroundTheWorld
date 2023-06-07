@@ -1,5 +1,6 @@
 package com.example.aroundtheworld.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Family extends GenericUser {
@@ -9,21 +10,14 @@ public class Family extends GenericUser {
     private String address;
     private List<Animal> animals;
     private List<FamilyMember> members;
-    private FamilyPreferences preferences;
-
+    private FamilyPreferences familyPreferences;
+    public Family() {}
     public Family(int id, String phoneNumber, String name, String city, String address, String email) {
         super(id, 2, phoneNumber, email);
         this.name = name;
         this.city = city;
         this.address = address;
     }
-
-    public Family(String name, String imgSrc) {
-        super();
-        this.name = name;
-        this.imgSrc = imgSrc;
-    }
-
     public Family(int id, String phoneNumber, String name, String city, String address) {
         super(id, 2, phoneNumber, null);
         this.name = name;
@@ -31,18 +25,38 @@ public class Family extends GenericUser {
         this.address = address;
     }
 
-    public FamilyPreferences getPreferences() {
-        return preferences;
+    //per la relazione di composizione devo effettuare una clonazione delle istanze di FamilyPrefrences, Animal e FamilyMember passate come parametri
+    public void setPreferences(FamilyPreferences familyPreferences) {
+        this.familyPreferences = new FamilyPreferences();
+        this.familyPreferences.setFood(familyPreferences.getVegetarian(),familyPreferences.getVegan());
+        this.familyPreferences.setHouse(familyPreferences.getHouse());
+        this.familyPreferences.setHobbies(familyPreferences.getTravels(),familyPreferences.getSport(),familyPreferences.getBooks(),familyPreferences.getNature(),familyPreferences.getFilm(),familyPreferences.getVideoGames(),familyPreferences.getCooking());
     }
-    public void setPreferences(FamilyPreferences preferences) {this.preferences = preferences;}
-    public void setImgSrc(String imgSrc) {
-        this.imgSrc = imgSrc;
-    }
+
     public void setAnimals(List<Animal> animals) {
-        this.animals = animals;
+        Animal newAnimal;
+        this.animals = new ArrayList<>();
+        for (Animal animal : animals){
+            newAnimal = new Animal(animal.getType(),animal.getQuantity());
+            this.animals.add(newAnimal);
+        }
     }
     public void setMembers(List<FamilyMember> members) {
-        this.members = members;
+        FamilyMember familyMember;
+        this.members = new ArrayList<>();
+        for (FamilyMember member : members){
+            familyMember = new FamilyMember(member.getName(), member.getAge(), member.getParenthood());
+            this.members.add(familyMember);
+        }
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public FamilyPreferences getPreferences() {
+        return familyPreferences;
+    }
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
     }
     public String getName() {
         return name;

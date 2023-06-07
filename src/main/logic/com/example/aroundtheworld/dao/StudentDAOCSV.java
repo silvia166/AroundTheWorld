@@ -21,7 +21,7 @@ public class StudentDAOCSV extends StudentDAO {
     private static final int PHONE = 6;
 
     @Override
-    public Student retrieveStudent(String username, int id) {
+    public Student retrieveStudentByUsername(String username) {
         Student student = null;
 
         try{
@@ -32,13 +32,34 @@ public class StudentDAOCSV extends StudentDAO {
 
             while((row = bufferedReader.readLine()) != null){
                 data = row.split(",");
-                if(username != null){
-                    if(data[EMAIL].equals(username))
-                        student = new Student(data[NAME], data[SURNAME], data[NATIONALITY], data[BIRTH], data[EMAIL], data[PHONE], Integer.parseInt(data[IDSTUDENT]));
-                } else {
-                    if(Integer.parseInt(data[IDSTUDENT]) == id)
-                        student = new Student(data[NAME], data[SURNAME], data[NATIONALITY], data[BIRTH], data[EMAIL], data[PHONE], Integer.parseInt(data[IDSTUDENT]));
-                }
+                if(data[EMAIL].equals(username))
+                    student = new Student(data[NAME], data[SURNAME], data[NATIONALITY], data[BIRTH], username, data[PHONE], Integer.parseInt(data[IDSTUDENT]));
+            }
+            if(student == null){
+                throw new NotFoundException("No student found");
+            }
+            bufferedReader.close();
+        }catch(NotFoundException | IOException e){
+            Printer.printError(e.getMessage());
+        }
+
+        return student;
+    }
+
+    @Override
+    public Student retrieveStudentById(int id) {
+        Student student = null;
+
+        try{
+            File file = new File(CSV_FILE_NAME);
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String row;
+            String[] data;
+
+            while((row = bufferedReader.readLine()) != null){
+                data = row.split(",");
+                if(Integer.parseInt(data[IDSTUDENT]) == id)
+                    student = new Student(data[NAME], data[SURNAME], data[NATIONALITY], data[BIRTH], data[EMAIL], data[PHONE], id);
             }
             if(student == null){
                 throw new NotFoundException("No student found");

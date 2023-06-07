@@ -30,11 +30,11 @@ public class StudentRequestCLIController implements GraphicCLIController{
         int choice = studentRequestViewCLI.run();
         if (choice == 1) {
             ReserveRoomController reserveRoomController = new ReserveRoomController();
-            this.residenceRequestList = reserveRoomController.getStudentResidenceRequests(studentBean.getId());
+            this.residenceRequestList = reserveRoomController.getStudentResidenceRequests(studentBean);
             displayResidenceRequests(residenceRequestList);
         } else {
             BookingFamilyController bookingFamilyController = new BookingFamilyController();
-            this.familyRequestList = bookingFamilyController.getStudentFamilyRequest(studentBean.getId());
+            this.familyRequestList = bookingFamilyController.getStudentFamilyRequest(studentBean);
             displayFamilyRequests(familyRequestList);
         }
     }
@@ -131,8 +131,9 @@ public class StudentRequestCLIController implements GraphicCLIController{
 
     public void acceptRequest(int type) {
         if(type == 1) {
+            residenceRequestBean.setStatus(2);
             ReserveRoomController reserveRoomController = new ReserveRoomController();
-            reserveRoomController.updateStatus(residenceRequestBean, 2, null);
+            reserveRoomController.updateStatus(residenceRequestBean, null);
             residenceRequestList.remove(residenceRequestBean);
             residenceRequestBean = null;
             displayResidenceRequests(residenceRequestList);

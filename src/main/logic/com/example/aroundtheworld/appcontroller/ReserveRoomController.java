@@ -3,6 +3,7 @@ package com.example.aroundtheworld.appcontroller;
 
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.bean.RoomBean;
+import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.dao.ResidenceRequestDAO;
 import com.example.aroundtheworld.dao.RoomDAO;
 import com.example.aroundtheworld.dao.StudentDAO;
@@ -27,7 +28,7 @@ public class ReserveRoomController {
             String studentName = student.getName();
             studentName = studentName.concat(" ");
             studentName = studentName.concat(student.getSurname());
-            ResidenceRequestBean residenceRequestBean = new ResidenceRequestBean(request.getCity(), request.getArrival(), request.getDeparture(), request.getRoom(), request.getIdStudent(), request.getStatus());
+            ResidenceRequestBean residenceRequestBean = new ResidenceRequestBean(request.getCity(), request.getArrival(), request.getDeparture(), request.getRequestedRoom(), request.getIdStudent(), request.getStatus());
             residenceRequestBean.setStudentName(studentName);
             residenceRequestBean.setIdResidence(request.getIdResidence());
             residenceRequestBean.setId(request.getId());
@@ -47,32 +48,30 @@ public class ReserveRoomController {
         return roomBeans;
     }
 
-    public void finalizeRequest(RoomBean selectedRoom, ResidenceRequestBean requestBean, int status, Pane pane) {
-        requestBean.setStatus(status);
+    public void finalizeRequest(RoomBean selectedRoom, ResidenceRequestBean requestBean, Pane pane) {
         if(pane != null){
             requestBean.notifyObserversResidence(requestBean, pane);
             }
-        ResidenceRequestDAO.updateRoom(selectedRoom.getNumber(), requestBean.getId(), status);
+        ResidenceRequestDAO.updateRoom(selectedRoom.getNumber(), requestBean.getId(), requestBean.getStatus());
     }
 
-    public List<ResidenceRequestBean> getStudentResidenceRequests(int id) {
+    public List<ResidenceRequestBean> getStudentResidenceRequests(StudentBean studentBean) {
         List<ResidenceRequestBean> residenceRequestBeans = new ArrayList<>();
-        List<ResidenceRequest> requests = ResidenceRequestDAO.retrieveStudentResidenceRequest(id);
+        List<ResidenceRequest> requests = ResidenceRequestDAO.retrieveStudentResidenceRequest(studentBean.getId());
 
         for(ResidenceRequest request: requests){
-            ResidenceRequestBean residenceRequestBean = new ResidenceRequestBean(request.getCity(), request.getArrival(), request.getDeparture(), request.getRoom(), request.getIdStudent(), request.getStatus());
+            ResidenceRequestBean residenceRequestBean = new ResidenceRequestBean(request.getCity(), request.getArrival(), request.getDeparture(), request.getRequestedRoom(), request.getIdStudent(), request.getStatus());
             residenceRequestBean.setId(request.getId());
             residenceRequestBeans.add(residenceRequestBean);
         }
         return residenceRequestBeans;
     }
 
-    public void updateStatus(ResidenceRequestBean requestBean, int status, Pane pane) {
-        requestBean.setStatus(status);
+    public void updateStatus(ResidenceRequestBean requestBean,  Pane pane) {
         if(pane != null){
             requestBean.notifyObserversResidence(requestBean, pane);
         }
-        ResidenceRequestDAO.updateStatus(requestBean.getId(), status);
+        ResidenceRequestDAO.updateStatus(requestBean.getId(), requestBean.getStatus());
     }
 
     public void deleteResidenceRequest(ResidenceRequestBean requestBean, Pane pane) {

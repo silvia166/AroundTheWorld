@@ -126,7 +126,7 @@ public class CRUDQueries {
         preparedStatement.setString(1,residenceRequest.getArrival());
         preparedStatement.setString(2,residenceRequest.getDeparture());
         preparedStatement.setInt(3,residenceRequest.getIdResidence());
-        preparedStatement.setString(4,residenceRequest.getRoom());
+        preparedStatement.setString(4,residenceRequest.getRequestedRoom());
         preparedStatement.setInt(5,0);
         preparedStatement.setInt(6,residenceRequest.getIdStudent());
         return preparedStatement.executeUpdate();

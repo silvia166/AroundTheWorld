@@ -109,8 +109,9 @@ public class TravelsStudentCLIController implements GraphicCLIController{
     }
 
     public void setRate(int rate) {
+        travelBean.setRate(rate);
         RateController rateController = new RateController();
-        rateController.rateFamily(rate, this.travelBean.getId());
+        rateController.rateFamily(travelBean);
         travelStudentViewCLI.printContinue();
         StudentCLIController studentCLIController = new StudentCLIController();
         studentCLIController.start();

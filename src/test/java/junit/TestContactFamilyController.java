@@ -22,7 +22,7 @@ class TestContactFamilyController {
         familyRequestBean.setHouse("single");
         familyRequestBean.setFood(1,0);
         try {
-            Family family = FamilyDAO.retrieveFamily("barbieri@gmail.com");
+            Family family = FamilyDAO.retrieveFamilyByUsername("barbieri@gmail.com");
             ContactFamilyController contactFamilyController = new ContactFamilyController();
             compatibility = contactFamilyController.calculateCompatibility(familyRequestBean,family);
         } catch (Exception ignore) {

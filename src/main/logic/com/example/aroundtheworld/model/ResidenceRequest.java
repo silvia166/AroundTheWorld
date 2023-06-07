@@ -2,12 +2,13 @@ package com.example.aroundtheworld.model;
 
 public class ResidenceRequest extends Request {
     private int idResidence;
-    private String room;
-    private int roomNumber;
+    private String requestedRoom;
+    private Room reservedRoom;
 
-    public ResidenceRequest(String city, String arrival, String departure, String room, int idStudent, int status) {
+    public ResidenceRequest(String city, String arrival, String departure, String requestedRoom, int idStudent, int status) {
         super(city, arrival, departure, idStudent, status);
-        this.room = room;
+        this.requestedRoom = requestedRoom;
+        this.reservedRoom = null;
     }
     public int getIdResidence() {
         return idResidence;
@@ -15,13 +16,13 @@ public class ResidenceRequest extends Request {
     public void setIdResidence(int idResidence) {
         this.idResidence = idResidence;
     }
-    public String getRoom() {
-        return room;
+    public String getRequestedRoom() {
+        return requestedRoom;
     }
-    public int getRoomNumber() {
-        return roomNumber;
+    public Room getReservedRoom() {
+        return reservedRoom;
     }
-    public void setRoomNumber(int roomNumber) {
-        this.roomNumber = roomNumber;
+    public void setReservedRoom(Room reservedRoom) {
+        this.reservedRoom = reservedRoom;
     }
 }

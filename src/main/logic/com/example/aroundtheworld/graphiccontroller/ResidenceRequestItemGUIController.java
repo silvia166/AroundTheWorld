@@ -26,8 +26,6 @@ public class ResidenceRequestItemGUIController implements Observer {
     @FXML
     private Label arrivalLabel;
     @FXML
-    private Label compatibilityLabel;
-    @FXML
     private Label departureLabel;
     @FXML
     private Label nameLabel;
@@ -35,10 +33,6 @@ public class ResidenceRequestItemGUIController implements Observer {
     private Label cityLabel;
     @FXML
     private Button rejectBtn;
-    @FXML
-    private Label notBookedLabel;
-    @FXML
-    private Button viewReqBtn;
     @FXML
     private Button manageButton;
     @FXML
@@ -125,8 +119,9 @@ public class ResidenceRequestItemGUIController implements Observer {
     }
 
     public void acceptModifiedRequest() {
+        residenceRequest.setStatus(2);
         ReserveRoomController reserveRoomController = new ReserveRoomController();
-        reserveRoomController.updateStatus(this.residenceRequest, 2, this.pane);
+        reserveRoomController.updateStatus(this.residenceRequest,  this.pane);
     }
 
     public void rejectModifiedRequest(){

@@ -35,13 +35,11 @@ public class LoginController {
         familyBean.setFamilyHobbies(family.getPreferences().getTravels(), family.getPreferences().getSport(), family.getPreferences().getBooks(), family.getPreferences().getNature(), family.getPreferences().getFilm(), family.getPreferences().getVideoGames(), family.getPreferences().getCooking());
 
         for(Animal animal: family.getAnimals()){
-            AnimalBean animalBean = new AnimalBean(animal.getType(), animal.getQuantity());
-            familyBean.addAnimal(animalBean);
+            familyBean.addAnimal(animal.getType(), animal.getQuantity());
         }
 
         for(FamilyMember member: family.getMembers()){
-            FamilyMemberBean memberBean = new FamilyMemberBean(member.getName(), member.getAge(), member.getParenthood());
-            familyBean.addMember(memberBean);
+            familyBean.addMember(member.getName(), member.getAge(), member.getParenthood());
         }
 
         familyBean.setImgSrc(family.getImgSrc());

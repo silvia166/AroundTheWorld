@@ -118,13 +118,13 @@ public class ContactFamilyController {
         familyBean.setHouse(family.getPreferences().getHouse());
 
         for(FamilyMember member: family.getMembers()){
-            FamilyMemberBean memberBean = new FamilyMemberBean(member.getName(), member.getAge(), member.getParenthood());
-            familyBean.addMember(memberBean);
+            familyBean.addMember(member.getName(), member.getAge(), member.getParenthood());
         }
+
         for(Animal animal: family.getAnimals()){
-            AnimalBean animalBean = new AnimalBean(animal.getType(), animal.getQuantity());
-            familyBean.addAnimal(animalBean);
+            familyBean.addAnimal(animal.getType(), animal.getQuantity());
         }
+
         familyBean.setImgSrc(family.getImgSrc());
 
         return familyBean;

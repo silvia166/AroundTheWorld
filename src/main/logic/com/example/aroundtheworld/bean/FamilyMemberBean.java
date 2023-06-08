@@ -10,7 +10,6 @@ public class FamilyMemberBean {
         this.age = age;
         this.parenthood = parenthood;
     }
-
     public String getParenthood() {
         return parenthood;
     }

@@ -39,7 +39,7 @@ public abstract class StudentDAO {
         String[] data;
         File file = new File(CSV_FILE_STUDENTS);
 
-        //closing the resourse readFromFile is handled automatically by the try-with-resources
+        //closing the resource readFromFile is handled automatically by the try-with-resources
         try (BufferedReader readFromFile = new BufferedReader(new FileReader(file))){
 
             while((line = readFromFile.readLine()) != null){
@@ -68,7 +68,7 @@ public abstract class StudentDAO {
         File fileUser = new File(CSV_FILE_USERS);
         File fileStudent = new File(CSV_FILE_STUDENTS);
 
-        //closing the resourse outputUser is handled automatically by the try-with-resources
+        //closing the resource outputUser is handled automatically by the try-with-resources
         try (PrintWriter outputUser = new PrintWriter(new BufferedWriter(new FileWriter(fileUser, true)))){
             PrintWriter outputStudent = new PrintWriter(new BufferedWriter(new FileWriter(fileStudent, true)));
             outputUser.println(user);

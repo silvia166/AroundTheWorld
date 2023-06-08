@@ -53,12 +53,12 @@ public class FamilyBean {
         this.imgSrc = imgSrc;
     }
 
-    public void addAnimal(AnimalBean animalBean) {
-        this.animals.add(animalBean);
+    public void addAnimal(String type, int quantity) {
+        this.animals.add(new AnimalBean(type, quantity));
     }
 
-    public void addMember(FamilyMemberBean memberBean) {
-        this.members.add(memberBean);
+    public void addMember(String name, int age, String parenthood) {
+        this.members.add(new FamilyMemberBean(name,age,parenthood));
     }
 
     public String getName() {

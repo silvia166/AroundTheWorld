@@ -23,7 +23,6 @@ public class ResidenceDAO {
         Connection connection;
         Residence residence = null;
 
-
         try{
             connection = ConnectionDB.getConnection();
 
@@ -57,7 +56,6 @@ public class ResidenceDAO {
 
         Connection connection;
         Residence residence = null;
-
 
         try{
             connection = ConnectionDB.getConnection();

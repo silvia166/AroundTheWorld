@@ -1,6 +1,6 @@
 package com.example.aroundtheworld.model;
 
-public class Request {
+public abstract class Request {
     private int id;
     private String city;
     private String arrival;
@@ -8,7 +8,7 @@ public class Request {
     private int idStudent;
     private int status;
 
-    public Request(String city, String arrival, String departure, int idStudent, int status) {
+    protected Request(String city, String arrival, String departure, int idStudent, int status) {
         this.city = city;
         this.arrival = arrival;
         this.departure = departure;

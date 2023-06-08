@@ -47,15 +47,15 @@ public class FamilyItemGUIController {
         private Button viewProfileBtn;
         @FXML
         private AnchorPane reqPane;
-        private CompatibleFamilyBean family;
+        private CompatibleFamilyBean compatibleFamily;
         private FamilyRequestBean familyRequest;
         private Pane pane;
         private static final String LIGHTGREEN = "-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-effect: dropShadow(three-pass-box, rgb(192,249,221), 10.0 , 0.0 , 0.0 ,5.0);";
 
         @FXML
         void sendRequest() throws IOException {
-                familyRequest.setCompatibility(family.getCompatibility());
-                familyRequest.setIdFamily(family.getId());
+                familyRequest.setCompatibility(compatibleFamily.getCompatibility());
+                familyRequest.setIdFamily(compatibleFamily.getId());
                 ContactFamilyController contactFamilyController = new ContactFamilyController();
                 try {
                         contactFamilyController.saveRequest(familyRequest);
@@ -70,7 +70,7 @@ public class FamilyItemGUIController {
         @FXML
         void viewProfile() throws NotFoundException, IOException {
                 ContactFamilyController contactFamilyController = new ContactFamilyController();
-                FamilyBean familyBean = contactFamilyController.getFamilyProfile(family);
+                FamilyBean familyBean = contactFamilyController.getFamilyProfile(compatibleFamily);
 
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);
@@ -81,7 +81,7 @@ public class FamilyItemGUIController {
                 Scene scene = new Scene(fxmlLoader.load());
 
                 FamilyProfileGUIController familyProfileGUIController = fxmlLoader.getController();
-                familyProfileGUIController.displaySelectedProfile(familyBean, this.family.getCompatibility());
+                familyProfileGUIController.displaySelectedProfile(familyBean, this.compatibleFamily);
 
                 stage.setScene(scene);
                 stage.centerOnScreen();
@@ -89,8 +89,7 @@ public class FamilyItemGUIController {
         }
 
         public void setData(CompatibleFamilyBean compatibleFamilyBean, FamilyRequestBean familyRequestBean) {
-
-                this.family = compatibleFamilyBean;
+                this.compatibleFamily = compatibleFamilyBean;
                 this.familyRequest = familyRequestBean;
                 familyName.setText(compatibleFamilyBean.getName() + "  family");
                 familyCity.setText(familyRequestBean.getCityBean());
@@ -121,7 +120,7 @@ public class FamilyItemGUIController {
                 compatibility.setText(requestBean.getDepartureBean());
                 if(requestBean.getStatus() == 0){
                         statusLabel.setText("Pending Request");
-                }else{
+                } else {
                         statusLabel.setText("Accepted Request");
                         bookBtn.setVisible(true);
                         rejectBtn.setVisible(true);
@@ -133,7 +132,7 @@ public class FamilyItemGUIController {
                 bookingFamilyController.rejectRequest(this.familyRequest, this.pane);
         }
 
-        public void bookFamily(){
+        public void bookFamily() {
                 BookingFamilyController bookingFamilyController = new BookingFamilyController();
                 bookingFamilyController.bookFamily(this.familyRequest, this.pane);
         }

@@ -13,13 +13,13 @@ public class Family extends GenericUser {
     private FamilyPreferences familyPreferences;
     public Family() {}
     public Family(int id, String phoneNumber, String name, String city, String address, String email) {
-        super(id, 2, phoneNumber, email);
+        super(id, phoneNumber, email);
         this.name = name;
         this.city = city;
         this.address = address;
     }
     public Family(int id, String phoneNumber, String name, String city, String address) {
-        super(id, 2, phoneNumber, null);
+        super(id, phoneNumber, null);
         this.name = name;
         this.city = city;
         this.address = address;

@@ -32,6 +32,7 @@ public class ContactFamilyController {
         return compatibleFamilies;
     }
 
+    //il seguente metodo dovrebbe essere privato, ma è stato reso pubblico in quanto invocato all'interno del test TestContactFamilyController
     public float calculateCompatibility(FamilyRequestBean familyRequestBean, Family family){
         double compatibility;
         int siblings = 0;
@@ -184,9 +185,9 @@ public class ContactFamilyController {
         FamilyRequestDAO.deleteRequest(familyRequest.getId());
     }
 
-    public StudentBean getStudent(int idStudent) {
+    public StudentBean getStudent(FamilyRequestBean familyRequestBean) {
         StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
-        Student student = studentDAO.retrieveStudentById(idStudent);
+        Student student = studentDAO.retrieveStudentById(familyRequestBean.getIdStudentBean());
         return new StudentBean(student.getName(), student.getSurname(), student.getNationality(), student.getDateOfBirth(), student.getEmail(), student.getPhoneNumber(), student.getId());
     }
 }

@@ -76,7 +76,7 @@ public class FamilyRequestItemGUIController implements Observer {
     public void viewRequest() throws IOException {
 
         ContactFamilyController contactFamilyController = new ContactFamilyController();
-        StudentBean studentBean = contactFamilyController.getStudent(this.familyRequest.getIdStudentBean());
+        StudentBean studentBean = contactFamilyController.getStudent(this.familyRequest);
 
         Stage stage =  new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);

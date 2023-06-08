@@ -1,6 +1,7 @@
 package com.example.aroundtheworld.graphiccontroller;
 
 import com.example.aroundtheworld.bean.AnimalBean;
+import com.example.aroundtheworld.bean.CompatibleFamilyBean;
 import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.FamilyMemberBean;
 import com.example.aroundtheworld.engineering.Session;
@@ -80,11 +81,11 @@ public class FamilyProfileGUIController {
         setTableViewMembers(familyBean.getMembers());
     }
 
-    public void displaySelectedProfile(FamilyBean familyBean, float compatibility) {
+    public void displaySelectedProfile(FamilyBean familyBean, CompatibleFamilyBean compatibleFamilyBean) {
 
         name.setText(familyBean.getName());
         address.setText(familyBean.getAddress());
-        compatibilityL.setText(compatibility +"%");
+        compatibilityL.setText(compatibleFamilyBean.getCompatibility() +"%");
         house.setText(familyBean.getHouse());
         phone.setText(familyBean.getPhone());
 

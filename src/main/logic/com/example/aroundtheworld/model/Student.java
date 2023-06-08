@@ -8,7 +8,7 @@ public class Student extends GenericUser {
 
     public Student(String name, String surname, String nationality, String dateOfBirth, String email, String phone, int id) {
 
-        super(id, 1, phone, email);
+        super(id, phone, email);
         this.name = name;
         this.surname = surname;
         this.nationality = nationality;

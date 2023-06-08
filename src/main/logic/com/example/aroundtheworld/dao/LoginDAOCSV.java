@@ -33,16 +33,15 @@ public class LoginDAOCSV implements LoginDAO{
                         case "agency" -> role = 3;
                         default -> throw new NotFoundException("No role found");
                     }
+                    userProfile = new UserProfile(role, username);
                 }
             }
-
             bufferedReader.close();
 
         }catch (IOException | NotFoundException e) {
             Printer.printError(e.getMessage());
         }
 
-        userProfile = new UserProfile(role, username);
         return userProfile;
     }
 }

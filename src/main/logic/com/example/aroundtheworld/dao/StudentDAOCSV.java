@@ -36,7 +36,7 @@ public class StudentDAOCSV extends StudentDAO {
                     student = new Student(data[NAME], data[SURNAME], data[NATIONALITY], data[BIRTH], username, data[PHONE], Integer.parseInt(data[IDSTUDENT]));
             }
             if(student == null){
-                throw new NotFoundException("No student found");
+                throw new NotFoundException("No student found with username:" + username);
             }
             bufferedReader.close();
         }catch(NotFoundException | IOException e){
@@ -62,7 +62,7 @@ public class StudentDAOCSV extends StudentDAO {
                     student = new Student(data[NAME], data[SURNAME], data[NATIONALITY], data[BIRTH], data[EMAIL], data[PHONE], id);
             }
             if(student == null){
-                throw new NotFoundException("No student found");
+                throw new NotFoundException("No student found with id:" + id);
             }
             bufferedReader.close();
         }catch(NotFoundException | IOException e){

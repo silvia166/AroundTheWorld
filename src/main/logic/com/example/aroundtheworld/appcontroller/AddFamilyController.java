@@ -7,7 +7,6 @@ import com.example.aroundtheworld.dao.AnimalDAO;
 import com.example.aroundtheworld.dao.FamilyDAO;
 import com.example.aroundtheworld.dao.FamilyMemberDAO;
 import com.example.aroundtheworld.dao.FamilyPreferencesDAO;
-import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.model.Family;
 import com.example.aroundtheworld.model.FamilyPreferences;
 

@@ -1,6 +1,5 @@
 package com.example.aroundtheworld.dao;
 
-import com.example.aroundtheworld.model.GenericUser;
 import com.example.aroundtheworld.model.UserProfile;
 
 public interface LoginDAO {

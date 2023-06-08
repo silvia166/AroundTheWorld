@@ -5,7 +5,6 @@ import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
-import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.model.*;
 
 import java.sql.Connection;

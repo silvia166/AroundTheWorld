@@ -19,6 +19,7 @@ public class LoginDAOCSV implements LoginDAO{
         UserProfile userProfile = null;
         File file = new File(CSV_FILE_NAME);
 
+        //closing the resourse bufferedReader is handled automatically by the try-with-resources
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
             String row;
             String[] data;
@@ -35,8 +36,6 @@ public class LoginDAOCSV implements LoginDAO{
                     userProfile = new UserProfile(role, username);
                 }
             }
-            bufferedReader.close();
-
         }catch (IOException | NotFoundException e) {
             Printer.printError(e.getMessage());
         }

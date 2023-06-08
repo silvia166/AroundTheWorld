@@ -79,15 +79,20 @@ public class StudentRequestGUIController implements Observer {
     }
 
     @Override
-    public void updateResidence(ResidenceRequestBean requestBean, Pane pane) {
+    public void updateResidencePage(ResidenceRequestBean requestBean, Pane pane) {
         if (residenceReqList.getChildren().contains(pane))
             residenceReqList.getChildren().remove(pane);
     }
 
     @Override
-    public void updateFamily(FamilyRequestBean requestBean, Pane pane) {
+    public void updateFamilyPage(FamilyRequestBean requestBean, Pane pane) {
         if (familyReqList.getChildren().contains(pane))
             familyReqList.getChildren().remove(pane);
+    }
+
+    @Override
+    public void update() {
+        //ignore
     }
 
     public void backToAccess() throws IOException {

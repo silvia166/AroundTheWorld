@@ -95,8 +95,8 @@ public class FamilyRequestItemGUIController implements Observer {
     }
 
     @Override
-    public void updateFamily(FamilyRequestBean requestBean, Pane pane) {
-        if (requestBean.getStatus() == 1) {
+    public void update() {
+        if (this.familyRequest.getStatus() == 1) {
             reqPane.getChildren().removeAll(acceptBtn, rejectBtn, viewReqBtn);
             notBookedLabel.setVisible(true);
             reqPane.setStyle(GREENSHADOW);
@@ -104,7 +104,12 @@ public class FamilyRequestItemGUIController implements Observer {
     }
 
     @Override
-    public void updateResidence(ResidenceRequestBean requestBean, Pane pane) {
+    public void updateResidencePage(ResidenceRequestBean requestBean, Pane pane){
+        //ignore
+    }
+
+    @Override
+    public void updateFamilyPage(FamilyRequestBean requestBean, Pane pane) {
         //ignore
     }
 }

@@ -5,6 +5,7 @@ import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import javafx.scene.layout.Pane;
 
 public interface Observer {
-    void updateResidence(ResidenceRequestBean requestBean, Pane pane);
-    void updateFamily(FamilyRequestBean requestBean, Pane pane);
+    void update();
+    public void updateResidencePage(ResidenceRequestBean requestBean, Pane pane);
+    public void updateFamilyPage(FamilyRequestBean requestBean, Pane pane);
 }

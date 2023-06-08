@@ -69,17 +69,25 @@ public class FamilyRequestGUIController implements Observer {
     }
 
     @Override
-    public void updateResidence(ResidenceRequestBean requestBean, Pane pane) {
+    public void update() {
         //ignore
     }
 
     @Override
-    public void updateFamily(FamilyRequestBean requestBean, Pane pane) {
+    public void updateResidencePage(ResidenceRequestBean requestBean, Pane pane){
+        //ignore
+    }
+
+    @Override
+    public void updateFamilyPage(FamilyRequestBean requestBean, Pane pane) {
+
         if (sentReqList.getChildren().contains(pane))
             sentReqList.getChildren().remove(pane);
+
 
         if (requestBean.getStatus() == 1) {
             confirmedReqList.getChildren().add(pane);
         }
     }
 }
+

@@ -150,18 +150,23 @@ public class ResidenceRequestItemGUIController implements Observer {
     }
 
     @Override
-    public void updateResidence(ResidenceRequestBean requestBean, Pane pane) {
-        if (requestBean.getStatus() == 1){
+    public void update() {
+        if (this.residenceRequest.getStatus() == 1){
             reqPane.getChildren().remove(manageButton);
             reqPane.setStyle(REDSHADOW);
-        } else if (requestBean.getStatus() == 2){
+        } else if (this.residenceRequest.getStatus() == 2){
             reqPane.getChildren().remove(manageButton);
             reqPane.setStyle(GREENSHADOW);
         }
     }
 
     @Override
-    public void updateFamily(FamilyRequestBean requestBean, Pane pane) {
+    public void updateResidencePage(ResidenceRequestBean requestBean, Pane pane){
+        //ignore
+    }
+
+    @Override
+    public void updateFamilyPage(FamilyRequestBean requestBean, Pane pane){
         //ignore
     }
 }

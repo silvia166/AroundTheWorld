@@ -66,7 +66,7 @@ public class AgencyRequestGUIController implements Observer {
     }
 
     @Override
-    public void updateResidence(ResidenceRequestBean requestBean, Pane pane) {
+    public void updateResidencePage(ResidenceRequestBean requestBean, Pane pane) {
         if (pendingReqList.getChildren().contains(pane))
             pendingReqList.getChildren().remove(pane);
 
@@ -78,7 +78,12 @@ public class AgencyRequestGUIController implements Observer {
     }
 
     @Override
-    public void updateFamily(FamilyRequestBean requestBean, Pane pane) {
+    public void update() {
+        //ignore
+    }
+
+    @Override
+    public void updateFamilyPage(FamilyRequestBean requestBean, Pane pane){
         //ignore
     }
 }

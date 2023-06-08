@@ -37,14 +37,17 @@ public abstract class Subject {
         observersList.remove(observer);
     }
 
-    public void notifyObserversResidence(ResidenceRequestBean requestBean, Pane pane) {
+    public void notifyObserversFamily(FamilyRequestBean familyRequestBean, Pane pane) {
         for (Observer observer : observersList) {
-            observer.updateResidence(requestBean, pane);
+            observer.update();
+            observer.updateFamilyPage(familyRequestBean, pane);
         }
     }
-    public void notifyObserversFamily(FamilyRequestBean requestBean, Pane pane) {
+
+    public void notifyObserversResidence(ResidenceRequestBean residenceRequestBean, Pane pane) {
         for (Observer observer : observersList) {
-            observer.updateFamily(requestBean, pane);
+            observer.update();
+            observer.updateResidencePage(residenceRequestBean, pane);
         }
     }
 

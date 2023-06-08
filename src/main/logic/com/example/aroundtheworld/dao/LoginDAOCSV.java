@@ -30,15 +30,14 @@ public class LoginDAOCSV implements LoginDAO{
                     switch(data[ROLE]){
                         case "student" -> role = 1;
                         case "family" -> role = 2;
-                        case "agency" -> role = 3;
-                        default -> throw new NotFoundException("No role found");
+                        default -> role = 3;
                     }
                     userProfile = new UserProfile(role, username);
                 }
             }
             bufferedReader.close();
 
-        }catch (IOException | NotFoundException e) {
+        }catch (IOException e) {
             Printer.printError(e.getMessage());
         }
 

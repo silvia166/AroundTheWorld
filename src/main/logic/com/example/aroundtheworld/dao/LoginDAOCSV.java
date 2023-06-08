@@ -17,10 +17,9 @@ public class LoginDAOCSV implements LoginDAO{
     public UserProfile checkUser(String username, String password) {
         int role = 0;
         UserProfile userProfile = null;
+        File file = new File(CSV_FILE_NAME);
 
-        try{
-            File file = new File(CSV_FILE_NAME);
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
             String row;
             String[] data;
 

@@ -37,9 +37,9 @@ public abstract class StudentDAO {
         int lastId = 0;
         String line;
         String[] data;
-        try {
-            File file = new File(CSV_FILE_STUDENTS);
-            BufferedReader readFromFile = new BufferedReader(new FileReader(file));
+        File file = new File(CSV_FILE_STUDENTS);
+
+        try (BufferedReader readFromFile = new BufferedReader(new FileReader(file))){
 
             while((line = readFromFile.readLine()) != null){
                 data = line.split(",");
@@ -68,8 +68,7 @@ public abstract class StudentDAO {
         File fileUser = new File(CSV_FILE_USERS);
         File fileStudent = new File(CSV_FILE_STUDENTS);
 
-        try {
-            PrintWriter outputUser = new PrintWriter(new BufferedWriter(new FileWriter(fileUser, true)));
+        try (PrintWriter outputUser = new PrintWriter(new BufferedWriter(new FileWriter(fileUser, true)))){
             PrintWriter outputStudent = new PrintWriter(new BufferedWriter(new FileWriter(fileStudent, true)));
             outputUser.println(user);
             outputUser.close();

@@ -23,10 +23,10 @@ public class StudentDAOCSV extends StudentDAO {
     @Override
     public Student retrieveStudentByUsername(String username) {
         Student student = null;
+        File file = new File(CSV_FILE_NAME);
 
-        try{
-            File file = new File(CSV_FILE_NAME);
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        //closing the resourse bufferedReader is handled automatically by the try-with-resources
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
             String row;
             String[] data;
 
@@ -38,7 +38,6 @@ public class StudentDAOCSV extends StudentDAO {
             if(student == null){
                 throw new NotFoundException("No student found with username:" + username);
             }
-            bufferedReader.close();
         }catch(NotFoundException | IOException e){
             Printer.printError(e.getMessage());
         }
@@ -49,10 +48,10 @@ public class StudentDAOCSV extends StudentDAO {
     @Override
     public Student retrieveStudentById(int id) {
         Student student = null;
+        File file = new File(CSV_FILE_NAME);
 
-        try{
-            File file = new File(CSV_FILE_NAME);
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        //closing the resourse bufferedReader is handled automatically by the try-with-resources
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
             String row;
             String[] data;
 
@@ -64,7 +63,6 @@ public class StudentDAOCSV extends StudentDAO {
             if(student == null){
                 throw new NotFoundException("No student found with id:" + id);
             }
-            bufferedReader.close();
         }catch(NotFoundException | IOException e){
             Printer.printError(e.getMessage());
         }
@@ -76,10 +74,10 @@ public class StudentDAOCSV extends StudentDAO {
     @Override
     public Student getNameById(int idStudent) {
         Student student = null;
+        File file = new File(CSV_FILE_NAME);
 
-        try{
-            File file = new File(CSV_FILE_NAME);
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        //closing the resourse bufferedReader is handled automatically by the try-with-resources
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
             String row;
             String[] data;
 
@@ -94,7 +92,6 @@ public class StudentDAOCSV extends StudentDAO {
             if(student == null){
                 throw new NotFoundException("No student found");
             }
-            bufferedReader.close();
         }catch(NotFoundException | IOException e){
             Printer.printError(e.getMessage());
         }

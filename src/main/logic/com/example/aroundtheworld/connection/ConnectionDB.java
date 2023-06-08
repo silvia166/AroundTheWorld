@@ -47,8 +47,11 @@ public class ConnectionDB {
 
     private static Properties loadProperties() throws IOException {
         Properties properties = new Properties();
-        FileInputStream fileInputStream = new FileInputStream("src/main/logic/com/example/aroundtheworld/connection/db.properties");
-        properties.load(fileInputStream);
+
+        //closing the resourse fileInputStream is handled automatically by the try-with-resources
+        try(FileInputStream fileInputStream = new FileInputStream("src/main/logic/com/example/aroundtheworld/connection/db.properties")){
+            properties.load(fileInputStream);
+        }
         return properties;
     }
 }

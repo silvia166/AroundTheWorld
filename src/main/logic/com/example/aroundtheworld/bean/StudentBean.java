@@ -86,7 +86,7 @@ public class StudentBean {
         return true;
     }
 
-    public void setEmail(String email) throws EmailFormatException {
+    private void setEmail(String email) throws EmailFormatException {
         String emailRegex = "[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}";
         if (!Pattern.compile(emailRegex).matcher(email).matches())
             throw new EmailFormatException(email);

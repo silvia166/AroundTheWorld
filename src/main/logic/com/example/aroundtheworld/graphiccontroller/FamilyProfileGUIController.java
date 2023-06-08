@@ -78,7 +78,7 @@ public class FamilyProfileGUIController {
         food.setText(listFood);
         String listHobby = checkHobbies(familyBean.getTravels(),familyBean.getBooks(), familyBean.getFilm(), familyBean.getVideoGames(), familyBean.getNature(), familyBean.getCooking(), familyBean.getSport());
         hobbies.setText(listHobby);
-        setTableViewMembers(familyBean.getMembers());
+        displayMembers(familyBean.getMembers());
     }
 
     public void displaySelectedProfile(FamilyBean familyBean, CompatibleFamilyBean compatibleFamilyBean) {
@@ -95,7 +95,7 @@ public class FamilyProfileGUIController {
         food.setText(listFood);
         String listHobby = checkHobbies(familyBean.getTravels(),familyBean.getBooks(), familyBean.getFilm(), familyBean.getVideoGames(), familyBean.getNature(), familyBean.getCooking(), familyBean.getSport());
         hobbies.setText(listHobby);
-        setTableViewMembers(familyBean.getMembers());
+        displayMembers(familyBean.getMembers());
 
         if (familyBean.getImgSrc() != null){
             Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(familyBean.getImgSrc())));
@@ -103,7 +103,7 @@ public class FamilyProfileGUIController {
         }
     }
 
-    private void setTableViewMembers(List<FamilyMemberBean> members) {
+    private void displayMembers(List<FamilyMemberBean> members) {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
         ageColumn.setCellValueFactory(new PropertyValueFactory<>("Age"));
         parenthoodColumn.setCellValueFactory(new PropertyValueFactory<>("Parenthood"));

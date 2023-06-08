@@ -51,27 +51,27 @@ public class CityGUIController {
     public void setData(CityBean city) {
         this.city = city;
 
-        cityName.setText(city.getNameBean());
-        language.setText(city.getLanguageBean());
-        residenceName.setText(city.getResidenceBean().getName());
-        residenceAddress.setText(city.getResidenceBean().getAddress());
-        distanceResidenceSchool.setText(city.getResidenceBean().getDistanceSchool());
-        schoolName.setText(city.getSchoolBean().getName());
-        schoolAddress.setText(city.getSchoolBean().getAddress());
-        schoolCourses.setText(city.getSchoolBean().getCourses());
-        schoolHours.setText(city.getSchoolBean().getHours());
+        cityName.setText(city.getName());
+        language.setText(city.getLanguage());
+        residenceName.setText(city.getResidence().getName());
+        residenceAddress.setText(city.getResidence().getAddress());
+        distanceResidenceSchool.setText(city.getResidence().getDistanceSchool());
+        schoolName.setText(city.getSchool().getName());
+        schoolAddress.setText(city.getSchool().getAddress());
+        schoolCourses.setText(city.getSchool().getCourses());
+        schoolHours.setText(city.getSchool().getHours());
 
-        act1Name.setText(city.getAct1Bean());
-        act2Name.setText(city.getAct2Bean());
-        act3Name.setText(city.getAct3Bean());
+        act1Name.setText(city.getAct1());
+        act2Name.setText(city.getAct2());
+        act3Name.setText(city.getAct3());
 
-        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(city.getCityImgSrcBean())));
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(city.getCityImgSrc())));
         cityImg.setImage(image);
-        image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(city.getAct1ImgSrcBean())));
+        image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(city.getAct1ImgSrc())));
         act1Img.setImage(image);
-        image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(city.getAct2ImgSrcBean())));
+        image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(city.getAct2ImgSrc())));
         act2Img.setImage(image);
-        image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(city.getAct3ImgSrcBean())));
+        image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(city.getAct3ImgSrc())));
         act3Img.setImage(image);
     }
 

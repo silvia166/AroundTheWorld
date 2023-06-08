@@ -25,7 +25,7 @@ public class QuoteCLIController implements GraphicCLIController{
         this.quoteBean = new QuoteBean(city, quantity, accommodation, room);
         QuoteController quoteController = new QuoteController();
         CityBean cityBean = quoteController.getCityInfo(city);
-        quoteViewCLI.showActivities(cityBean.getAct1Bean(), cityBean.getAct2Bean(), cityBean.getAct3Bean());
+        quoteViewCLI.showActivities(cityBean.getAct1(), cityBean.getAct2(), cityBean.getAct3());
     }
 
     public void setActivities(int act1, int act2, int act3, int sport) {

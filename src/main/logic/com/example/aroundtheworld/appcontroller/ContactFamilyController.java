@@ -22,8 +22,8 @@ public class ContactFamilyController {
         List<CompatibleFamilyBean> compatibleFamilies = new ArrayList<>();
         CompatibleFamilyBean compatibleFamilyBean;
 
-        checkRequestDate(familyRequestBean.getArrivalBean(), familyRequestBean.getDepartureBean());
-        List<Family> familyList = FamilyDAO.retrieveFamilies(familyRequestBean.getCityBean());
+        checkRequestDate(familyRequestBean.getArrival(), familyRequestBean.getDeparture());
+        List<Family> familyList = FamilyDAO.retrieveFamilies(familyRequestBean.getCity());
         for (Family family: familyList){
             compatibility = calculateCompatibility(familyRequestBean,family);
             compatibleFamilyBean = new CompatibleFamilyBean(family.getId(),family.getName(), family.getImgSrc(), compatibility);
@@ -44,7 +44,7 @@ public class ContactFamilyController {
 
         int checked = checkPreferences(preferences, family.getPreferences());
 
-        if((family.getAnimals().isEmpty() && familyRequestBean.getAnimalsBean() == 0) || (!family.getAnimals().isEmpty() && familyRequestBean.getAnimalsBean() == 1)){
+        if((family.getAnimals().isEmpty() && familyRequestBean.getAnimals() == 0) || (!family.getAnimals().isEmpty() && familyRequestBean.getAnimals() == 1)){
             checked++;
         }
         for (FamilyMember member : family.getMembers()) {
@@ -52,7 +52,7 @@ public class ContactFamilyController {
                 siblings = 1;
             }
         }
-        if (siblings == familyRequestBean.getSiblingsBean()){
+        if (siblings == familyRequestBean.getSiblings()){
             checked++;
         }
         compatibility = (double) checked/12 *100;
@@ -132,9 +132,9 @@ public class ContactFamilyController {
 
     public void saveRequest(FamilyRequestBean familyRequestBean) throws DuplicateRequestException {
         FamilyRequest familyRequest;
-        familyRequest = new FamilyRequest(familyRequestBean.getCityBean(), familyRequestBean.getArrivalBean(), familyRequestBean.getDepartureBean(), familyRequestBean.getSiblingsBean(), familyRequestBean.getAnimalsBean(), familyRequestBean.getIdStudentBean(), 0);
-        familyRequest.setIdFamily(familyRequestBean.getIdFamilyBean());
-        familyRequest.setCompatibility(familyRequestBean.getCompatibilityBean());
+        familyRequest = new FamilyRequest(familyRequestBean.getCity(), familyRequestBean.getArrival(), familyRequestBean.getDeparture(), familyRequestBean.getSiblings(), familyRequestBean.getAnimals(), familyRequestBean.getIdStudent(), 0);
+        familyRequest.setIdFamily(familyRequestBean.getIdFamily());
+        familyRequest.setCompatibility(familyRequestBean.getCompatibility());
 
         FamilyPreferences preferences = new FamilyPreferences();
         preferences.setHouse(familyRequestBean.getHouse());
@@ -187,7 +187,7 @@ public class ContactFamilyController {
 
     public StudentBean getStudent(FamilyRequestBean familyRequestBean) {
         StudentDAO studentDAO = StudentDAOFactory.getInstance().createStudentDAO();
-        Student student = studentDAO.retrieveStudentById(familyRequestBean.getIdStudentBean());
+        Student student = studentDAO.retrieveStudentById(familyRequestBean.getIdStudent());
         return new StudentBean(student.getName(), student.getSurname(), student.getNationality(), student.getDateOfBirth(), student.getEmail(), student.getPhoneNumber(), student.getId());
     }
 }

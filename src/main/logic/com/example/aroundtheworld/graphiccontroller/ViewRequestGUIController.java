@@ -60,12 +60,12 @@ public class ViewRequestGUIController {
         ageLabel.setText(age);
         phoneLabel.setText(studentBean.getPhoneNumber());
         nationalityLabel.setText(studentBean.getNationality());
-        cityLabel.setText(familyRequestBean.getCityBean());
-        arrivalText.setText(familyRequestBean.getArrivalBean());
-        departureText.setText(familyRequestBean.getDepartureBean());
+        cityLabel.setText(familyRequestBean.getCity());
+        arrivalText.setText(familyRequestBean.getArrival());
+        departureText.setText(familyRequestBean.getDeparture());
         roomLabel.setText(familyRequestBean.getHouse());
-        siblingLabel.setText(getChoice(familyRequestBean.getSiblingsBean()));
-        animalLabel.setText(getChoice(familyRequestBean.getAnimalsBean()));
+        siblingLabel.setText(getChoice(familyRequestBean.getSiblings()));
+        animalLabel.setText(getChoice(familyRequestBean.getAnimals()));
         if (familyRequestBean.getVegan() == 1){
             foodLabel.setText("Vegan");
         }else if(familyRequestBean.getVegetarian()==1){

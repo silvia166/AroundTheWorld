@@ -36,9 +36,9 @@ public class CityCLIController implements GraphicCLIController{
         CityController cityController = new CityController();
         cityController.setCity(cityBean);
 
-        cityViewCLI.setCityInfo(cityBean.getNameBean(),cityBean.getLanguageBean(),cityBean.getAct1Bean(),cityBean.getAct2Bean(),cityBean.getAct3Bean());
-        cityViewCLI.setResidenceInfo(cityBean.getResidenceBean().getName(), cityBean.getResidenceBean().getAddress(), cityBean.getResidenceBean().getDistanceSchool());
-        cityViewCLI.setSchoolInfo(cityBean.getSchoolBean().getName(),cityBean.getSchoolBean().getAddress(),cityBean.getSchoolBean().getHours(),cityBean.getSchoolBean().getCourses());
+        cityViewCLI.setCityInfo(cityBean.getName(),cityBean.getLanguage(),cityBean.getAct1(),cityBean.getAct2(),cityBean.getAct3());
+        cityViewCLI.setResidenceInfo(cityBean.getResidence().getName(), cityBean.getResidence().getAddress(), cityBean.getResidence().getDistanceSchool());
+        cityViewCLI.setSchoolInfo(cityBean.getSchool().getName(),cityBean.getSchool().getAddress(),cityBean.getSchool().getHours(),cityBean.getSchool().getCourses());
     }
 
     public void executeCommand(String nextLine) throws CommandErrorException, NotImplementedException {

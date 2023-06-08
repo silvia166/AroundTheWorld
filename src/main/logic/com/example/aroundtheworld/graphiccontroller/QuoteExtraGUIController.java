@@ -48,14 +48,14 @@ public class QuoteExtraGUIController {
         QuoteController quoteController = new QuoteController();
         CityBean cityBean = quoteController.getCityInfo(quoteBean.getCity());
 
-        act1Label.setText(cityBean.getAct1Bean());
-        act2Label.setText(cityBean.getAct2Bean());
-        act3Label.setText(cityBean.getAct3Bean());
-        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(cityBean.getAct1ImgSrcBean())));
+        act1Label.setText(cityBean.getAct1());
+        act2Label.setText(cityBean.getAct2());
+        act3Label.setText(cityBean.getAct3());
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(cityBean.getAct1ImgSrc())));
         img1.setImage(image);
-        image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(cityBean.getAct2ImgSrcBean())));
+        image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(cityBean.getAct2ImgSrc())));
         img2.setImage(image);
-        image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(cityBean.getAct3ImgSrcBean())));
+        image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(cityBean.getAct3ImgSrc())));
         img3.setImage(image);
 
     }

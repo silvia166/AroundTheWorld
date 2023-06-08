@@ -14,7 +14,7 @@ public class TravelBean extends Subject {
     private int rate;
     private String img;
 
-    //costruttore per prenotazioni residence
+    //costruttore per prenotazioni nel residence
     public TravelBean(String city, String arrival, String departure, int id, String img) {
         this.city = city;
         this.arrival = arrival;

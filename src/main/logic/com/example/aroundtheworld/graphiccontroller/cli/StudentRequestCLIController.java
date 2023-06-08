@@ -46,7 +46,7 @@ public class StudentRequestCLIController implements GraphicCLIController{
             studentCLIController.start();
         }
         for(FamilyRequestBean request : familyRequestList){
-            studentRequestViewCLI.showFamilyRequest(request.getId(),request.getStatus(),request.getArrivalBean(),request.getDepartureBean(),request.getFamilyName(),request.getCityBean());
+            studentRequestViewCLI.showFamilyRequest(request.getId(),request.getStatus(),request.getArrival(),request.getDeparture(),request.getFamilyName(),request.getCity());
         }
         studentRequestViewCLI.manageRequest(2);
     }

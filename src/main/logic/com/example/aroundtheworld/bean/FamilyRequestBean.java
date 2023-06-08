@@ -14,7 +14,6 @@ public class FamilyRequestBean extends Subject {
     private String familyName;
     private int idFamily;
     private float compatibility;
-
     private int status;
 
     //preferences
@@ -86,35 +85,35 @@ public class FamilyRequestBean extends Subject {
         this.idFamily = idFamily;
     }
 
-    public String getCityBean() {
+    public String getCity() {
         return city;
     }
 
-    public String getArrivalBean() {
+    public String getArrival() {
         return arrival;
     }
 
-    public String getDepartureBean() {
+    public String getDeparture() {
         return departure;
     }
 
-    public int getSiblingsBean() {
+    public int getSiblings() {
         return siblings;
     }
 
-    public int getAnimalsBean() {
+    public int getAnimals() {
         return animals;
     }
 
-    public int getIdStudentBean() {
+    public int getIdStudent() {
         return idStudent;
     }
 
-    public int getIdFamilyBean() {
+    public int getIdFamily() {
         return idFamily;
     }
 
-    public float getCompatibilityBean() {
+    public float getCompatibility() {
         return compatibility;
     }
 

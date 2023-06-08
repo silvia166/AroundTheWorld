@@ -166,7 +166,7 @@ public class AddFamilyGUIController {
             FamilyBean familyBean = new FamilyBean(nameField.getText(), cityBox.getValue(), addressField.getText(), phoneField.getText(), email);
             familyBean.setAnimals(animals);
             familyBean.setMembers(membersList);
-            getPreferences(familyBean);
+            setPreferences(familyBean);
 
             if(file != null) {
                 String nameImg = "familyImg/";
@@ -186,7 +186,7 @@ public class AddFamilyGUIController {
         }
     }
 
-    private void getPreferences(FamilyBean familyBean) {
+    private void setPreferences(FamilyBean familyBean) {
 
         String room;
         int vegetarian = 0;

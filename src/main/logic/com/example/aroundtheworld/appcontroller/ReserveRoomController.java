@@ -42,7 +42,7 @@ public class ReserveRoomController {
         List<Room> rooms = RoomDAO.retrieveAvailableRooms(residenceRequest.getIdResidence(),residenceRequest.getArrival(),residenceRequest.getDeparture());
 
         for(Room room: rooms){
-            RoomBean roomBean = new RoomBean(room.getNumber(), room.getIdResidence() ,room.getType());
+            RoomBean roomBean = new RoomBean(room.getNumber() ,room.getType());
             roomBeans.add(roomBean);
         }
         return roomBeans;

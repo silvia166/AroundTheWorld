@@ -20,87 +20,87 @@ public class CityBean {
         this.cityName = name;
     }
 
-    public String getNameBean() {
+    public String getName() {
         return cityName;
     }
 
-    public String getCityImgSrcBean() {
+    public String getCityImgSrc() {
         return cityImg;
     }
 
-    public void setCityImgSrcBean(String cityImgSrc) {
+    public void setCityImgSrc(String cityImgSrc) {
         this.cityImg = cityImgSrc;
     }
 
-    public String getLanguageBean() {
+    public String getLanguage() {
         return cityLanguage;
     }
 
-    public void setLanguageBean(String language) {
+    public void setLanguage(String language) {
         this.cityLanguage = language;
     }
 
-    public String getAct1Bean() {
+    public String getAct1() {
         return activity1;
     }
 
-    public void setAct1Bean(String act1) {
+    public void setAct1(String act1) {
         this.activity1 = act1;
     }
 
-    public String getAct1ImgSrcBean() {
+    public String getAct1ImgSrc() {
         return act1Img;
     }
 
-    public void setAct1ImgSrcBean(String act1ImgSrc) {
+    public void setAct1ImgSrc(String act1ImgSrc) {
         this.act1Img = act1ImgSrc;
     }
 
-    public String getAct2Bean() {
+    public String getAct2() {
         return activity2;
     }
 
-    public void setAct2Bean(String act2) {
+    public void setAct2(String act2) {
         this.activity2 = act2;
     }
 
-    public String getAct2ImgSrcBean() {
+    public String getAct2ImgSrc() {
         return act2Img;
     }
 
-    public void setAct2ImgSrcBean(String act2ImgSrc) {
+    public void setAct2ImgSrc(String act2ImgSrc) {
         this.act2Img = act2ImgSrc;
     }
 
-    public String getAct3Bean() {
+    public String getAct3() {
         return activity3;
     }
 
-    public void setAct3Bean(String act3) {
+    public void setAct3(String act3) {
         this.activity3 = act3;
     }
 
-    public String getAct3ImgSrcBean() {
+    public String getAct3ImgSrc() {
         return act3Img;
     }
 
-    public void setAct3ImgSrcBean(String act3ImgSrc) {
+    public void setAct3ImgSrc(String act3ImgSrc) {
         this.act3Img = act3ImgSrc;
     }
 
-    public Residence getResidenceBean() {
+    public Residence getResidence() {
         return cityResidence;
     }
 
-    public void setResidenceBean(Residence residence) {
+    public void setResidence(Residence residence) {
         this.cityResidence = residence;
     }
 
-    public School getSchoolBean() {
+    public School getSchool() {
         return citySchool;
     }
 
-    public void setSchoolBean(School school) {
+    public void setSchool(School school) {
         this.citySchool = school;
     }
 }

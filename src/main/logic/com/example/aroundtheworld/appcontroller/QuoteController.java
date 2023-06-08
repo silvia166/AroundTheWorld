@@ -12,12 +12,12 @@ public class QuoteController {
     public CityBean getCityInfo(String cityName) throws NotFoundException {
         City city = CityDAO.retrieveCity(cityName);
         CityBean cityBean = new CityBean(city.getName());
-        cityBean.setAct1Bean(city.getAct1());
-        cityBean.setAct2Bean(city.getAct2());
-        cityBean.setAct3Bean(city.getAct3());
-        cityBean.setAct1ImgSrcBean(city.getAct1ImgSrc());
-        cityBean.setAct2ImgSrcBean(city.getAct2ImgSrc());
-        cityBean.setAct3ImgSrcBean(city.getAct3ImgSrc());
+        cityBean.setAct1(city.getAct1());
+        cityBean.setAct2(city.getAct2());
+        cityBean.setAct3(city.getAct3());
+        cityBean.setAct1ImgSrc(city.getAct1ImgSrc());
+        cityBean.setAct2ImgSrc(city.getAct2ImgSrc());
+        cityBean.setAct3ImgSrc(city.getAct3ImgSrc());
         return cityBean;
     }
 

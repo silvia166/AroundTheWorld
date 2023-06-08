@@ -49,7 +49,7 @@ public class FamilyRequestCLIController implements GraphicCLIController{
             familyRequestViewCLI.printNoRequests();
         }
         for (FamilyRequestBean requestBean : confirmedRequest){
-            familyRequestViewCLI.displayRequest(requestBean.getId(),requestBean.getStudentName(),requestBean.getCompatibilityBean(),requestBean.getArrivalBean(),requestBean.getDepartureBean());
+            familyRequestViewCLI.displayRequest(requestBean.getId(),requestBean.getStudentName(),requestBean.getCompatibility(),requestBean.getArrival(),requestBean.getDeparture());
         }
         familyRequestViewCLI.printContinue();
         FamilyCLIController familyCLIController = new FamilyCLIController();
@@ -61,7 +61,7 @@ public class FamilyRequestCLIController implements GraphicCLIController{
             familyRequestViewCLI.printNoRequests();
         }
         for (FamilyRequestBean requestBean : pendingRequest){
-            familyRequestViewCLI.displayRequest(requestBean.getId(),requestBean.getStudentName(),requestBean.getCompatibilityBean(),requestBean.getArrivalBean(),requestBean.getDepartureBean());
+            familyRequestViewCLI.displayRequest(requestBean.getId(),requestBean.getStudentName(),requestBean.getCompatibility(),requestBean.getArrival(),requestBean.getDeparture());
         }
         familyRequestViewCLI.printAction();
     }
@@ -99,7 +99,7 @@ public class FamilyRequestCLIController implements GraphicCLIController{
         ContactFamilyController contactFamilyController = new ContactFamilyController();
         StudentBean studentBean = contactFamilyController.getStudent(familyRequestBean);
         familyRequestViewCLI.printStudentInfo(studentBean.getName(), studentBean.getSurname(), studentBean.getBirth(),studentBean.getNationality(), studentBean.getEmail(), studentBean.getPhoneNumber());
-        familyRequestViewCLI.printRequestInfo(familyRequestBean.getCityBean(),familyRequestBean.getArrivalBean(), familyRequestBean.getDepartureBean(),familyRequestBean.getHouse(),familyRequestBean.getSiblingsBean(),familyRequestBean.getAnimalsBean());
+        familyRequestViewCLI.printRequestInfo(familyRequestBean.getCity(),familyRequestBean.getArrival(), familyRequestBean.getDeparture(),familyRequestBean.getHouse(),familyRequestBean.getSiblings(),familyRequestBean.getAnimals());
         familyRequestViewCLI.printRequestFood(familyRequestBean.getVegan(),familyRequestBean.getVegetarian());
         familyRequestViewCLI.printRequestHobbies(familyRequestBean.getTravels(),familyRequestBean.getSport(),familyRequestBean.getNature(),familyRequestBean.getBooks(),familyRequestBean.getVideoGames(),familyRequestBean.getCooking(),familyRequestBean.getFilm());
     }

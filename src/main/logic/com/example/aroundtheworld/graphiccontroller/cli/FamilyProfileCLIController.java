@@ -25,7 +25,7 @@ public class FamilyProfileCLIController implements GraphicCLIController{
         this.familyRequestBean = familyRequestBean;
         this.compatibleFamilyBeanList = compatibleFamilies;
         for(CompatibleFamilyBean compatibleFamily: compatibleFamilies){
-            familyInfoViewCLI.displayFamily(compatibleFamily.getName(),compatibleFamily.getId(),compatibleFamily.getCompatibility(),familyRequestBean.getCityBean());
+            familyInfoViewCLI.displayFamily(compatibleFamily.getName(),compatibleFamily.getId(),compatibleFamily.getCompatibility(),familyRequestBean.getCity());
         }
         familyInfoViewCLI.run();
     }

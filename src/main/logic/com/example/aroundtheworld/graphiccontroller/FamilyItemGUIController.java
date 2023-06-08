@@ -92,7 +92,7 @@ public class FamilyItemGUIController {
                 this.compatibleFamily = compatibleFamilyBean;
                 this.familyRequest = familyRequestBean;
                 familyName.setText(compatibleFamilyBean.getName() + "  family");
-                familyCity.setText(familyRequestBean.getCityBean());
+                familyCity.setText(familyRequestBean.getCity());
                 compatibility.setText("" + compatibleFamilyBean.getCompatibility() + "%");
                 if (compatibleFamilyBean.getImgSrc() != null) {
                         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(compatibleFamilyBean.getImgSrc())));
@@ -115,9 +115,9 @@ public class FamilyItemGUIController {
                         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(requestBean.getImgFamily())));
                         img.setImage(image);
                 }
-                familyCity.setText(requestBean.getCityBean());
-                arrivalLabel.setText(requestBean.getArrivalBean());
-                compatibility.setText(requestBean.getDepartureBean());
+                familyCity.setText(requestBean.getCity());
+                arrivalLabel.setText(requestBean.getArrival());
+                compatibility.setText(requestBean.getDeparture());
                 if(requestBean.getStatus() == 0){
                         statusLabel.setText("Pending Request");
                 } else {

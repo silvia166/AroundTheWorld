@@ -50,9 +50,9 @@ public class FamilyRequestItemGUIController implements Observer {
         this.familyRequest = familyRequestBean;
 
         nameLabel.setText(familyRequestBean.getStudentName());
-        compatibilityLabel.setText(familyRequestBean.getCompatibilityBean() +"%");
-        arrivalLabel.setText(familyRequest.getArrivalBean());
-        departureLabel.setText(familyRequest.getDepartureBean());
+        compatibilityLabel.setText(familyRequestBean.getCompatibility() +"%");
+        arrivalLabel.setText(familyRequest.getArrival());
+        departureLabel.setText(familyRequest.getDeparture());
 
         if (familyRequestBean.getStatus() == 1){
             reqPane.getChildren().removeAll(acceptBtn,rejectBtn,viewReqBtn);

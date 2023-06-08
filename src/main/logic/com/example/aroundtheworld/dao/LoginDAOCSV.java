@@ -15,8 +15,7 @@ public class LoginDAOCSV implements LoginDAO{
 
     @Override
     public UserProfile checkUser(String username, String password) {
-        String nameRole = null;
-        int role;
+        int role = 0;
         UserProfile userProfile = null;
 
         try{
@@ -28,23 +27,22 @@ public class LoginDAOCSV implements LoginDAO{
             while((row = bufferedReader.readLine()) != null){
                 data = row.split(",");
                 if(data[USERNAME].equals(username) && data[PASSWORD].equals(password)){
-                    nameRole = data[ROLE];
+                    switch(data[ROLE]){
+                        case "student" -> role = 1;
+                        case "family" -> role = 2;
+                        case "agency" -> role = 3;
+                        default -> throw new NotFoundException("No role found");
+                    }
                 }
-            }
-
-            switch(nameRole){
-                case "student" -> role = 1;
-                case "family" -> role = 2;
-                case "agency" -> role = 3;
-                default -> throw new NotFoundException("No role found");
             }
 
             bufferedReader.close();
 
-            userProfile = new UserProfile(role, username);
         }catch (IOException | NotFoundException e) {
             Printer.printError(e.getMessage());
         }
+
+        userProfile = new UserProfile(role, username);
         return userProfile;
     }
 }

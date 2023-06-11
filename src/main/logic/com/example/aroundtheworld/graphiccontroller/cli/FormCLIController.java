@@ -1,7 +1,6 @@
 package com.example.aroundtheworld.graphiccontroller.cli;
 
 import com.example.aroundtheworld.exception.CommandErrorException;
-import com.example.aroundtheworld.viewcli.FormViewCLI;
 
 public class FormCLIController {
     private static final String LONDON = "1";
@@ -24,7 +23,6 @@ public class FormCLIController {
     private static final String HOSTFAMILY = "2";
 
 
-    FormViewCLI formViewCLI;
     public String executeCity(String line) throws CommandErrorException {
         String city;
         switch (line){
@@ -111,7 +109,7 @@ public class FormCLIController {
 
 
     public String executeAccommodation(String nextLine) throws CommandErrorException {
-        String choice = null;
+        String choice;
         switch(nextLine){
             case RESIDENCE -> choice = "residence";
             case HOSTFAMILY -> choice = "host family";

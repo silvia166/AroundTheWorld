@@ -1,6 +1,6 @@
 package com.example.aroundtheworld.graphiccontroller;
 
-import com.example.aroundtheworld.engineering.Session;
+import com.example.aroundtheworld.appcontroller.LogoutController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,7 +11,9 @@ import java.util.Objects;
 
 public class LogoutGUIController {
     public void logout() throws IOException {
-        Session.closeSession();
+        LogoutController logoutController = new LogoutController();
+        logoutController.logout();
+
         Stage stage = Main.getStage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("accessPage.fxml")));
         Scene scene = new Scene(root);

@@ -5,6 +5,7 @@ import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.CommandErrorException;
 import com.example.aroundtheworld.graphiccontroller.cli.StudentCLIController;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class StudentViewCLI {

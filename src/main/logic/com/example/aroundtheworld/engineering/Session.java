@@ -26,8 +26,6 @@ public class Session {
             sessionInstance = new Session(ob);
     }
 
-
-
     public static void closeSession() {
         sessionInstance = null;
     }

@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main extends Application {
@@ -23,6 +24,11 @@ public class Main extends Application {
         setStage(stage);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @Override
+    public void stop() throws SQLException {
+        ConnectionDB.closeConnection();
     }
 
     public static void main(String[] args) {

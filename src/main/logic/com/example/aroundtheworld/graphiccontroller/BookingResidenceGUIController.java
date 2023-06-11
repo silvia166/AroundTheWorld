@@ -14,17 +14,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class BookingResidenceGUIController {
-    Scene scene;
-    Stage stage;
+
     @FXML
     ChoiceBox cityBox = new ChoiceBox();
     @FXML

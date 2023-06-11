@@ -1,5 +1,5 @@
 package com.example.aroundtheworld.graphiccontroller.cli;
-import com.example.aroundtheworld.engineering.Session;
+import com.example.aroundtheworld.appcontroller.LogoutController;
 import com.example.aroundtheworld.exception.*;
 import com.example.aroundtheworld.viewcli.StudentViewCLI;
 
@@ -49,7 +49,8 @@ public class StudentCLIController implements GraphicCLIController{
                 this.start();
             }
             case LOGOUT -> {
-                Session.closeSession();
+                LogoutController logoutController = new LogoutController();
+                logoutController.logout();
                 LoginCLIController loginCLIController = new LoginCLIController();
                 loginCLIController.start();
             }

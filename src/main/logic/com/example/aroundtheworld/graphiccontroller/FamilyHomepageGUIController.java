@@ -4,7 +4,6 @@ import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.TravelBean;
 import com.example.aroundtheworld.appcontroller.TravelsController;
 import com.example.aroundtheworld.engineering.Session;
-import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.HBox;
@@ -39,7 +38,7 @@ public class FamilyHomepageGUIController {
         familyGUIController.toRequestFamily();
     }
 
-    public void initialize() throws IOException, NotFoundException {
+    public void initialize() throws IOException {
 
         FamilyBean familyBean = Session.getCurrentSession().getFamilyBean();
 

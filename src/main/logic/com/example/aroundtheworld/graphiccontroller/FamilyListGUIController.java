@@ -44,13 +44,13 @@ public class FamilyListGUIController {
                 fxmlLoader.setLocation(getClass().getResource("familyItem.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
-                FamilyItemGUIController familyItemController = fxmlLoader.getController();
+                FamilyItemGUIController familyItemGUIController = fxmlLoader.getController();
 
                 if (count == 0 && family.getCompatibility() >= 50.0) {
                     count++;
                 }
 
-                familyItemController.setData(family, familyRequestBean);
+                familyItemGUIController.setData(family, familyRequestBean);
 
                 if (column == 3) {
                     column = 0;

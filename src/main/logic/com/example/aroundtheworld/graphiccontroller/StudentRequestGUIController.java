@@ -6,7 +6,9 @@ import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.appcontroller.BookingFamilyController;
 import com.example.aroundtheworld.appcontroller.ReserveRoomController;
 import com.example.aroundtheworld.engineering.Session;
+import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.engineering.observer.Observer;
+import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,9 +31,10 @@ public class StudentRequestGUIController implements Observer {
 
         StudentBean studentBean = Session.getCurrentSession().getStudentBean();
         ReserveRoomController reserveRoomController = new ReserveRoomController();
+
         List<ResidenceRequestBean> requestList = reserveRoomController.getStudentResidenceRequests(studentBean);
 
-        for(ResidenceRequestBean requestBean: requestList){
+        for (ResidenceRequestBean requestBean : requestList) {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("requestStudentItem.fxml"));
             Pane requestBox = fxmlLoader.load();
@@ -39,9 +42,9 @@ public class StudentRequestGUIController implements Observer {
 
             ResidenceRequestItemGUIController residenceRequestItemGUIController = fxmlLoader.getController();
             residenceRequestItemGUIController.setPane(requestBox);
-            if(requestBean.getStatus() == 1){
+            if (requestBean.getStatus() == 1) {
                 residenceRequestItemGUIController.setModifiedRequest(requestBean);
-            }else {
+            } else {
                 residenceRequestItemGUIController.setPendingRequest(requestBean);
             }
             residenceReqList.getChildren().add(requestBox);

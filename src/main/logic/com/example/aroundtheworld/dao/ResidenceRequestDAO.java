@@ -5,8 +5,6 @@ import com.example.aroundtheworld.dao.queries.CRUDQueries;
 import com.example.aroundtheworld.dao.queries.SimpleQueries;
 import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.exception.DuplicateRequestException;
-import com.example.aroundtheworld.exception.NotFoundException;
-import com.example.aroundtheworld.model.Residence;
 import com.example.aroundtheworld.model.ResidenceRequest;
 import com.example.aroundtheworld.model.Room;
 
@@ -49,7 +47,7 @@ public class ResidenceRequestDAO {
         }
     }
 
-    public static List<ResidenceRequest> retrieveRequests() throws NotFoundException {
+    public static List<ResidenceRequest> retrieveRequests() {
         Connection connection;
         List<ResidenceRequest> residenceRequestList = new ArrayList<>();
         ResidenceRequest residenceRequest;
@@ -71,11 +69,8 @@ public class ResidenceRequestDAO {
                     String requestedRoom = resultSet.getString(ROOM);
                     int roomNum = resultSet.getInt(ROOM_NUMBER);
 
-                    Residence residence = ResidenceDAO.retrieveResidenceById(idResidence);
+                    residenceRequest = new ResidenceRequest(idRequest, idResidence, arrival.toString(), departure.toString(), requestedRoom, idStudent, status);
 
-                    residenceRequest = new ResidenceRequest(residence.getCity(), arrival.toString(), departure.toString(), requestedRoom, idStudent, status);
-                    residenceRequest.setIdResidence(idResidence);
-                    residenceRequest.setId(idRequest);
                     if (roomNum != 0) {
                         Room room = RoomDAO.retrieveRoom(idResidence,roomNum);
                         residenceRequest.setReservedRoom(room);
@@ -126,11 +121,9 @@ public class ResidenceRequestDAO {
                     int status = resultSet.getInt(STATUS);
                     int idResidence = resultSet.getInt(ID_RESIDENCE);
                     int roomNum = resultSet.getInt(ROOM_NUMBER);
-                    Residence residence = ResidenceDAO.retrieveResidenceById(idResidence);
 
-                    residenceRequest = new ResidenceRequest(residence.getCity(), arrival.toString(), departure.toString(), requestedRoom, studentId, status);
-                    residenceRequest.setIdResidence(idResidence);
-                    residenceRequest.setId(requestId);
+                    residenceRequest = new ResidenceRequest(requestId, idResidence, arrival.toString(), departure.toString(), requestedRoom, studentId, status);
+
                     if (roomNum != 0) {
                         Room room = RoomDAO.retrieveRoom(idResidence,roomNum);
                         residenceRequest.setReservedRoom(room);
@@ -143,7 +136,7 @@ public class ResidenceRequestDAO {
 
             resultSet.close();
 
-        } catch (SQLException | NotFoundException e) {
+        } catch (SQLException e) {
             Printer.printError(e.getMessage());
         }
 
@@ -188,12 +181,9 @@ public class ResidenceRequestDAO {
                     Date arrival = resultSet.getDate(ARRIVAL);
                     Date departure = resultSet.getDate(DEPARTURE);
                     int idResidence = resultSet.getInt(ID_RESIDENCE);
-                    Residence residence = ResidenceDAO.retrieveResidenceById(idResidence);
+                    String requestedRoom = resultSet.getString(ROOM);
 
-                    residenceRequest = new ResidenceRequest(residence.getCity(), arrival.toString(), departure.toString(), null, idStudent, 2);
-                    residenceRequest.setIdResidence(idResidence);
-                    residenceRequest.setId(requestId);
-
+                    residenceRequest = new ResidenceRequest(requestId, idResidence, arrival.toString(), departure.toString(), requestedRoom, idStudent, 2);
                     residenceRequestList.add(residenceRequest);
 
                 } while (resultSet.next());
@@ -201,7 +191,7 @@ public class ResidenceRequestDAO {
 
             resultSet.close();
 
-        } catch (SQLException | NotFoundException e) {
+        } catch (SQLException e) {
             Printer.printError(e.getMessage());
         }
 

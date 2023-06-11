@@ -16,6 +16,15 @@ public abstract class Request {
         this.status = status;
     }
 
+    protected Request(int id, String arrival, String departure, int idStudent, int status) {
+        this.id = id;
+        this.arrival = arrival;
+        this.departure = departure;
+        this.idStudent = idStudent;
+        this.status = status;
+    }
+
+
     public void setId(int id) {
         this.id = id;
     }

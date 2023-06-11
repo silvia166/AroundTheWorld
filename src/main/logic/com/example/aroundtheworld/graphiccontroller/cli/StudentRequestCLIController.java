@@ -6,9 +6,12 @@ import com.example.aroundtheworld.bean.FamilyRequestBean;
 import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.engineering.Session;
+import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.CommandErrorException;
+import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.viewcli.StudentRequestViewCLI;
 
+import java.io.IOException;
 import java.util.List;
 
 public class StudentRequestCLIController implements GraphicCLIController{
@@ -24,7 +27,7 @@ public class StudentRequestCLIController implements GraphicCLIController{
     private ResidenceRequestBean residenceRequestBean;
 
     @Override
-    public void start() {
+    public void start()  {
         StudentBean studentBean = Session.getCurrentSession().getStudentBean();
         this.studentRequestViewCLI = new StudentRequestViewCLI(this);
         int choice = studentRequestViewCLI.run();

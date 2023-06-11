@@ -1,6 +1,7 @@
 package com.example.aroundtheworld.viewcli;
 
 import com.example.aroundtheworld.engineering.Printer;
+import com.example.aroundtheworld.engineering.ScannerSupport;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.CommandErrorException;
 import com.example.aroundtheworld.exception.NotFoundException;
@@ -38,14 +39,9 @@ public class CityViewCLI {
         Printer.printMessage(address);
         Printer.printMessage(hours);
         Printer.printMessage(courses);
-        Printer.printMessage("\nNext:");
-        Printer.printMessage(" 1) View temperature \n 2) Back ");
-        Scanner scanner = new Scanner(System.in);
-        try {
-            cityCLIController.executeCommand(scanner.nextLine());
-        } catch (CommandErrorException | NotImplementedException e) {
-            ShowExceptionSupport.showExceptionCLI(e.getMessage());
-        }
+        Printer.printMessage("\nPress ENTER to go back:");
+        ScannerSupport.waitEnter();
+
     }
     public void setCityInfo(String name, String language, String act1, String act2, String act3) {
         Printer.printMessage("******************"+name.toUpperCase()+"******************");

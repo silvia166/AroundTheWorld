@@ -50,6 +50,9 @@ public class TravelsStudentCLIController implements GraphicCLIController{
     public void displayPastTravels() {
         if (pastTravels.isEmpty()){
             travelStudentViewCLI.printNoTravels();
+            travelStudentViewCLI.printContinue();
+            StudentCLIController studentCLIController = new StudentCLIController();
+            studentCLIController.start();
         }
         for (TravelBean travel : pastTravels){
             travelStudentViewCLI.displayPastTravel(travel.getId(),travel.getFamilyName(),travel.getCity(),travel.getArrival(),travel.getDeparture(),travel.getRate());
@@ -59,6 +62,9 @@ public class TravelsStudentCLIController implements GraphicCLIController{
     public void displayNextTravels() {
         if (nextTravels.isEmpty()){
             travelStudentViewCLI.printNoTravels();
+            travelStudentViewCLI.printContinue();
+            StudentCLIController studentCLIController = new StudentCLIController();
+            studentCLIController.start();
         }
         for (TravelBean travel : nextTravels){
             travelStudentViewCLI.displayNextTravel(travel.getFamilyName(),travel.getCity(),travel.getArrival(),travel.getDeparture());

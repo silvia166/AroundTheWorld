@@ -113,13 +113,6 @@ public class SimpleQueries {
         return preparedStatement.executeQuery();
     }
 
-    public static ResultSet retrieveIdResidence(Connection connection, String city) throws SQLException {
-        String sql = "SELECT idResidence FROM residence WHERE city = ?";
-        preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        preparedStatement.setString(1,city);
-        return preparedStatement.executeQuery();
-    }
-
     public static ResultSet retrieveResidenceRequests(Connection connection) throws SQLException {
         String sql = "SELECT * FROM residenceRequest WHERE CURRENT_DATE() <= departure";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
@@ -218,7 +211,7 @@ public class SimpleQueries {
     }
 
     public static ResultSet retrieveResidenceBookingsByStudent(Connection connection, int idStudent) throws SQLException {
-        String sql = "SELECT idResidence, idRequest, arrival, departure FROM residenceRequest WHERE status = 2 AND idStudent = ?";
+        String sql = "SELECT idResidence, idRequest, arrival, departure, room FROM residenceRequest WHERE status = 2 AND idStudent = ?";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,idStudent);
         return preparedStatement.executeQuery();

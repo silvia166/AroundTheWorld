@@ -10,6 +10,13 @@ public class ResidenceRequest extends Request {
         this.requestedRoom = requestedRoom;
         this.reservedRoom = null;
     }
+
+    public ResidenceRequest(int idRequest, int idResidence, String arrival, String departure, String requestedRoom, int idStudent, int status) {
+        super(idRequest, arrival, departure, idStudent, status);
+        this.idResidence = idResidence;
+        this.requestedRoom = requestedRoom;
+        this.reservedRoom = null;
+    }
     public int getIdResidence() {
         return idResidence;
     }

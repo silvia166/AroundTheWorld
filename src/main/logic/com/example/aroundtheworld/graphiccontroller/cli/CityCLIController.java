@@ -39,16 +39,8 @@ public class CityCLIController implements GraphicCLIController{
         cityViewCLI.setCityInfo(cityBean.getName(),cityBean.getLanguage(),cityBean.getAct1(),cityBean.getAct2(),cityBean.getAct3());
         cityViewCLI.setResidenceInfo(cityBean.getResidence().getName(), cityBean.getResidence().getAddress(), cityBean.getResidence().getDistanceSchool());
         cityViewCLI.setSchoolInfo(cityBean.getSchool().getName(),cityBean.getSchool().getAddress(),cityBean.getSchool().getHours(),cityBean.getSchool().getCourses());
+        LoginCLIController loginCLIController = new LoginCLIController();
+        loginCLIController.start();
     }
 
-    public void executeCommand(String nextLine) throws CommandErrorException, NotImplementedException {
-        switch (nextLine){
-            case TEMPERATURE -> throw new NotImplementedException();
-            case BACK -> {
-                LoginCLIController loginCLIController = new LoginCLIController();
-                loginCLIController.start();
-            }
-            default -> throw new CommandErrorException();
-        }
-    }
 }

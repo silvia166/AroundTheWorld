@@ -4,7 +4,6 @@ import com.example.aroundtheworld.appcontroller.CityController;
 import com.example.aroundtheworld.bean.CityBean;
 import com.example.aroundtheworld.exception.CommandErrorException;
 import com.example.aroundtheworld.exception.NotFoundException;
-import com.example.aroundtheworld.exception.NotImplementedException;
 import com.example.aroundtheworld.viewcli.CityViewCLI;
 
 public class CityCLIController implements GraphicCLIController{

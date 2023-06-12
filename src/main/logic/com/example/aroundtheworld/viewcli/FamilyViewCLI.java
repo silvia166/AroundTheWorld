@@ -5,7 +5,6 @@ import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.CommandErrorException;
 import com.example.aroundtheworld.graphiccontroller.cli.FamilyCLIController;
 
-import java.sql.SQLException;
 import java.util.Scanner;
 
 public class FamilyViewCLI {

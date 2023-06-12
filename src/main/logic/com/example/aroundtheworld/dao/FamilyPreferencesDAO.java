@@ -40,21 +40,7 @@ public class FamilyPreferencesDAO {
 
             resultSet.first();
             do{
-                String house = resultSet.getString(HOUSE);
-                int vegetarian = resultSet.getInt(VEGETARIAN);
-                int vegan = resultSet.getInt(VEGAN);
-                int travels = resultSet.getInt(TRAVELS);
-                int books = resultSet.getInt(BOOKS);
-                int film = resultSet.getInt(FILM);
-                int nature = resultSet.getInt(NATURE);
-                int videoGames = resultSet.getInt(VIDEOGAMES);
-                int cooking = resultSet.getInt(COOKING);
-                int sport = resultSet.getInt(SPORT);
-
-                preferences = new FamilyPreferences();
-                preferences.setFood(vegetarian, vegan);
-                preferences.setHobbies(travels, sport, books, nature, film, videoGames, cooking);
-                preferences.setHouse(house);
+                preferences = getPreferences(resultSet);
 
             } while(resultSet.next());
 
@@ -94,21 +80,7 @@ public class FamilyPreferencesDAO {
 
             resultSet.first();
             do{
-                String house = resultSet.getString(HOUSE);
-                int vegetarian = resultSet.getInt(VEGETARIAN);
-                int vegan = resultSet.getInt(VEGAN);
-                int travels = resultSet.getInt(TRAVELS);
-                int books = resultSet.getInt(BOOKS);
-                int film = resultSet.getInt(FILM);
-                int nature = resultSet.getInt(NATURE);
-                int videoGames = resultSet.getInt(VIDEOGAMES);
-                int cooking = resultSet.getInt(COOKING);
-                int sport = resultSet.getInt(SPORT);
-
-                preferences = new FamilyPreferences();
-                preferences.setFood(vegetarian, vegan);
-                preferences.setHobbies(travels, sport, books, nature, film, videoGames, cooking);
-                preferences.setHouse(house);
+                preferences = getPreferences(resultSet);
 
             } while(resultSet.next());
 
@@ -130,5 +102,26 @@ public class FamilyPreferencesDAO {
         } catch(SQLException e) {
             Printer.printError(e.getMessage());
         }
+    }
+
+    private static FamilyPreferences getPreferences(ResultSet resultSet) throws SQLException {
+
+        String house = resultSet.getString(HOUSE);
+        int vegetarian = resultSet.getInt(VEGETARIAN);
+        int vegan = resultSet.getInt(VEGAN);
+        int travels = resultSet.getInt(TRAVELS);
+        int books = resultSet.getInt(BOOKS);
+        int film = resultSet.getInt(FILM);
+        int nature = resultSet.getInt(NATURE);
+        int videoGames = resultSet.getInt(VIDEOGAMES);
+        int cooking = resultSet.getInt(COOKING);
+        int sport = resultSet.getInt(SPORT);
+
+        FamilyPreferences preferences = new FamilyPreferences();
+        preferences.setFood(vegetarian, vegan);
+        preferences.setHobbies(travels, sport, books, nature, film, videoGames, cooking);
+        preferences.setHouse(house);
+
+        return preferences;
     }
 }

@@ -72,15 +72,16 @@ public class ReserveRoomController {
         List<ResidenceRequest> requests = ResidenceRequestDAO.retrieveStudentResidenceRequest(studentBean.getId());
 
         for(ResidenceRequest request: requests){
-            Residence residence = null;
+            Residence residence;
             try {
                 residence = ResidenceDAO.retrieveResidenceById(request.getIdResidence());
+                ResidenceRequestBean residenceRequestBean = new ResidenceRequestBean(residence.getCity(), request.getArrival(), request.getDeparture(), request.getRequestedRoom(), request.getIdStudent(), request.getStatus());
+                residenceRequestBean.setId(request.getId());
+                residenceRequestBeans.add(residenceRequestBean);
             } catch (NotFoundException e) {
                 Printer.printError(e.getMessage());
             }
-            ResidenceRequestBean residenceRequestBean = new ResidenceRequestBean(residence.getCity(), request.getArrival(), request.getDeparture(), request.getRequestedRoom(), request.getIdStudent(), request.getStatus());
-            residenceRequestBean.setId(request.getId());
-            residenceRequestBeans.add(residenceRequestBean);
+
         }
         return residenceRequestBeans;
     }

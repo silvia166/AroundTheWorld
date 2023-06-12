@@ -1,6 +1,5 @@
 package com.example.aroundtheworld.graphiccontroller;
 
-import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -24,7 +23,7 @@ public class AgencyGUIController {
         stage.show();
     }
 
-    public void toRequestAgency() throws IOException, NotFoundException {
+    public void toRequestAgency() throws IOException {
         Stage stage = Main.getStage();
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(Main.class.getResource("requestAgency.fxml"));

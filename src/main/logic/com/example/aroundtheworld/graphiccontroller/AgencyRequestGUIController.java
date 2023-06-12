@@ -5,7 +5,6 @@ import com.example.aroundtheworld.bean.ResidenceRequestBean;
 import com.example.aroundtheworld.appcontroller.ReserveRoomController;
 import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.engineering.observer.Observer;
-import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -40,7 +39,7 @@ public class AgencyRequestGUIController implements Observer {
         agencyGUIController.toHomepageAgency();
     }
 
-    public void setAgencyRequests() throws NotFoundException, IOException {
+    public void setAgencyRequests() throws IOException {
 
         ReserveRoomController reserveRoomController = new ReserveRoomController();
         List<ResidenceRequestBean> requestList = reserveRoomController.getResidenceRequests();

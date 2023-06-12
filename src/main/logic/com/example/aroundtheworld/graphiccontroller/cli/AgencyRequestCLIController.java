@@ -6,7 +6,6 @@ import com.example.aroundtheworld.bean.RoomBean;
 import com.example.aroundtheworld.engineering.ShowExceptionSupport;
 import com.example.aroundtheworld.exception.CommandErrorException;
 import com.example.aroundtheworld.exception.NoAvailableRoomsException;
-import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.viewcli.AgencyRequestsViewCLI;
 
 import java.util.ArrayList;
@@ -27,11 +26,7 @@ public class AgencyRequestCLIController implements GraphicCLIController{
     public void start() {
         this.agencyRequestsViewCLI = new AgencyRequestsViewCLI(this);
         ReserveRoomController reserveRoomController = new ReserveRoomController();
-        try {
-            this.residenceRequestList = reserveRoomController.getResidenceRequests();
-        } catch (NotFoundException e) {
-            ShowExceptionSupport.showExceptionCLI(e.getMessage());
-        }
+        this.residenceRequestList = reserveRoomController.getResidenceRequests();
 
         for(ResidenceRequestBean residenceRequest : residenceRequestList){
             if(residenceRequest.getStatus() == 0){

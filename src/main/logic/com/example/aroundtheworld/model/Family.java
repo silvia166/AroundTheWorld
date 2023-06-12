@@ -18,6 +18,7 @@ public class Family extends GenericUser {
         this.city = city;
         this.address = address;
     }
+
     public Family(int id, String phoneNumber, String name, String city, String address) {
         super(id, phoneNumber, null);
         this.name = name;

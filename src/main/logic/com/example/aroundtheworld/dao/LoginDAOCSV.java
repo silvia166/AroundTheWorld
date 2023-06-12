@@ -15,7 +15,7 @@ public class LoginDAOCSV implements LoginDAO{
 
     @Override
     public UserProfile checkUser(String username, String password) {
-        int role = 0;
+        int role;
         UserProfile userProfile = null;
         File file = new File(CSV_FILE_NAME);
 

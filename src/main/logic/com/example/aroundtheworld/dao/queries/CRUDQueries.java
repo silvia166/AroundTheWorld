@@ -81,27 +81,17 @@ public class CRUDQueries {
     }
 
     public static int insertRequest(Connection connection, FamilyRequest familyRequest) throws SQLException {
-        String insertStatement = "INSERT INTO familyRequest (arrival, departure, city, house, status, siblings, animals, vegetarian, vegan, travels, books, sport, nature, film, videogames, cooking, idStudent, idFamily, compatibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String insertStatement = "INSERT INTO familyRequest (arrival, departure, city, status, siblings, animals, idStudent, idFamily, compatibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setString(1,familyRequest.getArrival());
         preparedStatement.setString(2,familyRequest.getDeparture());
         preparedStatement.setString(3,familyRequest.getCity());
-        preparedStatement.setString(4,familyRequest.getFamilyPreferences().getHouse());
-        preparedStatement.setInt(5,0);
-        preparedStatement.setInt(6,familyRequest.getSiblings());
-        preparedStatement.setInt(7,familyRequest.getAnimals());
-        preparedStatement.setInt(8,familyRequest.getFamilyPreferences().getVegetarian());
-        preparedStatement.setInt(9,familyRequest.getFamilyPreferences().getVegan());
-        preparedStatement.setInt(10,familyRequest.getFamilyPreferences().getTravels());
-        preparedStatement.setInt(11,familyRequest.getFamilyPreferences().getBooks());
-        preparedStatement.setInt(12,familyRequest.getFamilyPreferences().getSport());
-        preparedStatement.setInt(13,familyRequest.getFamilyPreferences().getNature());
-        preparedStatement.setInt(14,familyRequest.getFamilyPreferences().getFilm());
-        preparedStatement.setInt(15,familyRequest.getFamilyPreferences().getVideoGames());
-        preparedStatement.setInt(16,familyRequest.getFamilyPreferences().getCooking());
-        preparedStatement.setInt(17,familyRequest.getIdStudent());
-        preparedStatement.setInt(18,familyRequest.getIdFamily());
-        preparedStatement.setFloat(19,familyRequest.getCompatibility());
+        preparedStatement.setInt(4,0);
+        preparedStatement.setInt(5,familyRequest.getSiblings());
+        preparedStatement.setInt(6,familyRequest.getAnimals());
+        preparedStatement.setInt(7,familyRequest.getIdStudent());
+        preparedStatement.setInt(8,familyRequest.getIdFamily());
+        preparedStatement.setFloat(9,familyRequest.getCompatibility());
         return preparedStatement.executeUpdate();
     }
 
@@ -161,6 +151,23 @@ public class CRUDQueries {
         preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,rate);
         preparedStatement.setInt(2,idRequest);
+        return preparedStatement.executeUpdate();
+    }
+
+    public static int insertPreferencesRequest(Connection connection, int idRequest, FamilyPreferences familyPreferences) throws SQLException {
+        String insertStatement = "UPDATE familyRequest SET house = ?, vegetarian = ?, vegan = ?, travels = ?, books = ?, sport = ?, nature = ?, film = ?, videogames = ?, cooking = ? WHERE idRequest = ?";
+        preparedStatement = connection.prepareStatement(insertStatement, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        preparedStatement.setString(1,familyPreferences.getHouse());
+        preparedStatement.setInt(2,familyPreferences.getVegetarian());
+        preparedStatement.setInt(3,familyPreferences.getVegan());
+        preparedStatement.setInt(4,familyPreferences.getTravels());
+        preparedStatement.setInt(5,familyPreferences.getBooks());
+        preparedStatement.setInt(6,familyPreferences.getSport());
+        preparedStatement.setInt(7,familyPreferences.getNature());
+        preparedStatement.setInt(8,familyPreferences.getFilm());
+        preparedStatement.setInt(9,familyPreferences.getVideoGames());
+        preparedStatement.setInt(10,familyPreferences.getCooking());
+        preparedStatement.setInt(11,idRequest);
         return preparedStatement.executeUpdate();
     }
 }

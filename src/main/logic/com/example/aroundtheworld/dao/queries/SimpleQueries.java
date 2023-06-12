@@ -93,7 +93,7 @@ public class SimpleQueries {
     }
 
     public static ResultSet retrieveFamilyRequests(Connection connection, int id) throws SQLException {
-        String sql = "SELECT * FROM familyRequest WHERE idFamily = ? AND (status = '" + 0 + "' OR status = '" + 1 + "')";
+        String sql = "SELECT idRequest, idStudent, city, arrival, departure, status, siblings, animals, compatibility FROM familyRequest WHERE idFamily = ? AND (status = '" + 0 + "' OR status = '" + 1 + "')";
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,id);
         return preparedStatement.executeQuery();
@@ -229,6 +229,21 @@ public class SimpleQueries {
         preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         preparedStatement.setInt(1,idResidence);
         preparedStatement.setInt(2,roomNumber);
+        return preparedStatement.executeQuery();
+    }
+
+    public static ResultSet retrievePreferencesRequest(Connection connection, int idRequest) throws SQLException {
+        String sql = "SELECT house, vegetarian, vegan, travels, sport, books, film, nature, cooking, videogames FROM familyRequest WHERE idRequest = ?";
+        preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        preparedStatement.setInt(1,idRequest);
+        return preparedStatement.executeQuery();
+    }
+
+    public static ResultSet getIdFamilyRequest(Connection connection, int idStudent, String arrival) throws SQLException {
+        String sql = "SELECT idRequest FROM familyRequest WHERE idStudent = ? AND arrival = ?";
+        preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        preparedStatement.setInt(1,idStudent);
+        preparedStatement.setString(2, arrival);
         return preparedStatement.executeQuery();
     }
 }

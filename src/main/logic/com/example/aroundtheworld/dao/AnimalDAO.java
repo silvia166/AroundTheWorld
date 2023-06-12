@@ -18,7 +18,7 @@ public class AnimalDAO {
     private static final String QT = "quantity";
 
     private AnimalDAO(){}
-    public static List<Animal> retrieveAnimal(int familyId) {
+    public static List<Animal> retrieveAnimals(int familyId) {
         Connection connection;
         List<Animal> animals = new ArrayList<>();
         Animal animal;
@@ -50,12 +50,12 @@ public class AnimalDAO {
         return animals;
     }
 
-    public static void addAnimal(String type, int quantity, int id) {
+    public static void addAnimal(Animal animal, int id) {
         Connection connection;
 
         try {
             connection = ConnectionDB.getConnection();
-            CRUDQueries.insertAnimal(connection, id, type, quantity);
+            CRUDQueries.insertAnimal(connection, id, animal.getType(), animal.getQuantity());
 
         } catch (SQLException e) {
             Printer.printError(e.getMessage());

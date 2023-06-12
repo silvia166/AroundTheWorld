@@ -69,7 +69,7 @@ public class FamilyDAO {
         String email = resultSet.getString(EMAIL);
 
         List<FamilyMember> familyMembers = FamilyMemberDAO.retrieveMembers(familyId);
-        List<Animal> animals = AnimalDAO.retrieveAnimal(familyId);
+        List<Animal> animals = AnimalDAO.retrieveAnimals(familyId);
         FamilyPreferences preferences = FamilyPreferencesDAO.retrievePreferences(familyId);
 
         Family family = new Family(familyId, phoneNumber, name, city, address, email);
@@ -109,21 +109,40 @@ public class FamilyDAO {
         return family;
     }
 
-    public static void addFamily(String name, String phone, String city, String address, String imgSrc, String email) {
+    public static void addFamily(Family family) {
         Connection connection;
 
         try {
             connection = ConnectionDB.getConnection();
 
-            CRUDQueries.insertUser(connection, email, "123", "family");
-            CRUDQueries.insertFamily(connection, name, phone, city, address, email, imgSrc);
+            CRUDQueries.insertUser(connection, family.getEmail(), "123", "family");
+            CRUDQueries.insertFamily(connection, family.getName(), family.getPhoneNumber(), family.getCity(), family.getAddress(), family.getEmail(), family.getImgSrc());
 
-        } catch (SQLException e) {
+            ResultSet resultSet = SimpleQueries.retrieveFamilyID(connection, family.getEmail());
+
+            if(!resultSet.first()){
+                throw new NotFoundException("No family found");
+            }
+            resultSet.first();
+
+            int id = resultSet.getInt(ID);
+
+            for(Animal animal : family.getAnimals()){
+                AnimalDAO.addAnimal(animal, id);
+            }
+
+            for(FamilyMember familyMember : family.getMembers()){
+                FamilyMemberDAO.addMember(familyMember, id);
+            }
+
+            FamilyPreferencesDAO.addPreferences(family.getPreferences(), id);
+
+        } catch (SQLException | NotFoundException e) {
             Printer.printError(e.getMessage());
         }
 
 
-        String user = email;
+        String user = family.getEmail();
         user = user.concat(",123,family");
 
         File file = new File(CSV_FILE_NAME);

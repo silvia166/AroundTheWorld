@@ -4,11 +4,10 @@ import com.example.aroundtheworld.bean.FamilyBean;
 import com.example.aroundtheworld.bean.StudentBean;
 import com.example.aroundtheworld.bean.TravelBean;
 import com.example.aroundtheworld.dao.*;
+import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.engineering.factory.StudentDAOFactory;
-import com.example.aroundtheworld.model.Family;
-import com.example.aroundtheworld.model.FamilyRequest;
-import com.example.aroundtheworld.model.ResidenceRequest;
-import com.example.aroundtheworld.model.Student;
+import com.example.aroundtheworld.exception.NotFoundException;
+import com.example.aroundtheworld.model.*;
 
 import java.time.Year;
 import java.util.ArrayList;
@@ -49,15 +48,21 @@ public class TravelsController {
         }
 
         for (ResidenceRequest request : residenceRequests) {
-            String image = "image/";
-            if(request.getCity().equals("New York")){
-                image = image.concat("newYork");
-            }else{
-                image = image.concat(request.getCity().toLowerCase());
+            try {
+                Residence residence = ResidenceDAO.retrieveResidenceById(request.getIdResidence());
+                String image = "image/";
+                if (residence.getCity().equals("New York")) {
+                    image = image.concat("newYork");
+                } else {
+                    image = image.concat(residence.getCity().toLowerCase());
+                }
+                image = image.concat("Flag.png");
+
+                TravelBean travelBean = new TravelBean(residence.getCity(), request.getArrival(), request.getDeparture(), request.getId(), image);
+                travelBeanList.add(travelBean);
+            } catch (NotFoundException e) {
+                Printer.printError(e.getMessage());
             }
-            image = image.concat("Flag.png");
-            TravelBean travelBean = new TravelBean(request.getCity(), request.getArrival(), request.getDeparture(), request.getId(), image);
-            travelBeanList.add(travelBean);
         }
 
         return travelBeanList;

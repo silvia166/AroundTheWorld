@@ -1,6 +1,5 @@
 package com.example.aroundtheworld.graphiccontroller;
 
-import com.example.aroundtheworld.exception.NotFoundException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

@@ -67,12 +67,10 @@ public class ResidenceDAO {
             }
 
             resultSet.first();
-            do{
-                String name = resultSet.getString(NAME);
-                String city = resultSet.getString(CITY);
-                residence = new Residence(idResidence, name, city);
 
-            } while(resultSet.next());
+            String name = resultSet.getString(NAME);
+            String city = resultSet.getString(CITY);
+            residence = new Residence(idResidence, name, city);
 
             resultSet.close();
 

@@ -78,4 +78,57 @@ public class FamilyPreferencesDAO {
             Printer.printError(e.getMessage());
         }
     }
+
+    public static FamilyPreferences retrievePreferencesRequest(int idRequest) {
+        Connection connection;
+        FamilyPreferences preferences = null;
+
+        try{
+            connection = ConnectionDB.getConnection();
+
+            ResultSet resultSet = SimpleQueries.retrievePreferencesRequest(connection, idRequest);
+
+            if(!resultSet.first()) {
+                throw new NotFoundException("No preferences found for request with id: " + idRequest);
+            }
+
+            resultSet.first();
+            do{
+                String house = resultSet.getString(HOUSE);
+                int vegetarian = resultSet.getInt(VEGETARIAN);
+                int vegan = resultSet.getInt(VEGAN);
+                int travels = resultSet.getInt(TRAVELS);
+                int books = resultSet.getInt(BOOKS);
+                int film = resultSet.getInt(FILM);
+                int nature = resultSet.getInt(NATURE);
+                int videoGames = resultSet.getInt(VIDEOGAMES);
+                int cooking = resultSet.getInt(COOKING);
+                int sport = resultSet.getInt(SPORT);
+
+                preferences = new FamilyPreferences();
+                preferences.setFood(vegetarian, vegan);
+                preferences.setHobbies(travels, sport, books, nature, film, videoGames, cooking);
+                preferences.setHouse(house);
+
+            } while(resultSet.next());
+
+            resultSet.close();
+
+        }catch(SQLException | NotFoundException e){
+            Printer.printError(e.getMessage());
+        }
+        return preferences;
+    }
+
+    public static void addPreferencesRequest(FamilyPreferences familyPreferences, int idRequest) {
+        Connection connection;
+
+        try{
+            connection = ConnectionDB.getConnection();
+            CRUDQueries.insertPreferencesRequest(connection, idRequest, familyPreferences);
+
+        } catch(SQLException e) {
+            Printer.printError(e.getMessage());
+        }
+    }
 }

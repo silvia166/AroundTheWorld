@@ -17,7 +17,6 @@ import java.util.List;
 import static java.lang.Integer.parseInt;
 
 public class FamilyMemberDAO {
-
     private static final String BIRTH = "birth";
     private static final String NAME = "name";
     private static final String PARENTHOOD = "parenthood";
@@ -61,7 +60,7 @@ public class FamilyMemberDAO {
         return familyMembers;
     }
 
-    public static void addMember(String name, int age, String parenthood, int id) {
+    public static void addMember(FamilyMember familyMember, int id) {
 
         Connection connection;
         String birth;
@@ -71,8 +70,8 @@ public class FamilyMemberDAO {
         try{
             connection = ConnectionDB.getConnection();
 
-            birth = String.valueOf(currentYear - age);
-            CRUDQueries.insertMember(connection, id, name, birth, parenthood);
+            birth = String.valueOf(currentYear - familyMember.getAge());
+            CRUDQueries.insertMember(connection, id, familyMember.getName(), birth, familyMember.getParenthood());
 
         } catch(SQLException e) {
             Printer.printError(e.getMessage());

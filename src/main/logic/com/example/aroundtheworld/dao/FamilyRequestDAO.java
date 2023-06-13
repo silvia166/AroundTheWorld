@@ -18,8 +18,8 @@ import java.util.List;
 public class FamilyRequestDAO {
 
     private static final String ID = "idRequest";
-    private static final String IDSTUD = "idStudent";
-    private static final String IDFAM = "idFamily";
+    private static final String ID_STUDENT = "idStudent";
+    private static final String ID_FAMILY = "idFamily";
     private static final String ARRIVAL = "arrival";
     private static final String DEPARTURE = "departure";
     private static final String RATE = "rate";
@@ -75,7 +75,7 @@ public class FamilyRequestDAO {
                 resultSet.first();
                 do {
                     int requestId = resultSet.getInt(ID);
-                    int studentId = resultSet.getInt(IDSTUD);
+                    int studentId = resultSet.getInt(ID_STUDENT);
                     String city = resultSet.getString(CITY);
                     Date arrival = resultSet.getDate(ARRIVAL);
                     Date departure = resultSet.getDate(DEPARTURE);
@@ -144,7 +144,7 @@ public class FamilyRequestDAO {
                     Date arrival = resultSet.getDate(ARRIVAL);
                     Date departure = resultSet.getDate(DEPARTURE);
                     int status = resultSet.getInt(STATUS);
-                    int idFamily = resultSet.getInt(IDFAM);
+                    int idFamily = resultSet.getInt(ID_FAMILY);
                     String city = resultSet.getString(CITY);
 
                     familyRequest = new FamilyRequest(city, arrival.toString(), departure.toString(), idStudent, idFamily, status);
@@ -180,7 +180,7 @@ public class FamilyRequestDAO {
                     int requestId = resultSet.getInt(ID);
                     Date arrival = resultSet.getDate(ARRIVAL);
                     Date departure = resultSet.getDate(DEPARTURE);
-                    int idStudent = resultSet.getInt(IDSTUD);
+                    int idStudent = resultSet.getInt(ID_STUDENT);
                     int rate = resultSet.getInt(RATE);
 
                     familyRequest = new FamilyRequest(null, arrival.toString(), departure.toString(), idStudent, idFamily, 2);
@@ -217,7 +217,7 @@ public class FamilyRequestDAO {
                     int requestId = resultSet.getInt(ID);
                     Date arrival = resultSet.getDate(ARRIVAL);
                     Date departure = resultSet.getDate(DEPARTURE);
-                    int idFamily = resultSet.getInt(IDFAM);
+                    int idFamily = resultSet.getInt(ID_FAMILY);
                     int rate = resultSet.getInt(RATE);
                     String city = resultSet.getString(CITY);
 

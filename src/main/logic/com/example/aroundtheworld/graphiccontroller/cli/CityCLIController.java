@@ -7,14 +7,12 @@ import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.viewcli.CityViewCLI;
 
 public class CityCLIController implements GraphicCLIController{
-
     private static final String LONDON = "1";
     private static final String ROME = "2";
     private static final String PARIS = "3";
     private static final String NEW_YORK = "4";
     private static final String VALENCIA = "5";
-    private static final String TEMPERATURE = "1";
-    private static final String BACK = "2";
+
     private CityViewCLI cityViewCLI;
     @Override
     public void start() {
@@ -36,8 +34,8 @@ public class CityCLIController implements GraphicCLIController{
         cityController.setCity(cityBean);
 
         cityViewCLI.setCityInfo(cityBean.getName(),cityBean.getLanguage(),cityBean.getAct1(),cityBean.getAct2(),cityBean.getAct3());
-        cityViewCLI.setResidenceInfo(cityBean.getResidence().getName(), cityBean.getResidence().getAddress(), cityBean.getResidence().getDistanceSchool());
-        cityViewCLI.setSchoolInfo(cityBean.getSchool().getName(),cityBean.getSchool().getAddress(),cityBean.getSchool().getHours(),cityBean.getSchool().getCourses());
+        cityViewCLI.setResidenceInfo(cityBean.getName()+" Residence", cityBean.getAddressResidence(), cityBean.getDistanceSchool());
+        cityViewCLI.setSchoolInfo(cityBean.getName()+" School",cityBean.getAddressSchool(),cityBean.getHours(),cityBean.getCourses());
         LoginCLIController loginCLIController = new LoginCLIController();
         loginCLIController.start();
     }

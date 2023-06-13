@@ -16,7 +16,7 @@ public class CityController {
         cityBean.setAct2ImgSrc(city.getAct2ImgSrc());
         cityBean.setAct3(city.getAct3());
         cityBean.setAct3ImgSrc(city.getAct3ImgSrc());
-        cityBean.setResidence(city.getResidence());
-        cityBean.setSchool(city.getSchool());
+        cityBean.setResidence(city.getResidence().getAddress(), city.getResidence().getDistanceSchool());
+        cityBean.setSchool(city.getSchool().getAddress(), city.getSchool().getHours(), city.getSchool().getCourses());
     }
 }

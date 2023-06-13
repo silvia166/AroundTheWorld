@@ -46,20 +46,18 @@ public class CityGUIController {
     private Label language;
     @FXML
     private Label residenceName;
-    private CityBean city;
 
     public void setData(CityBean city) {
-        this.city = city;
 
         cityName.setText(city.getName());
         language.setText(city.getLanguage());
-        residenceName.setText(city.getResidence().getName());
-        residenceAddress.setText(city.getResidence().getAddress());
-        distanceResidenceSchool.setText(city.getResidence().getDistanceSchool());
-        schoolName.setText(city.getSchool().getName());
-        schoolAddress.setText(city.getSchool().getAddress());
-        schoolCourses.setText(city.getSchool().getCourses());
-        schoolHours.setText(city.getSchool().getHours());
+        residenceName.setText(city.getName()+" Residence");
+        residenceAddress.setText(city.getAddressResidence());
+        distanceResidenceSchool.setText(city.getDistanceSchool());
+        schoolName.setText(city.getName()+" School");
+        schoolAddress.setText(city.getAddressSchool());
+        schoolCourses.setText(city.getCourses());
+        schoolHours.setText(city.getHours());
 
         act1Name.setText(city.getAct1());
         act2Name.setText(city.getAct2());

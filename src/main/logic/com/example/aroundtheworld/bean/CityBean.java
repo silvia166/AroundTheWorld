@@ -1,8 +1,5 @@
 package com.example.aroundtheworld.bean;
 
-import com.example.aroundtheworld.model.Residence;
-import com.example.aroundtheworld.model.School;
-
 public class CityBean {
     private String cityName;
     private String cityImg;
@@ -13,8 +10,12 @@ public class CityBean {
     private String act2Img;
     private String activity3;
     private String act3Img;
-    private Residence cityResidence;
-    private School citySchool;
+
+    private String addressResidence;
+    private String distanceSchool;
+    private String addressSchool;
+    private String hours;
+    private String courses;
 
     public CityBean(String name) {
         this.cityName = name;
@@ -88,19 +89,34 @@ public class CityBean {
         this.act3Img = act3ImgSrc;
     }
 
-    public Residence getResidence() {
-        return cityResidence;
+    public void setResidence(String addressResidence, String distanceSchool){
+        this.addressResidence = addressResidence;
+        this.distanceSchool = distanceSchool;
     }
 
-    public void setResidence(Residence residence) {
-        this.cityResidence = residence;
+    public void setSchool(String addressSchool, String hours, String courses){
+        this.addressSchool = addressSchool;
+        this.hours = hours;
+        this.courses = courses;
     }
 
-    public School getSchool() {
-        return citySchool;
+    public String getAddressResidence() {
+        return addressResidence;
     }
 
-    public void setSchool(School school) {
-        this.citySchool = school;
+    public String getDistanceSchool() {
+        return distanceSchool;
+    }
+
+    public String getAddressSchool() {
+        return addressSchool;
+    }
+
+    public String getHours() {
+        return hours;
+    }
+
+    public String getCourses() {
+        return courses;
     }
 }

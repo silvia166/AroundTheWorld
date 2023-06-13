@@ -6,11 +6,12 @@ import com.example.aroundtheworld.engineering.Session;
 import com.example.aroundtheworld.engineering.factory.LoginDAOFactory;
 import com.example.aroundtheworld.engineering.factory.StudentDAOFactory;
 import com.example.aroundtheworld.exception.NotFoundException;
+import com.example.aroundtheworld.exception.UserNotFoundException;
 import com.example.aroundtheworld.model.*;
 
 
 public class LoginController {
-    public void checkUser(LoginBean loginBean) {
+    public void checkUser(LoginBean loginBean) throws UserNotFoundException {
 
         LoginDAO loginDAO = LoginDAOFactory.getInstance().createLoginDAO();
 

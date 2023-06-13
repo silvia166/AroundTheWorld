@@ -4,6 +4,7 @@ import com.example.aroundtheworld.connection.ConnectionDB;
 import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.exception.NotFoundException;
 import com.example.aroundtheworld.dao.queries.*;
+import com.example.aroundtheworld.exception.UserNotFoundException;
 import com.example.aroundtheworld.model.UserProfile;
 
 import java.sql.Connection;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 
 public class LoginDAOJDBC implements LoginDAO{
     @Override
-    public UserProfile checkUser(String username, String password) {
+    public UserProfile checkUser(String username, String password) throws UserNotFoundException{
         Connection connection;
         int role;
         UserProfile userProfile = null;
@@ -23,7 +24,7 @@ public class LoginDAOJDBC implements LoginDAO{
             ResultSet resultSet = SimpleQueries.checkUser(connection, username,password);
 
             if (!resultSet.isBeforeFirst()){
-                throw new NotFoundException("No user found with "+ username);
+                throw new UserNotFoundException();
             }
 
             resultSet.first();

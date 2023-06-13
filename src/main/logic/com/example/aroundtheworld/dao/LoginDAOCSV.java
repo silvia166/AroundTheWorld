@@ -2,6 +2,7 @@ package com.example.aroundtheworld.dao;
 
 import com.example.aroundtheworld.engineering.Printer;
 import com.example.aroundtheworld.exception.NotFoundException;
+import com.example.aroundtheworld.exception.UserNotFoundException;
 import com.example.aroundtheworld.model.UserProfile;
 
 import java.io.*;
@@ -14,7 +15,7 @@ public class LoginDAOCSV implements LoginDAO{
     private static final int ROLE = 2;
 
     @Override
-    public UserProfile checkUser(String username, String password) {
+    public UserProfile checkUser(String username, String password) throws UserNotFoundException {
         int role;
         UserProfile userProfile = null;
         File file = new File(CSV_FILE_NAME);
@@ -36,6 +37,11 @@ public class LoginDAOCSV implements LoginDAO{
                     userProfile = new UserProfile(role, username);
                 }
             }
+
+            if(userProfile == null){
+                throw new UserNotFoundException();
+            }
+
         }catch (IOException | NotFoundException e) {
             Printer.printError(e.getMessage());
         }
